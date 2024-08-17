@@ -22,7 +22,9 @@
         }
 
         header {
+            background-color: #000000;
             padding: 20px 0;
+            color: #F5F5DC;
         }
 
         header .container {
@@ -31,40 +33,53 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            text-decoration: none;
-            color: #333;
-        }
-
-        nav {
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        nav a {
-            margin: 0 12px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            font-weight: 400;
-        }
-
-        .social-search {
+        .logo-container {
             display: flex;
             align-items: center;
         }
 
-        .social-icon, .search-icon {
-            margin-left: 15px;
-            font-size: 14px;
-            text-decoration: none;
-            color: #333;
+        .logo-image {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
         }
 
-        .search-icon {
-            font-size: 16px;
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #F5F5DC;
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icon {
+            margin-left: 15px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #F5F5DC;
+        }
+
+        nav {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        nav a:not(:last-child)::after {
+            content: "•";
+            margin-left: 20px;
+            color: #333;
         }
 
         main {
@@ -92,9 +107,9 @@
         }
 
         footer {
-            background-color: #000000; /* Changed to black */
+            background-color: #000000;
             padding: 40px 0;
-            color: #F5F5DC; /* Light beige color for text */
+            color: #F5F5DC;
         }
 
         .footer-content {
@@ -111,7 +126,7 @@
             font-size: 36px;
             font-family: 'Libre Baskerville', serif;
             font-style: italic;
-            color: #F5F5DC; /* Light beige color */
+            color: #F5F5DC;
         }
 
         .footer-newsletter, .footer-links, .footer-social {
@@ -121,19 +136,23 @@
         .footer-links a {
             margin-right: 15px;
             font-size: 14px;
-            color: #F5F5DC; /* Light beige color */
+            color: #F5F5DC;
             text-decoration: none;
+        }
+
+        .footer-social {
+            text-align: right;
         }
 
         .footer-social a {
             font-size: 24px;
-            margin-right: 15px;
-            color: #F5F5DC; /* Light beige color */
+            margin-left: 15px;
+            color: #F5F5DC;
             text-decoration: none;
         }
 
         .footer-newsletter p {
-            font-size: 12px; /* Smaller font size for newsletter text */
+            font-size: 16px;
         }
 
         .footer-newsletter input[type="email"] {
@@ -143,8 +162,8 @@
 
         .footer-newsletter button {
             padding: 10px 20px;
-            background-color: #F5F5DC; /* Light beige color */
-            color: #000000; /* Black text for contrast */
+            background-color: #F5F5DC;
+            color: #000000;
             border: none;
             cursor: pointer;
         }
@@ -153,17 +172,25 @@
 <body>
     <header>
         <div class="container">
-            <a href="#" class="logo">Henar Press</a>
-            <nav>
-                <a href="#">Books</a>
-                <a href="#">Authors</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Get Involved</a>
-                <a href="#">Support the Press</a>
-            </nav>
+            <div class="logo-container">
+                <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
+                <a href="#" class="logo-text">Henar Press</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Twitter">T</a>
+                <a href="#" class="social-icon" aria-label="Instagram">I</a>
+                <a href="#" class="social-icon" aria-label="Facebook">F</a>
+            </div>
         </div>
     </header>
+    <nav>
+        <a href="#">Books</a>
+        <a href="#">Authors</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Get Involved</a>
+        <a href="#">Support the Press</a>
+    </nav>
     <main>
         <div class="container">
             <h1>This website is still under construction. Please visit our X/Twitter page: https://x.com/HenarPress.</h1>
