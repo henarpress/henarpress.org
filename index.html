@@ -7,6 +7,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Libre Baskerville', serif;
             margin: 0;
@@ -31,6 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -51,8 +56,15 @@
             color: #F5F5DC;
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .social-icons {
             display: flex;
+            margin-right: 20px;
         }
 
         .social-icon {
@@ -60,6 +72,20 @@
             font-size: 20px;
             text-decoration: none;
             color: #F5F5DC;
+        }
+
+        .donate-button {
+            padding: 10px 20px;
+            background-color: #F5F5DC;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #e0e0d0;
         }
 
         nav {
@@ -116,6 +142,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .footer-logo img {
@@ -123,32 +151,14 @@
         }
 
         .footer-slogan h2 {
-            font-size: 36px;
+            font-size: 52px;
             font-family: 'Libre Baskerville', serif;
             font-style: italic;
             color: #F5F5DC;
         }
 
-        .footer-newsletter, .footer-links, .footer-social {
-            margin-top: 20px;
-        }
-
-        .footer-links a {
-            margin-right: 15px;
-            font-size: 14px;
-            color: #F5F5DC;
-            text-decoration: none;
-        }
-
-        .footer-social {
-            text-align: right;
-        }
-
-        .footer-social a {
-            font-size: 24px;
-            margin-left: 15px;
-            color: #F5F5DC;
-            text-decoration: none;
+        .footer-newsletter {
+            margin-bottom: 20px;
         }
 
         .footer-newsletter p {
@@ -167,6 +177,80 @@
             border: none;
             cursor: pointer;
         }
+
+        .footer-nav-social {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            margin-right: 15px;
+            font-size: 14px;
+            color: #F5F5DC;
+            text-decoration: none;
+        }
+
+        .footer-social a {
+            font-size: 20px;
+            margin-left: 15px;
+            color: #F5F5DC;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header-right {
+                margin-top: 20px;
+            }
+
+            nav {
+                padding: 10px 0;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+                font-size: 16px;
+            }
+
+            nav a:not(:last-child)::after {
+                content: "";
+                margin-left: 0;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content, .footer-nav-social {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-slogan h2 {
+                font-size: 24px;
+            }
+
+            .footer-links, .footer-social {
+                margin-top: 20px;
+            }
+
+            .footer-links a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .footer-social a {
+                margin: 0 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,10 +260,13 @@
                 <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
                 <a href="#" class="logo-text">Henar Press</a>
             </div>
-            <div class="social-icons">
-                <a href="#" class="social-icon" aria-label="Twitter">T</a>
-                <a href="#" class="social-icon" aria-label="Instagram">I</a>
-                <a href="#" class="social-icon" aria-label="Facebook">F</a>
+            <div class="header-right">
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Twitter">T</a>
+                    <a href="#" class="social-icon" aria-label="Instagram">I</a>
+                    <a href="#" class="social-icon" aria-label="Facebook">F</a>
+                </div>
+                <a href="#" class="donate-button">Donate</a>
             </div>
         </div>
     </header>
@@ -219,18 +306,20 @@
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
-            <div class="footer-links">
-                <a href="#">Books</a>
-                <a href="#">Authors</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Get Involved</a>
-                <a href="#">Support the Press</a>
-            </div>
-            <div class="footer-social">
-                <a href="#" aria-label="Twitter">T</a>
-                <a href="#" aria-label="Instagram">I</a>
-                <a href="#" aria-label="Facebook">F</a>
+            <div class="footer-nav-social">
+                <div class="footer-links">
+                    <a href="#">Books</a>
+                    <a href="#">Authors</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Get Involved</a>
+                    <a href="#">Support the Press</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter">T</a>
+                    <a href="#" aria-label="Instagram">I</a>
+                    <a href="#" aria-label="Facebook">F</a>
+                </div>
             </div>
         </div>
     </footer>
