@@ -7,16 +7,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Libre Baskerville', serif;
             margin: 0;
             padding: 0;
             color: #333;
             line-height: 1.6;
+            background-color: #f6f4ef;
         }
 
         .container {
@@ -28,14 +25,18 @@
         header {
             background-color: #000000;
             padding: 20px 0;
-            color: #F5F5DC;
+            color: #f6f4ef;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
 
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -53,13 +54,12 @@
             font-size: 24px;
             font-weight: 700;
             text-decoration: none;
-            color: #F5F5DC;
+            color: #f6f4ef;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .social-icons {
@@ -71,12 +71,12 @@
             margin-left: 15px;
             font-size: 20px;
             text-decoration: none;
-            color: #F5F5DC;
+            color: #f6f4ef;
         }
 
-        .donate-button {
+        .donate-button, .sign-up-button {
             padding: 10px 20px;
-            background-color: #F5F5DC;
+            background-color: #f6f4ef;
             color: #000000;
             text-decoration: none;
             font-weight: bold;
@@ -84,7 +84,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .donate-button:hover {
+        .donate-button:hover, .sign-up-button:hover {
             background-color: #e0e0d0;
         }
 
@@ -92,6 +92,7 @@
             text-align: center;
             padding: 20px 0;
             border-bottom: 1px solid #e0e0e0;
+            margin-top: 120px;
         }
 
         nav a {
@@ -135,15 +136,13 @@
         footer {
             background-color: #000000;
             padding: 40px 0;
-            color: #F5F5DC;
+            color: #f6f4ef;
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
         }
 
         .footer-logo img {
@@ -151,14 +150,32 @@
         }
 
         .footer-slogan h2 {
-            font-size: 52px;
+            font-size: 50px;
             font-family: 'Libre Baskerville', serif;
             font-style: italic;
-            color: #F5F5DC;
+            color: #f6f4ef;
         }
 
-        .footer-newsletter {
-            margin-bottom: 20px;
+        .footer-newsletter, .footer-links, .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            margin-right: 15px;
+            font-size: 14px;
+            color: #f6f4ef;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            text-align: right;
+        }
+
+        .footer-social a {
+            font-size: 24px;
+            margin-left: 15px;
+            color: #f6f4ef;
+            text-decoration: none;
         }
 
         .footer-newsletter p {
@@ -172,84 +189,16 @@
 
         .footer-newsletter button {
             padding: 10px 20px;
-            background-color: #F5F5DC;
+            background-color: #f6f4ef;
             color: #000000;
             border: none;
             cursor: pointer;
         }
 
-        .footer-nav-social {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            margin-right: 15px;
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
             font-size: 14px;
-            color: #F5F5DC;
-            text-decoration: none;
-        }
-
-        .footer-social a {
-            font-size: 20px;
-            margin-left: 15px;
-            color: #F5F5DC;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .header-right {
-                margin-top: 20px;
-            }
-
-            nav {
-                padding: 10px 0;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px 0;
-                font-size: 16px;
-            }
-
-            nav a:not(:last-child)::after {
-                content: "";
-                margin-left: 0;
-            }
-
-            .book-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content, .footer-nav-social {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .footer-slogan h2 {
-                font-size: 24px;
-            }
-
-            .footer-links, .footer-social {
-                margin-top: 20px;
-            }
-
-            .footer-links a {
-                display: block;
-                margin: 10px 0;
-            }
-
-            .footer-social a {
-                margin: 0 10px;
-            }
         }
     </style>
 </head>
@@ -262,9 +211,9 @@
             </div>
             <div class="header-right">
                 <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Twitter">T</a>
-                    <a href="#" class="social-icon" aria-label="Instagram">I</a>
-                    <a href="#" class="social-icon" aria-label="Facebook">F</a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
                 </div>
                 <a href="#" class="donate-button">Donate</a>
             </div>
@@ -303,23 +252,24 @@
                 <p>Stay connected with quarterly updates on new releases, events, and how you can help bring Kurdish stories to life.</p>
                 <form>
                     <input type="email" placeholder="Enter your email">
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" class="sign-up-button">Sign Up</button>
                 </form>
             </div>
-            <div class="footer-nav-social">
-                <div class="footer-links">
-                    <a href="#">Books</a>
-                    <a href="#">Authors</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Get Involved</a>
-                    <a href="#">Support the Press</a>
-                </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="Twitter">T</a>
-                    <a href="#" aria-label="Instagram">I</a>
-                    <a href="#" aria-label="Facebook">F</a>
-                </div>
+            <div class="footer-links">
+                <a href="#">Books</a>
+                <a href="#">Authors</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Get Involved</a>
+                <a href="#">Support the Press</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                <a href="#" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="#" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Henar Press
             </div>
         </div>
     </footer>
