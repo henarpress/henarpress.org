@@ -88,6 +88,7 @@
 
         .donate-button:hover, .sign-up-button:hover {
             background-color: #e0e0d0;
+            color: #333;
         }
 
         nav {
@@ -103,6 +104,11 @@
             color: #333;
             font-size: 18px;
             font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
         }
 
         nav a:not(:last-child)::after {
@@ -167,6 +173,11 @@
             font-size: 14px;
             color: #f6f4ef;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ccc;
         }
 
         .footer-social {
@@ -201,6 +212,14 @@
             margin-top: 20px;
             font-size: 14px;
         }
+
+        .social-icon img, .footer-social img {
+            transition: filter 0.3s;
+        }
+
+        .social-icon:hover img, .footer-social a:hover img {
+            filter: brightness(80%);
+        }
     </style>
 </head>
 <body>
@@ -212,21 +231,21 @@
             </div>
             <div class="header-right">
                 <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
-                    <a href="#" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+                    <a href="https://twitter.com/HenarPress" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                    <a href="https://instagram.com/HenarPress" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                    <a href="https://facebook.com/HenarPress" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
                 </div>
                 <a href="#" class="donate-button">Donate</a>
             </div>
         </div>
     </header>
     <nav>
-        <a href="#">Books</a>
-        <a href="#">Authors</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Get Involved</a>
-        <a href="#">Support Us</a>
+        <a href="books.html">Books</a>
+        <a href="authors.html">Authors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="support-us.html">Support Us</a>
     </nav>
     <main>
         <div class="container">
@@ -257,13 +276,17 @@
                 </form>
             </div>
             <div class="footer-links">
-                <a href="#">Books</a>
-                <a href="#">Authors</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Get Involved</a>
-                <a href="#">Support Us</a>
+                <a href="books.html">Books</a>
+                <a href="authors.html">Authors</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="get-involved.html">Get Involved</a>
+                <a href="support-us.html">Support Us</a>
             </div>
+            <div class="footer-social">
+                <a href="https://twitter.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="https://facebook.com/HenarPress" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
             </div>
             <div class="copyright">
                 &copy; 2024 Henar Press
