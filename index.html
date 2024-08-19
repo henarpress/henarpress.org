@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press - Kurdish Literature & Culture</title>
-    <meta name="description" content="Henar Press: Preserving and promoting Kurdish literature and culture through thoughtfully curated books and publications.">
+    <meta name="description" content="Henar Press: Preserving and promoting Kurdish literature and culture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -68,9 +68,9 @@
         }
 
         .logo-text {
-            font-family: 'Labrada', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 28px;
-            font-weight: 300;
+            font-weight: 700;
             text-decoration: none;
             color: var(--secondary-color);
             letter-spacing: 1px;
@@ -253,12 +253,11 @@ nav {
 
         .footer-logo img {
             max-width: 150px;
-            filter: brightness(0) invert(1);
         }
 
         .footer-slogan h2 {
             font-size: 56px;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Libre Baskerville', serif;
             font-style: italic;
             color: var(--secondary-color);
             margin-bottom: 20px;
@@ -440,7 +439,7 @@ nav {
     </nav>
     <main>
         <div class="container">
-            <h1>Discover Kurdish Literature</h1>
+            <h1>The Home of Kurdish Literature</h1>
             <p class="work-in-progress">Our website is currently evolving. We're  curating our collection of books that celebrate Kurdish voices. Please check back regularly as we unveil our publications and author spotlights.</p>
             <div class="book-grid">
                 <a href="https://henarpress.org/books/title1" class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></a>
@@ -537,7 +536,7 @@ nav {
         const header = document.querySelector('header');
         const nav = document.querySelector('nav');
         let lastScrollTop = 0;
-        const scrollThreshold = 800;
+        const scrollThreshold = 650;
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
