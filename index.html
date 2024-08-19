@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Labrada:wght@400;700&display=swap');
 
         body {
             font-family: 'Libre Baskerville', serif;
@@ -51,8 +51,9 @@
         }
 
         .logo-text {
+            font-family: 'Labrada', serif;
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 300;
             text-decoration: none;
             color: #f6f4ef;
         }
@@ -118,7 +119,7 @@
         }
 
         main {
-            padding: 50px 0;
+            padding: 30px 0;
         }
 
         h1 {
@@ -139,6 +140,12 @@
             background-color: #000000;
             background-size: cover;
             background-position: center;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .book-cover:hover {
+            box-shadow: 0 0 0 3px #f6f4ef, 0 0 0 6px #666;
         }
 
         .work-in-progress {
@@ -246,22 +253,22 @@
         </div>
     </header>
     <nav>
-        <a href="books.html">Books</a>
-        <a href="authors.html">Authors</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="get-involved.html">Get Involved</a>
-        <a href="support-us.html">Support Us</a>
+        <a href="https://henarpress.org/books">Books</a>
+        <a href="https://henarpress.org/authors">Authors</a>
+        <a href="https://henarpress.org/events-and-news">Events & News</a>
+        <a href="https://henarpress.org/faq">FAQ</a>
+        <a href="https://henarpress.org/contact">Contact</a>
+        <a href="https://henarpress.org/contribute">Contribute</a>
     </nav>
     <main>
         <div class="container">
-            <h1>Welcome to Henar Press</h1>
-            <p class="work-in-progress">Our website is currently under development. We're diligently curating our catalogue of books, which will be available here soon. Please check back regularly for updates on our latest publications.</p>
+            <h1>Books</h1>
+            <p class="work-in-progress">Our website is currently under development. We're diligently curating our catalogue of books. Please check back regularly for updates on our latest publications.</p>
             <div class="book-grid">
-                <div class="book-cover" style="background-image: url('book1.jpg');"></div>
-                <div class="book-cover" style="background-image: url('book2.jpg');"></div>
-                <div class="book-cover" style="background-image: url('book3.jpg');"></div>
-                <div class="book-cover" style="background-image: url('book4.jpg');"></div>
+                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book1.jpg');"></a>
+                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book2.jpg');"></a>
+                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book3.jpg');"></a>
+                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book4.jpg');"></a>
             </div>
         </div>
     </main>
@@ -283,12 +290,12 @@
                 </form>
             </div>
             <div class="footer-links">
-                <a href="books.html">Books</a>
-                <a href="authors.html">Authors</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="get-involved.html">Get Involved</a>
-                <a href="support-us.html">Support Us</a>
+                <a href="https://henarpress.org/books">Books</a>
+                <a href="https://henarpress.org/authors">Authors</a>
+                <a href="https://henarpress.org/events-and-news">Events & News</a>
+                <a href="https://henarpress.org/faq">FAQ</a>
+                <a href="https://henarpress.org/contact">Contact</a>
+                <a href="https://henarpress.org/contribute">Contribute</a>
             </div>
             <div class="copyright">
                 &copy; 2024 Henar Press
