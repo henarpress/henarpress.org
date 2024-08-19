@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #f6f4ef;
-            --accent-color: #c4a484;
-            --text-color: #333;
-            --transition: all 0.3s ease;
-        }
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #f6f4ef;
+    --accent-color: #c4a484;
+    --text-color: #333;
+    --transition: all 0.3s ease;
+}
 
         * {
             box-sizing: border-box;
@@ -45,7 +45,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1)
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, opacity 0.3s ease;
             opacity: 1;
         }
@@ -120,14 +120,19 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        nav {
+nav {
     text-align: center;
     padding: 20px 0;
     border-bottom: 1px solid #e0e0e0;
-    margin-top: 120px;
     background-color: var(--secondary-color);
+    position: static;
+    width: 100%;
+    z-index: 998; 
 }
 
+.nav-spacer {
+    height: 120px; 
+}
         nav a {
             margin: 0 20px;
             text-decoration: none;
@@ -159,7 +164,7 @@
         }
 
         main {
-            padding: 60px 0;
+            padding: 60px 0; 
         }
 
         h1 {
@@ -232,7 +237,8 @@
             margin-right: auto;
             line-height: 1.8;
         }
-footer {
+        
+        footer {
             background-color: var(--primary-color);
             padding: 60px 0;
             color: var(--secondary-color);
@@ -358,11 +364,23 @@ footer {
 
         @media (max-width: 768px) {
             .header-right {
-                display: none;
+                display: flex; /* Changed from 'none' to 'flex' */
+                align-items: center;
+            }
+
+            .social-icons {
+                display: none; /* Hide social icons on mobile */
+            }
+
+            .donate-button {
+                display: block; /* Ensure donate button is visible on mobile */
+                padding: 10px 20px; /* Slightly smaller padding for mobile */
+                font-size: 14px; /* Slightly smaller font size for mobile */
             }
 
             nav {
                 margin-top: 80px;
+                top: 80px; /* Adjusted for smaller header on mobile */
             }
 
             nav a {
@@ -381,6 +399,15 @@ footer {
 
             .footer-slogan h2 {
                 font-size: 28px;
+            }
+
+            .footer-social a {
+                margin: 0 15px; /* Increased margin for easier tapping */
+            }
+
+            .footer-social img {
+                width: 32px; /* Increased size for easier tapping */
+                height: auto;
             }
         }
     </style>
@@ -402,6 +429,7 @@ footer {
             </div>
         </div>
     </header>
+    <div class="nav-spacer"></div>
     <nav>
         <a href="https://henarpress.org/books">Books</a>
         <a href="https://henarpress.org/authors">Authors</a>
@@ -465,9 +493,15 @@ footer {
             document.querySelectorAll('nav a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const targetId = this.getAttribute('href').split('/').pop();
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        window.location.href = this.getAttribute('href');
+                    }
                 });
             });
 
@@ -499,22 +533,31 @@ footer {
                 this.reset();
             });
         });
-const header = document.querySelector('header');
-const footer = document.querySelector('footer');
 
-const hideHeaderNearFooter = () => {
-    const footerRect = footer.getBoundingClientRect();
-    const headerRect = header.getBoundingClientRect();
-    
-    if (footerRect.top <= window.innerHeight && footerRect.bottom >= 0) {
-        header.style.transform = `translateY(-${headerRect.height}px)`;
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
-};
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        let lastScrollTop = 0;
+        const scrollThreshold = 600;
 
-window.addEventListener('scroll', hideHeaderNearFooter);
-hideHeaderNearFooter();
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const headerHeight = header.offsetHeight;
+            
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                // Scrolling down
+                const opacity = Math.max(0, 1 - (scrollTop - scrollThreshold) / headerHeight);
+                header.style.opacity = opacity;
+                if (opacity === 0) {
+                    header.style.transform = `translateY(-${headerHeight}px)`;
+                }
+            } else {
+                // Scrolling up
+                header.style.opacity = '1';
+                header.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop;
+        });
     </script>
 </body>
 </html>
