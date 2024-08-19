@@ -90,12 +90,11 @@
             margin-left: 20px;
         }
 
-        .social-icon img {
-            width: 24px;
-            height: auto;
-            transition: var(--transition);
-        }
-
+.social-icon img {
+    width: 36px;
+    height: 36px;
+    transition: var(--transition);
+}
         .social-icon:hover img {
             transform: scale(1.1);
             filter: brightness(90%);
@@ -304,14 +303,14 @@ nav {
 
         .footer-social a {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 20px;
         }
-
-        .footer-social img {
-            width: 24px;
-            height: auto;
-            transition: var(--transition);
-        }
+        
+.footer-social img {
+    width: 48px;
+    height: 48px;
+    transition: var(--transition);
+}
 
         .footer-social a:hover img {
             transform: scale(1.1);
@@ -363,7 +362,7 @@ nav {
 
         @media (max-width: 768px) {
             .header-right {
-                display: flex; /* Changed from 'none' to 'flex' */
+                display: flex;
                 align-items: center;
             }
 
@@ -405,9 +404,10 @@ nav {
             }
 
             .footer-social img {
-                width: 32px; /* Increased size for easier tapping */
-                height: auto;
-            }
+    width: 48px;
+    height: 48px;
+    transition: var(--transition);
+}
         }
     </style>
 </head>
