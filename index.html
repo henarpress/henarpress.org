@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henar Press</title>
+    <title>Henar Press - Kurdish Literature & Culture</title>
+    <meta name="description" content="Henar Press: Preserving and promoting Kurdish literature and culture through thoughtfully curated books and publications.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Labrada:wght@400;700&display=swap');
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #f6f4ef;
+            --accent-color: #c4a484;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Libre Baskerville', serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #f6f4ef;
+            background-color: var(--secondary-color);
         }
 
         .container {
@@ -23,14 +38,16 @@
         }
 
         header {
-            background-color: #000000;
+            background-color: var(--primary-color);
             padding: 20px 0;
-            color: #f6f4ef;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1)
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
         }
 
         header .container {
@@ -47,15 +64,16 @@
         .logo-image {
             width: 50px;
             height: auto;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         .logo-text {
             font-family: 'Labrada', serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 300;
             text-decoration: none;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
         }
 
         .header-right {
@@ -65,173 +83,305 @@
 
         .social-icons {
             display: flex;
-            margin-right: 20px;
+            margin-right: 25px;
         }
 
         .social-icon {
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
         .social-icon img {
             width: 24px;
             height: auto;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
         }
 
         .donate-button, .sign-up-button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
         }
 
         .donate-button:hover, .sign-up-button:hover {
-            background-color: #e0e0d0;
-            color: #333;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         nav {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #e0e0e0;
-            margin-top: 120px;
-        }
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: 120px;
+    background-color: var(--secondary-color);
+}
 
         nav a {
             margin: 0 20px;
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             font-size: 18px;
             font-weight: 400;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
         nav a:hover {
-            color: #666;
+            color: var(--accent-color);
         }
 
-        nav a:not(:last-child)::after {
-            content: "•";
-            margin-left: 20px;
-            color: #333;
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         main {
-            padding: 30px 0;
+            padding: 60px 0;
         }
 
         h1 {
-            font-size: 36px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
             margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 20px auto;
         }
 
         .book-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
 
         .book-cover {
             width: 100%;
             height: 0;
             padding-bottom: 150%;
-            background-color: #000000;
+            background-color: var(--primary-color);
             background-size: cover;
             background-position: center;
-            transition: box-shadow 0.3s;
+            transition: var(--transition);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .book-cover:hover {
-            box-shadow: 0 0 0 3px #f6f4ef, 0 0 0 6px #666;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .book-cover:hover::after {
+            opacity: 1;
         }
 
         .work-in-progress {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-style: italic;
             color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
         }
-
-        footer {
-            background-color: #000000;
-            padding: 40px 0;
-            color: #f6f4ef;
+footer {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            color: var(--secondary-color);
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .footer-logo img {
-            max-width: 200px;
+            max-width: 150px;
+            filter: brightness(0) invert(1);
         }
 
         .footer-slogan h2 {
-            font-size: 50px;
-            font-family: 'Libre Baskerville', serif;
+            font-size: 46px;
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
         }
 
         .footer-newsletter, .footer-links, .footer-social {
-            margin-top: 20px;
+            margin-top: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-links a {
-            margin-right: 15px;
-            font-size: 14px;
-            color: #f6f4ef;
+            margin: 10px 15px;
+            font-size: 16px;
+            color: var(--secondary-color);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .footer-links a:hover {
-            color: #ccc;
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         .footer-social {
-            text-align: right;
+            text-align: center;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
         }
 
         .footer-social img {
             width: 24px;
             height: auto;
-            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
         }
 
         .footer-newsletter p {
-            font-size: 16px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            justify-content: center;
         }
 
         .footer-newsletter input[type="email"] {
-            padding: 10px;
-            width: 200px;
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
         }
 
         .footer-newsletter button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             border: none;
+            border-radius: 0 30px 30px 0;
             cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--secondary-color);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 40px;
             font-size: 14px;
+            color: var(--secondary-color);
+            opacity: 0.7;
         }
 
-        .social-icon img, .footer-social img {
-            transition: filter 0.3s;
-        }
+        @media (max-width: 768px) {
+            .header-right {
+                display: none;
+            }
 
-        .social-icon:hover img, .footer-social a:hover img {
-            filter: brightness(80%);
+            nav {
+                margin-top: 80px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-slogan h2 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -256,19 +406,19 @@
         <a href="https://henarpress.org/books">Books</a>
         <a href="https://henarpress.org/authors">Authors</a>
         <a href="https://henarpress.org/events-and-news">Events & News</a>
-        <a href="https://henarpress.org/faq">FAQ</a>
+        <a href="https://henarpress.org/about">About Us</a>
         <a href="https://henarpress.org/contact">Contact</a>
         <a href="https://henarpress.org/contribute">Contribute</a>
     </nav>
     <main>
         <div class="container">
-            <h1>Books</h1>
-            <p class="work-in-progress">Our website is currently under development. We're diligently curating our catalogue of books. Please check back regularly for updates on our latest publications.</p>
+            <h1>Discover Kurdish Literature</h1>
+            <p class="work-in-progress">Our website is currently evolving. We're meticulously curating our collection of books that celebrate Kurdish culture and voices. Please check back regularly as we unveil our latest publications and author spotlights.</p>
             <div class="book-grid">
-                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book1.jpg');"></a>
-                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book2.jpg');"></a>
-                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book3.jpg');"></a>
-                <a href="https://henarpress.org" class="book-cover" style="background-image: url('book4.jpg');"></a>
+                <a href="https://henarpress.org/books/title1" class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></a>
+                <a href="https://henarpress.org/books/title2" class="book-cover" style="background-image: url('book2.jpg');" aria-label="Book Title 2"></a>
+                <a href="https://henarpress.org/books/title3" class="book-cover" style="background-image: url('book3.jpg');" aria-label="Book Title 3"></a>
+                <a href="https://henarpress.org/books/title4" class="book-cover" style="background-image: url('book4.jpg');" aria-label="Book Title 4"></a>
             </div>
         </div>
     </main>
@@ -283,24 +433,88 @@
                 </div>
             </div>
             <div class="footer-newsletter">
-                <p>Stay connected with quarterly updates on new releases, events, and how you can help bring Kurdish stories to life.</p>
-                <form>
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit" class="sign-up-button">Sign Up</button>
+                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
+                <form action="https://henarpress.org/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
+                    <button type="submit" class="sign-up-button">Subscribe</button>
                 </form>
             </div>
             <div class="footer-links">
                 <a href="https://henarpress.org/books">Books</a>
                 <a href="https://henarpress.org/authors">Authors</a>
                 <a href="https://henarpress.org/events-and-news">Events & News</a>
-                <a href="https://henarpress.org/faq">FAQ</a>
+                <a href="https://henarpress.org/about">About Us</a>
                 <a href="https://henarpress.org/contact">Contact</a>
                 <a href="https://henarpress.org/contribute">Contribute</a>
+                <a href="https://henarpress.org/privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://twitter.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
             </div>
             <div class="copyright">
-                &copy; 2024 Henar Press
+                &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
     </footer>
+    <script>
+        // JavaScript to enhance user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Lazy loading for book covers
+            if ('IntersectionObserver' in window) {
+                const bookCovers = document.querySelectorAll('.book-cover');
+                const bookObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.backgroundImage = entry.target.style.backgroundImage.replace('url(', 'url(');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                bookCovers.forEach(cover => {
+                    bookObserver.observe(cover);
+                });
+            }
+
+            // Form submission handling
+            const newsletterForm = document.querySelector('.footer-newsletter form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                // Here you would typically send the email to your server
+                console.log('Subscribed:', email);
+                alert('Thank you for subscribing!');
+                this.reset();
+            });
+        });
+const header = document.querySelector('header');
+const footer = document.querySelector('footer');
+
+const hideHeaderNearFooter = () => {
+    const footerRect = footer.getBoundingClientRect();
+    const headerRect = header.getBoundingClientRect();
+    
+    if (footerRect.top <= window.innerHeight && footerRect.bottom >= 0) {
+        header.style.transform = `translateY(-${headerRect.height}px)`;
+    } else {
+        header.style.transform = 'translateY(0)';
+    }
+};
+
+window.addEventListener('scroll', hideHeaderNearFooter);
+hideHeaderNearFooter();
+    </script>
 </body>
 </html>
