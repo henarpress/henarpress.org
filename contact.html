@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Henar Press</title>
+    <title>Contact Us - Henar Press</title>
+    <meta name="description" content="Contact Henar Press for inquiries, manuscript submissions, and feedback.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #f6f4ef;
+            --accent-color: #c4a484;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Libre Baskerville', serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #f6f4ef;
+            background-color: var(--secondary-color);
         }
 
         .container {
@@ -23,14 +38,16 @@
         }
 
         header {
-            background-color: #000000;
+            background-color: var(--primary-color);
             padding: 20px 0;
-            color: #f6f4ef;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
         }
 
         header .container {
@@ -47,14 +64,16 @@
         .logo-image {
             width: 50px;
             height: auto;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         .logo-text {
-            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
             font-weight: 700;
             text-decoration: none;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
         }
 
         .header-right {
@@ -64,90 +83,144 @@
 
         .social-icons {
             display: flex;
-            margin-right: 20px;
+            margin-right: 25px;
         }
 
         .social-icon {
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
         .social-icon img {
-            width: 24px;
-            height: auto;
+            width: 36px;
+            height: 36px;
+            transition: var(--transition);
         }
 
-        .donate-button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
+        .social-icon:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
+        }
+
+        .donate-button, .sign-up-button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
         }
 
-        .donate-button:hover {
-            background-color: #e0e0d0;
-            color: #333;
+        .donate-button:hover, .sign-up-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         nav {
             text-align: center;
             padding: 20px 0;
             border-bottom: 1px solid #e0e0e0;
-            margin-top: 120px;
+            background-color: var(--secondary-color);
+            position: static;
+            width: 100%;
+            z-index: 998; 
+        }
+
+        .nav-spacer {
+            height: 120px; 
         }
 
         nav a {
             margin: 0 20px;
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             font-size: 18px;
             font-weight: 400;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
         nav a:hover {
-            color: #666;
+            color: var(--accent-color);
         }
 
-        nav a:not(:last-child)::after {
-            content: "•";
-            margin-left: 20px;
-            color: #333;
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         main {
-            padding: 50px 0;
+            padding: 60px 0; 
         }
 
         h1 {
-            font-size: 36px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
             margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
         }
 
-        h2 {
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 20px auto;
+        }
+
+        .contact-info {
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .submission-guidelines {
+            margin-bottom: 40px;
+        }
+
+        .submission-guidelines h2 {
             font-size: 24px;
-            margin-top: 40px;
             margin-bottom: 20px;
+            color: var(--primary-color);
         }
 
-        p {
-            margin-bottom: 20px;
-        }
-
-        ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
+        .submission-guidelines ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
 
         form {
-            margin-top: 30px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
 
         input[type="text"],
@@ -155,107 +228,208 @@
         textarea {
             width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 4px;
+            font-family: 'Libre Baskerville', serif;
         }
 
         textarea {
             height: 150px;
         }
 
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
         button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #000000;
-            color: #f6f4ef;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
             border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: var(--transition);
         }
 
         button[type="submit"]:hover {
-            background-color: #333;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         footer {
-            background-color: #000000;
-            padding: 40px 0;
-            color: #f6f4ef;
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            color: var(--secondary-color);
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .footer-logo img {
-            max-width: 200px;
+            max-width: 150px;
         }
 
         .footer-slogan h2 {
-            font-size: 50px;
+            font-size: 56px;
             font-family: 'Libre Baskerville', serif;
             font-style: italic;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
         }
 
         .footer-newsletter, .footer-links, .footer-social {
-            margin-top: 20px;
+            margin-top: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-links a {
-            margin-right: 15px;
-            font-size: 14px;
-            color: #f6f4ef;
+            margin: 10px 15px;
+            font-size: 16px;
+            color: var(--secondary-color);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .footer-links a:hover {
-            color: #ccc;
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         .footer-social {
-            text-align: right;
+            text-align: center;
         }
 
+        .footer-social a {
+            display: inline-block;
+            margin: 0 20px;
+        }
+        
         .footer-social img {
-            width: 24px;
-            height: auto;
-            margin-left: 15px;
+            width: 48px;
+            height: 48px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
         }
 
         .footer-newsletter p {
-            font-size: 16px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .footer-newsletter input[type="email"] {
-            padding: 10px;
-            width: 200px;
-        }
+.footer-newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+    max-width: 500px;
+    margin: 0 auto;
+}
 
-        .footer-newsletter button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
-            border: none;
-            cursor: pointer;
-        }
+.footer-newsletter input[type="email"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+    max-width: 300px;
+}
 
+.footer-newsletter button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.footer-newsletter button:hover {
+    background-color: var(--secondary-color);
+}
         .copyright {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 40px;
             font-size: 14px;
+            color: var(--secondary-color);
+            opacity: 0.7;
         }
 
-        .social-icon img, .footer-social img {
-            transition: filter 0.3s;
-        }
+        @media (max-width: 768px) {
+            .header-right {
+                display: flex;
+                align-items: center;
+            }
 
-        .social-icon:hover img, .footer-social a:hover img {
-            filter: brightness(80%);
+            .social-icons {
+                display: none;
+            }
+
+            .donate-button {
+                display: block;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            nav {
+                margin-top: 80px;
+                top: 80px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-slogan h2 {
+                font-size: 28px;
+            }
+
+            .footer-social a {
+                margin: 0 15px;
+            }
+
+            .footer-social img {
+                width: 48px;
+                height: 48px;
+            }
         }
     </style>
 </head>
@@ -264,7 +438,7 @@
         <div class="container">
             <div class="logo-container">
                 <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                <a href="index.html" class="logo-text">Henar Press</a>
+                <a href="#" class="logo-text">Henar Press</a>
             </div>
             <div class="header-right">
                 <div class="social-icons">
@@ -276,49 +450,60 @@
             </div>
         </div>
     </header>
+    <div class="nav-spacer"></div>
     <nav>
-        <a href="books.html">Books</a>
-        <a href="authors.html">Authors</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="get-involved.html">Get Involved</a>
-        <a href="support-us.html">Support Us</a>
+        <a href="https://henarpress.org/books">Books</a>
+        <a href="https://henarpress.org/authors">Authors</a>
+        <a href="https://henarpress.org/events-and-news">Events & News</a>
+        <a href="https://henarpress.org/about">About Us</a>
+        <a href="https://henarpress.org/contact">Contact</a>
+        <a href="https://henarpress.org/contribute">Contribute</a>
     </nav>
     <main>
         <div class="container">
-            <h1>Contact Henar Press</h1>
-            <p>We welcome your inquiries, manuscript submissions, and general feedback.</p>
+            <h1>Contact Us</h1>
+            
+            <div class="contact-info">
+                <p>We welcome your inquiries, manuscript submissions, and general feedback. Henar Press is interested in publishing a wide range of genres, including novels, novellas, memoirs, poetry, chapbooks, and hybrid forms. If your text is not in English, please contact us directly using the form and we will reach out to you with more information.</p>
+            </div>
 
-            <h2>Manuscript Submissions</h2>
-            <p>Henar Press is interested in publishing a wide range of genres, including novels, novellas, memoirs, poetry, chapbooks, and hybrid forms. If your text is not in English and you're looking for a translator and publisher, please contact us directly using the form below</p>
-            <p>Please follow these guidelines when submitting your manuscript:</p>
-            <ul>
-                <li>Format your manuscript in a standard font (e.g., Times New Roman, 12pt) with double spacing.</li>
-                <li>Include a cover letter with a brief synopsis and author bio.</li>
-                <li>For prose submissions, please send the first 50 pages. For poetry, send 10-15 pages.</li>
-                <li>Save your submission as a PDF or Word document.</li>
-            </ul>
-            <p>Please note that it may take some time until we reach a decision about your manuscript, but we will respond to every submission. We appreciate your patience during this process.</p>
+            <div class="submission-guidelines">
+                <h2>Submission Guidelines</h2>
+                <p>Please follow these guidelines when submitting your manuscript:</p>
+                <ul>
+                    <li>Format your manuscript in a standard font (e.g., Times New Roman, 12pt) with double spacing. Your manuscript can be in either Word or PDF format.</li>
+                    <li>Include a cover letter with a brief synopsis and author bio.</li>
+                    <li>For prose submissions, please send the first 50 pages. For poetry, send 10-15 pages.</li>
+                </ul>
+                <p>It may take some time until we reach a decision about your manuscript, but we will respond to every submission.</p>
+            </div>
 
-            <h2>Contact Form</h2>
-            <form id="contactForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-
+            <form id="contact-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="attachment">Attachment:</label>
+                       <input type="file" id="attachment" name="attachment">
+                </div>
                 <button type="submit">Send Message</button>
             </form>
         </div>
     </main>
-    <footer>
+</main>    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -329,41 +514,103 @@
                 </div>
             </div>
             <div class="footer-newsletter">
-                <p>Stay connected with quarterly updates on new releases, events, and how you can help bring Kurdish stories to life.</p>
-                <form>
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit">Sign Up</button>
+                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
+                <form action="https://henarpress.org/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
+                    <button type="submit" class="sign-up-button">Subscribe</button>
                 </form>
             </div>
             <div class="footer-links">
-                <a href="books.html">Books</a>
-                <a href="authors.html">Authors</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="get-involved.html">Get Involved</a>
-                <a href="support-us.html">Support Us</a>
+                <a href="https://henarpress.org/books">Books</a>
+                <a href="https://henarpress.org/authors">Authors</a>
+                <a href="https://henarpress.org/events-and-news">Events & News</a>
+                <a href="https://henarpress.org/about">About Us</a>
+                <a href="https://henarpress.org/contact">Contact</a>
+                <a href="https://henarpress.org/contribute">Contribute</a>
+                <a href="https://henarpress.org/privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://twitter.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
             </div>
             <div class="copyright">
-                &copy; 2024 Henar Press
+                &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
     </footer>
-
     <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var subject = document.getElementById('subject').value;
-        var message = document.getElementById('message').value;
-        
-        var mailtoLink = 'mailto:arian.sorani@henarpress.org'
-            + '?subject=' + encodeURIComponent(subject)
-            + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-        
-        window.location.href = mailtoLink;
-    });
+        // JavaScript to enhance user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').split('/').pop();
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            });
+
+            // Lazy loading for book covers
+            if ('IntersectionObserver' in window) {
+                const bookCovers = document.querySelectorAll('.book-cover');
+                const bookObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.backgroundImage = entry.target.style.backgroundImage.replace('url(', 'url(');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                bookCovers.forEach(cover => {
+                    bookObserver.observe(cover);
+                });
+            }
+
+            // Form submission handling
+            const newsletterForm = document.querySelector('.footer-newsletter form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                // Here you would typically send the email to your server
+                console.log('Subscribed:', email);
+                alert('Thank you for subscribing!');
+                this.reset();
+            });
+        });
+
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        let lastScrollTop = 0;
+        const scrollThreshold = 650;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const headerHeight = header.offsetHeight;
+            
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                // Scrolling down
+                const opacity = Math.max(0, 1 - (scrollTop - scrollThreshold) / headerHeight);
+                header.style.opacity = opacity;
+                if (opacity === 0) {
+                    header.style.transform = `translateY(-${headerHeight}px)`;
+                }
+            } else {
+                // Scrolling up
+                header.style.opacity = '1';
+                header.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop;
+        });
     </script>
 </body>
 </html>
