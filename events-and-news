@@ -1,1 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henar Press - Events & News</title>
+    <meta name="description" content="Stay updated with the latest events and news from Henar Press.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #f6f4ef;
+    --accent-color: #c4a484;
+    --text-color: #333;
+    --transition: all 0.3s ease;
+}
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-right: 25px;
+        }
+
+        .social-icon {
+            margin-left: 20px;
+        }
+
+.social-icon img {
+    width: 36px;
+    height: 36px;
+    transition: var(--transition);
+}
+        .social-icon:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
+        }
+
+        .donate-button, .sign-up-button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .donate-button:hover, .sign-up-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+nav {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: var(--secondary-color);
+    position: static;
+    width: 100%;
+    z-index: 998; 
+}
+
+.nav-spacer {
+    height: 120px; 
+}
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        main {
+            padding-top: 15px; 
+            padding-bottom: 60px; 
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 20px auto;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            color: var(--secondary-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo img {
+            max-width: 150px;
+        }
+
+        .footer-slogan h2 {
+            font-size: 56px;
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-newsletter, .footer-links, .footer-social {
+            margin-top: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            margin: 10px 15px;
+            font-size: 16px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .footer-social {
+            text-align: center;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 20px;
+        }
+        
+.footer-social img {
+    width: 48px;
+    height: 48px;
+    transition: var(--transition);
+}
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
+            filter: brightness(90%);
+        }
+
+        .footer-newsletter p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-newsletter input[type="email"] {
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+
+        .footer-newsletter button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: var(--secondary-color);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header-right {
+                display: flex;
+                align-items: center;
+            }
+
+            .social-icons {
+                display: none; /* Hide social icons on mobile */
+            }
+
+            .donate-button {
+                display: block; /* Ensure donate button is visible on mobile */
+                padding: 10px 20px; /* Slightly smaller padding for mobile */
+                font-size: 14px; /* Slightly smaller font size for mobile */
+            }
+
+            nav {
+                margin-top: 80px;
+                top: 80px; /* Adjusted for smaller header on mobile */
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-slogan h2 {
+                font-size: 28px;
+            }
+
+            .footer-social a {
+                margin: 0 15px; /* Increased margin for easier tapping */
+            }
+
+            .footer-social img {
+    width: 48px;
+    height: 48px;
+    transition: var(--transition);
+}
+        }
+        .blog-entry {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .blog-entry h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .blog-entry .date {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .blog-entry .image-container {
+            flex: 0 0 200px;
+            margin-right: 20px;
+        }
+        .blog-entry img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .blog-entry .content {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .blog-entry {
+                flex-direction: column;
+            }
+            .blog-entry .image-container {
+                flex: 0 0 auto;
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
+                <a href="#" class="logo-text">Henar Press</a>
+            </div>
+            <div class="header-right">
+                <div class="social-icons">
+                    <a href="https://twitter.com/HenarPress" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                    <a href="https://instagram.com/HenarPress" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61564222616734" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+                </div>
+                <a href="#" class="donate-button">Donate</a>
+            </div>
+        </div>
+    </header>
+    <div class="nav-spacer"></div>
+    <nav>
+        <a href="https://henarpress.org/books">Books</a>
+        <a href="https://henarpress.org/authors">Authors</a>
+        <a href="https://henarpress.org/events-and-news">Events & News</a>
+        <a href="https://henarpress.org/about">About Us</a>
+        <a href="https://henarpress.org/contact">Contact</a>
+        <a href="https://henarpress.org/contribute">Contribute</a>
+    </nav>
+    <main>
+         <div class="container">
+            <h1>Events & News</h1>
+            <div class="blog-entry">
+                <div class="image-container">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo">
+                </div>
+                <div class="content">
+                    <h2>Henar Press Officially Founded</h2>
+                    <p class="date">August 16, 2024</p>
+                    <p>We're pleased to report that Henar Press is officially a nonprofit organization in Ohio, as of August 16, 2024. It's been quite a journey, but we're excited to roll up our sleeves and finally dive into publishing!</p>
+                </div>
+            </div>
+            <!-- Add more blog entries here as needed -->
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo">
+                </div>
+                <div class="footer-slogan">
+                    <h2>Against Forgetting, We Write</h2>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
+                <form action="https://henarpress.org/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
+                    <button type="submit" class="sign-up-button">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-links">
+                <a href="https://henarpress.org/books">Books</a>
+                <a href="https://henarpress.org/authors">Authors</a>
+                <a href="https://henarpress.org/events-and-news">Events & News</a>
+                <a href="https://henarpress.org/about">About Us</a>
+                <a href="https://henarpress.org/contact">Contact</a>
+                <a href="https://henarpress.org/contribute">Contribute</a>
+                <a href="https://henarpress.org/privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://twitter.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Henar Press. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
