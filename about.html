@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henar Press</title>
+    <title>About Us - Henar Press</title>
+    <meta name="description" content="Learn about Henar Press, our mission, and our dedication to Kurdish literature and culture.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --transition: all 0.3s ease;
+        }
 
-        body {
-            font-family: 'Libre Baskerville', serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
             line-height: 1.6;
-            background-color: #f6f4ef;
+            background-color: var(--secondary-color);
         }
 
         .container {
@@ -23,17 +37,17 @@
         }
 
         header {
-            background-color: #000000;
-            padding: 20px 0;
-            color: #f6f4ef;
+            background-color: var(--primary-color);
+            padding: 14px 0;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        header .container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,16 +59,18 @@
         }
 
         .logo-image {
-            width: 50px;
+            width: 40px;
             height: auto;
             margin-right: 10px;
         }
 
         .logo-text {
-            font-size: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
             font-weight: 700;
             text-decoration: none;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
         }
 
         .header-right {
@@ -62,194 +78,439 @@
             align-items: center;
         }
 
-        .social-icons {
+        .header-social {
             display: flex;
+            margin-right: 25px;
+            margin-left: 20px;
+        }
+
+        .header-social a {
             margin-right: 20px;
+            display: inline-block;
+            transition: var(--transition);
         }
 
-        .social-icon {
-            margin-left: 15px;
+        .header-social a:last-child {
+            margin-right: 0;
         }
 
-        .social-icon img {
-            width: 24px;
-            height: auto;
+        .header-social a:hover {
+            transform: scale(1.1);
         }
 
-        .donate-button, .sign-up-button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
+        .header-social img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .donate-button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
         }
 
-        .donate-button:hover, .sign-up-button:hover {
-            background-color: #e0e0d0;
+        .donate-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         nav {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #e0e0e0;
-            margin-top: 120px;
+            background-color: var(--secondary-color);
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
         }
 
         nav a {
             margin: 0 20px;
             text-decoration: none;
-            color: #333;
-            font-size: 18px;
+            color: var(--text-color);
+            font-size: 16px;
             font-weight: 400;
+            transition: var(--transition);
+            position: relative;
         }
 
-        nav a:not(:last-child)::after {
-            content: "•";
-            margin-left: 20px;
-            color: #333;
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-spacer {
+            height: 130px;
         }
 
         main {
-            padding: 50px 0;
+            padding-top: 20px;
+            padding-bottom: 60px;
         }
 
         h1 {
-            font-size: 36px;
-            margin-bottom: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .about-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+        }
+
+        .about-section a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .about-section a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
 
         footer {
-            background-color: #000000;
-            padding: 40px 0;
-            color: #f6f4ef;
+            background-color: var(--primary-color);
+            padding: 20px 0 30px;
+            color: var(--secondary-color);
         }
 
         .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo-slogan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
         }
 
         .footer-logo img {
-            max-width: 200px;
+            width: 120px;
+            height: auto;
         }
 
         .footer-slogan h2 {
-            font-size: 50px;
-            font-family: 'Libre Baskerville', serif;
+            font-size: 62px;
+            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            color: #f6f4ef;
+            color: var(--secondary-color);
+            text-align: right;
+            margin-top: 0;
         }
 
         .footer-newsletter, .footer-links, .footer-social {
             margin-top: 20px;
         }
 
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .footer-links a {
-            margin-right: 15px;
+            margin: 5px 10px;
             font-size: 14px;
-            color: #f6f4ef;
+            color: var(--secondary-color);
             text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -3px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
         }
 
         .footer-social {
-            text-align: right;
+            text-align: center;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 15px;
         }
 
         .footer-social img {
-            width: 24px;
-            height: auto;
-            margin-left: 15px;
+            width: 42px;
+            height: 42px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
         }
 
         .footer-newsletter p {
             font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            justify-content: center;
         }
 
         .footer-newsletter input[type="email"] {
-            padding: 10px;
-            width: 200px;
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 14px;
         }
 
         .footer-newsletter button {
-            padding: 10px 20px;
-            background-color: #f6f4ef;
-            color: #000000;
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
             border: none;
+            border-radius: 0 30px 30px 0;
             cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         .copyright {
             text-align: center;
             margin-top: 20px;
-            font-size: 14px;
+            font-size: 12px;
+            color: var(--secondary-color);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-top: 10px;
+                padding-bottom: 30px;
+            }
+            .header-social {
+                display: none !important;
+            }
+            .logo-text {
+                font-size: 24px;
+            }
+            nav {
+                top: 70px;
+            }
+            .nav-content {
+                flex-wrap: wrap;
+            }
+            nav a {
+                margin: 5px 10px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 28px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 20px;
+            }
+            h1::after {
+                margin: 8px auto;
+            }
+            .about-section h2 {
+                font-size: 24px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-logo-slogan {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-logo {
+                margin-bottom: 10px;
+            }
+            .footer-slogan h2 {
+                font-size: 42px;
+                text-align: center;
+                padding-top: 0px;
+                padding-bottom: 10px;
+                margin: 0;
+            }
+            .footer-logo img {
+                width: 100px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="logo-container">
-                <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                <a href="#" class="logo-text">Henar Press</a>
-            </div>
-            <div class="header-right">
-                <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
-                    <a href="#" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
+                    <a href="#" class="logo-text">Henar Press</a>
                 </div>
-                <a href="#" class="donate-button">Donate</a>
+                <div class="header-right">
+                    <div class="header-social">
+                        <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+                    </div>
+                    <a href="#" class="donate-button">Donate</a>
+                </div>
             </div>
         </div>
     </header>
     <nav>
-        <a href="#">Books</a>
-        <a href="#">Authors</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Get Involved</a>
-        <a href="#">Support Us</a>
+        <div class="container">
+            <div class="nav-content">
+                <a href="books">Books</a>
+                <a href="authors">Authors</a>
+                <a href="events-and-news">Events & News</a>
+                <a href="about">About Us</a>
+                <a href="contact">Contact</a>
+                <a href="contribute">Contribute</a>
+            </div>
+        </div>
     </nav>
-<main>
-    <div class="container">
-        <h1>About Henar Press</h1>
-        
-        <h2>What's the story behind Henar Press?</h2>
-        <p>Growing up in the Kurdish diaspora, I often felt a disconnect between my cultural heritage and the literature I read. As the child of Kurdish refugees who fled Saddam's Anfal campaign, I saw firsthand the impact of persecution on our language and culture. My parents, like many Kurds, were denied the opportunity to learn to read and write in Kurdish. This legacy of oppression has contributed to a scarcity of contemporary Kurdish literature, even in Kurdistan itself. My search for Kurdish books and connection to my roots took me across several countries, but it wasn't until I discovered Kareem Abdulrahman's translation of Bakhtiyar Ali's "I Stared at the Night of the City" in 2016—the first Kurdish novel to be translated into English—that I felt a sense of recognition. Reading about Sulaimani, a city where I spent part of my childhood, was a powerful experience that sparked a new sense of purpose: to share Kurdish literature with a wider audience.</p>
+    <div class="nav-spacer"></div>
+    <main>
+        <div class="container">
+            <h1>About Us</h1>
+            <div class="about-content">
+                <section class="about-section">
+                    <h2>Our Story</h2>
+                    <p>Like most Kurds in the diaspora, I come from a family that's moved around a lot. My parents fled Iraqi-Kurdistan during Saddam's Anfal campaign and landed in Norway as asylum seekers. I spent my childhood moving from one country to another (often across continents), never quite settling anywhere.</p>
+                    
+                    <p>As I grew older and began reading more deeply, I searched for novels that reflected my identity, but they were hard to find. Impossible, actually. I had to wait until 2016 to read the first Kurdish novel available in English, Bakhtiyar Ali's "I Stared at the Night of the City," masterfully translated by Kareem Abdulrahman.</p>
+                    
+                    <p>Reading about Sulaimani was a profoundly moving experience. Great fiction has the ability to change your life, and this book did exactly that.</p>
+                    
+                    <p>I immersed myself in all the Kurdish literature I could find. Jalal Barzanji's "The Man in Blue Pyjamas," Choman Hardi's "Considering the Women," Ava Homa's "Daughters of Smoke and Fire," among many more incredible works.</p>
+                    
+                    <p>But after finishing those books, I was left with nothing. I'd read everything I could find in a matter of months. It was frustrating knowing that there were more great Kurdish writers out there. So, my wife and I decided to start Henar Press.</p>
+                    
+                    <p>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</p>
+                </section>
 
-        <p>Today, Henar Press is a nonprofit, independent publishing press dedicated to bringing Kurdish voices to the forefront of literature. We aim to bridge the gap between Kurdish authors and English readers by translating, publishing, and promoting Kurdish literature. Our mission is to ensure that Kurdish stories are heard and celebrated.</p>
+                <section class="about-section">
+                    <h2>What does Henar mean?</h2>
+                    <p>Henar is the Kurdish word for pomegranate. It's the national symbol of Kurdistan and has been a recurring motif in Kurdish literature since Mem û Zîn. We were personally drawn to the pomegranate tree's ability to flourish in the harshest conditions.</p>
+                </section>
 
-        <h2>Who are the Kurds?</h2>
-        <p>The Kurds are an indigenous people with a rich cultural heritage, spanning across Turkey, Iraq, Iran, and Syria. For centuries, we have faced persecution and marginalization at the hands of ruling powers, from the Ottoman Empire's forced assimilation policies to the Ba'athist regime's campaigns of ethnic cleansing in Iraq. In Turkey, our language and culture were banned for decades, and even today, Kurdish activists and politicians face imprisonment and oppression. Yet, despite these efforts to erase our identity, we have maintained a strong determination to preserve our languages, traditions, and customs. We continue to speak our languages, celebrate our festivals, and pass down our stories and histories.</p>
+                <section class="about-section">
+                    <h2>Who are the Kurds?</h2>
+                    <p>The Kurds are an indigenous people spanning Turkey, Iraq, Iran, and Syria. For centuries, we've faced persecution and colonization, from the Ottoman Empire's forced assimilation to the Ba'athist ethnic cleansing in Iraq. Despite efforts to erase our identity, we've maintained a strong determination to preserve our languages, traditions, and culture.</p>
+                </section>
 
-        <h2>What does "Against Forgetting, We Write" mean?</h2>
-        <p>Our motto, "Against Forgetting, We Write," is a testament to the power of literature in the face of erasure and oppression. For centuries, Kurdish culture and language have been banned, censored, and marginalized. We write to remember, to resist, and to reclaim our stories, our language, and our history. We write to honor the memories of the Halabja massacre, the Anfal campaign, the ongoing ethnic cleansing, and the countless Kurdish writers imprisoned and killed for their words.</p>
+                <section class="about-section">
+                    <h2>What do you mean by <i>Against Forgetting, We Write</i>?</h2>
+                    <p>We write to remember, to resist, and to reclaim our stories. Our words honor the memories of Halabja, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their work.</p>
+                </section>
 
-        <h2>Do all Kurds speak the same language?</h2>
-        <p>While Kurdish is often referred to as a single language with multiple dialects, the differences between these dialects are so significant that it's accurate to consider them distinct languages. From Kurmanji to Sorani and Pehlewani, each has its own unique character and history. We aim to publish Kurdish literature that represents the many languages we speak and showcases the rich linguistic diversity of the Kurdish people.</p>
+                <section class="about-section">
+                    <h2>Do all Kurds speak the same language?</h2>
+                    <p>While often referred to as a single language with multiple dialects, Kurdish is more accurately a family of distinct languages. A Sorani speaker wouldn't understand Kurmanji, and vice versa.</p>
+                </section>
 
-        <h2>I'm a Kurdish writer. Where can I submit my work?</h2>
-        <p>We're excited to read your work! Henar Press is interested in publishing a wide range of genres, including novels, novellas, memoirs, poetry, chapbooks, and hybrid forms. We encourage experimentation and innovation. Please visit our contact page to learn more about our submission process. We welcome works in any language and will work with translators to bring your stories to a global audience.</p>
+                <section class="about-section">
+                    <h2>I'm a Kurdish writer. Where can I submit my work?</h2>
+                    <p>We're excited to read your work! Visit our <a href="contact">contact page</a> to learn about our submission process. We welcome prose and poetry in any language.</p>
+                </section>
 
-        <h2>I'm interested in reading more Kurdish literature. Where can I find it?</h2>
-        <p>We're working on developing a comprehensive dataset of Kurdish literature available in English. Stay tuned for updates! In the meantime, explore our catalogue to discover new voices from Kurdistan.</p>
+                <section class="about-section">
+                    <h2>I'm interested in reading more Kurdish literature.</h2>
+                    <p>We're developing a comprehensive list of Kurdish literature available in English. Stay tuned for updates!</p>
+                </section>
 
-        <h2>How can I support Henar Press and its mission?</h2>
-        <p>As a nonprofit organization, Henar Press relies on the support of readers and donors like you. By making a tax-deductible donation, you'll be helping us to continue our work of publishing and promoting Kurdish writers. We're grateful for your support and look forward to sharing our publications and events with you.</p>
+                <section class="about-section">
+                    <h2>How can I support Henar Press and its mission?</h2>
+                    <p>As a nonprofit, we rely on reader and donor support. You can help by buying our books, requesting them at libraries or bookstores, or making a tax-deductible donation. If you have skills that could benefit our small team, check out our <a href="contribute">contribute page</a> for volunteer opportunities.</p>
+                </section>
 
-        <h2>How can I stay updated on news from Henar Press?</h2>
-        <p>Stay connected with us by signing up for our quarterly newsletter! It's the best way to stay up-to-date on our latest publications, events, and initiatives, and to be part of a community that's passionate about Kurdish culture and literature.
-</p>
-    </div>
-</main>
+                <section class="about-section">
+                    <h2>How can I stay updated on news from Henar Press?</h2>
+                    <p>Sign up for our quarterly newsletter and follow our social media accounts to stay connected!</p>
+                </section>
+            </div>
         </div>
     </main>
     <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-logo-slogan">
                 <div class="footer-logo">
                     <img src="henar-press-logo.png" alt="Henar Press Logo">
                 </div>
@@ -258,25 +519,74 @@
                 </div>
             </div>
             <div class="footer-newsletter">
-                <p>Stay connected with quarterly updates on new releases, events, and how you can help bring Kurdish stories to life.</p>
-                <form>
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit" class="sign-up-button">Sign Up</button>
+                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
+                <form action="#" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
             <div class="footer-links">
-                <a href="#">Books</a>
-                <a href="#">Authors</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Get Involved</a>
-                <a href="#">Support Us</a>
+                <a href="books">Books</a>
+                <a href="authors">Authors</a>
+                <a href="events">Events & News</a>
+                <a href="about">About Us</a>
+                <a href="contact">Contact</a>
+                <a href="contribute">Contribute</a>
+                <a href="privacy-policy">Privacy Policy</a>
             </div>
+            <div class="footer-social">
+                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
             </div>
             <div class="copyright">
-                &copy; 2024 Henar Press
+                &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
     </footer>
+    <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        const scrollThreshold = 50;
+        let ticking = false;
+        let hidePercentage = 0;
+
+        function handleScroll() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let headerHeight = header.offsetHeight;
+            let navHeight = nav.offsetHeight;
+            let totalHeight = headerHeight + navHeight;
+            
+            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
+            } else if (currentScroll < lastScrollTop) {
+                hidePercentage = Math.max(hidePercentage - 0.1, 0);
+            }
+
+            let translateY = hidePercentage * totalHeight;
+            let opacity = 1 - hidePercentage;
+
+            requestAnimationFrame(() => {
+                header.style.transform = `translateY(-${translateY}px)`;
+                nav.style.transform = `translateY(-${translateY}px)`;
+                header.style.opacity = opacity;
+                nav.style.opacity = opacity;
+            });
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, false);
+    </script>
 </body>
 </html>
