@@ -7,16 +7,15 @@
     <meta name="description" content="Henar Press: Preserving and promoting Kurdish literature and culture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-:root {
-    --primary-color: #1a1a1a;
-    --secondary-color: #f6f4ef;
-    --accent-color: #c4a484;
-    --text-color: #333;
-    --transition: all 0.3s ease;
-}
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --transition: all 0.3s ease;
+        }
 
         * {
             box-sizing: border-box;
@@ -25,7 +24,7 @@
         }
 
         body {
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
             background-color: var(--secondary-color);
@@ -39,18 +38,16 @@
 
         header {
             background-color: var(--primary-color);
-            padding: 20px 0;
+            padding: 1px 0;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 1;
+            transition: opacity 0.3s ease;
         }
 
-        header .container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,48 +59,24 @@
         }
 
         .logo-image {
-            width: 50px;
+            width: 40px;
             height: auto;
-            margin-right: 15px;
+            margin-right: 10px;
         }
 
         .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
             font-weight: 700;
             text-decoration: none;
             color: var(--secondary-color);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .social-icons {
-            display: flex;
-            margin-right: 25px;
-        }
-
-        .social-icon {
-            margin-left: 20px;
-        }
-
-.social-icon img {
-    width: 36px;
-    height: 36px;
-    transition: var(--transition);
-}
-        .social-icon:hover img {
-            transform: scale(1.1);
-            filter: brightness(90%);
-        }
-
-        .donate-button, .sign-up-button {
+        .donate-button {
             padding: 12px 24px;
             background-color: var(--accent-color);
-            color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
             font-weight: bold;
             border-radius: 30px;
@@ -112,38 +85,36 @@
             letter-spacing: 0.5px;
         }
 
-        .donate-button:hover, .sign-up-button:hover {
+        .donate-button:hover {
             background-color: var(--secondary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: var(--accent-color);
         }
 
-nav {
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #e0e0e0;
-    background-color: var(--secondary-color);
-    position: static;
-    width: 100%;
-    z-index: 998; 
-}
+        nav {
+            background-color: var(--secondary-color);
+            position: fixed;
+            top: 80px; /* Exact height of the header */
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
 
-.nav-spacer {
-    height: 120px; 
-}
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
         nav a {
             margin: 0 20px;
             text-decoration: none;
             color: var(--text-color);
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             transition: var(--transition);
             position: relative;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
         }
 
         nav a::after {
@@ -162,14 +133,18 @@ nav {
             left: 0;
         }
 
+        .nav-spacer {
+            height: 130px; /* Combined height of header and nav */
+        }
+
         main {
-            padding-top: 15px; 
-            padding-bottom: 60px; 
+            padding-top: 20px;
+            padding-bottom: 60px;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
             margin-bottom: 30px;
             color: var(--primary-color);
             text-align: center;
@@ -183,6 +158,17 @@ nav {
             height: 3px;
             background-color: var(--accent-color);
             margin: 20px auto;
+        }
+
+        .work-in-progress {
+            margin-bottom: 40px;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
         }
 
         .book-grid {
@@ -227,17 +213,6 @@ nav {
             opacity: 1;
         }
 
-        .work-in-progress {
-            margin-bottom: 40px;
-            font-style: italic;
-            color: #666;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        
         footer {
             background-color: var(--primary-color);
             padding: 60px 0;
@@ -251,16 +226,25 @@ nav {
             flex-wrap: wrap;
         }
 
+        .footer-logo-slogan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
         .footer-logo img {
-            max-width: 150px;
+            width: 100px;
+            height: auto;
         }
 
         .footer-slogan h2 {
-            font-size: 56px;
-            font-family: 'Libre Baskerville', serif;
+            font-size: 62px;
+            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            text-align: right;
         }
 
         .footer-newsletter, .footer-links, .footer-social {
@@ -275,7 +259,7 @@ nav {
 
         .footer-links a {
             margin: 10px 15px;
-            font-size: 16px;
+            font-size: 14px;
             color: var(--secondary-color);
             text-decoration: none;
             transition: var(--transition);
@@ -286,8 +270,8 @@ nav {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -5px;
+            height: 1px;
+            bottom: -3px;
             left: 50%;
             background-color: var(--accent-color);
             transition: var(--transition);
@@ -304,22 +288,21 @@ nav {
 
         .footer-social a {
             display: inline-block;
-            margin: 0 20px;
+            margin: 0 15px;
         }
-        
-.footer-social img {
-    width: 48px;
-    height: 48px;
-    transition: var(--transition);
-}
+
+        .footer-social img {
+            width: 24px;
+            height: 24px;
+            transition: var(--transition);
+        }
 
         .footer-social a:hover img {
             transform: scale(1.1);
-            filter: brightness(90%);
         }
 
         .footer-newsletter p {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -334,57 +317,50 @@ nav {
             width: 250px;
             border: none;
             border-radius: 30px 0 0 30px;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .footer-newsletter button {
             padding: 12px 24px;
             background-color: var(--accent-color);
-            color: var(--primary-color);
+            color: var(--secondary-color);
             border: none;
             border-radius: 0 30px 30px 0;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             transition: var(--transition);
         }
 
         .footer-newsletter button:hover {
             background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         .copyright {
             text-align: center;
             margin-top: 40px;
-            font-size: 14px;
+            font-size: 12px;
             color: var(--secondary-color);
             opacity: 0.7;
         }
 
         @media (max-width: 768px) {
-            .header-right {
-                display: flex;
-                align-items: center;
-            }
-
-            .social-icons {
-                display: none; /* Hide social icons on mobile */
-            }
-
-            .donate-button {
-                display: block; /* Ensure donate button is visible on mobile */
-                padding: 10px 20px; /* Slightly smaller padding for mobile */
-                font-size: 14px; /* Slightly smaller font size for mobile */
+            .logo-text {
+                font-size: 24px;
             }
 
             nav {
-                margin-top: 80px;
-                top: 80px; /* Adjusted for smaller header on mobile */
+                top: 70px;
             }
 
             nav a {
                 margin: 0 10px;
-                font-size: 16px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 36px;
             }
 
             .book-grid {
@@ -396,63 +372,61 @@ nav {
                 text-align: center;
             }
 
+            .footer-logo-slogan {
+                flex-direction: column;
+            }
+
+            .footer-logo {
+                margin-bottom: 20px;
+            }
+
             .footer-slogan h2 {
-                font-size: 28px;
+                font-size: 36px;
+                text-align: center;
             }
-
-            .footer-social a {
-                margin: 0 15px; /* Increased margin for easier tapping */
-            }
-
-            .footer-social img {
-    width: 48px;
-    height: 48px;
-    transition: var(--transition);
-}
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="logo-container">
-                <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                <a href="#" class="logo-text">Henar Press</a>
-            </div>
-            <div class="header-right">
-                <div class="social-icons">
-                    <a href="https://twitter.com/HenarPress" class="social-icon" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
-                    <a href="https://instagram.com/HenarPress" class="social-icon" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
-                    <a href="https://www.facebook.com/profile.php?id=61564222616734" class="social-icon" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
+                    <a href="#" class="logo-text">Henar Press</a>
                 </div>
                 <a href="#" class="donate-button">Donate</a>
             </div>
         </div>
     </header>
-    <div class="nav-spacer"></div>
     <nav>
-        <a href="https://henarpress.org/books">Books</a>
-        <a href="https://henarpress.org/authors">Authors</a>
-        <a href="https://henarpress.org/events-and-news">Events & News</a>
-        <a href="https://henarpress.org/about">About Us</a>
-        <a href="https://henarpress.org/contact">Contact</a>
-        <a href="https://henarpress.org/contribute">Contribute</a>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#books">Books</a>
+                <a href="#authors">Authors</a>
+                <a href="#events">Events & News</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+                <a href="#contribute">Contribute</a>
+            </div>
+        </div>
     </nav>
+    <div class="nav-spacer"></div>
     <main>
         <div class="container">
             <h1>The Home of Kurdish Literature</h1>
-            <p class="work-in-progress">Our website is currently evolving. We're  curating our collection of books that celebrate Kurdish voices. Please check back regularly as we unveil our publications and author spotlights.</p>
+            <p class="work-in-progress">Our website is currently evolving. We're curating our collection of books that celebrate Kurdish voices. Please check back regularly as we unveil our publications and author spotlights.</p>
             <div class="book-grid">
-                <a href="https://henarpress.org/books/title1" class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></a>
-                <a href="https://henarpress.org/books/title2" class="book-cover" style="background-image: url('book2.jpg');" aria-label="Book Title 2"></a>
-                <a href="https://henarpress.org/books/title3" class="book-cover" style="background-image: url('book3.jpg');" aria-label="Book Title 3"></a>
-                <a href="https://henarpress.org/books/title4" class="book-cover" style="background-image: url('book4.jpg');" aria-label="Book Title 4"></a>
+                <a href="#" class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></a>
+                <a href="#" class="book-cover" style="background-image: url('book2.jpg');" aria-label="Book Title 2"></a>
+                <a href="#" class="book-cover" style="background-image: url('book3.jpg');" aria-label="Book Title 3"></a>
+                <a href="#" class="book-cover" style="background-image: url('book4.jpg');" aria-label="Book Title 4"></a>
             </div>
         </div>
     </main>
     <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-logo-slogan">
                 <div class="footer-logo">
                     <img src="henar-press-logo.png" alt="Henar Press Logo">
                 </div>
@@ -462,24 +436,24 @@ nav {
             </div>
             <div class="footer-newsletter">
                 <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
-                <form action="https://henarpress.org/subscribe" method="POST">
+                <form action="#" method="POST">
                     <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
-                    <button type="submit" class="sign-up-button">Subscribe</button>
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
             <div class="footer-links">
-                <a href="https://henarpress.org/books">Books</a>
-                <a href="https://henarpress.org/authors">Authors</a>
-                <a href="https://henarpress.org/events-and-news">Events & News</a>
-                <a href="https://henarpress.org/about">About Us</a>
-                <a href="https://henarpress.org/contact">Contact</a>
-                <a href="https://henarpress.org/contribute">Contribute</a>
-                <a href="https://henarpress.org/privacy-policy">Privacy Policy</a>
+                <a href="#books">Books</a>
+                <a href="#authors">Authors</a>
+                <a href="#events">Events & News</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+                <a href="#contribute">Contribute</a>
+                <a href="#privacy">Privacy Policy</a>
             </div>
             <div class="footer-social">
-                <a href="https://twitter.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter Logo"></a>
-                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram Logo"></a>
-                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook Logo"></a>
+                <a href="#" aria-label="Twitter"><img src="twitter-icon.svg" alt="Twitter"></a>
+                <a href="#" aria-label="Instagram"><img src="instagram-icon.svg" alt="Instagram"></a>
+                <a href="#" aria-label="Facebook"><img src="facebook-icon.svg" alt="Facebook"></a>
             </div>
             <div class="copyright">
                 &copy; 2024 Henar Press. All rights reserved.
@@ -487,76 +461,23 @@ nav {
         </div>
     </footer>
     <script>
-        // JavaScript to enhance user experience
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').split('/').pop();
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        window.location.href = this.getAttribute('href');
-                    }
-                });
-            });
-
-            // Lazy loading for book covers
-            if ('IntersectionObserver' in window) {
-                const bookCovers = document.querySelectorAll('.book-cover');
-                const bookObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.backgroundImage = entry.target.style.backgroundImage.replace('url(', 'url(');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
-
-                bookCovers.forEach(cover => {
-                    bookObserver.observe(cover);
-                });
-            }
-
-            // Form submission handling
-            const newsletterForm = document.querySelector('.footer-newsletter form');
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                // Here you would typically send the email to your server
-                console.log('Subscribed:', email);
-                alert('Thank you for subscribing!');
-                this.reset();
-            });
-        });
-
         const header = document.querySelector('header');
         const nav = document.querySelector('nav');
-        let lastScrollTop = 0;
-        const scrollThreshold = 650;
+        const footer = document.querySelector('footer');
 
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const headerHeight = header.offsetHeight;
-            
-            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-                // Scrolling down
-                const opacity = Math.max(0, 1 - (scrollTop - scrollThreshold) / headerHeight);
-                header.style.opacity = opacity;
-                if (opacity === 0) {
-                    header.style.transform = `translateY(-${headerHeight}px)`;
-                }
-            } else {
-                // Scrolling up
-                header.style.opacity = '1';
-                header.style.transform = 'translateY(0)';
-            }
+            const footerRect = footer.getBoundingClientRect();
+            const headerRect = header.getBoundingClientRect();
+            const navRect = nav.getBoundingClientRect();
 
-            lastScrollTop = scrollTop;
+            if (footerRect.top <= window.innerHeight && headerRect.bottom > 0) {
+                const opacity = Math.max(0, (footerRect.top - navRect.bottom) / (window.innerHeight - headerRect.height - navRect.height));
+                header.style.opacity = opacity;
+                nav.style.opacity = opacity;
+            } else {
+                header.style.opacity = 1;
+                nav.style.opacity = 1;
+            }
         });
     </script>
 </body>
