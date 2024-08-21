@@ -44,7 +44,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            transition: opacity 0.3s ease;
+            transition: trasnform 0.3s ease, opacity 0.3s ease;
+        }
+        
+               header, nav {
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .header-content {
@@ -128,7 +132,17 @@
             right: 0;
             z-index: 999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease; opacity 0.3s ease;
+        }
+        
+                .hide-header {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .hide-nav {
+            transform: translateY(-100%);
+            opacity: 0;
         }
 
         .nav-content {
@@ -175,7 +189,7 @@
         h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 56px;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Reduced from 30px */
             color: var(--primary-color);
             text-align: center;
             position: relative;
@@ -187,11 +201,12 @@
             width: 100px;
             height: 3px;
             background-color: var(--accent-color);
-            margin: 20px auto;
+            margin: 15px auto; /* Reduced from 20px */
         }
 
         .work-in-progress {
-            margin-bottom: 40px;
+            margin-top: -10px; /* Added negative margin to pull it up */
+            margin-bottom: 30px; /* Reduced from 40px */
             font-style: italic;
             color: #666;
             text-align: center;
@@ -200,7 +215,6 @@
             margin-right: auto;
             line-height: 1.8;
         }
-
         .book-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -405,37 +419,43 @@
     }
 
     h1 {
-        font-size: 28px; /* Reduced font size */
-        margin-top: 10px; /* Reduced top margin */
-        margin-bottom: 15px; /* Reduced bottom margin */
-    }
+          font-size: 28px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+            }
 
     h1::after {
-        margin: 10px auto; /* Reduced margin for the underline */
-    }
+          margin: 8px auto;
+            }
+            
+   .work-in-progress {
+          margin-top: -5px;
+          margin-bottom: 20px;
+          font-size: 14px;
+            }           
+            
+           .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .book-item {
+                font-size: 12px;
+            }
 
-    .book-grid {
-        grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
-        gap: 20px; /* Reduced gap between items */
-    }
+            .book-cover {
+                padding-bottom: 100%;
+                width: 70%; 
+                margin: 0 auto; 
+            }
 
-    .book-item {
-        font-size: 14px; /* Reduced font size for book details */
-    }
+            .book-title {
+                margin-top: 6px;
+                font-size: 12px;
+            }
 
-    .book-cover {
-        padding-bottom: 130%; /* Adjusted aspect ratio */
-    }
-
-    .book-title {
-        margin-top: 5px;
-        font-size: 12px;
-    }
-
-    .book-author, .book-date {
-        font-size: 10px;
-    }
-
+            .book-author, .book-date {
+                font-size: 10px;
+            }
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -495,7 +515,7 @@
     <main>
         <div class="container">
             <h1>The Home of Kurdish Literature</h1>
-            <p class="work-in-progress">Our website is currently evolving. We're curating our collection of books that celebrate Kurdish voices. Please check back regularly as we unveil our publications and author spotlights.</p>
+            <p class="work-in-progress">Our website is currently evolving. We're curating our collection of books. Please check back regularly as we unveil our publications and author spotlights.</p>
             <div class="book-grid">
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></div>
@@ -560,28 +580,51 @@
             </div>
         </div>
     </footer>
-<script>
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav');
-    const footer = document.querySelector('footer');
+   <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        const scrollThreshold = 50;
+        let ticking = false;
+        let hidePercentage = 0;
 
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const footerHeight = footer.offsetHeight;
-        const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
-        const fadeStart = footerHeight * 1.5;
+        function handleScroll() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let headerHeight = header.offsetHeight;
+            let navHeight = nav.offsetHeight;
+            let totalHeight = headerHeight + navHeight;
+            
+            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                // Scrolling down
+                hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
+            } else if (currentScroll < lastScrollTop) {
+                // Scrolling up
+                hidePercentage = Math.max(hidePercentage - 0.1, 0);
+            }
 
-        if (distanceFromBottom <= fadeStart) {
-            const opacity = distanceFromBottom / fadeStart;
-            header.style.opacity = opacity;
-            nav.style.opacity = opacity;
-        } else {
-            header.style.opacity = 1;
-            nav.style.opacity = 1;
+            let translateY = hidePercentage * totalHeight;
+            let opacity = 1 - hidePercentage;
+
+            requestAnimationFrame(() => {
+                header.style.transform = `translateY(-${translateY}px)`;
+                nav.style.transform = `translateY(-${translateY}px)`;
+                header.style.opacity = opacity;
+                nav.style.opacity = opacity;
+            });
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
         }
-    });
-</script>
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, false);
+    </script>
 </body>
 </html>
