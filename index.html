@@ -38,7 +38,7 @@
 
         header {
             background-color: var(--primary-color);
-            padding: 13px 0;
+            padding: 14px 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -88,8 +88,8 @@
         }
 
         .header-social img {
-            width: 24px;
-            height: 24px;
+            width: 48px;
+            height: 48px;
         }
 
         .donate-button {
@@ -235,7 +235,7 @@
 
         footer {
             background-color: var(--primary-color);
-            padding: 60px 0;
+            padding: 20px 0 30px;
             color: var(--secondary-color);
         }
 
@@ -251,24 +251,26 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
 
         .footer-logo img {
-            width: 150px;
+            width: 120px;
             height: auto;
         }
 
-        .footer-slogan h2 {
-            font-size: 62px;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--secondary-color);
-            text-align: right;
-        }
+.footer-slogan h2 {
+    font-size: 48px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--secondary-color);
+    text-align: right;
+    margin-top: 0; /* Remove any top margin */
+}
+
 
         .footer-newsletter, .footer-links, .footer-social {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .footer-links {
@@ -278,7 +280,7 @@
         }
 
         .footer-links a {
-            margin: 10px 15px;
+            margin: 5px 10px;
             font-size: 14px;
             color: var(--secondary-color);
             text-decoration: none;
@@ -359,13 +361,18 @@
 
         .copyright {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
             font-size: 12px;
             color: var(--secondary-color);
             opacity: 0.7;
         }
 
         @media (max-width: 768px) {
+    h1 {
+        margin-top: 8px;
+    }
+        
+        {
             .logo-text {
                 font-size: 24px;
             }
@@ -459,25 +466,25 @@
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></div>
                     <p class="book-title">Book Title 1</p>
-                    <p class="book-author">by Author Name</p>
+                    <p class="book-author">Author Name</p>
                     <p class="book-date">Coming July 2024</p>
                 </div>
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book2.jpg');" aria-label="Book Title 2"></div>
                     <p class="book-title">Book Title 2</p>
-                    <p class="book-author">by Author Name</p>
+                    <p class="book-author">Author Name</p>
                     <p class="book-date">Coming August 2024</p>
                 </div>
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book3.jpg');" aria-label="Book Title 3"></div>
                     <p class="book-title">Book Title 3</p>
-                    <p class="book-author">by Author Name</p>
+                    <p class="book-author">Author Name</p>
                     <p class="book-date">Coming September 2024</p>
                 </div>
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book4.jpg');" aria-label="Book Title 4"></div>
                     <p class="book-title">Book Title 4</p>
-                    <p class="book-author">by Author Name</p>
+                    <p class="book-author">Author Name</p>
                     <p class="book-date">Coming October 2024</p>
                 </div>
             </div>
@@ -519,25 +526,32 @@
             </div>
         </div>
     </footer>
-    <script>
-        const header = document.querySelector('header');
-        const nav = document.querySelector('nav');
-        const footer = document.querySelector('footer');
+<script>
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
 
-        window.addEventListener('scroll', () => {
-            const footerRect = footer.getBoundingClientRect();
-            const headerRect = header.getBoundingClientRect();
-            const navRect = nav.getBoundingClientRect();
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const footerHeight = footer.offsetHeight;
 
-            if (footerRect.top <= window.innerHeight && headerRect.bottom > 0) {
-                const opacity = Math.max(0, (footerRect.top - navRect.bottom) / (window.innerHeight - headerRect.height - navRect.height));
-                header.style.opacity = opacity;
-                nav.style.opacity = opacity;
-            } else {
-                header.style.opacity = 1;
-                nav.style.opacity = 1;
-            }
-        });
-    </script>
+        // Calculate the distance from the bottom of the page
+        const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+
+        // Start fading when we're 1.5 times the footer height away from the footer
+        const fadeStart = footerHeight * 1.5;
+
+        if (distanceFromBottom <= fadeStart) {
+            const opacity = distanceFromBottom / fadeStart;
+            header.style.opacity = opacity;
+            nav.style.opacity = opacity;
+        } else {
+            header.style.opacity = 1;
+            nav.style.opacity = 1;
+        }
+    });
+</script>
 </body>
 </html>
