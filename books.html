@@ -258,6 +258,11 @@
             color: var(--accent-color);
         }
 
+        [data-email-octopus-form-success],
+[data-email-octopus-form-error] {
+    display: none;
+}
+
         footer {
             background-color: var(--primary-color);
             padding: 20px 0 30px;
@@ -483,6 +488,14 @@
                 width: 100px;
             }
         }
+
+        .email-octopus-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
     </style>
 </head>
 <body>
@@ -549,42 +562,40 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <div class="footer-logo-slogan">
-                <div class="footer-logo">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo">
-                </div>
-                <div class="footer-slogan">
-                    <h2>Against Forgetting, We Write</h2>
-                </div>
+<footer>
+    <div class="container">
+        <div class="footer-logo-slogan">
+            <div class="footer-logo">
+                <img src="henar-press-logo.png" alt="Henar Press Logo">
             </div>
-            <div class="footer-newsletter">
-                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
-                <form action="#" method="POST">
-                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-            <div class="footer-links">
-                <a href="books">Books</a>
-                <a href="authors">Authors</a>
-                <a href="events">Events & News</a>
-                <a href="about">About Us</a>
-                <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="privacy-policy">Privacy Policy</a>
-            </div>
-            <div class="footer-social">
-                       <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-            </div>
-            <div class="copyright">
-                &copy; 2024 Henar Press. All rights reserved.
+            <div class="footer-slogan">
+                <h2>Against Forgetting, We Write</h2>
             </div>
         </div>
-    </footer>
+        
+<div class="email-octopus-form-wrapper">
+        <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+</div>
+        
+        <div class="footer-links">
+            <a href="books">Books</a>
+            <a href="authors">Authors</a>
+            <a href="events-and-news">Events & News</a>
+            <a href="about">About Us</a>
+            <a href="contact">Contact</a>
+            <a href="contribute">Contribute</a>
+            <a href="privacy-policy">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+            <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Henar Press. All rights reserved.
+        </div>
+    </div>
+</footer>
    <script>
         let lastScrollTop = 0;
         const header = document.querySelector('header');
@@ -630,6 +641,6 @@
                 ticking = true;
             }
         }, false);
-    </script>
-</body>
+    </script>    
+    </body>
 </html>
