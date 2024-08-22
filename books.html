@@ -597,51 +597,70 @@
         </div>
     </div>
 </footer>
-   <script>
-        let lastScrollTop = 0;
-        const header = document.querySelector('header');
-        const nav = document.querySelector('nav');
-        const scrollThreshold = 50;
-        let ticking = false;
-        let hidePercentage = 0;
+<script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    const scrollThreshold = 50;
+    let ticking = false;
+    let hidePercentage = 0;
+    let isHidden = false;
 
-        function handleScroll() {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            let headerHeight = header.offsetHeight;
-            let navHeight = nav.offsetHeight;
-            let totalHeight = headerHeight + navHeight;
-            
-            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
-                // Scrolling down
-                hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
-            } else if (currentScroll < lastScrollTop) {
-                // Scrolling up
-                hidePercentage = Math.max(hidePercentage - 0.1, 0);
-            }
+    function handleScroll() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        let headerHeight = header.offsetHeight;
+        let navHeight = nav.offsetHeight;
+        let totalHeight = headerHeight + navHeight;
+        
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+            hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
+            isHidden = hidePercentage === 1;
+        } else if (currentScroll < lastScrollTop) {
+            hidePercentage = 0;
+            isHidden = false;
+        }
 
-            let translateY = hidePercentage * totalHeight;
-            let opacity = 1 - hidePercentage;
+        let translateY = hidePercentage * totalHeight;
+        let opacity = 1 - hidePercentage;
 
-            requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            if (isHidden) {
+                header.style.visibility = 'hidden';
+                nav.style.visibility = 'hidden';
+            } else {
+                header.style.visibility = 'visible';
+                nav.style.visibility = 'visible';
                 header.style.transform = `translateY(-${translateY}px)`;
                 nav.style.transform = `translateY(-${translateY}px)`;
                 header.style.opacity = opacity;
                 nav.style.opacity = opacity;
-            });
-            
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
             }
-        }, false);
-    </script>    
-    </body>
+        });
+        
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset === 0) {
+            header.style.transform = 'translateY(0)';
+            nav.style.transform = 'translateY(0)';
+            header.style.opacity = 1;
+            nav.style.opacity = 1;
+            header.style.visibility = 'visible';
+            nav.style.visibility = 'visible';
+        }
+    });
+</script>
+</body>
 </html>
