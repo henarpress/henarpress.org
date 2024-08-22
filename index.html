@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Authors - Henar Press</title>
-    <meta name="description" content="Meet the talented authors of Henar Press, dedicated to Kurdish literature and culture.">
+    <title>Henar Press - Kurdish Literature & Culture</title>
+    <meta name="description" content="Henar Press: Preserving and promoting Kurdish literature and culture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
@@ -44,6 +44,10 @@
             left: 0;
             right: 0;
             z-index: 1000;
+            transition: trasnform 0.3s ease, opacity 0.3s ease;
+        }
+        
+               header, nav {
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
@@ -84,19 +88,19 @@
             margin-left: 20px;
         }
 
-        .header-social a {
-            margin-right: 20px;
-            display: inline-block;
-            transition: var(--transition);
-        }
+.header-social a {
+    margin-right: 20px;
+    display: inline-block;
+    transition: var(--transition);
+}
 
-        .header-social a:last-child {
-            margin-right: 0;
-        }
+.header-social a:last-child {
+    margin-right: 0;
+}
 
-        .header-social a:hover {
-            transform: scale(1.1);
-        }
+.header-social a:hover {
+    transform: scale(1.1);
+}
 
         .header-social img {
             width: 36px;
@@ -128,7 +132,17 @@
             right: 0;
             z-index: 999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: opacity 0.3s ease; opacity 0.3s ease;
+        }
+        
+                .hide-header {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .hide-nav {
+            transform: translateY(-100%);
+            opacity: 0;
         }
 
         .nav-content {
@@ -175,7 +189,7 @@
         h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 56px;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Reduced from 30px */
             color: var(--primary-color);
             text-align: center;
             position: relative;
@@ -187,68 +201,61 @@
             width: 100px;
             height: 3px;
             background-color: var(--accent-color);
-            margin: 15px auto;
+            margin: 15px auto; /* Reduced from 20px */
         }
 
-        .author-grid {
+        .work-in-progress {
+            margin-top: -10px; /* Added negative margin to pull it up */
+            margin-bottom: 30px; /* Reduced from 40px */
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        .book-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
 
-        .author-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .book-item {
+            text-align: center;
         }
 
-        .author-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .author-image {
+        .book-cover {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .author-info {
-            padding: 20px;
-        }
-
-        .author-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .author-bio {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .author-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .author-link:hover {
+            height: 0;
+            padding-bottom: 150%;
             background-color: var(--primary-color);
-            transform: translateY(-2px);
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-cover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .book-title {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .book-author {
+            margin-top: 5px;
+        }
+
+        .book-date {
+            margin-top: 5px;
+            color: var(--accent-color);
         }
 
         footer {
@@ -277,14 +284,15 @@
             height: auto;
         }
 
-        .footer-slogan h2 {
-            font-size: 62px;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--secondary-color);
-            text-align: right;
-            margin-top: 0;
-        }
+.footer-slogan h2 {
+    font-size: 62px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--secondary-color);
+    text-align: right;
+    margin-top: 0;
+}
+
 
         .footer-newsletter, .footer-links, .footer-social {
             margin-top: 20px;
@@ -384,50 +392,85 @@
             opacity: 0.7;
         }
 
-        @media (max-width: 768px) {
-            main {
-                padding-top: 10px;
-                padding-bottom: 30px;
+@media (max-width: 768px) {
+      main {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+    .header-social {
+        display: none !important;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+
+    nav {
+        top: 70px;
+    }
+
+    .nav-content {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
+
+    h1 {
+          font-size: 28px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding-top: 20px;
             }
-            .header-social {
-                display: none !important;
+
+    h1::after {
+          margin: 8px auto;
             }
-            .logo-text {
-                font-size: 24px;
+            
+   .work-in-progress {
+          margin-top: -5px;
+          margin-bottom: 20px;
+          font-size: 14px;
+            }           
+            
+           .book-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
-            nav {
-                top: 70px;
+            .book-item {
+                font-size: 12px;
             }
-            .nav-content {
-                flex-wrap: wrap;
+
+            .book-cover {
+                padding-bottom: 100%;
+                width: 70%; 
+                margin: 0 auto; 
             }
-            nav a {
-                margin: 5px 10px;
-                font-size: 14px;
+
+            .book-title {
+                margin-top: 6px;
+                font-size: 12px;
             }
-            h1 {
-                font-size: 28px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                padding-top: 20px;
-            }
-            h1::after {
-                margin: 8px auto;
-            }
-            .author-grid {
-                grid-template-columns: 1fr;
+
+            .book-author, .book-date {
+                font-size: 10px;
             }
             .footer-content {
                 flex-direction: column;
                 text-align: center;
             }
+
             .footer-logo-slogan {
                 flex-direction: column;
                 align-items: center;
             }
+
             .footer-logo {
                 margin-bottom: 10px;
             }
+
             .footer-slogan h2 {
                 font-size: 42px;
                 text-align: center;
@@ -435,6 +478,7 @@
                 padding-bottom: 10px;
                 margin: 0;
             }
+
             .footer-logo img {
                 width: 100px;
             }
@@ -466,64 +510,45 @@
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
                 <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>                <a href="books">Books</a>
+                <a href="about">About Us</a>
                 <a href="contact">Contact</a>
                 <a href="contribute">Contribute</a>
             </div>
         </div>
     </nav>
     <div class="nav-spacer"></div>
-
     <main>
         <div class="container">
-            <h1>Our Authors</h1>
-            <div class="author-grid">
-                <!-- Author 1 -->
-                <div class="author-card">
-                    <img src="path/to/author1-image.png" alt="Author Name" class="author-image">
-                    <div class="author-info">
-                        <h2 class="author-name">Author Name</h2>
-                        <p class="author-bio">Brief biography of the author. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="author-link">Read More</a>
-                    </div>
+            <h1>The Home of Kurdish Literature</h1>
+            <p class="work-in-progress">Our website is currently evolving. We're curating our collection of books. Please check back regularly as we unveil our publications and author spotlights.</p>
+            <div class="book-grid">
+                <div class="book-item">
+                    <div class="book-cover" style="background-image: url('book1.jpg');" aria-label="Book Title 1"></div>
+                    <p class="book-title">Book Title 1</p>
+                    <p class="book-author">Author Name</p>
+                    <p class="book-date">Coming July 2024</p>
                 </div>
-
-                <!-- Author 2 -->
-                <div class="author-card">
-                    <img src="path/to/author2-image.png" alt="Author Name" class="author-image">
-                    <div class="author-info">
-                        <h2 class="author-name">Author Name</h2>
-                        <p class="author-bio">Brief biography of the author. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="author-link">Read More</a>
-                    </div>
+                <div class="book-item">
+                    <div class="book-cover" style="background-image: url('book2.jpg');" aria-label="Book Title 2"></div>
+                    <p class="book-title">Book Title 2</p>
+                    <p class="book-author">Author Name</p>
+                    <p class="book-date">Coming August 2024</p>
                 </div>
-
-                <!-- Author 3 -->
-                <div class="author-card">
-                    <img src="path/to/author3-image.png" alt="Author Name" class="author-image">
-                    <div class="author-info">
-                        <h2 class="author-name">Author Name</h2>
-                        <p class="author-bio">Brief biography of the author. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="author-link">Read More</a>
-                    </div>
+                <div class="book-item">
+                    <div class="book-cover" style="background-image: url('book3.jpg');" aria-label="Book Title 3"></div>
+                    <p class="book-title">Book Title 3</p>
+                    <p class="book-author">Author Name</p>
+                    <p class="book-date">Coming September 2024</p>
                 </div>
-
-                <!-- Author 4 -->
-                <div class="author-card">
-                    <img src="path/to/author4-image.png" alt="Author Name" class="author-image">
-                    <div class="author-info">
-                        <h2 class="author-name">Author Name</h2>
-                        <p class="author-bio">Brief biography of the author. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="#" class="author-link">Read More</a>
-                    </div>
+                <div class="book-item">
+                    <div class="book-cover" style="background-image: url('book4.jpg');" aria-label="Book Title 4"></div>
+                    <p class="book-title">Book Title 4</p>
+                    <p class="book-author">Author Name</p>
+                    <p class="book-date">Coming October 2024</p>
                 </div>
-
-                <!-- Add more author cards as needed -->
-
             </div>
         </div>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-logo-slogan">
@@ -544,86 +569,67 @@
             <div class="footer-links">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
+                <a href="events">Events & News</a>
                 <a href="about">About Us</a>
                 <a href="contact">Contact</a>
                 <a href="contribute">Contribute</a>
                 <a href="privacy-policy">Privacy Policy</a>
             </div>
             <div class="footer-social">
-                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+                       <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
             </div>
             <div class="copyright">
                 &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
     </footer>
-<script>
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav');
-    const scrollThreshold = 50;
-    let ticking = false;
-    let hidePercentage = 0;
-    let isHidden = false;
+   <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        const scrollThreshold = 50;
+        let ticking = false;
+        let hidePercentage = 0;
 
-    function handleScroll() {
-        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        let headerHeight = header.offsetHeight;
-        let navHeight = nav.offsetHeight;
-        let totalHeight = headerHeight + navHeight;
-        
-        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
-            hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
-            isHidden = hidePercentage === 1;
-        } else if (currentScroll < lastScrollTop) {
-            hidePercentage = 0;
-            isHidden = false;
-        }
+        function handleScroll() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let headerHeight = header.offsetHeight;
+            let navHeight = nav.offsetHeight;
+            let totalHeight = headerHeight + navHeight;
+            
+            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                // Scrolling down
+                hidePercentage = Math.min((currentScroll - scrollThreshold) / totalHeight, 1);
+            } else if (currentScroll < lastScrollTop) {
+                // Scrolling up
+                hidePercentage = Math.max(hidePercentage - 0.1, 0);
+            }
 
-        let translateY = hidePercentage * totalHeight;
-        let opacity = 1 - hidePercentage;
+            let translateY = hidePercentage * totalHeight;
+            let opacity = 1 - hidePercentage;
 
-        requestAnimationFrame(() => {
-            if (isHidden) {
-                header.style.visibility = 'hidden';
-                nav.style.visibility = 'hidden';
-            } else {
-                header.style.visibility = 'visible';
-                nav.style.visibility = 'visible';
+            requestAnimationFrame(() => {
                 header.style.transform = `translateY(-${translateY}px)`;
                 nav.style.transform = `translateY(-${translateY}px)`;
                 header.style.opacity = opacity;
                 nav.style.opacity = opacity;
-            }
-        });
-        
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                handleScroll();
-                ticking = false;
             });
-            ticking = true;
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            ticking = false;
         }
-    }, false);
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset === 0) {
-            header.style.transform = 'translateY(0)';
-            nav.style.transform = 'translateY(0)';
-            header.style.opacity = 1;
-            nav.style.opacity = 1;
-            header.style.visibility = 'visible';
-            nav.style.visibility = 'visible';
-        }
-    });
-</script>
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, false);
+    </script>
 </body>
 </html>
