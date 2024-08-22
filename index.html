@@ -258,6 +258,11 @@
             color: var(--accent-color);
         }
 
+        [data-email-octopus-form-success],
+[data-email-octopus-form-error] {
+    display: none;
+}
+
         footer {
             background-color: var(--primary-color);
             padding: 20px 0 30px;
@@ -483,6 +488,14 @@
                 width: 100px;
             }
         }
+
+        .email-octopus-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
     </style>
 </head>
 <body>
@@ -549,7 +562,7 @@
             </div>
         </div>
     </main>
- <footer>
+<footer>
     <div class="container">
         <div class="footer-logo-slogan">
             <div class="footer-logo">
@@ -559,19 +572,11 @@
                 <h2>Against Forgetting, We Write</h2>
             </div>
         </div>
-        <div class="footer-newsletter">
-            <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
-            <form action="https://emailoctopus.com/lists/74c481ba-602a-11ef-ba76-f7237224cd89/members/embedded-subscribe-form" method="POST" data-email-octopus-form>
-                <input type="email" name="email_address" placeholder="Enter your email" required aria-label="Email Address">
-                <button type="submit">Subscribe</button>
-                <div data-email-octopus-form-success>
-                    Thanks for subscribing!
-                </div>
-                <div data-email-octopus-form-error>
-                    Sorry, there was an error. Please try again.
-                </div>
-            </form>
-        </div>
+        
+<div class="email-octopus-form-wrapper">
+        <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+</div>
+        
         <div class="footer-links">
             <a href="books">Books</a>
             <a href="authors">Authors</a>
@@ -636,7 +641,6 @@
                 ticking = true;
             }
         }, false);
-    </script>
-    <script src="https://emailoctopus.com/bundles/emailoctopuslist/js/1.6/form-embed.js" defer></script>
-</body>
+    </script>    
+    </body>
 </html>
