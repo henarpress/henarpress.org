@@ -549,42 +549,48 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <div class="footer-logo-slogan">
-                <div class="footer-logo">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo">
-                </div>
-                <div class="footer-slogan">
-                    <h2>Against Forgetting, We Write</h2>
-                </div>
+ <footer>
+    <div class="container">
+        <div class="footer-logo-slogan">
+            <div class="footer-logo">
+                <img src="henar-press-logo.png" alt="Henar Press Logo">
             </div>
-            <div class="footer-newsletter">
-                <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
-                <form action="#" method="POST">
-                    <input type="email" name="email" placeholder="Enter your email" required aria-label="Email Address">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-            <div class="footer-links">
-                <a href="books">Books</a>
-                <a href="authors">Authors</a>
-                <a href="events">Events & News</a>
-                <a href="about">About Us</a>
-                <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="privacy-policy">Privacy Policy</a>
-            </div>
-            <div class="footer-social">
-                       <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-            </div>
-            <div class="copyright">
-                &copy; 2024 Henar Press. All rights reserved.
+            <div class="footer-slogan">
+                <h2>Against Forgetting, We Write</h2>
             </div>
         </div>
-    </footer>
+        <div class="footer-newsletter">
+            <p>Join our community and receive quarterly updates on new releases, events, and ways to support Kurdish literature.</p>
+            <form action="https://emailoctopus.com/lists/74c481ba-602a-11ef-ba76-f7237224cd89/members/embedded-subscribe-form" method="POST" data-email-octopus-form>
+                <input type="email" name="email_address" placeholder="Enter your email" required aria-label="Email Address">
+                <button type="submit">Subscribe</button>
+                <div data-email-octopus-form-success>
+                    Thanks for subscribing!
+                </div>
+                <div data-email-octopus-form-error>
+                    Sorry, there was an error. Please try again.
+                </div>
+            </form>
+        </div>
+        <div class="footer-links">
+            <a href="books">Books</a>
+            <a href="authors">Authors</a>
+            <a href="events-and-news">Events & News</a>
+            <a href="about">About Us</a>
+            <a href="contact">Contact</a>
+            <a href="contribute">Contribute</a>
+            <a href="privacy-policy">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+            <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Henar Press. All rights reserved.
+        </div>
+    </div>
+</footer>
    <script>
         let lastScrollTop = 0;
         const header = document.querySelector('header');
@@ -631,5 +637,6 @@
             }
         }, false);
     </script>
+    <script src="https://emailoctopus.com/bundles/emailoctopuslist/js/1.6/form-embed.js" defer></script>
 </body>
 </html>
