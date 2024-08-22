@@ -506,7 +506,8 @@ footer {
                 <p>It will take some time until we reach a decision about your manuscript, but we respond to every submission.</p>
             </div>
 
-<form id="contact-form" action="https://formspree.io/f/mrbzyvqa" method="POST" enctype="multipart/form-data">
+<form id="contact-form" action="https://api.staticforms.xyz/submit" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="accessKey" value="0152aed9-9491-4020-85f4-5588fd1b4833">
     <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -525,8 +526,9 @@ footer {
     </div>
     <div class="form-group">
         <label for="attachment">Attachment:</label>
-        <input type="file" id="attachment" name="attachment">
+        <input type="file" id="attachment" name="$attachment">
     </div>
+    <input type="hidden" name="redirectTo" value="https://yourdomain.com/thank-you">
     <button type="submit">Send Message</button>
 </form>
 
