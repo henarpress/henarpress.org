@@ -386,11 +386,27 @@
         .blog-entry .content {
             flex: 1;
         }
+                        nav a .short-text {
+    display: none;
+}
+
+nav a .full-text {
+    display: inline;
+}
+
         @media (max-width: 768px) {
             main {
                 padding-top: 10px;
                 padding-bottom: 30px;
             }
+
+              nav a .short-text {
+        display: inline;
+    }
+    
+    nav a .full-text {
+        display: none;
+    }
             .blog-entry {
                 flex-direction: column;
             }
@@ -493,6 +509,9 @@
                 <a href="about">About Us</a>
                 <a href="contact">Contact</a>
                 <a href="contribute">Contribute</a>
+                           <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">
+                <span class="full-text">Kurdish Literature Directory</span>
+                <span class="short-text">KLD</span>
             </div>
         </div>
     </nav>
