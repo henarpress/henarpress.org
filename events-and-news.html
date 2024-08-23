@@ -405,82 +405,99 @@ nav a .full-text {
     display: none;
 }
 
-        @media (max-width: 768px) {
-            main {
-                padding-top: 10px;
-                padding-bottom: 30px;
-            }
+ @media (max-width: 768px) {
+    main {
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+    .blog-entry {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .blog-entry .image-container {
-        max-width: 150px;
-        margin: 0 auto 15px;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .blog-entry img {
         max-width: 100%;
-        height: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
     }
-              nav a .short-text {
+
+    .blog-entry img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    nav a .short-text {
         display: inline;
     }
-    
+
     nav a .full-text {
         display: none;
     }
-            .blog-entry {
-                flex-direction: column;
- 
-            .header-social {
-                display: none !important;
-            }
-            .logo-text {
-                font-size: 24px;
-            }
-            nav {
-                top: 70px;
-            }
-            .nav-content {
-                flex-wrap: wrap;
-            }
-            nav a {
-                margin: 5px 10px;
-                font-size: 14px;
-            }
-            h1 {
-                font-size: 28px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                padding-top: 20px;
-            }
-            h1::after {
-                margin: 8px auto;
-            }
-            .about-section h2 {
-                font-size: 24px;
-            }
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-logo-slogan {
-                flex-direction: column;
-                align-items: center;
-            }
-            .footer-logo {
-                margin-bottom: 10px;
-            }
-            .footer-slogan h2 {
-                font-size: 42px;
-                text-align: center;
-                padding-top: 0px;
-                padding-bottom: 10px;
-                margin: 0;
-            }
-            .footer-logo img {
-                width: 100px;
-            }
-        }
+
+    .header-social {
+        display: none !important;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+
+    nav {
+        top: 70px;
+    }
+
+    .nav-content {
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-top: 20px;
+    }
+
+    h1::after {
+        margin: 8px auto;
+    }
+
+    .about-section h2 {
+        font-size: 24px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo-slogan {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 10px;
+    }
+
+    .footer-slogan h2 {
+        font-size: 42px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 10px;
+        margin: 0;
+    }
+
+    .footer-logo img {
+        width: 100px;
+    }
+}
     </style>
 </head>
 <body>
