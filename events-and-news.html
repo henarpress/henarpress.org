@@ -410,9 +410,16 @@ nav a .full-text {
                 padding-top: 10px;
                 padding-bottom: 30px;
             }
-  .blog-entry .image-container {
+    .blog-entry .image-container {
         max-width: 150px;
         margin: 0 auto 15px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .blog-entry img {
+        max-width: 100%;
+        height: auto;
     }
               nav a .short-text {
         display: inline;
@@ -423,13 +430,7 @@ nav a .full-text {
     }
             .blog-entry {
                 flex-direction: column;
-            }
-            .blog-entry .image-container {
-                flex: 0 0 auto;
-                margin-right: 0;
-                margin-bottom: 15px;
-                width: 100%;
-            }
+ 
             .header-social {
                 display: none !important;
             }
