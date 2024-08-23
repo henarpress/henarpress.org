@@ -393,13 +393,27 @@
 nav a .full-text {
     display: inline;
 }
+            .email-octopus-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+              [data-email-octopus-form-success],
+[data-email-octopus-form-error] {
+    display: none;
+}
 
         @media (max-width: 768px) {
             main {
                 padding-top: 10px;
                 padding-bottom: 30px;
             }
-
+  .blog-entry .image-container {
+        max-width: 150px;
+        margin: 0 auto 15px;
+    }
               nav a .short-text {
         display: inline;
     }
@@ -466,19 +480,6 @@ nav a .full-text {
                 width: 100px;
             }
         }
-              [data-email-octopus-form-success],
-[data-email-octopus-form-error] {
-    display: none;
-}
-
-
-        .email-octopus-form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0;
-}
     </style>
 </head>
 <body>
@@ -532,40 +533,41 @@ nav a .full-text {
             <!-- Add more blog entries here as needed -->
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <div class="footer-logo-slogan">
-                <div class="footer-logo">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo">
-                </div>
-                <div class="footer-slogan">
-                    <h2>Against Forgetting, We Write</h2>
-                </div>
+  <footer>
+    <div class="container">
+        <div class="footer-logo-slogan">
+            <div class="footer-logo">
+                <img src="henar-press-logo.png" alt="Henar Press Logo">
             </div>
-          </div>
-<div class="email-octopus-form-wrapper">
-<script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-</div>
-            <div class="footer-links">
-                <a href="books">Books</a>
-                <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
-                <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">Kurdish Literature Directory</a>
-                <a href="privacy-policy">Privacy Policy</a>
-     
-            <div class="footer-social">
-                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-            </div>
-            <div class="copyright">
-                &copy; 2024 Henar Press. All rights reserved.
+            <div class="footer-slogan">
+                <h2>Against Forgetting, We Write</h2>
             </div>
         </div>
-    </footer>
+        
+        <div class="email-octopus-form-wrapper">
+            <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+        </div>
+        
+        <div class="footer-links">
+            <a href="books">Books</a>
+            <a href="authors">Authors</a>
+            <a href="events-and-news">Events & News</a>
+            <a href="about">About Us</a>
+            <a href="contact">Contact</a>
+            <a href="contribute">Contribute</a>
+            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">Kurdish Literature Directory</a>
+            <a href="privacy-policy">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+            <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Henar Press. All rights reserved.
+        </div>
+    </div>
+</footer>
 <script>
     let lastScrollTop = 0;
     const header = document.querySelector('header');
