@@ -482,22 +482,23 @@ nav a .full-text {
     <div class="nav-spacer"></div>
     <main>
         <div class="container">
-            <h1>About Us</h1>
+            <h1>Our Story</h1>
             <div class="about-content">
                 <section class="about-section">
-                    <h2>Our Story</h2>
-                    <p>Like most Kurds in the diaspora, I come from a family that's moved around a lot. My parents fled Iraqi-Kurdistan during Saddam's Anfal campaign and landed in Norway as asylum seekers. I spent my childhood moving from one country to another (often across continents), never quite settling anywhere.</p>
+                    <p><b>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</b></p>
                     
-                    <p>As I grew older and began reading more deeply, I searched for novels that reflected my identity, but they were hard to find. Impossible, actually. I had to wait until 2016 to read the first Kurdish novel available in English, Bakhtiyar Ali's <i>I Stared at the Night of the City</i>, masterfully translated by Kareem Abdulrahman.</p>
+                    <br>
+
+                    <p>Like many Kurds in the diaspora, my life has been shaped by displacement and exile. My parents fled Iraqi Kurdistan during Saddam Hussein's Anfal campaign, seeking asylum in Norway. I spent my childhood moving between continents, never truly finding a permanent home.</p>
+                    
+                    <p>As I grew older and began reading more deeply, I searched for novels that reflected my identity, but they were hard to find. I had to wait until 2016 to read the first Kurdish novel available in English, Bakhtiyar Ali's <i>I Stared at the Night of the City</i>, translated by Kareem Abdulrahman.</p>
                     
                     <p>Reading about Sulaymaniyah was a profoundly moving experience. Great fiction has the ability to change your life, and this book did exactly that.</p>
                     
-                    <p>I immersed myself in all the Kurdish literature I could find. Jalal Barzanji's <i>The Man in Blue Pyjamas</i>, Choman Hardi's <i>Life for Us</i>, Ava Homa's <i>Daughters of Smoke and Fire</i>, among many more incredible works.</p>
+                    <p>I read all the Kurdish literature I could find. Jalal Barzanji's <i>The Man in Blue Pyjamas</i>, Choman Hardi's <i>Life for Us</i>, Ava Homa's <i>Daughters of Smoke and Fire</i>, among many more incredible works. But my excitement was short-lived. Within months, I had exhausted the entire catalog of Kurdish literature available in English.</p>
                     
-                    <p>But after finishing those books, I was left with nothing. I'd read everything I could find in a matter of months. It was frustrating knowing that there were more great Kurdish writers out there. So, my wife and I decided to start Henar Press.</p>
-                    
-                    <p>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</p>
-                </section>
+<p>Driven by our passion to share the rich literary heritage of Kurdistan with the world, my wife and I founded Henar Press. Our mission is to bring Kurdish literature to a global audience, giving voice to the stories and experiences that have shaped our community.</p>
+                           </section>
 
                 <section class="about-section">
                     <h2>What does Henar mean?</h2>
@@ -506,12 +507,12 @@ nav a .full-text {
 
                 <section class="about-section">
                     <h2>Who are the Kurds?</h2>
-                    <p>The Kurds are an indigenous people spanning Turkey, Iraq, Iran, and Syria. For centuries, we've faced persecution and colonization, from the Ottoman Empire's forced assimilation to the Ba'athist ethnic cleansing in Iraq. Despite efforts to erase our identity, we've maintained a strong determination to preserve our languages, traditions, and culture.</p>
+                    <p>The Kurds are an indigenous people spanning Turkey, Iraq, Iran, and Syria. For centuries, we've faced genocide and colonization, from the Ottoman Empire's forced assimilation to the Ba'athist ethnic cleansing in Iraq. Despite efforts to erase our identity, we've maintained a strong determination to preserve our languages, traditions, and culture.</p>
                 </section>
 
                 <section class="about-section">
                     <h2>What do you mean by <i>Against Forgetting, We Write</i>?</h2>
-                    <p>We write to remember, to resist, and to reclaim our stories. Our words honor the memories of Halabja, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their work.</p>
+                    <p>We write to remember, to resist, and to reclaim our stories. Our words honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their work.</p>
                 </section>
 
                 <section class="about-section">
@@ -588,11 +589,9 @@ function handleScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-        // Scrolling down
         header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
         nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
     } else {
-        // Scrolling up or at the top
         header.style.transform = 'translateY(0)';
         nav.style.transform = 'translateY(0)';
     }
