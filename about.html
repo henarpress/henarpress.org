@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Henar Press</title>
-    <meta name="description" content="Learn about Henar Press, our mission, and our dedication to Kurdish literature and culture.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -23,8 +19,30 @@
             padding: 0;
         }
 
+        @font-face {
+  font-family: 'Recoleta';
+  src: url('/fonts/Recoleta-Alt-Medium.woff2') format('woff2'),
+       url('/fonts/Recoleta-Alt-Medium.woff') format('woff'),
+       url('/fonts/Recoleta-Alt-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova ExCn';
+  src: url('/fonts/Fontspring-proximanovaexcn-regular.woff2') format('woff2'),
+       url('/fonts/Fontspring-proximanovaexcn-regular.woff') format('woff'),
+       url('/fonts/Fontspring-proximanovaexcn-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Proxima Nova ExCn', sans-serif;
+            font-weight: normal;
             color: var(--text-color);
             line-height: 1.6;
             background-color: var(--secondary-color);
@@ -64,7 +82,7 @@
         }
 
         .logo-text {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Recoleta', serif;
             font-size: 32px;
             font-weight: 700;
             text-decoration: none;
@@ -171,7 +189,7 @@
         }
 
         h1 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Recoleta', serif;
             font-size: 56px;
             margin-bottom: 20px;
             color: var(--primary-color);
@@ -200,7 +218,7 @@
         }
 
         .about-section h2 {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Recoleta', serif;
             font-size: 28px;
             color: var(--primary-color);
             margin-bottom: 15px;
@@ -251,7 +269,7 @@
 
         .footer-slogan h2 {
             font-size: 62px;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Recoleta', serif;
             font-style: italic;
             color: var(--secondary-color);
             text-align: right;
