@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Henar Press</title>
-    <meta name="description" content="Learn about Henar Press, our mission, and our dedication to Kurdish literature and culture.">
+    <title>Henar Press - Kurdish Literature & Culture</title>
+    <meta name="description" content="Henar Press is a nonprofit indie publisher passionate about bringing Kurdish literature to a global audience. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
@@ -67,35 +71,39 @@
             line-height: 1.8;
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        .team-member {
-            text-align: center;
-        }
-        
-        .team-member img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        
-        .team-member h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .team-member p {
-            font-size: 16px;
-            font-style: italic;
-        }
+.our-team {
+    padding: 80px 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.team-member h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 16px;
+    font-style: italic;
+}
 
         .quote {
             font-family: 'Cormorant Garamond', serif;
@@ -158,6 +166,16 @@
             background-color: var(--secondary-color);
             color: var(--accent-color);
         }
+        
+        a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    text-decoration: underline;
+}
 
         nav {
             background-color: var(--secondary-color);
@@ -476,31 +494,32 @@ nav a .full-text {
 <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
 
 <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="author-placeholder.png" alt="Placeholder 1">
+                <h3>Forthcoming</h3>
+                <p>Founder & Publisher</p>
             </div>
-                   <h2>Our Team</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 1">
-                        <h3>Forthcoming</h3>
-                        <p>Founder & Publisher</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 2">
-                        <h3>Forthcoming</h3>
-                        <p>Forthcoming</p>
-                    </div>
-                    <div class="team-member"
-                        <img src="/api/placeholder/200/200" alt="Placeholder 3">
-                        <h3>Forthcoming</h3>
-                        <p>Forthcoming</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 4">
-                        <h3>Forthcoming</h3>
-                        <p>Forthcoming</p>
-                    </div>
-                </div>
+            <div class="team-member">
+                <img src="author-placeholder.png" alt="Placeholder 2">
+                <h3>Forthcoming</h3>
+                <p>Forthcoming</p>
+            </div>
+            <div class="team-member">
+                <img src="author-placeholder.png" alt="Placeholder 3">
+                <h3>Forthcoming</h3>
+                <p>Forthcoming</p>
+            </div>
+            <div class="team-member">
+                <img src="author-placeholder.png" alt="Placeholder 4">
+                <h3>Forthcoming</h3>
+                <p>Forthcoming</p>
+            </div>
         </div>
+    </div>
+</section>
+
     </main>
     <footer>
         <div class="container">
