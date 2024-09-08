@@ -55,7 +55,7 @@
      .logo-image {
     height: 100%;
     width: auto;
-    max-height: 70px;
+    max-height: 60px;
 }
 
 .logo-container {
@@ -191,83 +191,131 @@
             text-decoration: underline;
         }
 
-   footer {
-    background-color: var(--primary-color);
-    padding: 40px 0;
-    color: var(--secondary-color);
-}
+        footer {
+            background-color: var(--primary-color);
+            padding: 20px 0 30px;
+            color: var(--secondary-color);
+        }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-.footer-left {
-    flex: 1;
-    padding-right: 40px;
-}
+        .footer-logo-slogan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
 
-.footer-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
+        .footer-logo img {
+            width: 120px;
+            height: auto;
+        }
 
-.footer-logo-slogan {
-    margin-bottom: 20px;
-}
+        .footer-slogan h2 {
+            font-size: 62px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--secondary-color);
+            text-align: right;
+            margin-top: 0;
+        }
 
-.footer-logo img {
-    width: 120px;
-    height: auto;
-}
+        .footer-newsletter, .footer-links, .footer-social {
+            margin-top: 20px;
+        }
 
-.footer-slogan h2 {
-    font-size: 32px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--secondary-color);
-    margin-top: 10px;
-}
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.footer-newsletter p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
+        .footer-links a {
+            margin: 5px 10px;
+            font-size: 14px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
 
-.footer-newsletter form {
-    display: flex;
-}
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -3px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
 
-.footer-newsletter input[type="email"] {
-    padding: 12px;
-    width: 250px;
-    border: none;
-    border-radius: 30px 0 0 30px;
-    font-size: 14px;
-}
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
 
-.footer-newsletter button {
-    padding: 12px 24px;
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    border: none;
-    border-radius: 0 30px 30px 0;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: var(--transition);
-}
+        .footer-social {
+            text-align: center;
+        }
 
-.footer-newsletter button:hover {
-    background-color: var(--secondary-color);
-    color: var(--accent-color);
-}
+        .footer-social a {
+            display: inline-block;
+            margin: 0 15px;
+        }
 
-.footer-links {
-    display: flex;
-    flex-direction: column;
+        .footer-social img {
+            width: 42px;
+            height: 42px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
+        }
+
+        .footer-newsletter p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-newsletter input[type="email"] {
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 14px;
+        }
+
+        .footer-newsletter button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
         .copyright {
             text-align: center;
             margin-top: 20px;
@@ -446,48 +494,38 @@ nav a .full-text {
             </div>
         </div>
     </main>
- <footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo-slogan">
-                    <div class="footer-logo">
-                        <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
-                    </div>
-                    <div class="footer-slogan">
-                        <h2>Illuminating Kurdish Literature</h2>
-                    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-logo-slogan">
+                <div class="footer-logo">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo">
                 </div>
-                <div class="footer-newsletter">
-                    <p>Subscribe to our newsletter</p>
-                    <form>
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
+                <div class="footer-slogan">
+                    <h2>Against Forgetting, We Write</h2>
                 </div>
             </div>
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="#">Home</a>
-                    <a href="#">Books</a>
-                    <a href="#">Authors</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-                <div class="footer-social">
-                    <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-                    <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                </div>
+            
+<div class="email-octopus-form-wrapper">
+<script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+</div>      
+            <div class="footer-links">
+                <a href="books">Books</a>
+                <a href="authors">Authors</a>
+                <a href="about">About</a>
+                <a href="contact">Contact</a>
+<a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
+    <a href="privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2023 Henar Press. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 <script>
 const header = document.querySelector('header');
 const nav = document.querySelector('nav');
