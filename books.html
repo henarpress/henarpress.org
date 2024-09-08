@@ -409,42 +409,42 @@
             </div>
         </div>
     </footer>
-    <script>
-        const header = document.querySelector('header');
-        const nav = document.querySelector('nav');
-        const headerHeight = header.offsetHeight;
-        const navHeight = nav.offsetHeight;
+<script>
+const header = document.querySelector('header');
+const nav = document.querySelector('nav');
+const headerHeight = header.offsetHeight;
+const navHeight = nav.offsetHeight;
 
-        let lastScrollTop = 0;
-        let ticking = false;
+let lastScrollTop = 0;
+let ticking = false;
 
-        function handleScroll() {
-            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-                header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
-                nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
-            } else {
-                header.style.transform = 'translateY(0)';
-                nav.style.transform = 'translateY(0)';
-            }
+function handleScroll() {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
+        header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
+        nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
+    } else {
+        header.style.transform = 'translateY(0)';
+        nav.style.transform = 'translateY(0)';
+    }
 
-            lastScrollTop = currentScrollTop;
-            ticking = false;
-        }
+    lastScrollTop = currentScrollTop;
+    ticking = false;
+}
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(handleScroll);
-                ticking = true;
-            }
-        });
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
+});
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset === 0) {
-                header.style.transform = 'translateY(0)';
-                nav.style.transform = 'translateY(0)';
-            }
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset === 0) {
+        header.style.transform = 'translateY(0)';
+        nav.style.transform = 'translateY(0)';
+    }
 });
 </script>
 </body>
