@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Henar Press</title>
-    <meta name="description" content="Learn about Henar Press, our mission, and our dedication to Kurdish literature and culture.">
+    <title>Authors - Henar Press</title>
+    <meta name="description" content="Authors">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
@@ -48,11 +48,68 @@
             color: var(--primary-color);
         }
         
+       .authors-section {
+            padding: 80px 0;
+        }
+
+        .authors-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         h1 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
             font-size: 72px;
             font-weight: normal;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             text-align: center;
+        }
+
+        .authors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .author {
+            text-align: center;
+        }
+
+        .author-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author:hover .author-image {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .author h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+                        font-weight: normal;
+            color: var(--primary-color);
+        }
+
+        .author p {
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-color);
         }
         
         h2 {
@@ -90,6 +147,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
             margin-bottom: 10px;
+                        font-weight: normal;
         }
         
         .team-member p {
@@ -350,7 +408,37 @@ nav a .full-text {
     display: inline;
 }
 
+  @media (max-width: 992px) {
+            .authors-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
+            .authors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 52px;
+                margin-bottom: 30px;
+            }
+
+            .author-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .author h3 {
+                font-size: 20px;
+                font-weight: normal;
+            }
+
+            .author p {
+                font-size: 14px;
+            }
+            
             main {
                 padding-top: 0px;
                 padding-bottom: 30px;
@@ -415,6 +503,26 @@ nav a .full-text {
                 width: 100px;
             }
         }
+        
+         @media (max-width: 480px) {
+            .authors-grid {
+                gap: 10px;
+            }
+
+            .author-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .author h3 {
+                font-size: 18px;
+                            font-weight: normal;
+            }
+
+            .author p {
+                font-size: 12px;
+            }
+        }
                 [data-email-octopus-form-success],
 [data-email-octopus-form-error] {
     display: none;
@@ -455,29 +563,38 @@ nav a .full-text {
             </div>
         </div>
     </nav>
-    <div class="nav-spacer"></div>
-    <main class="about-section">
+    <div class="nav-spacer"></div>    
+       <main class="authors-section">
         <div class="container">
-            <div class="about-content">
-          <h1><i><span style="color: #e74c3c;">Authors</i></span></h1>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 1">
+            <div class="authors-content">
+                <h1><i><span style="color: #e74c3c;">Authors</span></i></h1>
+                <div class="authors-grid">
+                    <div class="author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/200/200" alt="Author 1">
+                        </div>
                         <h3>Forthcoming</h3>
                     </div>
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 2">
+                    <div class="author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/200/200" alt="Author 2">
+                        </div>
                         <h3>Forthcoming</h3>
                     </div>
-                    <div class="team-member"
-                        <img src="/api/placeholder/200/200" alt="Placeholder 3">
+                    <div class="author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/200/200" alt="Author 3">
+                        </div>
                         <h3>Forthcoming</h3>
                     </div>
-                    <div class="team-member">
-                        <img src="/api/placeholder/200/200" alt="Placeholder 4">
+                    <div class="author">
+                        <div class="author-image">
+                            <img src="/api/placeholder/200/200" alt="Author 4">
+                        </div>
                         <h3>Forthcoming</h3>
                     </div>
                 </div>
+            </div>
         </div>
     </main>
     <footer>
