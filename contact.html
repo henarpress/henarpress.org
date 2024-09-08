@@ -3,197 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Henar Press</title>
-    <meta name="description" content="Contact Henar Press for inquiries, manuscript submissions, and general feedback.">
+    <title>About Us - Henar Press</title>
+    <meta name="description" content="Learn about Henar Press, our mission, and our dedication to Kurdish literature and culture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-  :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #ecf0f1;
-    --accent-color: #e74c3c;
-    --text-color: #34495e;
-    --transition: all 0.3s ease;
-}
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --transition: all 0.3s ease;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: var(--secondary-color);
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-color);
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-header {
-    background-color: var(--primary-color);
-    padding: 14px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-image {
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.logo-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--secondary-color);
-    letter-spacing: 2px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-.header-social {
-    display: flex;
-    margin-right: 25px;
-    margin-left: 20px;
-}
-
-.header-social a {
-    margin-right: 20px;
-    display: inline-block;
-    transition: var(--transition);
-}
-
-.header-social a:last-child {
-    margin-right: 0;
-}
-
-.header-social a:hover {
-    transform: scale(1.1);
-}
-
-.header-social img {
-    width: 36px;
-    height: 36px;
-}
-
-.donate-button {
-    padding: 12px 24px;
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: var(--transition);
-    font-size: 16px;
-    letter-spacing: 0.5px;
-}
-
-.donate-button:hover {
-    background-color: var(--secondary-color);
-    color: var(--accent-color);
-}
-
-nav {
-    background-color: var(--secondary-color);
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.nav-content {
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-}
-
-nav a {
-    margin: 0 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 16px;
-    font-weight: 400;
-    transition: var(--transition);
-    position: relative;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 50%;
-    background-color: var(--accent-color);
-    transition: var(--transition);
-}
-
-nav a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-.nav-spacer {
-    height: 130px;
-}
-
-main {
-    padding-top: 20px;
-    padding-bottom: 60px;
-}
-
-.contact-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 56px;
-    margin-bottom: 30px;
-    color: var(--primary-color);
-    text-align: center;
-    position: relative;
-}
-
-h1::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 3px;
-    background-color: var(--accent-color);
-    margin: 15px auto;
-}
-
-.contact-info, .submission-guidelines {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    .about-section {
+            padding: 80px 0;
+        }
+        
+            .contact-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .contact-info, .submission-guidelines {
     margin-bottom: 40px;
 }
 
@@ -269,209 +140,364 @@ button[type="submit"]:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 16px;
+            font-style: italic;
+        }
 
-footer {
-    background-color: var(--primary-color);
-    padding: 40px 0;
-    color: var(--secondary-color);
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: var(--accent-color);
+        }
+  
+
+        header {
+            background-color: var(--primary-color);
+            padding: 14px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+     .logo-image {
+    height: 100%;
+    width: auto;
+    max-height: 50px;
 }
 
-.footer-content {
+.logo-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    height: 100%;
 }
 
-.footer-logo-slogan {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 30px;
-}
 
-.footer-logo img {
-    width: 120px;
-    height: auto;
-}
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
 
-.footer-slogan h2 {
-    font-size: 62px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--secondary-color);
-    text-align: right;
-    margin-top: 0;
-}
+        .donate-button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
 
-.footer-newsletter, .footer-links, .footer-social {
-    margin-top: 30px;
-}
+        .donate-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
 
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        nav {
+            background-color: var(--secondary-color);
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.footer-links a {
-    margin: 5px 15px;
-    font-size: 14px;
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: var(--transition);
-    position: relative;
-}
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
 
-.footer-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -3px;
-    left: 50%;
-    background-color: var(--accent-color);
-    transition: var(--transition);
-}
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
 
-.footer-links a:hover::after {
-    width: 100%;
-    left: 0;
-}
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
 
-.footer-social {
-    text-align: center;
-}
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
 
-.footer-social a {
-    display: inline-block;
-    margin: 0 15px;
-}
+        .nav-spacer {
+            height: 80px;
+        }
 
-.footer-social img {
-    width: 42px;
-    height: 42px;
-    transition: var(--transition);
-}
+        footer {
+            background-color: var(--primary-color);
+            padding: 20px 0 30px;
+            color: var(--secondary-color);
+        }
 
-.footer-social a:hover img {
-    transform: scale(1.1);
-}
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-.footer-newsletter p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+        .footer-logo-slogan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
 
-.footer-newsletter form {
-    display: flex;
-    justify-content: center;
-}
+        .footer-logo img {
+            width: 120px;
+            height: auto;
+        }
 
-.footer-newsletter input[type="email"] {
-    padding: 12px;
-    width: 250px;
-    border: none;
-    border-radius: 30px 0 0 30px;
-    font-size: 14px;
-}
+        .footer-slogan h2 {
+            font-size: 62px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: normal;
+            font-style: italic;
+            color: var(--secondary-color);
+            text-align: right;
+            margin-top: 0;
+        }
 
-.footer-newsletter button {
-    padding: 12px 24px;
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    border: none;
-    border-radius: 0 30px 30px 0;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: var(--transition);
-}
+        .footer-newsletter, .footer-links, .footer-social {
+            margin-top: 20px;
+        }
 
-.footer-newsletter button:hover {
-    background-color: var(--secondary-color);
-    color: var(--accent-color);
-}
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.copyright {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 12px;
-    color: var(--secondary-color);
-    opacity: 0.7;
-}
+        .footer-links a {
+            margin: 5px 10px;
+            font-size: 14px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
 
-      header, nav {
-    transition: transform 0.3s ease;
-}
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -3px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
 
-      nav a .short-text {
+        .footer-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .footer-social {
+            text-align: center;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .footer-social img {
+            width: 42px;
+            height: 42px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover img {
+            transform: scale(1.1);
+        }
+
+        .footer-newsletter p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-newsletter input[type="email"] {
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 14px;
+        }
+
+        .footer-newsletter button {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .footer-newsletter button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--secondary-color);
+            opacity: 0.7;
+        }
+          nav a .short-text {
     display: none;
+}
+
+header, nav {
+    transition: transform 0.3s ease;
 }
 
 nav a .full-text {
     display: inline;
 }
 
-@media (max-width: 768px) {
-    .header-social {
-        display: none !important;
-    }
+        @media (max-width: 768px) {
+            main {
+                padding-top: 0px;
+                padding-bottom: 30px;
+            }
 
-    nav a .short-text {
+              nav a .short-text {
         display: inline;
+    }
+    
+    .nav-spacer {
+    height: 60px;
     }
     
     nav a .full-text {
         display: none;
     }
-    .logo-text {
-        font-size: 24px;
-    }
-    nav {
-        top: 70px;
-    }
-    .nav-content {
-        flex-wrap: wrap;
-    }
-    nav a {
-        margin: 5px 10px;
-        font-size: 14px;
-    }
-    h1 {
-        font-size: 36px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .submission-guidelines h2 {
-        font-size: 24px;
-    }
-    #contact-form {
-        padding: 30px;
-    }
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-logo-slogan {
-        flex-direction: column;
-        align-items: center;
-    }
-    .footer-logo {
-        margin-bottom: 20px;
-    }
-    .footer-slogan h2 {
-        font-size: 42px;
-        text-align: center;
-        margin: 0;
-    }
-    .footer-logo img {
-        width: 100px;
-    }
-}
-              [data-email-octopus-form-success],
+            .header-social {
+                display: none !important;
+            }
+
+            nav {
+                top: 70px;
+            }
+            .nav-content {
+                flex-wrap: wrap;
+            }
+            nav a {
+                margin: 5px 10px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 52px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 10px;
+            }
+            h1::after {
+                margin: 8px auto;
+            }
+            .about-section h2 {
+                font-size: 24px;
+            }
+             .contact-section h2 {
+                font-size: 24px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-logo-slogan {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-logo {
+                margin-bottom: 10px;
+            }
+            .footer-slogan h2 {
+                font-size: 42px;
+                text-align: center;
+                padding-top: 0px;
+                padding-bottom: 10px;
+                margin: 0;
+            }
+            .footer-logo img {
+                width: 100px;
+            }
+        }
+                [data-email-octopus-form-success],
 [data-email-octopus-form-error] {
     display: none;
 }
@@ -484,23 +510,15 @@ nav a .full-text {
     width: 100%;
     margin-bottom: 0;
 }
-
-</style>
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                    <a href="https://henarpress.org" class="logo-text">Henar Press</a>
+                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo-image">
                 </div>
-                <div class="header-right">
-                    <div class="header-social">
-                        <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-                    </div>
                     <a href="#" class="donate-button">Donate</a>
                 </div>
             </div>
@@ -511,21 +529,19 @@ nav a .full-text {
             <div class="nav-content">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                           <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
+          <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
                 <span class="full-text">Kurdish Literature Directory</span>
                 <span class="short-text">KLD</span></a>
             </div>
         </div>
     </nav>
     <div class="nav-spacer"></div>
-  <main>
+    <main class="contact-section">
+        <div class="container">
     <div class="container">
-        <h1>Contact Us</h1>
-        
+                  <h1><i><span style="color: #e74c3c;">Contact</i></span></h1>
         <div class="contact-content">
             <div class="contact-info">
                 <p>We welcome your inquiries, manuscript submissions, and general feedback. Henar Press is interested in publishing a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, narrative journalism, chapbooks, and hybrid forms. If your manuscript is not in English, please contact us directly using the form and we will reach out to you with more information.</p>
@@ -566,12 +582,11 @@ nav a .full-text {
     </div>
     <button type="submit">Send Message</button>
 </form>
-
-
         </div>
     </div>
-</main>
-  <footer>
+        </div>
+    </main>
+    <footer>
         <div class="container">
             <div class="footer-logo-slogan">
                 <div class="footer-logo">
@@ -581,18 +596,17 @@ nav a .full-text {
                     <h2>Against Forgetting, We Write</h2>
                 </div>
             </div>
+            
 <div class="email-octopus-form-wrapper">
 <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-</div>
+</div>      
             <div class="footer-links">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
-                <a href="privacy-policy">Privacy Policy</a>
+<a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
+    <a href="privacy-policy">Privacy Policy</a>
             </div>
             <div class="footer-social">
                 <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
@@ -617,11 +631,9 @@ function handleScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-        // Scrolling down
         header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
         nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
     } else {
-        // Scrolling up or at the top
         header.style.transform = 'translateY(0)';
         nav.style.transform = 'translateY(0)';
     }
