@@ -27,7 +27,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            background-color: var(--secondary-color);
+            background-color: var(--background-color);
         }
 
         .container {
@@ -35,6 +35,77 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+    .about-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: var(--accent-color);
+        }
+  
 
         header {
             background-color: var(--primary-color);
@@ -131,64 +202,6 @@
 
         .nav-spacer {
             height: 130px;
-        }
-
-        main {
-            padding-top: 20px;
-            padding-bottom: 60px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .about-section {
-            margin-bottom: 40px;
-        }
-
-        .about-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-
-        .about-section p {
-            margin-bottom: 15px;
-        }
-
-        .about-section a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .about-section a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
         }
 
         footer {
@@ -437,60 +450,61 @@ nav a .full-text {
         </div>
     </nav>
     <div class="nav-spacer"></div>
-    <main>
+    <main class="about-section">
         <div class="container">
-            <h1>Our Story</h1>
             <div class="about-content">
-                <section class="about-section">
-                    <p><b>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</b></p>
-                    <br>
-                    <p>Like many Kurds in the diaspora, my life has been shaped by displacement and exile. My parents fled Iraqi Kurdistan during Saddam Hussein's Anfal genocide, seeking asylum in Norway. I spent my childhood moving between continents, never truly finding a permanent home.</p>
-                    <p>As I grew older and began reading more deeply, I searched for novels that reflected my identity, but they were hard to find. I had to wait until 2016 to read the first Kurdish novel available in English, Bakhtiyar Ali's <i>I Stared at the Night of the City</i>, translated by Kareem Abdulrahman.</p>
-                    <p>Reading about Sulaymaniyah was a profoundly moving experience. Great fiction has the ability to change your life, and this book did exactly that.</p>
-                    <p>I sought out all the Kurdish literature available in English. Jalal Barzanji's <i>The Man in Blue Pyjamas</i>, Ava Homa's <i>Daughters of Smoke and Fire</i>, Choman Hardi's <i>Considering the Women</i>, among other incredible books. However, I quickly realized how limited the selection was. In just a few months, I had read through the entire available catalog.</p>
-                    <p>It was clear that the genocide and exile we experienced left a lasting void in Kurdistan's literary tradition. So, my wife and I founded Henar Press. It is, in our own small way, a rebellion against genocide’s attempts of erasure.</p>
-                    <p>We believe in the power of literature, especially in the face of ongoing ethnic cleansing. By translating and promoting Kurdish voices for a global audience, we aim to keep our language and culture alive. We're excited to share the stories and experiences that have shaped our community.</p>
-                           </section>
+                <h1>About Henar Press</h1>
+                
+                <p>Henar Press is a nonprofit independent publisher dedicated to bringing the rich tapestry of Kurdish literature to a global audience. Founded in 2022, we are passionate about translating and publishing novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.</p>
+                
+                <p>Our name, "Henar," means pomegranate in Kurdish, symbolizing the sweet, tangy, and sometimes bitter stories we aim to share with the world. Like the many seeds within a pomegranate, Kurdish literature contains multitudes, and we are committed to nurturing and spreading these seeds of culture far and wide.</p>
 
-                <section class="about-section">
-                    <h2>What does Henar mean?</h2>
-                    <p>Henar is the Kurdish word for pomegranate. It's the national symbol of Kurdistan and has been a recurring motif in Kurdish literature since Mem û Zîn. We were personally drawn to the pomegranate tree's ability to flourish in the harshest conditions.</p>
-                </section>
+                <div class="quote">
+                    "Against Forgetting, We Write"
+                </div>
 
-                <section class="about-section">
-                    <h2>Who are the Kurds?</h2>
-                    <p>The Kurds are an indigenous people spanning Turkey, Iraq, Iran, and Syria. For centuries, we've faced genocide and colonization, from the Ottoman Empire's forced assimilation to the Ba'athist ethnic cleansing in Iraq. Despite efforts to erase our identity, we've maintained a strong determination to preserve our languages, traditions, and culture.</p>
-                </section>
+                <h2>Our Mission</h2>
+                
+                <p>At Henar Press, we believe in the power of literature to bridge cultures, foster understanding, and preserve heritage. Our mission is threefold:</p>
+                
+                <ol>
+                    <li>To introduce English-speaking readers to the wealth of Kurdish literature, both classic and contemporary.</li>
+                    <li>To support Kurdish authors and translators, providing a platform for their voices to be heard.</li>
+                    <li>To contribute to the preservation and promotion of Kurdish language and culture through the written word.</li>
+                </ol>
 
-                <section class="about-section">
-                    <h2>What does <i>Against Forgetting, We Write</i> mean?</h2>
-                    <p>We write to remember, to resist, and to reclaim our stories. Our words honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their words.</p>
-                </section>
+                <h2>Our Team</h2>
+                
+                <p>Henar Press is powered by a small but dedicated team of literary enthusiasts, translators, and cultural ambassadors. Each member brings a unique perspective and set of skills to our mission:</p>
 
-                <section class="about-section">
-                    <h2>Do all Kurds speak the same language?</h2>
-                    <p>While Kurdish is often referred to as a single language with multiple dialects, it's more accurately a family of distinct languages. For example, a Sorani speaker wouldn't understand Kurmanji, and vice versa.</p>
-                </section>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder for Soran Ismail">
+                        <h3>Soran Ismail</h3>
+                        <p>Founder & Publisher</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder for Leyla Zana">
+                        <h3>Leyla Zana</h3>
+                        <p>Senior Editor</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder for Choman Hardi">
+                        <h3>Choman Hardi</h3>
+                        <p>Lead Translator</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder for Narin Ahmed">
+                        <h3>Narin Ahmed</h3>
+                        <p>Art Director</p>
+                    </div>
+                </div>
 
-                <section class="about-section">
-                    <h2>I'm a Kurdish writer. Where can I submit my work?</h2>
-                    <p>We're excited to read your work! Visit our <a href="contact">contact page</a> to learn about our submission process. We welcome prose and poetry in any language.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>I'm interested in reading more Kurdish literature.</h2>
-                    <p>We're building a comprehensive directory of Kurdish literature available in English. You can view the current list at the <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory page</a>. It's a work in progress, so if you know of any Kurdish literature in English that's not on the list, please leave a comment on the page.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>How can I support Henar Press and its mission?</h2>
-<p>As a nonprofit, we rely on reader and donor support. You can help by buying our books, requesting them at libraries or bookstores, or making a tax-deductible donation through our <a href="https://www.givelively.org/donate/henar-press" target="_blank">Give Lively page</a> (we're still in the process of setting up our donation page). If you have skills that could benefit our small team, reach out via our <a href="contact">contact page</a> for volunteer opportunities.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>How can I stay updated on news from Henar Press?</h2>
-                    <p>Sign up for our quarterly newsletter and follow our social media accounts to stay connected!</p>
-                </section>
+                <h2>Our Commitment</h2>
+                
+                <p>We are committed to ethical publishing practices, fair compensation for authors and translators, and the highest standards of literary quality. Henar Press operates as a nonprofit organization, reinvesting all proceeds into our mission of promoting Kurdish literature and supporting Kurdish writers.</p>
+                
+                <p>As we continue to grow, we invite readers, writers, and literature enthusiasts from around the world to join us in this journey of cultural exchange and literary discovery. Together, we can ensure that the rich traditions and contemporary voices of Kurdish literature find their rightful place on the global stage.</p>
             </div>
         </div>
     </main>
