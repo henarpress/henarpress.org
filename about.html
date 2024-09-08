@@ -27,7 +27,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            background-color: var(--secondary-color);
+            background-color: var(--background-color);
         }
 
         .container {
@@ -35,6 +35,77 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+    .about-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 72px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: var(--accent-color);
+        }
+  
 
         header {
             background-color: var(--primary-color);
@@ -52,54 +123,22 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+     .logo-image {
+    height: 100%;
+    width: auto;
+    max-height: 50px;
+}
 
-        .logo-image {
-            width: 40px;
-            height: auto;
-            margin-right: 10px;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--secondary-color);
-            letter-spacing: 2px;
-        }
 
         .header-right {
             display: flex;
             align-items: center;
-        }
-
-        .header-social {
-            display: flex;
-            margin-right: 25px;
-            margin-left: 20px;
-        }
-
-        .header-social a {
-            margin-right: 20px;
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .header-social a:last-child {
-            margin-right: 0;
-        }
-
-        .header-social a:hover {
-            transform: scale(1.1);
-        }
-
-        .header-social img {
-            width: 36px;
-            height: 36px;
         }
 
         .donate-button {
@@ -162,65 +201,7 @@
         }
 
         .nav-spacer {
-            height: 130px;
-        }
-
-        main {
-            padding-top: 20px;
-            padding-bottom: 60px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .about-section {
-            margin-bottom: 40px;
-        }
-
-        .about-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-
-        .about-section p {
-            margin-bottom: 15px;
-        }
-
-        .about-section a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .about-section a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            height: 80px;
         }
 
         footer {
@@ -369,12 +350,16 @@ nav a .full-text {
 
         @media (max-width: 768px) {
             main {
-                padding-top: 10px;
+                padding-top: 0px;
                 padding-bottom: 30px;
             }
 
               nav a .short-text {
         display: inline;
+    }
+    
+    .nav-spacer {
+    height: 60px;
     }
     
     nav a .full-text {
@@ -383,9 +368,7 @@ nav a .full-text {
             .header-social {
                 display: none !important;
             }
-            .logo-text {
-                font-size: 24px;
-            }
+
             nav {
                 top: 70px;
             }
@@ -397,10 +380,10 @@ nav a .full-text {
                 font-size: 14px;
             }
             h1 {
-                font-size: 28px;
+                font-size: 52px;
                 margin-top: 10px;
                 margin-bottom: 10px;
-                padding-top: 20px;
+                padding-top: 10px;
             }
             h1::after {
                 margin: 8px auto;
@@ -450,15 +433,8 @@ nav a .full-text {
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                    <a href="https://henarpress.org" class="logo-text">Henar Press</a>
+                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo-image">
                 </div>
-                <div class="header-right">
-                    <div class="header-social">
-                        <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-                    </div>
                     <a href="#" class="donate-button">Donate</a>
                 </div>
             </div>
@@ -469,10 +445,8 @@ nav a .full-text {
             <div class="nav-content">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
           <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
                 <span class="full-text">Kurdish Literature Directory</span>
                 <span class="short-text">KLD</span></a>
@@ -480,60 +454,52 @@ nav a .full-text {
         </div>
     </nav>
     <div class="nav-spacer"></div>
-    <main>
+    <main class="about-section">
         <div class="container">
-            <h1>Our Story</h1>
             <div class="about-content">
-                <section class="about-section">
-                    <p><b>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</b></p>
-                    <br>
-                    <p>Like many Kurds in the diaspora, my life has been shaped by displacement and exile. My parents fled Iraqi Kurdistan during Saddam Hussein's Anfal genocide, seeking asylum in Norway. I spent my childhood moving between continents, never truly finding a permanent home.</p>
+          <h1><i><span style="color: #e74c3c;">Henar Press</i></span></h1>
+                                <p><b>We're a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing the best of Kurdish literature. We're excited to share with English readers what we believe is one of the literary world's best kept secrets.</b></p>
+                    <p>Like many Kurds in the diaspora, my life has been shaped by displacement and exile. My parents fled Iraqi Kurdistan during Saddam Hussein's Anfal genocide, seeking asylum in Sweden. I spent my childhood moving between continents, never truly finding a permanent home.</p>
                     <p>As I grew older and began reading more deeply, I searched for novels that reflected my identity, but they were hard to find. I had to wait until 2016 to read the first Kurdish novel available in English, Bakhtiyar Ali's <i>I Stared at the Night of the City</i>, translated by Kareem Abdulrahman.</p>
                     <p>Reading about Sulaymaniyah was a profoundly moving experience. Great fiction has the ability to change your life, and this book did exactly that.</p>
-                    <p>I sought out all the Kurdish literature available in English. Jalal Barzanji's <i>The Man in Blue Pyjamas</i>, Ava Homa's <i>Daughters of Smoke and Fire</i>, Choman Hardi's <i>Considering the Women</i>, among other incredible books. However, I quickly realized how limited the selection was. In just a few months, I had read through the entire available catalog.</p>
-                    <p>It was clear that the genocide and exile we experienced left a lasting void in Kurdistan's literary tradition. So, my wife and I founded Henar Press. It is, in our own small way, a rebellion against genocide’s attempts of erasure.</p>
-                    <p>We believe in the power of literature, especially in the face of ongoing ethnic cleansing. By translating and promoting Kurdish voices for a global audience, we aim to keep our language and culture alive. We're excited to share the stories and experiences that have shaped our community.</p>
-                           </section>
+                    <p>I tried to read as much Kurdish literature as I could find in English. Jalal Barzanji's <i>The Man in Blue Pyjamas</i>, Ava Homa's <i>Daughters of Smoke and Fire</i>, Choman Hardi's <i>Considering the Women</i>, among other incredible books. However, I quickly realized how limited the selection was. In a few months, I had read through the entire available catalog.</p>
+                    <p>The genocide and exile that devastated our community have left a lasting void in Kurdistan's literary tradition. Henar Press is, in our own small way, a rebellion against the erasure of our history and culture.</p>
+                    <p>We believe in the power of literature, especially in the face of ongoing ethnic cleansing. We write to remember, to resist, and to reclaim our stories. Our words honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their courage to write.</p>
+                <div class="quote">
+                    Against Forgetting, We Write
+                </div>
 
-                <section class="about-section">
-                    <h2>What does Henar mean?</h2>
-                    <p>Henar is the Kurdish word for pomegranate. It's the national symbol of Kurdistan and has been a recurring motif in Kurdish literature since Mem û Zîn. We were personally drawn to the pomegranate tree's ability to flourish in the harshest conditions.</p>
-                </section>
+                <h2>Our Team</h2>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder 1">
+                        <h3>Forthcoming</h3>
+                        <p>Founder & Publisher</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder 2">
+                        <h3>Forthcoming</h3>
+                        <p>Forthcoming</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder 3">
+                        <h3>Forthcoming</h3>
+                        <p>Forthcoming</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/200/200" alt="Placeholder 4">
+                        <h3>Forthcoming</h3>
+                        <p>Forthcoming</p>
+                    </div>
+                </div>
 
-                <section class="about-section">
-                    <h2>Who are the Kurds?</h2>
-                    <p>The Kurds are an indigenous people spanning Turkey, Iraq, Iran, and Syria. For centuries, we've faced genocide and colonization, from the Ottoman Empire's forced assimilation to the Ba'athist ethnic cleansing in Iraq. Despite efforts to erase our identity, we've maintained a strong determination to preserve our languages, traditions, and culture.</p>
-                </section>
+                <h2>Contribute</h2>
+<p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience. To make a tax-deductible donation, please visit our <a href="#" target="_blank">Give Lively page</a>.</p>
 
-                <section class="about-section">
-                    <h2>What does <i>Against Forgetting, We Write</i> mean?</h2>
-                    <p>We write to remember, to resist, and to reclaim our stories. Our words honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurdish writers imprisoned and killed for their words.</p>
-                </section>
+<p>There are also other ways to support us. You can buy our books, request them at libraries or bookstores. If you're interested in volunteering, please <a href="contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
 
-                <section class="about-section">
-                    <h2>Do all Kurds speak the same language?</h2>
-                    <p>While Kurdish is often referred to as a single language with multiple dialects, it's more accurately a family of distinct languages. For example, a Sorani speaker wouldn't understand Kurmanji, and vice versa.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>I'm a Kurdish writer. Where can I submit my work?</h2>
-                    <p>We're excited to read your work! Visit our <a href="contact">contact page</a> to learn about our submission process. We welcome prose and poetry in any language.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>I'm interested in reading more Kurdish literature.</h2>
-                    <p>We're building a comprehensive directory of Kurdish literature available in English. You can view the current list at the <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory page</a>. It's a work in progress, so if you know of any Kurdish literature in English that's not on the list, please leave a comment on the page.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>How can I support Henar Press and its mission?</h2>
-<p>As a nonprofit, we rely on reader and donor support. You can help by buying our books, requesting them at libraries or bookstores, or making a tax-deductible donation through our <a href="https://www.givelively.org/donate/henar-press" target="_blank">Give Lively page</a> (we're still in the process of setting up our donation page). If you have skills that could benefit our small team, check out our <a href="contribute">contribute page</a> for volunteer opportunities.</p>
-                </section>
-
-                <section class="about-section">
-                    <h2>How can I stay updated on news from Henar Press?</h2>
-                    <p>Sign up for our quarterly newsletter and follow our social media accounts to stay connected!</p>
-                </section>
+<p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">Kurdish literature available in English</a>.</p>
             </div>
         </div>
     </main>
@@ -554,10 +520,8 @@ nav a .full-text {
             <div class="footer-links">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
 <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
     <a href="privacy-policy">Privacy Policy</a>
             </div>
