@@ -27,7 +27,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            background-color: var(--secondary-color);
+            background-color: var(--background-color);
         }
 
         .container {
@@ -35,6 +35,157 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+    .about-section {
+            padding: 80px 0;
+        }
+        
+            .contact-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .contact-info, .submission-guidelines {
+    margin-bottom: 40px;
+}
+
+.submission-guidelines h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.submission-guidelines ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+#contact-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: var(--accent-color);
+        }
+  
 
         header {
             background-color: var(--primary-color);
@@ -52,54 +203,22 @@
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+     .logo-image {
+    height: 100%;
+    width: auto;
+    max-height: 50px;
+}
 
-        .logo-image {
-            width: 40px;
-            height: auto;
-            margin-right: 10px;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--secondary-color);
-            letter-spacing: 2px;
-        }
 
         .header-right {
             display: flex;
             align-items: center;
-        }
-
-        .header-social {
-            display: flex;
-            margin-right: 25px;
-            margin-left: 20px;
-        }
-
-        .header-social a {
-            margin-right: 20px;
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .header-social a:last-child {
-            margin-right: 0;
-        }
-
-        .header-social a:hover {
-            transform: scale(1.1);
-        }
-
-        .header-social img {
-            width: 36px;
-            height: 36px;
         }
 
         .donate-button {
@@ -162,65 +281,7 @@
         }
 
         .nav-spacer {
-            height: 130px;
-        }
-
-        main {
-            padding-top: 20px;
-            padding-bottom: 60px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .about-section {
-            margin-bottom: 40px;
-        }
-
-        .about-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-
-        .about-section p {
-            margin-bottom: 15px;
-        }
-
-        .about-section a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .about-section a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
+            height: 80px;
         }
 
         footer {
@@ -252,6 +313,7 @@
         .footer-slogan h2 {
             font-size: 62px;
             font-family: 'Cormorant Garamond', serif;
+            font-weight: normal;
             font-style: italic;
             color: var(--secondary-color);
             text-align: right;
@@ -355,27 +417,30 @@
             color: var(--secondary-color);
             opacity: 0.7;
         }
-
-        nav a .short-text {
+          nav a .short-text {
     display: none;
 }
 
-        header, nav {
+header, nav {
     transition: transform 0.3s ease;
 }
-        
+
 nav a .full-text {
     display: inline;
 }
 
         @media (max-width: 768px) {
             main {
-                padding-top: 10px;
+                padding-top: 0px;
                 padding-bottom: 30px;
             }
 
-            nav a .short-text {
+              nav a .short-text {
         display: inline;
+    }
+    
+    .nav-spacer {
+    height: 60px;
     }
     
     nav a .full-text {
@@ -384,9 +449,7 @@ nav a .full-text {
             .header-social {
                 display: none !important;
             }
-            .logo-text {
-                font-size: 24px;
-            }
+
             nav {
                 top: 70px;
             }
@@ -398,15 +461,18 @@ nav a .full-text {
                 font-size: 14px;
             }
             h1 {
-                font-size: 28px;
+                font-size: 52px;
                 margin-top: 10px;
                 margin-bottom: 10px;
-                padding-top: 20px;
+                padding-top: 10px;
             }
             h1::after {
                 margin: 8px auto;
             }
             .about-section h2 {
+                font-size: 24px;
+            }
+             .contact-section h2 {
                 font-size: 24px;
             }
             .footer-content {
@@ -451,15 +517,8 @@ nav a .full-text {
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                    <a href="https://henarpress.org" class="logo-text">Henar Press</a>
+                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo-image">
                 </div>
-                <div class="header-right">
-                    <div class="header-social">
-                        <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-                    </div>
                     <a href="#" class="donate-button">Donate</a>
                 </div>
             </div>
@@ -470,37 +529,39 @@ nav a .full-text {
             <div class="nav-content">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
+          <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
                 <span class="full-text">Kurdish Literature Directory</span>
                 <span class="short-text">KLD</span></a>
             </div>
         </div>
     </nav>
     <div class="nav-spacer"></div>
-    <main>
+    <main class="contact-section">
         <div class="container">
-            <h1>Privacy Policy</h1>
-            <p class="privacy-policy"><br>Henar Press is a nonprofit independent publishing press committed to protecting the privacy of our website visitors, newsletter subscribers, and manuscript submitters. This privacy policy explains how we collect, use, and protect your personal data.</br>
- 
-<br>We collect personal data through our website in a few ways. When you subscribe to our newsletter, we collect your email address, which we use to send you updates about our books, events, and other news related to Henar Press. We use Email Octopus to manage our newsletter subscriptions, and you can opt out of receiving our newsletter at any time by clicking the unsubscribe link in the footer of our emails. When you submit a manuscript, we collect your email address and name, which we use to review and respond to your submission.</br>
- 
+    <div class="container">
+                  <h1><i><span style="color: #e74c3c;">Privacy Policy</i></span></h1>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p><br>Henar Press is a nonprofit independent publishing press. We are committed to protecting the privacy of our website visitors, newsletter subscribers, and manuscript submitters. This privacy policy explains how we collect, use, and protect your personal data.</br>
+                
+<br>We collect personal data through our website in a few ways. When you subscribe to our newsletter, we collect your email address, which we use to send you updates about our books, events, and other news related to Henar Press. We use Email Octopus to manage our newsletter subscriptions, and you can opt out of receiving our newsletter at any time by clicking the unsubscribe link in the footer of our emails. When you submit a manuscript, we collect your email address and name, which we use to review and respond to your submission.</br<
+
+<br>For our contact page, we use Basin as our form submission handler. When you submit a message through our contact form, Basin collects and stores the information you provide, such as your name, email address, and message content. We use this information to respond to your inquiries and communicate with you.</br>
+
 <br>We also have a donate button on our website that takes you to our Give Lively page. Give Lively collects your donation information, but we do not store any sensitive financial data. We do not collect any other personal data through our website, and we do not use cookies or other tracking technologies.</br>
- 
-<br>We take reasonable measures to protect your personal data. Our website is hosted on GitHub, which provides a secure connection (HTTPS) to protect data transmission. Our newsletter subscription service, Email Octopus, is compliant with industry-standard security measures, including GDPR and CCPA. Our donation platform, Give Lively, is a secure and compliant platform that protects your sensitive financial information.</br>
- 
-<br>We do not share your personal data with any third parties, except as necessary to provide our services. We share your email address with Email Octopus for the purpose of managing our newsletter subscriptions, and we redirect you to Give Lively's secure platform to process your donation. We do not sell or trade your personal data with anyone.</br>
- 
+
+<br>We take reasonable measures to protect your personal data. Our website is hosted on GitHub, which provides a secure connection (HTTPS) to protect data transmission. Our newsletter subscription service, Email Octopus, and our form submission handler, Basin, are compliant with industry-standard security measures, including GDPR and CCPA. Our donation platform, Give Lively, is a secure and compliant platform that protects your sensitive financial information.</br>
+
+<br>We do not share your personal data with any third parties, except as necessary to provide our services. We share your email address with Email Octopus for the purpose of managing our newsletter subscriptions, we use Basin to handle contact form submissions, and we redirect you to Give Lively's secure platform to process your donation. We do not sell or trade your personal data with anyone.</br>
+
 <br>You have the right to access, correct, and delete your personal data. You can request access or deletion of your personal data by contacting us at Arian.Sorani (at) henarpress (dot) org. We will respond to your request within a reasonable timeframe.</br>
- 
+
 <br>We do not intentionally collect data from children under the age of 13. If you are under 13, please do not provide any personal data to us. We are based in the United States and do not transfer data outside of the US.</br>
- 
+
 <br>We may update this privacy policy from time to time. We will post any changes on this page and notify you by email if the changes are significant. If you have any questions or concerns about this privacy policy, please contact us at Arian.Sorani (at) henarpress (dot) org. By using our website, you acknowledge that you have read and understood this privacy policy.</br>
- 
-<br>Last updated: August 20, 2024.</br></p>
+<br>Last updated: September 8, 2024.<br></p>
         </div>
     </main>
     <footer>
@@ -520,12 +581,10 @@ nav a .full-text {
             <div class="footer-links">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
-                <a href="privacy-policy">Privacy Policy</a>
+<a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
+    <a href="privacy-policy">Privacy Policy</a>
             </div>
             <div class="footer-social">
                 <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
@@ -550,11 +609,9 @@ function handleScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-        // Scrolling down
         header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
         nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
     } else {
-        // Scrolling up or at the top
         header.style.transform = 'translateY(0)';
         nav.style.transform = 'translateY(0)';
     }
