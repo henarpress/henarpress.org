@@ -271,6 +271,13 @@
             opacity: 0.7;
         }
 
+        nav a .full-text {
+    display: inline;
+}
+
+                 nav a .short-text {
+    display: none;
+}
         @media (max-width: 768px) {
             .nav-spacer {
                 height: 120px;
@@ -294,7 +301,13 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
             }
-
+    nav a .short-text {
+        display: inline;
+    }
+                nav a .full-text {
+        display: none;
+    }
+    
             .book-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
