@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -31,7 +31,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             line-height: 1.6;
-            background-color: var(--secondary-color);
+            background-color: var(--background-color);
         }
 
         .container {
@@ -39,6 +39,78 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+    .about-section {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-style: italic;
+            text-align: center;
+            max-width: 600px;
+            margin: 40px auto;
+            color: var(--accent-color);
+        }
+  
 
         header {
             background-color: var(--primary-color);
@@ -49,11 +121,6 @@
             right: 0;
             z-index: 1000;
         }
-        
-header, nav {
-    transition: transform 0.3s ease;
-}
-
 
         .header-content {
             display: flex;
@@ -61,54 +128,22 @@ header, nav {
             align-items: center;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
+     .logo-image {
+    height: 100%;
+    width: auto;
+    max-height: 50px;
+}
 
-        .logo-image {
-            width: 40px;
-            height: auto;
-            margin-right: 10px;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--secondary-color);
-            letter-spacing: 2px;
-        }
 
         .header-right {
             display: flex;
             align-items: center;
-        }
-
-        .header-social {
-            display: flex;
-            margin-right: 25px;
-            margin-left: 20px;
-        }
-
-.header-social a {
-    margin-right: 20px;
-    display: inline-block;
-    transition: var(--transition);
-}
-
-.header-social a:last-child {
-    margin-right: 0;
-}
-
-.header-social a:hover {
-    transform: scale(1.1);
-}
-
-        .header-social img {
-            width: 36px;
-            height: 36px;
         }
 
         .donate-button {
@@ -136,16 +171,6 @@ header, nav {
             right: 0;
             z-index: 999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-                .hide-header {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
-        .hide-nav {
-            transform: translateY(-100%);
-            opacity: 0;
         }
 
         .nav-content {
@@ -181,90 +206,8 @@ header, nav {
         }
 
         .nav-spacer {
-            height: 130px;
+            height: 80px;
         }
-
-        main {
-            padding-top: 20px;
-            padding-bottom: 60px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            margin-bottom: 20px; /* Reduced from 30px */
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-        }
-
-        h1::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto; /* Reduced from 20px */
-        }
-
-        .work-in-progress {
-            margin-top: -10px; /* Added negative margin to pull it up */
-            margin-bottom: 30px; /* Reduced from 40px */
-            font-style: italic;
-            color: #666;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .book-item {
-            text-align: center;
-        }
-
-        .book-cover {
-            width: 100%;
-            height: 0;
-            padding-bottom: 150%;
-            background-color: var(--primary-color);
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .book-cover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .book-title {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .book-author {
-            margin-top: 5px;
-        }
-
-        .book-date {
-            margin-top: 5px;
-            color: var(--accent-color);
-        }
-
-        [data-email-octopus-form-success],
-[data-email-octopus-form-error] {
-    display: none;
-}
 
         footer {
             background-color: var(--primary-color);
@@ -292,15 +235,15 @@ header, nav {
             height: auto;
         }
 
-.footer-slogan h2 {
-    font-size: 62px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--secondary-color);
-    text-align: right;
-    margin-top: 0;
-}
-
+        .footer-slogan h2 {
+            font-size: 62px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: normal;
+            font-style: italic;
+            color: var(--secondary-color);
+            text-align: right;
+            margin-top: 0;
+        }
 
         .footer-newsletter, .footer-links, .footer-social {
             margin-top: 20px;
@@ -399,68 +342,105 @@ header, nav {
             color: var(--secondary-color);
             opacity: 0.7;
         }
-nav a .short-text {
+          nav a .short-text {
     display: none;
+}
+
+header, nav {
+    transition: transform 0.3s ease;
 }
 
 nav a .full-text {
     display: inline;
 }
 
-        
-@media (max-width: 768px) {
-      main {
-        padding-top: 10px;
-        padding-bottom: 30px;
-    }
 
-        nav a .short-text {
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .book-item {
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 0;
+            padding-bottom: 150%;
+            background-color: var(--primary-color);
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-cover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .book-title {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .book-author {
+            margin-top: 5px;
+        }
+
+        .book-date {
+            margin-top: 5px;
+            color: var(--accent-color);
+        }
+
+
+        @media (max-width: 768px) {
+            main {
+                padding-top: 0px;
+                padding-bottom: 30px;
+            }
+
+              nav a .short-text {
         display: inline;
+    }
+    
+    .nav-spacer {
+    height: 60px;
     }
     
     nav a .full-text {
         display: none;
     }
-
-    .header-social {
-        display: none !important;
-    }
-
-    .logo-text {
-        font-size: 24px;
-    }
-
-    nav {
-        top: 70px;
-    }
-
-    .nav-content {
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        margin: 5px 10px;
-        font-size: 14px;
-    }
-
-    h1 {
-          font-size: 28px;
-          margin-top: 10px;
-          margin-bottom: 10px;
-          padding-top: 20px;
+            .header-social {
+                display: none !important;
             }
 
-    h1::after {
-          margin: 8px auto;
+            nav {
+                top: 70px;
+            }
+            .nav-content {
+                flex-wrap: wrap;
+            }
+            nav a {
+                margin: 5px 10px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 52px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 10px;
+            }
+            h1::after {
+                margin: 8px auto;
             }
             
-   .work-in-progress {
-          margin-top: -5px;
-          margin-bottom: 20px;
-          font-size: 14px;
-            }           
-            
-           .book-grid {
+                       .book-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
@@ -482,20 +462,21 @@ nav a .full-text {
             .book-author, .book-date {
                 font-size: 10px;
             }
+            
+            .about-section h2 {
+                font-size: 24px;
+            }
             .footer-content {
                 flex-direction: column;
                 text-align: center;
             }
-
             .footer-logo-slogan {
                 flex-direction: column;
                 align-items: center;
             }
-
             .footer-logo {
                 margin-bottom: 10px;
             }
-
             .footer-slogan h2 {
                 font-size: 42px;
                 text-align: center;
@@ -503,11 +484,15 @@ nav a .full-text {
                 padding-bottom: 10px;
                 margin: 0;
             }
-
             .footer-logo img {
                 width: 100px;
             }
         }
+                [data-email-octopus-form-success],
+[data-email-octopus-form-error] {
+    display: none;
+}
+
 
         .email-octopus-form-wrapper {
     display: flex;
@@ -523,15 +508,8 @@ nav a .full-text {
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="henar-press-logo.png" alt="Henar Press Logo" class="logo-image">
-                    <a href="https://henarpress.org" class="logo-text">Henar Press</a>
+                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo-image">
                 </div>
-                <div class="header-right">
-                    <div class="header-social">
-                        <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                        <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-                    </div>
                     <a href="#" class="donate-button">Donate</a>
                 </div>
             </div>
@@ -542,23 +520,20 @@ nav a .full-text {
             <div class="nav-content">
                 <a href="books">Books</a>
                 <a href="authors">Authors</a>
-                <a href="events-and-news">Events & News</a>
-                <a href="about">About Us</a>
+                <a href="about">About</a>
                 <a href="contact">Contact</a>
-                <a href="contribute">Contribute</a>
-                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
+          <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
                 <span class="full-text">Kurdish Literature Directory</span>
-                <span class="short-text">KLD</span>
-            </a>
-            
+                <span class="short-text">KLD</span></a>
             </div>
         </div>
     </nav>
     <div class="nav-spacer"></div>
-    <main>
+    <main class="about-section">
         <div class="container">
-            <h1>Contemporary Kurdish Literature</h1>
-            <p class="work-in-progress">Our website is currently evolving. We're curating our collection of books. Please check back regularly as we unveil our publications and author spotlights.</p>
+            <div class="about-content">
+          <h1><i><span style="color: #e74c3c;">Catalogue</i></span></h1>
+ <main>
             <div class="book-grid">
                 <div class="book-item">
                     <div class="book-cover" style="background-image: url('book1.jpg');" aria-label="Forthcoming Book 1"></div>
@@ -587,42 +562,38 @@ nav a .full-text {
             </div>
         </div>
     </main>
-<footer>
-    <div class="container">
-        <div class="footer-logo-slogan">
-            <div class="footer-logo">
-                <img src="henar-press-logo.png" alt="Henar Press Logo">
+    <footer>
+        <div class="container">
+            <div class="footer-logo-slogan">
+                <div class="footer-logo">
+                    <img src="henar-press-logo.png" alt="Henar Press Logo">
+                </div>
+                <div class="footer-slogan">
+                    <h2>Against Forgetting, We Write</h2>
+                </div>
             </div>
-            <div class="footer-slogan">
-                <h2>Against Forgetting, We Write</h2>
-            </div>
-        </div>
-        
+            
 <div class="email-octopus-form-wrapper">
 <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-
-</div>
-        
-        <div class="footer-links">
-            <a href="books">Books</a>
-            <a href="authors">Authors</a>
-            <a href="events-and-news">Events & News</a>
-            <a href="about">About Us</a>
-            <a href="contact">Contact</a>
-            <a href="contribute">Contribute</a>
-            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
-            <a href="privacy-policy">Privacy Policy</a>
+</div>      
+            <div class="footer-links">
+                <a href="books">Books</a>
+                <a href="authors">Authors</a>
+                <a href="about">About</a>
+                <a href="contact">Contact</a>
+<a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
+    <a href="privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Henar Press. All rights reserved.
+            </div>
         </div>
-        <div class="footer-social">
-            <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-            <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
-        </div>
-        <div class="copyright">
-            &copy; 2024 Henar Press. All rights reserved.
-        </div>
-    </div>
-</footer>
+    </footer>
 <script>
 const header = document.querySelector('header');
 const nav = document.querySelector('nav');
@@ -636,11 +607,9 @@ function handleScroll() {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-        // Scrolling down
         header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
         nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
     } else {
-        // Scrolling up or at the top
         header.style.transform = 'translateY(0)';
         nav.style.transform = 'translateY(0)';
     }
