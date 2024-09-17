@@ -497,10 +497,41 @@
             text-decoration: none;
             font-size: 1.5rem;
             display: none;
+            z-index: 1000;
         }
 
         .back-to-top.visible {
             display: block;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .mobile-footer {
+        position: static !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 100%;
+        display: block;
+        padding: 1rem;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+
+        .mobile-footer .newsletter-form {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-footer .footer-slogan {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-footer .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
     }
 </style>
@@ -612,7 +643,6 @@
             <div class="contact-content">
                 <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
                 <div class="submission-guidelines">
-                    <h3>Submission Guidelines</h3>
                     <ul>
                         <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
                         <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
@@ -673,6 +703,16 @@
             <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
         </div>
     </footer>
+    <div class="mobile-footer">
+        <form id="mobile-newsletter-form" class="newsletter-form">
+            <input type="email" id="mobile-email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-slogan">
+            <h2>Against Forgetting, We Write</h2>
+        </div>
+        <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
+    </div>
     <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -690,30 +730,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const form = document.getElementById('newsletter-form');
+    const mobileForm = document.getElementById('mobile-newsletter-form');
+    
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const email = e.target.querySelector('input[type="email"]').value;
+        
+        const hiddenForm = document.createElement('form');
+        hiddenForm.style.display = 'none';
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
+        
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.name = 'email';
+        emailInput.value = email;
+        
+        hiddenForm.appendChild(emailInput);
+        
+        document.body.appendChild(hiddenForm);
+        
+        hiddenForm.submit();
+        
+        e.target.reset();
+    }
+
     if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            
-            const hiddenForm = document.createElement('form');
-            hiddenForm.style.display = 'none';
-            hiddenForm.method = 'POST';
-            hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
-            
-            const emailInput = document.createElement('input');
-            emailInput.type = 'email';
-            emailInput.name = 'email';
-            emailInput.value = email;
-            
-            hiddenForm.appendChild(emailInput);
-            
-            document.body.appendChild(hiddenForm);
-            
-            hiddenForm.submit();
-            
-            form.reset();
-        });
+        form.addEventListener('submit', handleFormSubmit);
+    }
+    
+    if (mobileForm) {
+        mobileForm.addEventListener('submit', handleFormSubmit);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -728,25 +776,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
+    const mobileFooter = document.querySelector('.mobile-footer');
+    const backToTop = document.querySelector('.back-to-top');
 
     navToggle.addEventListener('click', function() {
         nav.classList.toggle('open');
     });
-    function handleResponsiveLayout() {
-        if (window.innerWidth <= 768) {
-            // Mobile view
-            footer.style.display = 'none';
-            nav.style.height = '100%';
-            document.querySelector('.nav-links').style.marginTop = '1rem';
-        } else {
-            // Desktop view
-            footer.style.display = 'block';
-            nav.style.height = '100vh';
-            document.querySelector('.nav-links').style.marginTop = '0';
+
+    document.addEventListener('click', function(event) {
+        const isClickInside = nav.contains(event.target) || navToggle.contains(event.target);
+        if (!isClickInside && nav.classList.contains('open')) {
+            nav.classList.remove('open');
         }
+    });
+
+function handleResponsiveLayout() {
+    if (window.innerWidth <= 768) {
+        footer.style.display = 'none';
+        mobileFooter.style.display = 'block';
+        mobileFooter.style.position = 'static';
+        nav.style.height = '100%';
+        document.querySelector('.nav-links').style.marginTop = '1rem';
+    } else {
+        footer.style.display = 'block';
+        mobileFooter.style.display = 'none';
+        nav.style.height = '100vh';
+        document.querySelector('.nav-links').style.marginTop = '0';
     }
+}
+
     handleResponsiveLayout();
     window.addEventListener('resize', handleResponsiveLayout);
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 });
 </script>
 </body>
