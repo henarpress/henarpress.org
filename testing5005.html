@@ -14,10 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
  <style>
     :root {
-        --primary-color: #1a1a1a;
-        --secondary-color: #f0f0f0;
-        --accent-color: #ff3c3c;
-        --text-color: #333;
+--primary-color: #232323;
+--secondary-color: #FFFEFA;
+--accent-color: #C0392B;
+--text-color: #232323;
         --transition: all 0.3s ease;
     }
 
@@ -286,73 +286,82 @@
         transform: translateY(0);
     }
 
-    .contact-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-    .submission-guidelines ul {
-        margin-left: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
+.submission-guidelines ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
 
-    .submission-guidelines li {
-        margin-bottom: 1.5rem;
-    }
+.submission-guidelines li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
 
-    #contact-form {
-        background-color: #fff;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+#contact-form {
+    background-color: var(--primary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-    }
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
 
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
-        transition: border-color 0.3s ease;
-    }
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: background-color 0.3s ease;
+}
 
-    .form-group input:focus,
-    .form-group textarea:focus {
-        border-color: var(--accent-color);
-        outline: none;
-    }
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: #fff;
+}
 
-    .form-group textarea {
-        min-height: 150px;
-        resize: vertical;
-    }
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
 
-    #contact-form button[type="submit"] {
-        background-color: var(--accent-color);
-        color: #fff;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        font-weight: bold;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+#contact-form button[type="submit"] {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-    #contact-form button[type="submit"]:hover {
-        background-color: #e62e2e;
-    }
+#contact-form button[type="submit"]:hover {
+    background-color: #e62e2e;
+}
+
+#attachment {
+    border: none;
+    padding: 0;
+}
     
     .book-grid {
     display: grid;
@@ -567,50 +576,41 @@
         </div>
     </div>
     <div id="contact" class="fade-in-section">
-        <h2>Contact</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="fade-in-section">
-                <p>We welcome your inquiries, manuscript submissions, and general feedback. We're interested in publishing a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, narrative journalism, chapbooks, and hybrid forms.</p>
-            </div>
-            </div>
-                <div class="fade-in-section">
-                <p>Please follow these guidelines when submitting your manuscript:</p>
-                <ul>
-                    <li>Format your manuscript in a standard font with double spacing. Your manuscript can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
-                    <li>Include a cover letter with a brief synopsis and author bio (and translator bio if applicable).</li>
-                    <li>For prose submissions, please send the first 50 pages. For poetry, send 10-15 pages.</li>
-                    <li>For translated submissions, please submit both the translated and original manuscripts.</li>
-                </ul>
-                <p>We offer a traditional publishing contract and arrangement. All book-related services are handled by our team at no cost to the author. Our team currently aims to publish a small number of books annually to give each publication the attention it deserves.</p>
-                <p>It will take some time until we reach a decision about your manuscript, but we respond to every submission.</p>
-                </div>
-            </div>
-            <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="attachment">Attachment</label>
-                    <input type="file" id="attachment" name="attachment">
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
+    <h2>Contact Us</h2>
+    <div class="contact-content">
+                    <div class="fade-in-section">
+        <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
+        <div class="submission-guidelines">
+            <ul>
+                <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, narrative journalism, chapbooks, and hybrid forms.</li>
+                 <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
+                <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
+               	<li>Your manuscript can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                <li>We aim to respond to all submissions.</li>
+            </ul>
         </div>
+        <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="attachment">Attachment (optional)</label>
+                <input type="file" id="attachment" name="attachment">
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
     </div>
+    </div>
+</div>
 </main>
     <footer>
         <div class="footer-content">
