@@ -120,17 +120,17 @@
         justify-content: space-between;
         margin-top: 2rem;
     }
+    
+    .social-icon {
+    width: 24px;
+    height: 24px;
+    transition: var(--transition);
+}
 
-    .social-links a {
-        color: var(--secondary-color);
-        font-size: 1.5rem;
-        transition: var(--transition);
-    }
-
-    .social-links a:hover {
-        color: var(--accent-color);
-    }
-
+.social-links a:hover .social-icon {
+    opacity: 0.7;
+}
+  
     h1, h2, h3 {
         font-family: 'Syne', sans-serif;
         color: var(--primary-color);
@@ -191,7 +191,7 @@
     .donate-button {
         display: inline-block;
         padding: 1rem 2rem;
-        background-color: #000000;
+        background-color: #232323;
         color: var(--accent-color);
         text-decoration: none;
         font-weight: bold;
@@ -202,9 +202,11 @@
     }
 
     .donate-button:hover {
-        background-color: transparent;
-        color: var(--accent-color);
+  background-color: var(--accent-color);
+    color: var(--secondary-color);
     }
+
+
 
     .footer-logo-slogan {
         display: flex;
@@ -343,19 +345,22 @@
 }
 
 #contact-form button[type="submit"] {
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    border: none;
+    display: inline-block;
     padding: 1rem 2rem;
-    font-size: 1.1rem;
+    background-color: #232323;
+    color: var(--accent-color);
+    text-decoration: none;
     font-weight: bold;
-    border-radius: 4px;
+    font-size: 1.2rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: auto;
 }
 
 #contact-form button[type="submit"]:hover {
-    background-color: #e62e2e;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
 }
 
 #attachment {
@@ -489,14 +494,19 @@
             <a href="#our-team">Our Team</a>
             <a href="#authors">Authors</a>
             <a href="#contact">Contact</a>
-            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">KLD</a>
+            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Database</a>
         </div>
-        <a href="#" class="donate-button">Donate</a>
-        <div class="social-links">
-            <a href="https://x.com/HenarPress" aria-label="Twitter">𝕏</a>
-            <a href="https://instagram.com/HenarPress" aria-label="Instagram">📸</a>
-            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">👤</a>
-        </div>
+       <div class="social-links">
+    <a href="https://x.com/HenarPress" aria-label="Twitter">
+        <img src="twitter-logo.png" alt="Twitter" class="social-icon">
+    </a>
+    <a href="https://instagram.com/HenarPress" aria-label="Instagram">
+        <img src="instagram-logo.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">
+        <img src="facebook-logo.png" alt="Facebook" class="social-icon">
+    </a>
+</div>
     </nav>
     <main>
     <div id="top" class="fade-in-section">
@@ -510,7 +520,7 @@
         <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
     </div>
     <div class="fade-in-section">
-        <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a haven for Kurdish writers who refuse to be silenced and bound by convention.</p>
+        <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a space for Kurdish writers who refuse to be silenced and bound by convention.</p>
     </div>
     <div class="fade-in-section">
         <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
@@ -523,7 +533,7 @@
         <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
     </div>
     <div class="fade-in-section">
-        <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
+        <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">database of Kurdish literature available in English</a>.</p>
     </div>
     <div id="our-team" class="fade-in-section">
         <h2>Our Team</h2>
@@ -582,10 +592,10 @@
         <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
         <div class="submission-guidelines">
             <ul>
-                <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, narrative journalism, chapbooks, and hybrid forms.</li>
+                <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
                  <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
                 <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
-               	<li>Your manuscript can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+               	<li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
                 <li>We aim to respond to all submissions.</li>
             </ul>
         </div>
