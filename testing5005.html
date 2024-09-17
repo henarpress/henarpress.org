@@ -400,8 +400,7 @@
         transform: scale(1.05);
     }
 
-    /* Mobile-specific styles */
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
         body {
             flex-direction: column;
             overflow-y: auto;
@@ -415,6 +414,10 @@
             height: 100vh;
             transition: left 0.3s ease;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 4rem;
         }
 
         nav.open {
@@ -435,9 +438,18 @@
             cursor: pointer;
         }
 
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
         .nav-links {
             flex-direction: column;
-            margin-top: 3rem;
+            margin-top: 1rem;
+        }
+
+        .nav-bottom {
+            margin-top: auto;
+            padding-bottom: 2rem;
         }
 
         main {
@@ -448,29 +460,7 @@
         }
 
         footer {
-            width: 100%;
-            height: auto;
-            position: static;
-        }
-
-        .footer-content {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-logo-slogan {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-slogan h2 {
-            font-size: 1.8rem;
-        }
-
-        .book-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
+            display: none;
         }
 
         .team-grid {
@@ -494,30 +484,6 @@
 
         #contact-form {
             padding: 1rem;
-        }
-
-        .collapsible-section {
-            margin-bottom: 1rem;
-        }
-
-        .collapsible-header {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.75rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .collapsible-content {
-            display: none;
-            padding: 1rem;
-            background-color: var(--secondary-color);
-        }
-
-        .collapsible-content.open {
-            display: block;
         }
 
         .back-to-top {
@@ -574,130 +540,106 @@
             <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing experimental Kurdish literature.</strong></p>
         </div>
         
-        <div class="collapsible-section">
-            <div class="collapsible-header">
-                <h2>About Us</h2>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="collapsible-content">
-                <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
-                <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
-                <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a space for Kurdish writers who refuse to be bound by convention.</p>
-                <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
-            </div>
+        <div id="about" class="fade-in-section">
+            <h2>About Us</h2>
+            <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
+            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
+            <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a space for Kurdish writers who refuse to be bound by convention.</p>
+            <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
         </div>
 
-        <div class="collapsible-section">
-            <div class="collapsible-header">
-                <h2>Contribute</h2>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="collapsible-content">
-                <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
-                <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
-                <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">database of Kurdish literature available in English</a>.</p>
-            </div>
+        <div id="contribute" class="fade-in-section">
+            <h2>Contribute</h2>
+            <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
+            <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
+            <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">database of Kurdish literature available in English</a>.</p>
         </div>
 
-        <div class="collapsible-section">
-            <div class="collapsible-header">
-                <h2>Our Team</h2>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="collapsible-content">
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-                        <h3>Arian Sorani</h3>
-                        <p>Founder & Publisher</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
-                        <h3>Tracy Fuad</h3>
-                        <p>President, Board of Directors</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
-                        <h3>Holly Mason Badra</h3>
-                        <p>Board of Directors</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="ChadPost-gray.jpeg" alt="Chad Post">
-                        <h3>Chad W. Post</h3>
-                        <p>Board of Directors</p>
-                    </div>
+        <div id="our-team" class="fade-in-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                    <h3>Arian Sorani</h3>
+                    <p>Founder & Publisher</p>
+                </div>
+                <div class="team-member">
+                    <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                    <h3>Tracy Fuad</h3>
+                    <p>President, Board of Directors</p>
+                </div>
+                <div class="team-member">
+                    <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                    <h3>Holly Mason Badra</h3>
+                    <p>Board of Directors</p>
+                </div>
+                <div class="team-member">
+                    <img src="ChadPost-gray.jpeg" alt="Chad Post">
+                    <h3>Chad W. Post</h3>
+                    <p>Board of Directors</p>
                 </div>
             </div>
         </div>
 
-        <div class="collapsible-section">
-            <div class="collapsible-header">
-                <h2>Authors & Translators</h2>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="collapsible-content">
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-                        <h3>Forthcoming</h3>
-                        <p>Author</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
-                        <h3>Forthcoming</h3>
-                        <p>Translator</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
-                        <h3>Forthcoming</h3>
-                        <p>Author</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="ChadPost-gray.jpeg" alt="Chad Post">
-                        <h3>Forthcoming</h3>
-                        <p>Translator</p>
-                    </div>
+        <div id="authors" class="fade-in-section">
+            <h2>Authors & Translators</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                    <h3>Forthcoming</h3>
+                    <p>Author</p>
+                </div>
+                <div class="team-member">
+                    <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                    <h3>Forthcoming</h3>
+                    <p>Translator</p>
+                </div>
+                <div class="team-member">
+                    <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                    <h3>Forthcoming</h3>
+                    <p>Author</p>
+                </div>
+                <div class="team-member">
+                    <img src="ChadPost-gray.jpeg" alt="Chad Post">
+                    <h3>Forthcoming</h3>
+                    <p>Translator</p>
                 </div>
             </div>
         </div>
 
-        <div class="collapsible-section">
-            <div class="collapsible-header">
-                <h2>Contact Us</h2>
-                <span class="toggle-icon">+</span>
-            </div>
-            <div class="collapsible-content">
-                <div class="contact-content">
-                    <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
-                    <div class="submission-guidelines">
-                        <ul>
-                            <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
-                            <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
-                            <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
-                            <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
-                            <li>We aim to respond to all submissions.</li>
-                        </ul>
-                    </div>
-                    <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="attachment">Attachment (optional)</label>
-                            <input type="file" id="attachment" name="attachment">
-                        </div>
-                        <button type="submit">Send Message</button>
-                    </form>
+        <div id="contact" class="fade-in-section">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
+                <div class="submission-guidelines">
+                    <h3>Submission Guidelines</h3>
+                    <ul>
+                        <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
+                        <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
+                        <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
+                        <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                        <li>We aim to respond to all submissions.</li>
+                    </ul>
                 </div>
+                <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachment">Attachment (optional)</label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </div>
     </main>
@@ -732,88 +674,80 @@
         </div>
     </footer>
     <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const fadeElems = document.querySelectorAll('.fade-in-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        });
-
-        fadeElems.forEach(elem => {
-            observer.observe(elem);
-        });
-
-        const form = document.getElementById('newsletter-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const email = document.getElementById('email').value;
-                
-                const hiddenForm = document.createElement('form');
-                hiddenForm.style.display = 'none';
-                hiddenForm.method = 'POST';
-                hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
-                
-                const emailInput = document.createElement('input');
-                emailInput.type = 'email';
-                emailInput.name = 'email';
-                emailInput.value = email;
-                
-                hiddenForm.appendChild(emailInput);
-                
-                document.body.appendChild(hiddenForm);
-                
-                hiddenForm.submit();
-                
-                form.reset();
-            });
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Mobile-specific JavaScript
-        const navToggle = document.querySelector('.nav-toggle');
-        const nav = document.querySelector('nav');
-        const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
-        const backToTop = document.querySelector('.back-to-top');
-
-        navToggle.addEventListener('click', function() {
-            nav.classList.toggle('open');
-        });
-
-        collapsibleHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                this.nextElementSibling.classList.toggle('open');
-                this.querySelector('.toggle-icon').textContent = this.nextElementSibling.classList.contains('open') ? '-' : '+';
-            });
-        });
-
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fadeElems = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
             }
         });
+    });
 
-        backToTop.addEventListener('click', function(e) {
+    fadeElems.forEach(elem => {
+        observer.observe(elem);
+    });
+
+    const form = document.getElementById('newsletter-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const email = document.getElementById('email').value;
+            
+            const hiddenForm = document.createElement('form');
+            hiddenForm.style.display = 'none';
+            hiddenForm.method = 'POST';
+            hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
+            
+            const emailInput = document.createElement('input');
+            emailInput.type = 'email';
+            emailInput.name = 'email';
+            emailInput.value = email;
+            
+            hiddenForm.appendChild(emailInput);
+            
+            document.body.appendChild(hiddenForm);
+            
+            hiddenForm.submit();
+            
+            form.reset();
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-    </script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
+
+    navToggle.addEventListener('click', function() {
+        nav.classList.toggle('open');
+    });
+    function handleResponsiveLayout() {
+        if (window.innerWidth <= 768) {
+            // Mobile view
+            footer.style.display = 'none';
+            nav.style.height = '100%';
+            document.querySelector('.nav-links').style.marginTop = '1rem';
+        } else {
+            // Desktop view
+            footer.style.display = 'block';
+            nav.style.height = '100vh';
+            document.querySelector('.nav-links').style.marginTop = '0';
+        }
+    }
+    handleResponsiveLayout();
+    window.addEventListener('resize', handleResponsiveLayout);
+});
+</script>
 </body>
 </html>
