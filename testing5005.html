@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press - Kurdish Literature & Culture</title>
-    <meta name="description" content="Henar Press is a nonprofit indie publisher passionate about bringing Kurdish literature to a global audience. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
+    <meta name="description" content="Henar Press is a nonprofit indie publisher passionate about bringing experimental Kurdish literature to a global audience. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -12,378 +12,477 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #f0f0f0;
-            --accent-color: #ff3c3c;
-            --text-color: #333;
-            --transition: all 0.3s ease;
-        }
+ <style>
+    :root {
+        --primary-color: #1a1a1a;
+        --secondary-color: #f0f0f0;
+        --accent-color: #ff3c3c;
+        --text-color: #333;
+        --transition: all 0.3s ease;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
 
     body {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: var(--secondary-color);
-    display: flex;
-    height: 100vh;
-    margin: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 13px;
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: var(--secondary-color);
+        display: flex;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    main {
+        margin-left: 250px;
+        padding: 2rem;
+        max-width: calc(100% - 750px);
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    footer {
+        width: 500px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: var(--primary-color);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    .logo-container img {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 2rem;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--accent-color);
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+
+    .social-links a {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+
+    h1, h2, h3 {
+        font-family: 'Syne', sans-serif;
+        color: var(--primary-color);
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .team-member {
+        text-align: left;
+    }
+
+    .team-member img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        filter: grayscale(100%);
+        transition: var(--transition);
+    }
+
+    .team-member:hover img {
+        filter: grayscale(0%);
+    }
+
+    .team-member h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .donate-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #000000;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: 2px solid var(--accent-color);
+        transition: var(--transition);
+        margin-top: 2rem;
+    }
+
+    .donate-button:hover {
+        background-color: transparent;
+        color: var(--accent-color);
+    }
+
+    .footer-logo-slogan {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+        width: 100px;
+        margin-right: 1rem;
+    }
+
+    .footer-slogan h2 {
+        font-size: 1.7rem;
+        color: var(--secondary-color);
+        margin: 0;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        margin-right: 1rem;
+        transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .copyright {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .newsletter-form {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-form input[type="email"] {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: none;
+        flex-grow: 1;
+    }
+
+    .newsletter-form button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        background-color: var(--accent-color);
+        color: var(--secondary-color);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+        background-color: var(--secondary-color);
+        color: var(--accent-color);
+    }
+
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .contact-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .submission-guidelines ul {
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .submission-guidelines li {
+        margin-bottom: 1.5rem;
+    }
+
+    #contact-form {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent-color);
+        outline: none;
+    }
+
+    .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    #contact-form button[type="submit"] {
+        background-color: var(--accent-color);
+        color: #fff;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #contact-form button[type="submit"]:hover {
+        background-color: #e62e2e;
+    }
+    
+    .book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.book {
+    position: relative;
     overflow: hidden;
+    aspect-ratio: 2 / 3;
 }
 
-main {
-    margin-left: 250px;
-    padding: 2rem;
-    max-width: calc(100% - 750px);
+.book img {
     width: 100%;
-    height: 100vh;
-    overflow-y: auto;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-footer {
-    width: 500px;
-    height: 100vh;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 2rem;
-    overflow-y: auto;
+.book:hover img {
+    transform: scale(1.05);
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-}
+    @media (max-width: 1200px) {
+        main {
+            max-width: calc(100% - 550px);
+        }
+        
+        footer {
+            width: 300px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            flex-direction: column;
+        }
+        
+         .book-grid {
+        grid-template-columns: 1fr;
+    }
 
         nav {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background-color: var(--primary-color);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 1000;
-        }
-
-        .logo-container img {
             width: 100%;
-            max-width: 200px;
-            margin-bottom: 2rem;
+            height: auto;
+            position: static;
+            padding: 1rem;
         }
 
         .nav-links {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .nav-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .social-links {
-            display: flex;
+            flex-direction: row;
             justify-content: space-between;
-            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .social-links a {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            transition: var(--transition);
+        main {
+            margin-left: 0;
+            padding: 1rem;
         }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-      
-
-        h1, h2, h3 {
-            font-family: 'Syne', sans-serif;
-            color: var(--primary-color);
+        
+        main, footer {
+            width: 100%;
+            max-width: 100%;
         }
 
         h1 {
             font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            line-height: 1.2;
         }
 
         h2 {
             font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        footer {
+            margin-left: 0;
         }
 
-        .quote {
-            font-family: 'Syne', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 700;
-            text-align: left;
-            margin: 3rem 0;
-            color: var(--accent-color);
-            line-height: 1.2;
+        .footer-content {
+            flex-direction: column;
+            align-items: flex-start;
         }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .team-member {
-            text-align: left;
-        }
-
-        .team-member img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            filter: grayscale(100%);
-            transition: var(--transition);
-        }
-
-        .team-member:hover img {
-            filter: grayscale(0%);
-        }
-
-        .team-member h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member p {
-            font-size: 1rem;
-            font-style: italic;
-        }
-
-        .donate-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border: 2px solid var(--accent-color);
-            transition: var(--transition);
-            margin-top: 2rem;
-        }
-
-        .donate-button:hover {
-            background-color: transparent;
-            color: var(--accent-color);
-        }
-
-   
 
         .footer-logo-slogan {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .footer-logo img {
-            width: 100px;
-            margin-right: 1rem;
-        }
-
-        .footer-slogan h2 {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin: 0;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
             margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            margin-right: 1rem;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            width: 100%;
-            text-align: center;
-            margin-top: 1rem;
         }
 
         .newsletter-form {
-            display: flex;
-            margin-bottom: 1rem;
+            flex-direction: column;
         }
 
         .newsletter-form input[type="email"] {
+            margin-bottom: 0.5rem;
+        }
+
+        #contact-form {
+            padding: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
             padding: 0.5rem;
-            font-size: 1rem;
-            border: none;
-            flex-grow: 1;
         }
 
-        .newsletter-form button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
+        #contact-form button[type="submit"] {
+            width: 100%;
         }
-
-        .newsletter-form button:hover {
-            background-color: var(--secondary-color);
-            color: var(--accent-color);
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-@media (max-width: 1200px) {
-    main {
-        max-width: calc(100% - 550px);
     }
-    
-    footer {
-        width: 300px;
-    }
-}
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            nav {
-                width: 100%;
-                height: auto;
-                position: static;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: row;
-                justify-content: space-between;
-                margin-bottom: 1rem;
-            }
-
-            main {
-                margin-left: 0;
-                padding: 1rem;
-            }
-            
-            main, footer {
-            	width: 100%;
-            	max-width: 100%;
-            	}
-
-            h1 {
-                font-size: 3rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .quote {
-                font-size: 2rem;
-            }
-
-            footer {
-                margin-left: 0;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-logo-slogan {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-logo img {
-                margin-bottom: 1rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .newsletter-form input[type="email"] {
-                margin-bottom: 0.5rem;
-            }
-        }
-    </style>
-</head>
+</style>
+<</head>
 <body>
     <nav>
         <div class="logo-container">
             <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
         </div>
         <div class="nav-links">
-            <a href="#books">Books</a>
+            <a href="#top">About</a>
+            <a href="#contribute">Contribute</a>
+            <a href="#our-team">Our Team</a>
             <a href="#authors">Authors</a>
-            <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">KLD</a>
         </div>
+        <a href="#" class="donate-button">Donate</a>
         <div class="social-links">
             <a href="https://x.com/HenarPress" aria-label="Twitter">𝕏</a>
             <a href="https://instagram.com/HenarPress" aria-label="Instagram">📸</a>
@@ -391,60 +490,128 @@ footer {
         </div>
     </nav>
     <main>
-        <div class="fade-in-section">
-            <h1>Henar Press</h1>
-            <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing experimental Kurdish literature.</strong></p>
-        </div>
-        <div class="fade-in-section">
-            <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
-        </div>
-        <div class="fade-in-section">
-            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
-        </div>
-        <div class="fade-in-section">
-            <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a haven for Kurdish writers who refuse to be silenced and bound by convention.</p>
-        </div>
-        <div class="fade-in-section">
-            <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
-            <div class="quote">Against Forgetting, We Write</div>
-        </div>
-        <div class="fade-in-section">
-            <h2>Contribute</h2>
-            <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
-            <a href="#" class="donate-button">Donate</a>
-        </div>
-        <div class="fade-in-section">
-            <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
-        </div>
-        <div class="fade-in-section">
-            <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
-        </div>
-        <div class="fade-in-section">
-            <h2>Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-                    <h3>Arian Sorani</h3>
-                    <p>Founder & Publisher</p>
-                </div>
-                <div class="team-member">
-                    <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
-                    <h3>Tracy Fuad</h3>
-                    <p>President, Board of Directors</p>
-                </div>
-                <div class="team-member">
-                    <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
-                    <h3>Holly Mason Badra</h3>
-                    <p>Board of Directors</p>
-                </div>
-                <div class="team-member">
-<img src="ChadPost-gray.jpeg" alt="Chad Post">
-                    <h3>Chad W. Post</h3>
-                    <p>Board of Directors</p>
-                </div>
+    <div id="top" class="fade-in-section">
+        <h1>Henar Press</h1>
+        <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing experimental Kurdish literature.</strong></p>
+    </div>
+    <div class="fade-in-section">
+        <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
+    </div>
+    <div class="fade-in-section">
+        <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
+    </div>
+    <div class="fade-in-section">
+        <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a haven for Kurdish writers who refuse to be silenced and bound by convention.</p>
+    </div>
+    <div class="fade-in-section">
+        <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
+    </div>
+    <div id="contribute" class="fade-in-section">
+        <h2>Contribute</h2>
+        <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
+    </div>
+    <div class="fade-in-section">
+        <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
+    </div>
+    <div class="fade-in-section">
+        <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
+    </div>
+    <div id="our-team" class="fade-in-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                <h3>Arian Sorani</h3>
+                <p>Founder & Publisher</p>
+            </div>
+            <div class="team-member">
+                <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                <h3>Tracy Fuad</h3>
+                <p>President, Board of Directors</p>
+            </div>
+            <div class="team-member">
+                <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                <h3>Holly Mason Badra</h3>
+                <p>Board of Directors</p>
+            </div>
+            <div class="team-member">
+                <img src="ChadPost-gray.jpeg" alt="Chad Post">
+                <h3>Chad W. Post</h3>
+                <p>Board of Directors</p>
             </div>
         </div>
-    </main>
+    </div>
+        <div id="authors" class="fade-in-section">
+        <h2>Authors & Translators</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                <h3>Forthcoming</h3>
+                <p>Author</p>
+            </div>
+            <div class="team-member">
+                <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                <h3>Forthcoming</h3>
+                <p>Translator</p>
+            </div>
+            <div class="team-member">
+                <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                <h3>Forthcoming</h3>
+                <p>Author</p>
+            </div>
+            <div class="team-member">
+                <img src="ChadPost-gray.jpeg" alt="Chad Post">
+                <h3>Forthcoming</h3>
+                <p>Translator</p>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="fade-in-section">
+        <h2>Contact</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="fade-in-section">
+                <p>We welcome your inquiries, manuscript submissions, and general feedback. We're interested in publishing a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, narrative journalism, chapbooks, and hybrid forms.</p>
+            </div>
+            </div>
+                <div class="fade-in-section">
+                <p>Please follow these guidelines when submitting your manuscript:</p>
+                <ul>
+                    <li>Format your manuscript in a standard font with double spacing. Your manuscript can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                    <li>Include a cover letter with a brief synopsis and author bio (and translator bio if applicable).</li>
+                    <li>For prose submissions, please send the first 50 pages. For poetry, send 10-15 pages.</li>
+                    <li>For translated submissions, please submit both the translated and original manuscripts.</li>
+                </ul>
+                <p>We offer a traditional publishing contract and arrangement. All book-related services are handled by our team at no cost to the author. Our team currently aims to publish a small number of books annually to give each publication the attention it deserves.</p>
+                <p>It will take some time until we reach a decision about your manuscript, but we respond to every submission.</p>
+                </div>
+            </div>
+            <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="attachment">Attachment</label>
+                    <input type="file" id="attachment" name="attachment">
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</main>
     <footer>
         <div class="footer-content">
             <div class="footer-logo-slogan">
@@ -452,7 +619,20 @@ footer {
                     <h2>Against Forgetting, We Write</h2>
                 </div>
             </div>
-            <div class="newsletter-form">
+        <div class="book-grid">
+    <div class="book">
+        <img src="book1.jpg" alt="Book 1">
+    </div>
+    <div class="book">
+        <img src="book2.jpg" alt="Book 2">
+    </div>
+    <div class="book">
+        <img src="book3.jpg" alt="Book 3">
+    </div>
+    <div class="book">
+        <img src="book4.jpg" alt="Book 4">
+    </div>
+      <div class="newsletter-form">
                 <form action="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89" method="post" id="email-octopus-form">
                     <input id="field_0" name="field_0" type="email" placeholder="Your email address" required>
                     <button type="submit">Subscribe</button>
@@ -462,6 +642,7 @@ footer {
                 &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
+</div>
     </footer>
     <script>
         const faders = document.querySelectorAll('.fade-in-section');
@@ -500,6 +681,15 @@ footer {
                 }
             };
             xhr.send(new URLSearchParams(new FormData(form)).toString());
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
