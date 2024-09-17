@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press - Kurdish Literature & Culture</title>
     <meta name="description" content="Henar Press is a nonprofit indie publisher passionate about bringing Kurdish literature to a global audience. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #ecf0f1;
-            --accent-color: #e74c3c;
-            --background-color: #ecf0f1;
+            --primary-color: #1a1a1a;
+            --secondary-color: #f0f0f0;
+            --accent-color: #ff3c3c;
+            --text-color: #333;
             --transition: all 0.3s ease;
-            --text-color: #34495e;
         }
 
         * {
@@ -28,496 +27,426 @@
             padding: 0;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            color: #34495e;
-            line-height: 1.6;
-            background-color: #ecf0f1;
-        }
-
-   
-    .about-section {
-            padding: 80px 0;
-        }
-        
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-    
-    h1, h2, h3 {
-        font-family: 'Cormorant Garamond', serif;
-        color: #2c3e50;
-    }
-
-    h1 {
-        font-size: 48px;
-        font-weight: normal;
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        font-size: 28px;
-        margin-top: 30px;
-        margin-bottom: 15px;
-    }
-
-    p {
-        margin-bottom: 15px;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-        
-.our-team {
-    padding: 80px 0;
+    body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
+main {
+    margin-left: 250px;
+    padding: 2rem;
+    max-width: calc(100% - 750px);
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.team-member {
-    text-align: center;
+footer {
+    width: 500px;
+    height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 2rem;
+    overflow-y: auto;
 }
 
-.team-member img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
+.footer-content {
+    display: flex;
+    flex-direction: column;
 }
 
-.team-member h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.team-member p {
-    font-size: 16px;
-    font-style: italic;
-}
-
-        .quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-style: italic;
-            text-align: center;
-            max-width: 600px;
-            margin: 40px auto;
-            color: var(--accent-color);
-        }
-  
-
-        header {
-            background-color: var(--primary-color);
-            padding: 14px 0;
+        nav {
+            width: 250px;
+            height: 100vh;
             position: fixed;
-            top: 0;
             left: 0;
-            right: 0;
+            top: 0;
+            background-color: var(--primary-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             z-index: 1000;
         }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .logo-container img {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 2rem;
         }
 
-     .logo-image {
-    height: 100%;
-    width: auto;
-    max-height: 50px;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-
-        .header-right {
+        .nav-links {
             display: flex;
-            align-items: center;
+            flex-direction: column;
         }
 
-        .donate-button {
-            padding: 12px 24px;
-            background-color: var(--accent-color);
+        .nav-links a {
             color: var(--secondary-color);
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: var(--transition);
-            font-size: 16px;
-            letter-spacing: 0.5px;
-        }
-
-        .donate-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--accent-color);
-        }
-        
-        a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-        nav {
-            background-color: var(--secondary-color);
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-        }
-
-        nav a {
-            margin: 0 20px;
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             transition: var(--transition);
             position: relative;
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: -5px;
-            left: 50%;
+            left: 0;
             background-color: var(--accent-color);
             transition: var(--transition);
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
-            left: 0;
         }
 
-        .nav-spacer {
-            height: 80px;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            padding: 20px 0 30px;
-            color: var(--secondary-color);
-        }
-
-        .footer-content {
+        .social-links {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-top: 2rem;
         }
+
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+      
+
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .quote {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: left;
+            margin: 3rem 0;
+            color: var(--accent-color);
+            line-height: 1.2;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: left;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .team-member:hover img {
+            filter: grayscale(0%);
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .donate-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: var(--transition);
+            margin-top: 2rem;
+        }
+
+        .donate-button:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+   
 
         .footer-logo-slogan {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
 
         .footer-logo img {
-            width: 120px;
-            height: auto;
+            width: 100px;
+            margin-right: 1rem;
         }
 
         .footer-slogan h2 {
-            font-size: 62px;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: normal;
-            font-style: italic;
+            font-size: 1.5rem;
             color: var(--secondary-color);
-            text-align: right;
-            margin-top: 0;
-        }
-
-        .footer-newsletter, .footer-links, .footer-social {
-            margin-top: 20px;
+            margin: 0;
         }
 
         .footer-links {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
-            margin: 5px 10px;
-            font-size: 14px;
             color: var(--secondary-color);
             text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .footer-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -3px;
-            left: 50%;
-            background-color: var(--accent-color);
+            margin-right: 1rem;
             transition: var(--transition);
         }
 
-        .footer-links a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        .footer-social {
-            text-align: center;
-        }
-
-        .footer-social a {
-            display: inline-block;
-            margin: 0 15px;
-        }
-
-        .footer-social img {
-            width: 42px;
-            height: 42px;
-            transition: var(--transition);
-        }
-
-        .footer-social a:hover img {
-            transform: scale(1.1);
-        }
-
-        .footer-newsletter p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .footer-newsletter form {
-            display: flex;
-            justify-content: center;
-        }
-
-        .footer-newsletter input[type="email"] {
-            padding: 12px;
-            width: 250px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 14px;
-        }
-
-        .footer-newsletter button {
-            padding: 12px 24px;
-            background-color: var(--accent-color);
-            color: var(--secondary-color);
-            border: none;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: var(--transition);
-        }
-
-        .footer-newsletter button:hover {
-            background-color: var(--secondary-color);
+        .footer-links a:hover {
             color: var(--accent-color);
         }
 
         .copyright {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: var(--secondary-color);
+            font-size: 0.9rem;
             opacity: 0.7;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
         }
-          nav a .short-text {
-    display: none;
-}
 
-header, nav {
-    transition: transform 0.3s ease;
-}
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1rem;
+        }
 
-nav a .full-text {
-    display: inline;
-}
+        .newsletter-form input[type="email"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            flex-grow: 1;
+        }
 
+        .newsletter-form button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+@media (max-width: 1200px) {
+    main {
+        max-width: calc(100% - 550px);
+    }
+    
+    footer {
+        width: 300px;
+    }
+}
         @media (max-width: 768px) {
-            main {
-                padding-top: 0px;
-                padding-bottom: 30px;
-            }
-
-              nav a .short-text {
-        display: inline;
-    }
-    
-    .nav-spacer {
-    height: 60px;
-    }
-    
-    nav a .full-text {
-        display: none;
-    }
-            .header-social {
-                display: none !important;
+            body {
+                flex-direction: column;
             }
 
             nav {
-                top: 70px;
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1rem;
             }
-            .nav-content {
-                flex-wrap: wrap;
+
+            .nav-links {
+                flex-direction: row;
+                justify-content: space-between;
+                margin-bottom: 1rem;
             }
-            nav a {
-                margin: 5px 10px;
-                font-size: 14px;
+
+            main {
+                margin-left: 0;
+                padding: 1rem;
             }
+            
+            main, footer {
+            	width: 100%;
+            	max-width: 100%;
+            	}
+
             h1 {
-                font-size: 52px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                padding-top: 10px;
+                font-size: 3rem;
             }
-            h1::after {
-                margin: 8px auto;
+
+            h2 {
+                font-size: 2rem;
             }
-            .about-section h2 {
-                font-size: 24px;
+
+            .quote {
+                font-size: 2rem;
             }
+
+            footer {
+                margin-left: 0;
+            }
+
             .footer-content {
                 flex-direction: column;
-                text-align: center;
+                align-items: flex-start;
             }
+
             .footer-logo-slogan {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
-            .footer-logo {
-                margin-bottom: 10px;
-            }
-            .footer-slogan h2 {
-                font-size: 42px;
-                text-align: center;
-                padding-top: 0px;
-                padding-bottom: 10px;
-                margin: 0;
-            }
+
             .footer-logo img {
-                width: 100px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input[type="email"] {
+                margin-bottom: 0.5rem;
             }
         }
-                [data-email-octopus-form-success],
-[data-email-octopus-form-error] {
-    display: none;
-}
-
-
-        .email-octopus-form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0;
-}
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo-image">
-                </div>
-                    <a href="#" class="donate-button">Donate</a>
-                </div>
-            </div>
-        </div>
-    </header>
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <a href="books">Books</a>
-                <a href="authors">Authors</a>
-                <a href="about">About</a>
-                <a href="contact">Contact</a>
-          <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">
-                <span class="full-text">Kurdish Literature Directory</span>
-                <span class="short-text">KLD</span></a>
-            </div>
+        <div class="logo-container">
+            <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#books">Books</a>
+            <a href="#authors">Authors</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">KLD</a>
+        </div>
+        <div class="social-links">
+            <a href="https://x.com/HenarPress" aria-label="Twitter">𝕏</a>
+            <a href="https://instagram.com/HenarPress" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">👤</a>
         </div>
     </nav>
-    <div class="nav-spacer"></div>
-    <main class="about-section">
-        <div class="container">
-            <div class="about-content">
-<h1><i><center><span style="color: #e74c3c; font-size: 72px;">Henar Press</i></center></span></h1>
-<p><b>Henar Press is a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing radical, nonconformist Kurdish literature.</b></p>
-<p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
-<p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
-<p>We celebrate the experimental, the avant-garde, and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a haven for Kurdish writers who refuse to be silenced and bound by convention.</p>
-<p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>             
-             <div class="quote">
-                    Against Forgetting, We Write
+    <main>
+        <div class="fade-in-section">
+            <h1>Henar Press</h1>
+            <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing experimental Kurdish literature.</strong></p>
+        </div>
+        <div class="fade-in-section">
+            <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
+        </div>
+        <div class="fade-in-section">
+            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
+        </div>
+        <div class="fade-in-section">
+            <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a haven for Kurdish writers who refuse to be silenced and bound by convention.</p>
+        </div>
+        <div class="fade-in-section">
+            <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
+            <div class="quote">Against Forgetting, We Write</div>
+        </div>
+        <div class="fade-in-section">
+            <h2>Contribute</h2>
+            <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
+            <a href="#" class="donate-button">Donate</a>
+        </div>
+        <div class="fade-in-section">
+            <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
+        </div>
+        <div class="fade-in-section">
+            <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
+        </div>
+        <div class="fade-in-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                    <h3>Arian Sorani</h3>
+                    <p>Founder & Publisher</p>
                 </div>
-                <h2>Contribute</h2>
-<p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience. To make a tax-deductible donation, please visit our <a href="#" target="_blank">Give Lively page</a>.</p>
-
-<p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="contact">contact us</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
-
-<p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">directory of Kurdish literature available in English</a>.</p>
-        <h2>Our Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-                <h3>Arian Sorani</h3>
-                <p>Founder & Publisher</p>
-            </div>
-            <div class="team-member">
-                <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
-                <h3>Tracy Fuad</h3>
-                <p>President, Board of Directors</p>
-            </div>
-            <div class="team-member">
-                <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
-                <h3>Holly Mason Badra</h3>
-                <p>Board of Directors</p>
-            </div>
-            <div class="team-member">
-                <img src="ChadPost-gray.jpeg" alt="Chad Post">
-                <h3>Chad W. Post</h3>
-                <p>Board of Directors</p>
+                <div class="team-member">
+                    <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                    <h3>Tracy Fuad</h3>
+                    <p>President, Board of Directors</p>
+                </div>
+                <div class="team-member">
+                    <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                    <h3>Holly Mason Badra</h3>
+                    <p>Board of Directors</p>
+                </div>
+                <div class="team-member">
+<img src="ChadPost-gray.jpeg" alt="Chad Post">
+                    <h3>Chad W. Post</h3>
+                    <p>Board of Directors</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
     </main>
     <footer>
-        <div class="container">
+        <div class="footer-content">
             <div class="footer-logo-slogan">
                 <div class="footer-logo">
                     <img src="henar-press-logo.png" alt="Henar Press Logo">
@@ -526,65 +455,63 @@ nav a .full-text {
                     <h2>Against Forgetting, We Write</h2>
                 </div>
             </div>
-            
-<div class="email-octopus-form-wrapper">
-<script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-</div>      
-            <div class="footer-links">
-                <a href="books">Books</a>
-                <a href="authors">Authors</a>
-                <a href="about">About</a>
-                <a href="contact">Contact</a>
-<a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
-    <a href="privacy-policy">Privacy Policy</a>
+            <div class="newsletter-form">
+                <form action="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89" method="post" id="email-octopus-form">
+                    <input id="field_0" name="field_0" type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
-            <div class="footer-social">
-                <a href="https://x.com/HenarPress" aria-label="Twitter"><img src="twitter-logo.png" alt="Twitter"></a>
-                <a href="https://instagram.com/HenarPress" aria-label="Instagram"><img src="instagram-logo.png" alt="Instagram"></a>
-                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook"><img src="facebook-logo.png" alt="Facebook"></a>
+            <div class="footer-links">
+                <a href="#books">Books</a>
+                <a href="#authors">Authors</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Directory</a>
+                <a href="#privacy-policy">Privacy Policy</a>
             </div>
             <div class="copyright">
                 &copy; 2024 Henar Press. All rights reserved.
             </div>
         </div>
     </footer>
-<script>
-const header = document.querySelector('header');
-const nav = document.querySelector('nav');
-const headerHeight = header.offsetHeight;
-const navHeight = nav.offsetHeight;
+    <script>
+        const faders = document.querySelectorAll('.fade-in-section');
+        const appearOptions = {
+            threshold: 0,
+            rootMargin: "0px 0px -100px 0px"
+        };
 
-let lastScrollTop = 0;
-let ticking = false;
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('is-visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
 
-function handleScroll() {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (currentScrollTop > lastScrollTop && currentScrollTop > headerHeight) {
-        header.style.transform = `translateY(-${headerHeight + navHeight}px)`;
-        nav.style.transform = `translateY(-${headerHeight + navHeight}px)`;
-    } else {
-        header.style.transform = 'translateY(0)';
-        nav.style.transform = 'translateY(0)';
-    }
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
 
-    lastScrollTop = currentScrollTop;
-    ticking = false;
-}
-
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(handleScroll);
-        ticking = true;
-    }
-});
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset === 0) {
-        header.style.transform = 'translateY(0)';
-        nav.style.transform = 'translateY(0)';
-    }
-});
-</script>
+        // Email Octopus form submission
+        document.getElementById('email-octopus-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var url = form.action;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    form.reset();
+                    alert('Thank you for subscribing!');
+                }
+            };
+            xhr.send(new URLSearchParams(new FormData(form)).toString());
+        });
+    </script>
 </body>
 </html>
