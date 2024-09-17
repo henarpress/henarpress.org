@@ -66,20 +66,25 @@
         flex-direction: column;
     }
 
-    nav {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background-color: var(--primary-color);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1000;
-    }
+ nav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+}
 
+.nav-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
     .logo-container img {
         width: 100%;
         max-width: 200px;
@@ -115,13 +120,15 @@
         width: 100%;
     }
 
-    .social-links {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-    }
-    
-    .social-icon {
+  
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-icon {
     width: 24px;
     height: 24px;
     transition: var(--transition);
@@ -130,6 +137,7 @@
 .social-links a:hover .social-icon {
     opacity: 0.7;
 }
+
   
     h1, h2, h3 {
         font-family: 'Syne', sans-serif;
@@ -188,19 +196,20 @@
         font-style: italic;
     }
 
-    .donate-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: #232323;
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        border: 2px solid var(--accent-color);
-        transition: var(--transition);
-        margin-top: 2rem;
-    }
-
+ .donate-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    width: 100%;
+}
     .donate-button:hover {
   background-color: var(--accent-color);
     color: var(--secondary-color);
@@ -484,30 +493,31 @@
 </style>
 <</head>
 <body>
-    <nav>
-        <div class="logo-container">
-            <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
+<nav>
+    <div class="logo-container">
+        <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
+    </div>
+    <div class="nav-links">
+        <a href="#top">About</a>
+        <a href="#contribute">Contribute</a>
+        <a href="#our-team">Our Team</a>
+        <a href="#authors">Authors</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-bottom">
+        <div class="social-links">
+            <a href="https://x.com/HenarPress" aria-label="Twitter">
+                <img src="twitter-logo.png" alt="Twitter" class="social-icon">
+            </a>
+            <a href="https://instagram.com/HenarPress" aria-label="Instagram">
+                <img src="instagram-logo.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">
+                <img src="facebook-logo.png" alt="Facebook" class="social-icon">
+            </a>
         </div>
-        <div class="nav-links">
-            <a href="#top">About</a>
-            <a href="#contribute">Contribute</a>
-            <a href="#our-team">Our Team</a>
-            <a href="#authors">Authors</a>
-            <a href="#contact">Contact</a>
-            <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886" target="_blank">Kurdish Literature Database</a>
-        </div>
-       <div class="social-links">
-    <a href="https://x.com/HenarPress" aria-label="Twitter">
-        <img src="twitter-logo.png" alt="Twitter" class="social-icon">
-    </a>
-    <a href="https://instagram.com/HenarPress" aria-label="Instagram">
-        <img src="instagram-logo.png" alt="Instagram" class="social-icon">
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">
-        <img src="facebook-logo.png" alt="Facebook" class="social-icon">
-    </a>
-</div>
-    </nav>
+        <a href="#" class="donate-button">Donate</a>
+</nav>
     <main>
     <div id="top" class="fade-in-section">
         <h1>Henar Press</h1>
