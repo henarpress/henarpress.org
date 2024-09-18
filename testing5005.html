@@ -104,6 +104,28 @@
         justify-content: space-between;
         z-index: 1000;
     }
+    
+     .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #232323;
+            color: #F7F5ED;
+            padding: 0.5rem 1rem;
+            z-index: 1002;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-header h1 {
+            font-family: 'Staatliches', sans-serif;
+            font-size: 1.5rem;
+            margin: 0;
+            color: #F7F5ED;
+        }
+
 
     .nav-bottom {
         display: flex;
@@ -432,17 +454,55 @@
             margin-left: 0;
             padding: 1rem;
             padding-top: 4rem;
+            padding-bottom: 1rem;
             max-width: 100%;
         }
 
         footer {
-            display: none;
+            display: none !important;
         }
 
+
+            .mobile-footer {
+                display: none !important; /* Ensure mobile footer is hidden */
+            }
+            
         .team-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
         }
+
+.mobile-header {
+                display: flex;
+            }
+            
+
+            body {
+                padding-top: 40px;
+                    padding-bottom: 0;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            nav {
+                top: 40px;
+                height: calc(100vh - 40px);
+            }
+
+            .nav-toggle {
+                position: static;
+                background: none;
+                color: #F7F5ED;
+                font-size: 1.5rem;
+                padding: 0;
+            }
+
+            main {
+                padding-top: 1rem;
+                margin-bottom: 0;
+                flex-grow: 1;
+            }
 
         .team-member img {
             width: 120px;
@@ -497,7 +557,10 @@
 <body>
   <div class="loading-screen">
     </div>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+ <header class="mobile-header">
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <h1>Henar Press</h1>
+    </header>
     <nav>
         <div class="logo-container">
             <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
@@ -658,17 +721,6 @@
         <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
     </div>
 </footer>
-    <div class="mobile-footer">
-        <form id="mobile-newsletter-form" class="newsletter-form">
-            <input type="email" id="mobile-email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-        </form>
-        <div class="footer-slogan">
-            <h2>Against Forgetting, We Write</h2>
-        </div>
-        <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
-    </div>
-    <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const fadeElems = document.querySelectorAll('.fade-in-section');
@@ -685,7 +737,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const form = document.getElementById('newsletter-form');
-    const mobileForm = document.getElementById('mobile-newsletter-form');
     
     function handleFormSubmit(e) {
         e.preventDefault();
@@ -714,10 +765,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
         form.addEventListener('submit', handleFormSubmit);
     }
-    
-    if (mobileForm) {
-        mobileForm.addEventListener('submit', handleFormSubmit);
-    }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -728,10 +775,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
-    const mobileFooter = document.querySelector('.mobile-footer');
     const backToTop = document.querySelector('.back-to-top');
 
     navToggle.addEventListener('click', function() {
@@ -745,22 +792,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-function handleResponsiveLayout() {
-    if (window.innerWidth <= 768) {
-        footer.style.display = 'none';
-        mobileFooter.style.display = 'block';
-        mobileFooter.style.position = 'static';
-        nav.style.height = '100%';
-        document.querySelector('.nav-links').style.marginTop = '1rem';
-    } else {
-        footer.style.display = 'block';
-        mobileFooter.style.display = 'none';
-        nav.style.height = '100vh';
-        document.querySelector('.nav-links').style.marginTop = '0';
+    function handleResponsiveLayout() {
+        if (window.innerWidth <= 768) {
+            if (footer) footer.style.display = 'none';
+            nav.style.height = '100%';
+            document.querySelector('.nav-links').style.marginTop = '1rem';
+            document.body.style.paddingBottom = '0';
+        } else {
+            if (footer) footer.style.display = 'block';
+            nav.style.height = '100vh';
+            document.querySelector('.nav-links').style.marginTop = '0';
+            document.body.style.paddingBottom = ''; // Reset to default
+        }
     }
-}
 
-    handleResponsiveLayout();
+    handleResponsiveLayout(); // Call on initial load
     window.addEventListener('resize', handleResponsiveLayout);
 
     window.addEventListener('scroll', function() {
@@ -777,15 +823,15 @@ function handleResponsiveLayout() {
     });
 });
 
- window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loadingScreen = document.querySelector('.loading-screen');
-                loadingScreen.classList.add('fade-out');
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 75); // Adjust this value to change how long the loading screen displays
-        });
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.classList.add('fade-out');
+        setTimeout(function() {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 70); // Adjust this value to change how long the loading screen displays
+});
 </script>
 <script async src="https://eocampaign1.com/form/3f5476f8-75cd-11ef-8c22-374cd7cdb1a8.js" data-form="3f5476f8-75cd-11ef-8c22-374cd7cdb1a8"></script>
 </body>
