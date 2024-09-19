@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press - Kurdish Literature & Culture</title>
-    <meta name="description" content="Henar Press is a nonprofit indie publisher passionate about bringing experimental Kurdish literature to a global audience. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
+    <meta name="description" content="Henar Press is a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -13,62 +13,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --primary-color: #232323;
-        --secondary-color: #F7F5ED;
-        --accent-color: #C0392B;
-        --text-color: #232323;
-        --transition: all 0.3s ease;
-    }
+    <style>
+        :root {
+            --primary-color: #232323;
+            --secondary-color: #F7F5ED;
+            --accent-color: #C0392B;
+            --text-color: #232323;
+            --transition: all 0.3s ease;
+        }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    html {
-        scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
 
-    body {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 13px;
-        color: var(--text-color);
-        line-height: 1.6;
-        background-color: var(--secondary-color);
-        display: flex;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-    }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-    main {
-        margin-left: 250px;
-        padding: 2rem;
-        max-width: calc(100% - 750px);
-        width: 100%;
-        height: 100vh;
-        overflow-y: auto;
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-    footer {
-        width: 500px;
-        height: 100vh;
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        padding: 2rem;
-        overflow-y: auto;
-    }
+        main {
+            margin-left: 250px;
+            padding: 2rem;
+            max-width: calc(100% - 750px);
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
 
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .loading-screen {
+        footer {
+            width: 500px;
+            min-height: 100vh;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .loading-screen {
             position: fixed;
             top: 0;
             left: 0;
@@ -91,21 +97,21 @@
             height: auto;
         }
 
-    nav {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background-color: var(--primary-color);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1000;
-    }
-    
-     .mobile-header {
+        nav {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: var(--primary-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        
+        .mobile-header {
             display: none;
             position: fixed;
             top: 0;
@@ -126,360 +132,473 @@
             color: #F7F5ED;
         }
 
-
-    .nav-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .logo-container img {
-        width: 100%;
-        max-width: 200px;
-        margin-bottom: 2rem;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nav-links a {
-        color: var(--secondary-color);
-        text-decoration: none;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        transition: var(--transition);
-        position: relative;
-    }
-
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background-color: var(--accent-color);
-        transition: var(--transition);
-    }
-
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .social-icon {
-        width: 38px;
-        height: 38px;
-        transition: transform 0.2s ease;
-    }
-
-    .social-links a:hover .social-icon {
-        opacity: 0.7;
-    }
-
-    h1, h2, h3 {
-        font-family: 'Staatliches', sans-serif;
-        color: var(--primary-color);
-    }
-
-    h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-    }
-
-    h2 {
-        font-size: 3rem;
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    p {
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-    }
-
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .team-member {
-        text-align: left;
-    }
-
-    .team-member img {
-        width: 200px;  
-        height: 200px; 
-        object-fit: cover; 
-        object-position: center;
-        margin-bottom: 1rem;
-        filter: grayscale(100%);
-        transition: var(--transition);
-    }
-
-    .team-member:hover img {
-        filter: grayscale(0%);
-    }
-
-    .team-member h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .team-member p {
-        font-size: 1rem;
-        font-style: italic;
-    }
-
-    .donate-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: var(--primary-color);
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        border: 2px solid var(--accent-color);
-        transition: var(--transition);
-        margin-bottom: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
-
-    .donate-button:hover {
-        background-color: var(--accent-color);
-        color: var(--secondary-color);
-    }
-
-    footer h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--secondary-color);
-    }
-
-    .book-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .book img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .footer-slogan h3 {
-        font-size: 2.3rem;
-        color: var(--secondary-color);
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .newsletter-form {
-        width: 100%;
-        margin-bottom: 1.5rem;
-        display: flex;
-        justify-content: center;
-    }
-
-    .copyright {
-        font-size: 0.9rem;
-        opacity: 0.7;
-        text-align: center;
-    }
-
-    .fade-in-section {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in-section.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .contact-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .submission-guidelines ul {
-        margin-left: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .submission-guidelines li {
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-    #contact-form {
-        background-color: var(--primary-color);
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--secondary-color);
-        font-size: 1.1rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 4px;
-        font-size: 1.1rem;
-        background-color: var(--secondary-color);
-        color: var(--primary-color);
-        transition: background-color 0.3s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        outline: none;
-        background-color: #F7F5ED;
-    }
-
-    .form-group textarea {
-        min-height: 150px;
-        resize: vertical;
-    }
-
-    #contact-form button[type="submit"] {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: #232323;
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        border: 2px solid var(--accent-color);
-        transition: var(--transition);
-        cursor: pointer;
-        width: auto;
-    }
-
-    #contact-form button[type="submit"]:hover {
-        background-color: var(--accent-color);
-        color: var(--secondary-color);
-    }
-    
-    a {
-        text-decoration: none;
-        color: var(--accent-color);
-    }
-
-    #attachment {
-        border: none;
-        padding: 0;
-    }
-    
-    @media (max-width: 768px) {
-        body {
-            flex-direction: column;
-            overflow-y: auto;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100vh;
-            transition: left 0.3s ease;
-            z-index: 1000;
+        .nav-bottom {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 4rem;
+            align-items: center;
         }
 
-        nav.open {
-            left: 0;
-        }
-
-        .nav-toggle {
-            display: block;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1001;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border: none;
-            padding: 0.5rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .logo-container {
+        .logo-container img {
+            width: 100%;
+            max-width: 200px;
             margin-bottom: 2rem;
         }
 
         .nav-links {
+            display: flex;
             flex-direction: column;
-            margin-top: 1rem;
         }
 
-        .nav-bottom {
-            margin-top: auto;
-            padding-bottom: 2rem;
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            position: relative;
         }
 
-        main {
-            margin-left: 0;
-            padding: 1rem;
-            padding-top: 4rem;
-            padding-bottom: 1rem;
-            max-width: 100%;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
         }
 
-        footer {
-            display: none !important;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            transition: transform 0.2s ease;
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Staatliches', sans-serif;
+            color: var(--primary-color);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-grid, .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: left;
+        }
+
+        .team-member img {
+            width: 200px;  
+            height: 200px; 
+            object-fit: cover; 
+            object-position: center;
+            margin-bottom: 1rem;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .team-member:hover img {
+            filter: grayscale(0%);
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .donate-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .donate-button:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        footer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .book img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .footer-slogan h3 {
+            font-size: 2.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .submission-guidelines ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .submission-guidelines li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        #contact-form {
+            background-color: var(--primary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background-color: #F7F5ED;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        #contact-form button[type="submit"] {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #232323;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: var(--transition);
+            cursor: pointer;
+            width: auto;
+        }
+
+        #contact-form button[type="submit"]:hover {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+        }
+
+        #attachment {
+            border: none;
+            padding: 0;
+        }
+
+        @media (min-width: 769px) {
+            .main-newsletter {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            html {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .team-member img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            main {
+                max-width: calc(100% - 250px);
+            }
+
+            footer {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            html {
+                font-size: 13px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.25rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .team-member img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            body {
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                margin: 0.5rem;
+            }
+
+            main {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 1rem;
+            }
+
+            footer {
+                width: 100%;
+                height: auto;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            html {
+                font-size: 12px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .team-grid, .book-grid {
+                gap: 0.5rem;
+            }
+
+            .team-member img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                width: 250px;
+                height: 100vh;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 4rem;
+            }
+
+            nav.open {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: var(--secondary-color);
+                border: none;
+                padding: 0.5rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .logo-container {
+                margin-bottom: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+
+            .nav-bottom {
+                margin-top: auto;
+                padding-bottom: 2rem;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 1rem;
+                padding-top: 4rem;
+                padding-bottom: 1rem;
+                max-width: 100%;
+            }
+
+            footer {
+                display: none !important;
+            }
 
             .mobile-footer {
-                display: none !important; /* Ensure mobile footer is hidden */
+                display: none !important;
             }
             
-        .team-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
 
-.mobile-header {
+            .mobile-header {
                 display: flex;
             }
-            
 
             body {
                 padding-top: 40px;
-                    padding-bottom: 0;
+                padding-bottom: 0;
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
@@ -504,60 +623,100 @@
                 flex-grow: 1;
             }
 
-        .team-member img {
-            width: 120px;
-            height: 120px;
+            .team-member img {
+                width: 120px;
+                height: 120px;
+            }
+
+            #contact-form {
+                padding: 1rem;
+            }
+
+            .back-to-top {
+                position: fixed;
+                bottom: 1rem;
+                right: 1rem;
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                padding: 0.5rem;
+                border-radius: 50%;
+                text-decoration: none;
+                font-size: 1.5rem;
+                display: none;
+                z-index: 1000;
+            }
+
+            .back-to-top.visible {
+                display: block;
+            }
+
+            .social-icon {
+                width: 28px;
+                height: 28px;
+                transition: var(--transition);
+            }
+            
+            .social-links a:hover .social-icon {
+                opacity: 0.7;
+                transition: var(--transition);
+            }
         }
 
-        .newsletter-form {
-            flex-direction: column;
-            align-items: stretch;
+        @media (max-width: 480px) {
+            html {
+                font-size: 11px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .team-grid, .book-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donate-button {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
         }
 
-        .newsletter-form input[type="email"] {
-            margin-bottom: 0.5rem;
+        @media (min-width: 481px) {
+            body {
+                font-size: calc(11px + 0.5vw);
+            }
+
+            h1 {
+                font-size: calc(2rem + 2vw);
+            }
+
+            h2 {
+                font-size: calc(1.75rem + 1vw);
+            }
         }
 
-        #contact-form {
-            padding: 1rem;
+        @media (max-aspect-ratio: 16/9) {
+            .team-grid, .book-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 0.5rem;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 1.5rem;
-            display: none;
-            z-index: 1000;
+        @media (max-aspect-ratio: 4/3) {
+            .team-grid, .book-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
         }
-
-        .back-to-top.visible {
-            display: block;
-        }
-
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover .social-icon {
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-
-    }
-</style>
+    </style>
 </head>
 <body>
-  <div class="loading-screen">
+    <div class="loading-screen">
+        <img src="loading-logo.png" alt="Loading...">
     </div>
- <header class="mobile-header">
+    <header class="mobile-header">
         <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
         <h1>Henar Press</h1>
     </header>
@@ -591,7 +750,7 @@
     <main>
         <div id="top" class="fade-in-section">
             <h1>Henar Press</h1>
-            <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing experimental Kurdish literature.</strong></p>
+            <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature.</strong></p>
         </div>
         <div id="about" class="fade-in-section">
             <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
@@ -693,40 +852,42 @@
                 </form>
             </div>
         </div>
-                    <div class="footer-slogan">
-<h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
+        <div class="footer-slogan">
+            <h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
         </div>
         <div class="newsletter-form">
-            <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+            <div class="newsletter-form main-newsletter">
+                <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+            </div>
         </div>
         <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
     </main>
-  <footer>
-    <div class="footer-content">
-<h2 style="font-size: 3.3rem;">New & Upcoming</h2>
-        <div class="book-grid">
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 1">
+    <footer>
+        <div class="footer-content">
+            <h2 style="font-size: 3.3rem;">New & Upcoming</h2>
+            <div class="book-grid">
+                <div class="book">
+                    <img src="bookplaceholder.jpg" alt="Book 1">
+                </div>
+                <div class="book">
+                    <img src="bookplaceholder.jpg" alt="Book 2">
+                </div>
+                <div class="book">
+                    <img src="bookplaceholder.jpg" alt="Book 3">
+                </div>
+                <div class="book">
+                    <img src="bookplaceholder.jpg" alt="Book 4">
+                </div>
             </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 2">
+            <div class="footer-slogan">
+                <h3>Against Forgetting, We Write</h3>
             </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 3">
+            <div class="newsletter-form">
+                <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
             </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 4">
-            </div>
+            <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
         </div>
-        <div class="footer-slogan">
-            <h3>Against Forgetting, We Write</h3>
-        </div>
-        <div class="newsletter-form">
-            <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-        </div>
-        <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
-    </div>
-</footer>
+    </footer>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const fadeElems = document.querySelectorAll('.fade-in-section');
@@ -808,11 +969,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (footer) footer.style.display = 'block';
             nav.style.height = '100vh';
             document.querySelector('.nav-links').style.marginTop = '0';
-            document.body.style.paddingBottom = ''; // Reset to default
+            document.body.style.paddingBottom = '';
         }
+
+        // Adjust font size based on viewport width
+        document.documentElement.style.fontSize = `${Math.max(12, Math.min(16, window.innerWidth / 80))}px`;
     }
 
-    handleResponsiveLayout(); // Call on initial load
+    handleResponsiveLayout();
     window.addEventListener('resize', handleResponsiveLayout);
 
     window.addEventListener('scroll', function() {
@@ -823,10 +987,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (backToTop) {
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Lazy loading for images
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                lazyImageObserver.unobserve(img);
+            }
+        });
     });
+
+    lazyImages.forEach(img => lazyImageObserver.observe(img));
 });
 
 window.addEventListener('load', function() {
@@ -835,10 +1016,9 @@ window.addEventListener('load', function() {
         loadingScreen.classList.add('fade-out');
         setTimeout(function() {
             loadingScreen.style.display = 'none';
-        }, 500);
-    }, 65);
+        }, 175);
+    }, 30);
 });
 </script>
-<script async src="https://eocampaign1.com/form/3f5476f8-75cd-11ef-8c22-374cd7cdb1a8.js" data-form="3f5476f8-75cd-11ef-8c22-374cd7cdb1a8"></script>
 </body>
 </html>
