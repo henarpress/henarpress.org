@@ -67,14 +67,11 @@ header {
     margin: 0 auto;
 }
 
-.logo {
-    width: 60px;
-    height: 60px;
-    margin-right: 1rem;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .logo-container img {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 2rem;
+    }
 
 
         .scroll-to-top {
@@ -273,8 +270,9 @@ footer {
         flex-direction: column;
     }
 
-    .logo {
-        margin-right: 0;
+    .logo-container img {
+        width: 100%;
+        max-width: 200px;
         margin-bottom: 1rem;
     }
 
@@ -341,9 +339,11 @@ footer {
 <body>
     <header>
         <div class="header-content">
+                                    <div class="logo-container">
             <a href="https://HenarPress.org" target="_blank">
-                <img src="<img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo">
+                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
             </a>
+        </div>
             <div class="header-text">
                 <h1>Kurdish Literature Database</h1>
                 <p class="subtitle">This is a work in progress. Please <a href="https://HenarPress.org" target="_blank">contact me</a> if there are any missing Kurdish book.</p>
