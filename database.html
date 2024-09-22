@@ -50,9 +50,33 @@
         text-align: center;
     }
 
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-right: 1rem;
+    }
+
+    .header-text {
+        text-align: left;
+    }
+
     header h1 {
         font-family: 'Staatliches', sans-serif;
         font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        opacity: 0.8;
     }
 
     main {
@@ -61,6 +85,9 @@
         max-width: 1200px;
         margin: 0 auto;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     h2 {
@@ -136,6 +163,56 @@
         text-decoration: underline;
     }
 
+    .book-description {
+        margin-top: 1rem;
+        font-style: italic;
+    }
+
+    .at-a-glance {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .at-a-glance h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
     footer {
         background-color: var(--primary-color);
         color: var(--secondary-color);
@@ -154,14 +231,45 @@
             margin-right: 0;
             margin-bottom: 1rem;
         }
+
+        .header-content {
+            flex-direction: column;
+        }
+
+        .logo {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .at-a-glance {
+            max-width: 100%;
+        }
     }
 </style>
 </head>
 <body>
     <header>
-        <h1>Kurdish Literature Database</h1>
+        <div class="header-content">
+            <a href="https://HenarPress.org" target="_blank">
+                <img src="/api/placeholder/80/80" alt="Henar Press Logo" class="logo">
+            </a>
+            <div class="header-text">
+                <h1>Kurdish Literature Database</h1>
+                <p class="subtitle">This is a work in progress. If there's any Kurdish book missing, please <a href="https://HenarPress.org" target="_blank">contact me</a>.</p>
+            </div>
+        </div>
     </header>
     <main>
+        <div class="at-a-glance">
+            <h3>At a Glance</h3>
+            <div id="bookStats" class="stats-grid">
+                <!-- Book statistics will be populated here by JavaScript -->
+            </div>
+        </div>
         <h2>Search the Database</h2>
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or any keyword...">
@@ -173,7 +281,7 @@
     </footer>
 
     <script>
-        const books = [
+          const books = [
         {
             title: "Hyper",
             author: "Agri Ismaïl",
@@ -1206,42 +1314,67 @@
             }
         ];
 
-
         const bookList = document.getElementById("bookList");
         const searchInput = document.getElementById("searchInput");
+        const bookStats = document.getElementById("bookStats");
+        const apiKey = 'AIzaSyAAbutLHeGQPOam-ILp9O2UMrXUkPCk0WQ';
 
-        function displayBooks(data) {
+        function fetchBookDetails(isbn) {
+            return fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const bookInfo = data.items[0].volumeInfo;
+                        return {
+                            coverUrl: bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : null,
+                            description: bookInfo.description || "No description available."
+                        };
+                    }
+                    return null;
+                })
+                .catch(error => {
+                    console.error('Error fetching book details:', error);
+                    return null;
+                });
+        }
+
+        function createBookElement(book, details) {
+            const bookElement = document.createElement("div");
+            bookElement.className = "book-details";
+            
+            const img = new Image();
+            img.src = details && details.coverUrl ? details.coverUrl : "/placeholder.jpg";
+            img.alt = `${book.title} cover`;
+            img.className = "book-cover";
+            img.loading = "lazy"; // Enable lazy loading
+            
+            const infoDiv = document.createElement("div");
+            infoDiv.className = "book-info";
+            infoDiv.innerHTML = `
+                <h3>${book.title}</h3>
+                <p><strong>Author:</strong> ${book.author}</p>
+                <p><strong>Year:</strong> ${book.year}</p>
+                <p><strong>Genre:</strong> ${book.genre}</p>
+                <p><strong>ISBN:</strong> ${book.isbn}</p>
+                <p><strong>Publisher:</strong> ${book.publisher}</p>
+                <p><strong>Translator:</strong> ${book.translator}</p>
+                <p><strong>Country:</strong> ${book.country}</p>
+                <p class="book-description">${details ? details.description : "Loading description..."}</p>
+                <a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
+            `;
+            
+            bookElement.appendChild(img);
+            bookElement.appendChild(infoDiv);
+            return bookElement;
+        }
+
+        async function displayBooks(data) {
             bookList.innerHTML = "";
-            data.forEach(book => {
-                const bookElement = document.createElement("div");
-                bookElement.className = "book-details";
-                
-                const img = new Image();
-                img.src = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
-                img.alt = `${book.title} cover`;
-                img.className = "book-cover";
-                img.onerror = function() {
-                    this.src = "/api/placeholder/100/150";
-                };
-                
-                const infoDiv = document.createElement("div");
-                infoDiv.className = "book-info";
-                infoDiv.innerHTML = `
-                    <h3>${book.title}</h3>
-                    <p><strong>Author:</strong> ${book.author}</p>
-                    <p><strong>Year:</strong> ${book.year}</p>
-                    <p><strong>Genre:</strong> ${book.genre}</p>
-                    <p><strong>ISBN:</strong> ${book.isbn}</p>
-                    <p><strong>Publisher:</strong> ${book.publisher}</p>
-                    <p><strong>Translator:</strong> ${book.translator}</p>
-                    <p><strong>Country:</strong> ${book.country}</p>
-                    <a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
-                `;
-                
-                bookElement.appendChild(img);
-                bookElement.appendChild(infoDiv);
+            for (const book of data) {
+                const details = await fetchBookDetails(book.isbn);
+                const bookElement = createBookElement(book, details);
                 bookList.appendChild(bookElement);
-            });
+            }
         }
 
         function filterBooks(searchTerm) {
@@ -1252,6 +1385,36 @@
             );
         }
 
+        function updateBookStats() {
+            const totalBooks = books.length;
+            const genreCounts = books.reduce((acc, book) => {
+                acc[book.genre] = (acc[book.genre] || 0) + 1;
+                return acc;
+            }, {});
+
+            let statsHTML = `
+                <div class="stat-item">
+                    <span class="stat-value">${totalBooks}</span>
+                    <span class="stat-label">Total Books</span>
+                </div>
+            `;
+            
+            const topGenres = Object.entries(genreCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+
+            topGenres.forEach(([genre, count]) => {
+                statsHTML += `
+                    <div class="stat-item">
+                        <span class="stat-value">${count}</span>
+                        <span class="stat-label">${genre}</span>
+                    </div>
+                `;
+            });
+
+            bookStats.innerHTML = statsHTML;
+        }
+
         searchInput.addEventListener("input", function() {
             const searchTerm = this.value;
             const filteredBooks = filterBooks(searchTerm);
@@ -1259,6 +1422,7 @@
         });
 
         displayBooks(books);
+        updateBookStats();
     </script>
 </body>
 </html>
