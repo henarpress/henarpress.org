@@ -1337,7 +1337,7 @@ function createBookElement(book, details) {
     bookElement.className = "book-details";
     
     const img = new Image();
-    img.src = details && details.coverUrl ? details.coverUrl : "/placeholder.jpg";
+    img.src = details && details.coverUrl ? details.coverUrl : "/api/placeholder/150/225";
     img.alt = `${book.title} cover`;
     img.className = "book-cover";
     img.loading = "lazy";
