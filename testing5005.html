@@ -1219,7 +1219,7 @@
                         <p><strong>Publisher:</strong> ${book.publisher}</p>
                         <p><strong>Translator:</strong> ${book.translator}</p>
                         <p><strong>Country:</strong> ${book.country}</p>
-                        <a href="https://www.worldcat.org/search?q=ti%3A${encodeURIComponent(book.title)}+au%3A${encodeURIComponent(book.author)}&qt=advanced" target="_blank">View on WorldCat</a>
+<a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
                     </div>
                 `;
                 bookList.appendChild(bookElement);
