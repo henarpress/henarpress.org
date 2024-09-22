@@ -13,158 +13,149 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #232323;
-            --secondary-color: #F7F5ED;
-            --accent-color: #C0392B;
-            --text-color: #232323;
-            --transition: all 0.3s ease;
-        }
+<style>
+    :root {
+        --primary-color: #232323;
+        --secondary-color: #F7F5ED;
+        --accent-color: #C0392B;
+        --text-color: #232323;
+        --transition: all 0.3s ease;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+    html, body {
+        height: 100%;
+        overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--secondary-color);
-            min-height: 100vh;
-            display: flex;
+    body {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: var(--secondary-color);
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+    }
+
+    header h1 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: 2.5rem;
+    }
+
+    main {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    h2 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .search-container {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+    }
+
+    #bookList {
+        width: 100%;
+    }
+
+    .book-details {
+        display: flex;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        min-height: 250px;
+    }
+
+    .book-cover {
+        width: 150px;
+        height: 225px;
+        object-fit: cover;
+        margin-right: 1.5rem;
+        border-radius: 4px;
+    }
+
+    .book-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .book-info h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+
+    .book-info p {
+        margin-bottom: 0.3rem;
+    }
+
+    .book-info a {
+        display: inline-block;
+        margin-top: auto;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+    }
+
+    .book-info a:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .book-details {
             flex-direction: column;
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-family: 'Staatliches', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        main {
-            flex-grow: 1;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-family: 'Staatliches', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .search-container {
-            margin-bottom: 2rem;
-            max-width: 600px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 4px;
-            box-sizing: border-box;
-            height: 40px;
-        }
-
-        .book-details {
-            display: flex;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-radius: 4px;
-        }
-
         .book-cover {
-            width: 200px;
-            height: 300px;
-            object-fit: cover;
-            margin-right: 20px;
-            border-radius: 4px;
-            transition: opacity 0.3s ease;
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+            margin-bottom: 1rem;
         }
-
-        .book-cover.lazy {
-            opacity: 0;
-        }
-
-        .book-info {
-            flex-grow: 1;
-        }
-
-        .book-info h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .book-info p {
-            margin-bottom: 0.3rem;
-        }
-
-        .book-info a {
-            display: inline-block;
-            margin-top: 0.5rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: var(--transition);
-        }
-
-        .book-info a:hover {
-            text-decoration: underline;
-        }
-
-        #bookList {
-            min-height: 400px;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            text-align: center;
-            padding: 1rem;
-            margin-top: auto;
-        }
-
-        @media (max-width: 768px) {
-            .book-details {
-                flex-direction: column;
-            }
-
-            .book-cover {
-                width: 100%;
-                height: auto;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <header>
@@ -199,9 +190,9 @@
             year: "2024",
             genre: "Short Story Collection",
             isbn: "978-1646052806",
-            publisher: "Deep Vellum Publishing",
+            publisher: "Deep Vellum Publishing (also available from Comma Press)",
             translator: "Qadir Agid, Yildiz Cakar, Selahattin Demirtas, Omer Dilsoz, Muharrem Erbey, Nariman Evdike, Ava Homa, Hüseyin Karabey, Karzan Kardosi, Sema Kaygusuz, Meral Simsek, & Jahangir Mahmood Waysi",
-            country: "USA"
+            country: "USA and UK"
         },
         {
             title: "Love and War: Contemporary Kurdish Women Poets",
@@ -279,9 +270,9 @@
             year: "2024",
             genre: "Novel",
             isbn: "978-1558611931",
-            publisher: "The Feminist Press at CUNY",
+            publisher: "The Feminist Press at CUNY (also available from Fitzcarraldo Editions)",
             translator: "Saskia Vogel",
-            country: "USA"
+            country: "USA and UK"
         },
         {
             title: "The Smell of Wet Bricks",
@@ -1215,88 +1206,43 @@
             }
         ];
 
-        function createBookElement(book) {
-            const bookElement = document.createElement('div');
-            bookElement.className = 'book-details';
 
-            const coverImage = document.createElement('img');
-            coverImage.className = 'book-cover lazy';
-            coverImage.src = `book_covers/${book.isbn}.jpg`;
-            coverImage.alt = `${book.title} cover`;
-            coverImage.onerror = function() {
-                this.onerror = null;
-                this.src = 'placeholder.jpg';
-            };
+        const bookList = document.getElementById("bookList");
+        const searchInput = document.getElementById("searchInput");
 
-            const bookInfo = document.createElement('div');
-            bookInfo.className = 'book-info';
-
-            const title = document.createElement('h3');
-            title.textContent = book.title;
-
-            const author = document.createElement('p');
-            author.textContent = `Author: ${book.author}`;
-
-            const year = document.createElement('p');
-            year.textContent = `Year: ${book.year}`;
-
-            const genre = document.createElement('p');
-            genre.textContent = `Genre: ${book.genre}`;
-
-            const isbn = document.createElement('p');
-            isbn.textContent = `ISBN: ${book.isbn}`;
-
-            const publisher = document.createElement('p');
-            publisher.textContent = `Publisher: ${book.publisher}`;
-
-            const translator = document.createElement('p');
-            translator.textContent = `Translator: ${book.translator}`;
-
-            const country = document.createElement('p');
-            country.textContent = `Country: ${book.country}`;
-
-            bookInfo.appendChild(title);
-            bookInfo.appendChild(author);
-            bookInfo.appendChild(year);
-            bookInfo.appendChild(genre);
-            bookInfo.appendChild(isbn);
-            bookInfo.appendChild(publisher);
-            bookInfo.appendChild(translator);
-            bookInfo.appendChild(country);
-
-            bookElement.appendChild(coverImage);
-            bookElement.appendChild(bookInfo);
-
-            return bookElement;
+        function displayBooks(data) {
+            bookList.innerHTML = "";
+            data.forEach(book => {
+                const bookElement = document.createElement("div");
+                bookElement.className = "book-details";
+                
+                const img = new Image();
+                img.src = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
+                img.alt = `${book.title} cover`;
+                img.className = "book-cover";
+                img.onerror = function() {
+                    this.src = "/api/placeholder/100/150";
+                };
+                
+                const infoDiv = document.createElement("div");
+                infoDiv.className = "book-info";
+                infoDiv.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p><strong>Author:</strong> ${book.author}</p>
+                    <p><strong>Year:</strong> ${book.year}</p>
+                    <p><strong>Genre:</strong> ${book.genre}</p>
+                    <p><strong>ISBN:</strong> ${book.isbn}</p>
+                    <p><strong>Publisher:</strong> ${book.publisher}</p>
+                    <p><strong>Translator:</strong> ${book.translator}</p>
+                    <p><strong>Country:</strong> ${book.country}</p>
+                    <a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
+                `;
+                
+                bookElement.appendChild(img);
+                bookElement.appendChild(infoDiv);
+                bookList.appendChild(bookElement);
+            });
         }
-
-        const bookList = document.getElementById('bookList');
-        const searchInput = document.getElementById('searchInput');
-
-  function displayBooks(books) {
-    const bookList = document.getElementById('bookList');
-    bookList.innerHTML = '';
-
-    books.forEach(book => {
-        const bookElement = document.createElement('div');
-        bookElement.className = 'book-details';
-        bookElement.innerHTML = `
-            <img src="path/to/${book.isbn}.jpg" alt="${book.title} cover" class="book-cover lazy">
-            <div class="book-info">
-                <h3>${book.title}</h3>
-                <p><strong>Author:</strong> ${book.author}</p>
-                <p><strong>Year:</strong> ${book.year} </p>
-                <p><strong>Genre:</strong> ${book.genre}</p>
-                <p><strong>ISBN:</strong> ${book.isbn}</p>
-                <p><strong>Publisher:</strong> ${book.publisher}</p>
-                <p><strong>Translator:</strong> ${book.translator}</p>
-                <p><strong>Country:</strong> ${book.country}</p>
-                <p><a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a></p>
-            </div>
-        `;
-        bookList.appendChild(bookElement);
-    });
-}
 
         function filterBooks(searchTerm) {
             return books.filter(book => 
@@ -1306,12 +1252,12 @@
             );
         }
 
-        searchInput.addEventListener('input', function() {
-            const filteredBooks = filterBooks(this.value);
+        searchInput.addEventListener("input", function() {
+            const searchTerm = this.value;
+            const filteredBooks = filterBooks(searchTerm);
             displayBooks(filteredBooks);
         });
 
-        // Initial display of all books
         displayBooks(books);
     </script>
 </body>
