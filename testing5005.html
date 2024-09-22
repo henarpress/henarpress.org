@@ -87,18 +87,23 @@
             display: flex;
             margin-bottom: 20px;
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 20px;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-radius: 4px;
         }
 
         .book-cover {
-            width: 100px;
-            height: 150px;
+            width: 200px;
+            height: 300px;
             object-fit: cover;
             margin-right: 20px;
             border-radius: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-cover.lazy {
+            opacity: 0;
         }
 
         .book-info {
@@ -146,7 +151,7 @@
                 width: 100%;
                 height: auto;
                 margin-right: 0;
-                margin-bottom: 10px;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -167,7 +172,7 @@
     </footer>
 
     <script>
-        const books = [
+             const books = [
         {
             title: "Hyper",
             author: "Agri Ismaïl",
@@ -1200,59 +1205,76 @@
             }
         ];
 
-
-        const bookList = document.getElementById("bookList");
-        const searchInput = document.getElementById("searchInput");
-
-        function displayBooks(data) {
-            bookList.innerHTML = "";
-            data.forEach(book => {
-                const bookElement = document.createElement("div");
-                bookElement.className = "book-details";
-                
-                const img = new Image();
-                img.src = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
-                img.alt = `${book.title} cover`;
-                img.className = "book-cover";
-                img.onerror = function() {
-                    this.src = "/api/placeholder/100/150";
-                };
-                
-                const infoDiv = document.createElement("div");
-                infoDiv.className = "book-info";
-                infoDiv.innerHTML = `
-                    <h3>${book.title}</h3>
-                    <p><strong>Author:</strong> ${book.author}</p>
-                    <p><strong>Year:</strong> ${book.year}</p>
-                    <p><strong>Genre:</strong> ${book.genre}</p>
-                    <p><strong>ISBN:</strong> ${book.isbn}</p>
-                    <p><strong>Publisher:</strong> ${book.publisher}</p>
-                    <p><strong>Translator:</strong> ${book.translator}</p>
-                    <p><strong>Country:</strong> ${book.country}</p>
-                    <a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
+        function displayBooks(books) {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+            books.forEach(book => {
+                const bookElement = document.createElement('div');
+                bookElement.className = 'book-details';
+                bookElement.innerHTML = `
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg" alt="${book.title} Cover" class="book-cover lazy" loading="lazy">
+                    <div class="book-info">
+                        <h3>${book.title}</h3>
+                        <p>Author: ${book.author}</p>
+                        <p>Year: ${book.year}</p>
+                        <p>Genre: ${book.genre}</p>
+                        <p>ISBN: ${book.isbn}</p>
+                        <p>Publisher: ${book.publisher}</p>
+                        <p>Translator: ${book.translator}</p>
+                        <p>Country: ${book.country}</p>
+                    </div>
                 `;
-                
-                bookElement.appendChild(img);
-                bookElement.appendChild(infoDiv);
                 bookList.appendChild(bookElement);
             });
+
+            lazyLoadImages();
         }
 
-        function filterBooks(searchTerm) {
-            return books.filter(book => 
-                Object.values(book).some(value => 
-                    value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-                )
+        function lazyLoadImages() {
+            const lazyImages = document.querySelectorAll('img.lazy');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.dataset.src;
+                            image.classList.remove('lazy');
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                });
+            }
+        }
+
+        function searchBooks() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            const filteredBooks = books.filter(book => 
+                book.title.toLowerCase().includes(searchTerm) ||
+                book.author.toLowerCase().includes(searchTerm) ||
+                book.genre.toLowerCase().includes(searchTerm) ||
+                book.year.includes(searchTerm) ||
+                book.isbn.includes(searchTerm) ||
+                book.publisher.toLowerCase().includes(searchTerm) ||
+                book.translator.toLowerCase().includes(searchTerm) ||
+                book.country.toLowerCase().includes(searchTerm)
             );
+            displayBooks(filteredBooks);
         }
 
-        searchInput.addEventListener("input", function() {
-            const searchTerm = this.value;
-            const filteredBooks = filterBooks(searchTerm);
-            displayBooks(filteredBooks);
-        });
-
+        // Initial display of all books
         displayBooks(books);
+
+        // Add event listener for search input
+        document.getElementById('searchInput').addEventListener('input', searchBooks);
     </script>
 </body>
 </html>
