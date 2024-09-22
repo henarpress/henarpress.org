@@ -250,7 +250,7 @@
     <header>
         <div class="header-content">
             <a href="https://HenarPress.org" target="_blank">
-                <img src="/api/placeholder/80/80" alt="Henar Press Logo" class="logo">
+                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo">
             </a>
             <div class="header-text">
                 <h1>Kurdish Literature Database</h1>
@@ -1337,7 +1337,7 @@ function createBookElement(book, details) {
     bookElement.className = "book-details";
     
     const img = new Image();
-    img.src = details && details.coverUrl ? details.coverUrl : "/api/placeholder/150/225";
+    img.src = details && details.coverUrl ? details.coverUrl : "placeholder.jpg";
     img.alt = `${book.title} cover`;
     img.className = "book-cover";
     img.loading = "lazy";
