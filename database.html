@@ -14,247 +14,330 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 <style>
-    :root {
-        --primary-color: #232323;
-        --secondary-color: #F7F5ED;
-        --accent-color: #C0392B;
-        --text-color: #232323;
-        --transition: all 0.3s ease;
-    }
+:root {
+    --primary-color: #232323;
+    --secondary-color: #F7F5ED;
+    --accent-color: #C0392B;
+    --text-color: #232323;
+    --transition: all 0.3s ease;
+}
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    html, body {
-        height: 100%;
-        overflow-x: hidden;
-    }
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
 
-    body {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 16px;
-        color: var(--text-color);
-        line-height: 1.6;
-        background-color: var(--secondary-color);
-        display: flex;
-        flex-direction: column;
-    }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+}
 
-    header {
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        padding: 1rem;
-        text-align: center;
-    }
+header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+}
 
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--accent-color);
+        }
+
+        .scroll-to-top .material-symbols-outlined {
+            font-size: 24px;
+        }
+
+.header-text {
+    text-align: left;
+}
+
+header h1 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.search-container {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(35, 35, 35, 0.2);
+}
+
+#bookList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.book-details {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.book-cover {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.book-info p {
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.book-info a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.at-a-glance {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.at-a-glance h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
     .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 1200px;
-        margin: 0 auto;
+        flex-direction: column;
     }
 
     .logo {
-        width: 80px;
-        height: 80px;
-        margin-right: 1rem;
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
 
     .header-text {
-        text-align: left;
+        text-align: center;
     }
 
     header h1 {
-        font-family: 'Staatliches', sans-serif;
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
     }
 
     .subtitle {
-        font-size: 0.9rem;
-        opacity: 0.8;
+        font-size: 0.8rem;
     }
 
     main {
-        flex: 1;
-        padding: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    h2 {
-        font-family: 'Staatliches', sans-serif;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-
-    .search-container {
-        margin-bottom: 2rem;
-        width: 100%;
-    }
-
-    .search-input {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 2px solid var(--primary-color);
-        border-radius: 4px;
-    }
-
-    #bookList {
-        width: 100%;
-    }
-
-    .book-details {
-        display: flex;
-        border: 1px solid #ddd;
         padding: 1rem;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        border-radius: 4px;
-        margin-bottom: 2rem;
-        min-height: 250px;
     }
 
     .book-cover {
-        width: 150px;
-        height: 225px;
-        object-fit: cover;
-        margin-right: 1.5rem;
-        border-radius: 4px;
-    }
-
-    .book-info {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+        width: 60px;
+        height: 90px;
     }
 
     .book-info h3 {
-        font-family: 'Syne', sans-serif;
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary-color);
+        font-size: 1rem;
     }
 
     .book-info p {
-        margin-bottom: 0.3rem;
-    }
-
-    .book-info a {
-        display: inline-block;
-        margin-top: auto;
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        transition: var(--transition);
-    }
-
-    .book-info a:hover {
-        text-decoration: underline;
+        font-size: 0.8rem;
     }
 
     .at-a-glance {
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .at-a-glance h3 {
-        font-family: 'Syne', sans-serif;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-        border-bottom: 2px solid var(--accent-color);
-        padding-bottom: 0.5rem;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-
-    .stat-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .stat-value {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--accent-color);
-        margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    footer {
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        text-align: center;
         padding: 1rem;
     }
 
-    @media (max-width: 768px) {
-        .book-details {
-            flex-direction: column;
-        }
-
-        .book-cover {
-            width: 100%;
-            height: auto;
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
-
-        .header-content {
-            flex-direction: column;
-        }
-
-        .logo {
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
-
-        .header-text {
-            text-align: center;
-        }
-
-        .at-a-glance {
-            max-width: 100%;
-        }
+    .stat-value {
+        font-size: 1.2rem;
     }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-details {
+        flex-direction: column;
+    }
+
+    .book-cover {
+        width: 100%;
+        height: 150px;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .book-info h3 {
+        font-size: 1.1rem;
+    }
+}
 </style>
 </head>
 <body>
     <header>
         <div class="header-content">
             <a href="https://HenarPress.org" target="_blank">
-                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="logo">
+                <img src="/api/placeholder/80/80" alt="Henar Press Logo" class="logo">
             </a>
             <div class="header-text">
                 <h1>Kurdish Literature Database</h1>
-                <p class="subtitle">This is a work in progress. If there's any Kurdish book missing, please <a href="https://HenarPress.org" target="_blank">contact me</a>.</p>
+                <p class="subtitle">This is a work in progress. Please <a href="https://HenarPress.org" target="_blank">contact me</a> if there are any missing Kurdish book.</p>
             </div>
         </div>
     </header>
@@ -271,6 +354,11 @@
         </div>
         <div id="bookList"></div>
     </main>
+    
+     <div class="scroll-to-top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </div>
+    
     <footer>
         <p>&copy; 2024 Henar Press. All rights reserved.</p>
     </footer>
@@ -1337,7 +1425,7 @@ function createBookElement(book, details) {
     bookElement.className = "book-details";
     
     const img = new Image();
-    img.src = details && details.coverUrl ? details.coverUrl : "placeholder.jpg";
+    img.src = details && details.coverUrl ? details.coverUrl : "/api/placeholder/150/225";
     img.alt = `${book.title} cover`;
     img.className = "book-cover";
     img.loading = "lazy";
@@ -1426,6 +1514,24 @@ searchInput.addEventListener("input", function() {
 
 displayBooks(books);
 updateBookStats();
+
+const scrollToTopButton = document.querySelector('.scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
     </script>
 </body>
 </html>
