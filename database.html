@@ -52,26 +52,31 @@ body {
     flex-direction: column;
 }
 
-header {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 1rem;
-    text-align: center;
-}
+ header {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem 1rem;
+        }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .logo-container img {
-        width: 100%;
-        max-width: 200px;
-        margin-bottom: 2rem;
-    }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+
+  .logo-container img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
 
 
         .scroll-to-top {
@@ -107,20 +112,24 @@ header {
             font-size: 24px;
         }
 
-.header-text {
-    text-align: left;
-}
+   .header-text {
+            text-align: right;
+            flex-grow: 1;
+        }
 
-header h1 {
-    font-family: 'Staatliches', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 0.25rem;
-}
+   header h1 {
+            font-family: 'Staatliches', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
 
-.subtitle {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+        }
 
 main {
     flex: 1;
@@ -132,6 +141,14 @@ main {
     flex-direction: column;
     align-items: center;
 }
+
+    .footer-slogan h3 {
+        font-size: 3rem;
+        font-family: 'Staatliches', sans-serif;
+        color: var(--secondary-color);
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
 
 h2 {
     font-family: 'Staatliches', sans-serif;
@@ -178,11 +195,16 @@ h2 {
 }
 
 .book-cover {
-    width: 80px;
-    height: 120px;
+    width: 160px;
+    height: 240px;
     object-fit: cover;
     border-radius: 4px;
     margin-right: 1rem;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.book-cover.lazy {
+    opacity: 0.5;
 }
 
 .book-info {
@@ -266,9 +288,12 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-    }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
 
     .logo-container img {
         width: 100%;
@@ -276,25 +301,30 @@ footer {
         margin-bottom: 1rem;
     }
 
-    .header-text {
-        text-align: center;
-    }
+  .logo-container {
+                margin-bottom: 1.5rem;
+            }
 
-    header h1 {
-        font-size: 1.8rem;
-    }
+            .header-text {
+                text-align: center;
+            }
 
-    .subtitle {
-        font-size: 0.8rem;
-    }
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+                margin: 0 auto;
+            }
 
     main {
         padding: 1rem;
     }
 
     .book-cover {
-        width: 60px;
-        height: 90px;
+        width: 125px;
+        height: 200px;
     }
 
     .book-info h3 {
@@ -318,38 +348,24 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
-    .book-details {
-        flex-direction: column;
-    }
-
-    .book-cover {
-        width: 100%;
-        height: 150px;
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-
-    .book-info h3 {
-        font-size: 1.1rem;
-    }
-}
 </style>
+    <link rel="preload" href="placeholder.jpg" as="image">
 </head>
 <body>
-    <header>
+ <header>
         <div class="header-content">
-                                    <div class="logo-container">
-            <a href="https://HenarPress.org" target="_blank">
-                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
-            </a>
-        </div>
+            <div class="logo-container">
+                <a href="https://HenarPress.org" target="_blank">
+                    <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
+                </a>
+            </div>
             <div class="header-text">
                 <h1>Kurdish Literature Database</h1>
-                <p class="subtitle">This is a work in progress. Please <a href="https://HenarPress.org" target="_blank">contact me</a> if there are any missing Kurdish book.</p>
+                <p class="subtitle">We are continuously adding to our database of Kurdish literature.<br>If you find any titles missing, please don't hesitate to <a href="https://HenarPress.org" target="_blank">contact us</a>.</p>
             </div>
         </div>
     </header>
+
     <main>
         <div class="at-a-glance">
             <div id="bookStats" class="stats-grid">
@@ -367,6 +383,9 @@ footer {
     </div>
     
     <footer>
+            <div class="footer-slogan">
+            <h3>Against Forgetting, We Write</h3>
+        </div>
         <p>&copy; 2024 Henar Press. All rights reserved.</p>
     </footer>
 
@@ -382,16 +401,7 @@ footer {
             translator: "-",
             country: "UK"
         },
-        {
-            title: "Kurdistan +100: Stories from a Future State",
-            author: "Orsola Casagrande, Mustafa Gündoğdu",
-            year: "2024",
-            genre: "Short Story Collection",
-            isbn: "978-1646052806",
-            publisher: "Deep Vellum Publishing (also available from Comma Press)",
-            translator: "Qadir Agid, Yildiz Cakar, Selahattin Demirtas, Omer Dilsoz, Muharrem Erbey, Nariman Evdike, Ava Homa, Hüseyin Karabey, Karzan Kardosi, Sema Kaygusuz, Meral Simsek, & Jahangir Mahmood Waysi",
-            country: "USA and UK"
-        },
+ 
         {
             title: "Love and War: Contemporary Kurdish Women Poets",
             author: "Maram al-Masri & Alan Dent",
@@ -468,7 +478,7 @@ footer {
             year: "2024",
             genre: "Novel",
             isbn: "978-1558611931",
-            publisher: "The Feminist Press at CUNY (also available from Fitzcarraldo Editions)",
+            publisher: "The Feminist Press at CUNY",
             translator: "Saskia Vogel",
             country: "USA and UK"
         },
@@ -545,6 +555,18 @@ footer {
             translator: "Aron Aji & Selin Gökçesu",
             country: "USA"
         },
+        
+               {
+            title: "Kurdistan +100: Stories from a Future State",
+            author: "Orsola Casagrande & Mustafa Gündoğdu",
+            year: "2023",
+            genre: "Short Story Collection",
+            isbn: "978-1912697366",
+            publisher: "Comma Press",
+            translator: "Qadir Agid, Yildiz Cakar, Selahattin Demirtas, Omer Dilsoz, Muharrem Erbey, Nariman Evdike, Ava Homa, Hüseyin Karabey, Karzan Kardosi, Sema Kaygusuz, Meral Simsek, & Jahangir Mahmood Waysi",
+            country: "UK"
+        },
+        
         {
             title: "The Road to My Kurdish Roots: Unravelling My Journey Back Home",
             author: "Haytham Aziz",
@@ -1501,27 +1523,12 @@ footer {
             }
         ];
 
- const bookList = document.getElementById("bookList");
+const bookList = document.getElementById("bookList");
 const searchInput = document.getElementById("searchInput");
 const bookStats = document.getElementById("bookStats");
-const apiKey = 'AIzaSyAAbutLHeGQPOam-ILp9O2UMrXUkPCk0WQ';
 
-function fetchBookDetails(isbn) {
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.items && data.items.length > 0) {
-                const bookInfo = data.items[0].volumeInfo;
-                return {
-                    coverUrl: bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : null,
-                };
-            }
-            return null;
-        })
-        .catch(error => {
-            console.error('Error fetching book details:', error);
-            return null;
-        });
+function getBookCover(isbn) {
+    return `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
 }
 
 function createBookElement(book, details) {
@@ -1553,19 +1560,49 @@ function createBookElement(book, details) {
     return bookElement;
 }
 
-function displayBooks(data) {
+function displayBooks(booksToShow) {
     bookList.innerHTML = "";
-    data.forEach(book => {
-        const bookElement = createBookElement(book, null);
+    booksToShow.forEach(book => {
+        const bookElement = document.createElement("div");
+        bookElement.className = "book-details";
+        bookElement.innerHTML = `
+            <img src="placeholder.jpg" data-src="${getBookCover(book.isbn)}" alt="${book.title} cover" class="book-cover lazy">
+            <div class="book-info">
+                <h3>${book.title}</h3>
+                <p><strong>Author:</strong> ${book.author}</p>
+                <p><strong>Year:</strong> ${book.year}</p>
+                <p><strong>Genre:</strong> ${book.genre}</p>
+                <p><strong>Publisher:</strong> ${book.publisher}</p>
+                <p><strong>Translator:</strong> ${book.translator}</p>
+                <p><strong>Country:</strong> ${book.country}</p>
+                <a href="https://www.worldcat.org/isbn/${book.isbn}" target="_blank">Find in a library</a>
+            </div>
+        `;
         bookList.appendChild(bookElement);
-        fetchBookDetails(book.isbn).then(details => {
-            if (details && details.coverUrl) {
-                const img = bookElement.querySelector('.book-cover');
-                img.src = details.coverUrl;
+    });
+    
+        setupLazyLoading();
+}
+
+
+function setupLazyLoading() {
+    const lazyImages = document.querySelectorAll('img.lazy');
+    
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const lazyImage = entry.target;
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.classList.remove('lazy');
+                observer.unobserve(lazyImage);
             }
         });
     });
+
+    lazyImages.forEach(image => lazyImageObserver.observe(image));
 }
+
+displayBooks(books);
 
 function filterBooks(searchTerm) {
     return books.filter(book => 
