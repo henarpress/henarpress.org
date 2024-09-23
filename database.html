@@ -78,8 +78,7 @@ body {
             height: auto;
         }
 
-
-        .scroll-to-top {
+     .scroll-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -95,7 +94,7 @@ body {
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
         }
 
@@ -108,8 +107,9 @@ body {
             background-color: var(--accent-color);
         }
 
-        .scroll-to-top .material-symbols-outlined {
-            font-size: 24px;
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
         }
 
    .header-text {
@@ -322,6 +322,14 @@ footer {
         padding: 1rem;
     }
 
+        .footer-slogan h3 {
+        font-size: 2rem;
+        font-family: 'Staatliches', sans-serif;
+        color: var(--secondary-color);
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
+
     .book-cover {
         width: 125px;
         height: 200px;
@@ -330,6 +338,16 @@ footer {
     .book-info h3 {
         font-size: 1rem;
     }
+    
+     .scroll-to-top {
+                width: 40px;
+                height: 40px;
+            }
+
+            .scroll-to-top svg {
+                width: 20px;
+                height: 20px;
+            }
 
     .book-info p {
         font-size: 0.8rem;
@@ -361,7 +379,7 @@ footer {
             </div>
             <div class="header-text">
                 <h1>Kurdish Literature Database</h1>
-                <p class="subtitle">We are continuously adding to our database of Kurdish literature.<br>If you find any titles missing, please don't hesitate to <a href="https://HenarPress.org" target="_blank">contact us</a>.</p>
+                <p class="subtitle">We are continuously adding to our database.<br>If you find any titles missing, please don't hesitate to <a href="https://HenarPress.org" target="_blank">contact us</a>.</p>
             </div>
         </div>
     </header>
@@ -376,11 +394,12 @@ footer {
             <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or any keyword...">
         </div>
         <div id="bookList"></div>
-    </main>
-    
-     <div class="scroll-to-top">
-        <span class="material-symbols-outlined">arrow_upward</span>
+    <div id="scrollToTop" class="scroll-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
     </div>
+    </main>
     
     <footer>
             <div class="footer-slogan">
@@ -390,7 +409,7 @@ footer {
     </footer>
 
     <script>
-          const books = [
+                const books = [
         {
             title: "Hyper",
             author: "Agri Ismaïl",
@@ -1533,7 +1552,6 @@ footer {
                 country: "Germany"
             }
         ];
-
 const bookList = document.getElementById("bookList");
 const searchInput = document.getElementById("searchInput");
 const bookStats = document.getElementById("bookStats");
@@ -1667,21 +1685,38 @@ searchInput.addEventListener("input", function() {
 displayBooks(books);
 updateBookStats();
 
-const scrollToTopButton = document.querySelector('.scroll-to-top');
+   document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopButton = document.getElementById('scrollToTop');
+            let lastScrollTop = 0;
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                scrollToTopButton.classList.add('visible');
-            } else {
-                scrollToTopButton.classList.remove('visible');
+            function toggleScrollToTopButton() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                console.log('Scroll position:', scrollTop); // Debug log
+
+                if (scrollTop > 300) {
+                    scrollToTopButton.classList.add('visible');
+                    console.log('Button should be visible'); // Debug log
+                } else {
+                    scrollToTopButton.classList.remove('visible');
+                    console.log('Button should be hidden'); // Debug log
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
             }
-        });
 
-        scrollToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            window.addEventListener('scroll', toggleScrollToTopButton);
+
+            scrollToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
+
+            toggleScrollToTopButton();
+
+            console.log('Scroll to top button initialized:', scrollToTopButton); // Debug log
         });
 
     </script>
