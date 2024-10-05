@@ -83,15 +83,6 @@
         transition: opacity 0.5s ease-out;
     }
 
-    .loading-screen.fade-out {
-        opacity: 0;
-    }
-
-    .loading-screen img {
-        width: 150px;
-        height: auto;
-    }
-
     nav {
         width: 250px;
         height: 100vh;
@@ -300,17 +291,6 @@
         font-size: 0.9rem;
         opacity: 0.7;
         text-align: center;
-    }
-
-    .fade-in-section {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in-section.is-visible {
-        opacity: 1;
-        transform: translateY(0);
     }
 
     .contact-content {
@@ -576,8 +556,6 @@
 </style>
 </head>
 <body>
-  <div class="loading-screen">
-    </div>
  <header class="mobile-header">
         <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
         <h1>Henar Press</h1>
@@ -612,25 +590,24 @@
         </div>
     </nav>
     <main>
-        <div id="top" class="fade-in-section">
+        <div id="top">
             <h1>Henar Press</h1>
             <p><strong>We are a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature.</strong></p>
         </div>
-        <div id="about" class="fade-in-section">
+        <div id="about">
             <p>We believe in the power of literature in the face of ongoing ethnic cleansing. Through our writing, we seek to remember, to resist, and to reclaim our stories. As children of genocide and displacement, we honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted for their courage to write.</p>
-            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted.</p>
-            <p>We celebrate the avant-garde and the unafraid. Our books blur the lines between poetry and prose, history and fiction, personal and political. We are a space for Kurdish writers who refuse to be bound by convention.</p>
-            <p>In our own small way, Henar Press is a rebellion against the erasure of our identity.</p>
+            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question: pacifist and militant, nationalistic and secular, stateless and rooted. We are a space for Kurdish writers who refuse to be bound by convention.</p>
+            <p>In our own small way, Henar Press is a rebellion against the erasure of Kurds.</p>
         </div>
 
-        <div id="contribute" class="fade-in-section">
+        <div id="contribute">
             <h2>Contribute</h2>
             <p>As a nonprofit, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. We face significant financial challenges as a small team, and your support helps us bring Kurdish voices to a wider audience.</p>
             <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">get in touch</a>. To stay updated on events and news from Henar Press, sign up for our newsletter and follow our social media accounts.</p>
             <p>If you're a Kurdish writer looking to submit your work, visit our contact page to learn about our submission process. We welcome prose and poetry in any language. Additionally, if you're interested in reading more Kurdish literature, we're building a comprehensive <a href="https://docs.google.com/spreadsheets/d/1QP7sTSAftT9eAUrIesUVdo_jc2CZN8NBpOIO7l9XniA/edit?gid=0#gid=0&fvid=900522886">database of Kurdish literature available in English</a>.</p>
         </div>
 
-        <div id="our-team" class="fade-in-section">
+        <div id="our-team">
             <h2>Our Team</h2>
             <div class="team-grid">
                 <div class="team-member">
@@ -656,7 +633,7 @@
             </div>
         </div>
 
-        <div id="authors" class="fade-in-section">
+        <div id="authors">
             <h2>Authors & Translators</h2>
             <div class="team-grid">
                 <div class="team-member">
@@ -682,7 +659,7 @@
             </div>
         </div>
 
-        <div id="contact" class="fade-in-section">
+        <div id="contact">
             <h2>Contact Us</h2>
             <div class="contact-content">
                 <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
@@ -753,19 +730,6 @@
     </div>
 </footer>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const fadeElems = document.querySelectorAll('.fade-in-section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    });
-
-    fadeElems.forEach(elem => {
-        observer.observe(elem);
-    });
 
     const form = document.getElementById('newsletter-form');
     
@@ -854,15 +818,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        const loadingScreen = document.querySelector('.loading-screen');
-        loadingScreen.classList.add('fade-out');
-        setTimeout(function() {
-            loadingScreen.style.display = 'none';
-        }, 0);
-    }, 0);
-});
 </script>
 <script async src="https://eocampaign1.com/form/3f5476f8-75cd-11ef-8c22-374cd7cdb1a8.js" data-form="3f5476f8-75cd-11ef-8c22-374cd7cdb1a8"></script>
 <script type="application/ld+json">
