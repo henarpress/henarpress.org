@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurdish Literature Database - Henar Press</title>
-    <meta name="description" content="Explore our comprehensive database of Kurdish literature available in English. Search and discover a wide range of Kurdish books, including novels, poetry, and memoirs.">
+    <title>Henar Press - Kurdish Literature & Culture</title>
+    <meta name="description" content="Henar Press is a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -28,1237 +28,996 @@
         padding: 0;
     }
 
-    html, body {
-        height: 100%;
-        overflow-x: hidden;
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
     }
+    
+      .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F7F5ED;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-screen img {
+            width: 100px;
+            height: auto;
+        }
+        
+      .loading-screen.hidden {
+            display: none;
+        }
 
     body {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         color: var(--text-color);
         line-height: 1.6;
         background-color: var(--secondary-color);
         display: flex;
-        flex-direction: column;
-    }
-
-    header {
-        background-color: var(--primary-color);
-        color: var(--secondary-color);
-        padding: 1rem;
-        text-align: center;
-    }
-
-    header h1 {
-        font-family: 'Staatliches', sans-serif;
-        font-size: 2.5rem;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
     }
 
     main {
-        flex: 1;
+        margin-left: 250px;
         padding: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: calc(100% - 750px);
         width: 100%;
+        height: 100vh;
+        overflow-y: auto;
     }
 
-    h2 {
-        font-family: 'Staatliches', sans-serif;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
+    footer {
+        width: 500px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 2rem;
+        overflow-y: auto;
     }
 
-    .search-container {
-        margin-bottom: 2rem;
-        width: 100%;
-    }
-
-    .search-input {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 2px solid var(--primary-color);
-        border-radius: 4px;
-    }
-
-    #bookList {
-        width: 100%;
-    }
-
-    .book-details {
+    .footer-content {
         display: flex;
-        border: 1px solid #ddd;
-        padding: 1rem;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        border-radius: 4px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #F7F5ED;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+    }
+
+    nav {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: var(--primary-color);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+    
+    .mobile-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #232323;
+        color: #F7F5ED;
+        padding: 0.5rem 1rem;
+        z-index: 1002;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-header h1 {
+        font-family: 'Staatliches', sans-serif;
+        font-size: 1.5rem;
+        margin: 0;
+        color: #F7F5ED;
+    }
+
+    .nav-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-container img {
+        width: 100%;
+        max-width: 200px;
         margin-bottom: 2rem;
-        min-height: 250px;
     }
 
-    .book-cover {
-        width: 150px;
-        height: 225px;
-        object-fit: cover;
-        margin-right: 1.5rem;
-        border-radius: 4px;
-    }
-
-    .book-info {
-        flex: 1;
+    .nav-links {
         display: flex;
         flex-direction: column;
     }
 
-    .book-info h3 {
-        font-family: 'Syne', sans-serif;
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary-color);
-    }
-
-    .book-info p {
-        margin-bottom: 0.3rem;
-    }
-
-    .book-info a {
-        display: inline-block;
-        margin-top: auto;
-        color: var(--accent-color);
+    .nav-links a {
+        color: var(--secondary-color);
         text-decoration: none;
-        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--accent-color);
         transition: var(--transition);
     }
 
-    .book-info a:hover {
-        text-decoration: underline;
+    .nav-links a:hover::after {
+        width: 100%;
     }
 
-    footer {
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-icon {
+        width: 38px;
+        height: 38px;
+        transition: transform 0.2s ease;
+    }
+
+    .social-links a:hover .social-icon {
+        opacity: 0.7;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Staatliches', sans-serif;
+        color: var(--primary-color);
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .team-member {
+        text-align: left;
+    }
+
+    .team-member img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 1rem;
+        filter: grayscale(100%);
+        transition: var(--transition);
+    }
+
+    .team-member:hover img {
+        filter: grayscale(0%);
+    }
+
+    .team-member h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .team-member p {
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+
+    .donate-button {
+        display: inline-block;
+        padding: 1rem 2rem;
         background-color: var(--primary-color);
-        color: var(--secondary-color);
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: 2px solid var(--accent-color);
+        transition: var(--transition);
+        margin-bottom: 1.5rem;
         text-align: center;
-        padding: 1rem;
+        width: 100%;
     }
 
+    .donate-button:hover {
+        background-color: var(--accent-color);
+        color: var(--secondary-color);
+    }
+
+    footer h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--secondary-color);
+    }
+
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .book img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .footer-slogan h3 {
+        font-size: 2rem;
+        color: var(--secondary-color);
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
+
+    .newsletter-form {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .copyright {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        text-align: center;
+    }
+
+    .contact-content {
+        margin: 0 auto;
+    }
+
+    .submission-guidelines ul {
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .submission-guidelines li {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #contact-form {
+        background-color: var(--primary-color);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        transition: background-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        background-color: #F7F5ED;
+    }
+
+    .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    #contact-form button[type="submit"] {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: #232323;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: 2px solid var(--accent-color);
+        transition: var(--transition);
+        cursor: pointer;
+        width: auto;
+    }
+
+    #contact-form button[type="submit"]:hover {
+        background-color: var(--accent-color);
+        color: var(--secondary-color);
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--accent-color);
+    }
+
+    #attachment {
+        border: none;
+        padding: 0;
+    }
+
+    @media (min-width: 769px) {
+        .main-newsletter {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1366px) {
+        html {
+            font-size: 14px;
+        }
+
+        main {
+            max-width: calc(100% - 600px);
+        }
+
+        footer {
+            width: 350px;
+        }
+
+        .team-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
     @media (max-width: 768px) {
-        .book-details {
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 4rem;
+        }
+
+        nav.open {
+            left: 0;
+        }
+
+        .nav-toggle {
+            display: block;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            flex-direction: column;
+            margin-top: 1rem;
+        }
+
+        .nav-bottom {
+            margin-top: auto;
+            padding-bottom: 2rem;
+        }
+
+        main {
+            margin-left: 0;
+            padding: 1rem;
+            padding-top: 4rem;
+            padding-bottom: 1rem;
+            max-width: 100%;
+        }
+
+        footer {
+            display: none !important;
+        }
+
+        .mobile-footer {
+            display: none !important;
+        }
+            
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .mobile-header {
+            display: flex;
+        }
+
+        body {
+            padding-top: 40px;
+            padding-bottom: 0;
+            min-height: 100vh;
+            display: flex;
             flex-direction: column;
         }
 
-        .book-cover {
-            width: 100%;
-            height: auto;
-            margin-right: 0;
-            margin-bottom: 1rem;
+        nav {
+            top: 40px;
+            height: calc(100vh - 40px);
         }
+
+        .nav-toggle {
+            position: static;
+            background: none;
+            color: #F7F5ED;
+            font-size: 1.5rem;
+            padding: 0;
+        }
+
+        main {
+            padding-top: 1rem;
+            margin-bottom: 0;
+            flex-grow: 1;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #contact-form {
+            padding: 1rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            display: block;
+        }
+
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover .social-icon {
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        @media (min-width: 1920px) {
+    html {
+        font-size: 18px;
+    }
+
+    body {
+        max-width: 2560px;
+        margin: 0 auto;
+    }
+
+    main {
+        max-width: calc(100% - 900px);
+        padding: 3rem 4rem;
+    }
+
+    footer {
+        width: 600px;
+        padding: 3rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3.2rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .team-member img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .footer-slogan h3 {
+        font-size: 2.5rem;
+    }
+
+    .donate-button {
+        font-size: 1.4rem;
+        padding: 1.2rem 2.4rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    html {
+        font-size: 20px;
+    }
+
+    body {
+        max-width: 3200px;
+    }
+
+    main {
+        max-width: calc(100% - 1100px);
+        padding: 4rem 5rem;
+    }
+
+    footer {
+        width: 700px;
+        padding: 4rem;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .team-member img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .book-grid {
+        gap: 3rem;
+    }
+
+    .footer-slogan h3 {
+        font-size: 3rem;
+    }
+
+    .donate-button {
+        font-size: 1.6rem;
+        padding: 1.4rem 2.8rem;
+    }
+    
+    @media (min-width: 1440px) {
+    nav {
+        width: 300px;
+    }
+
+    main {
+        margin-left: 300px;
+        max-width: calc(100% - 800px);
+    }
+
+    footer {
+        width: 500px;
+    }
+
+    .logo-container img {
+        max-width: 250px;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-icon {
+        width: 44px;
+        height: 44px;
+    }
+}
+
     }
 </style>
 </head>
 <body>
-    <header>
-        <h1>Kurdish Literature Database</h1>
+    <div class="loading-screen">
+    </div>
+ <header class="mobile-header">
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <h1>Henar Press</h1>
     </header>
-    <main>
-        <h2>Search the Database</h2>
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or any keyword...">
+    <nav>
+        <div class="logo-container">
+            <a href="#top">
+                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
+            </a>
         </div>
-        <div id="bookList"></div>
+        <div class="nav-links">
+            <a href="#top">About</a>
+            <a href="#contribute">Contribute</a>
+            <a href="#our-team">Our Team</a>
+            <a href="#authors">Authors</a>
+            <a href="#contact">Contact</a>
+            <a href="database" target="_blank" class="database-link">Kurdish Literature Database</a>
+        </div>
+        <div class="nav-bottom">
+            <div class="social-links">
+                <a href="https://x.com/HenarPress" aria-label="Twitter">
+                    <img src="twitter-logo.png" alt="Twitter" class="social-icon">
+                </a>
+                <a href="https://instagram.com/HenarPress" aria-label="Instagram">
+                    <img src="instagram-logo.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61564222616734" aria-label="Facebook">
+                    <img src="facebook-logo.png" alt="Facebook" class="social-icon">
+                </a>
+            </div>
+            <a href="#" class="donate-button">Donate</a>
+        </div>
+    </nav>
+    <main>
+        <div id="top">
+            <h1>Henar Press</h1>
+            <p><strong>We are a nonprofit, independent press based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature. Our books span fiction, poetry, and creative nonfiction by both emerging and established writers from the homeland and diaspora.</strong></p>
+        </div>
+        <div id="about">
+            <p>We believe in the power of literature in the face of ongoing censorship, genocide, and ethnic cleansing. We seek to remember, to resist, and to reclaim our stories. We honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted and displaced.</p>
+            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question. Pacifist and militant, nationalistic and secular, stateless and rooted.</p>
+            <p>Our mission is simple: to publish Kurdish writing that speaks its own truth, on its own terms, free from the constraints of the colonial gaze.</p>
+        </div>
+
+        <div id="contribute">
+            <h2>Contribute</h2>
+<p>As a nonprofit organization, we depend on readers and translated literature lovers to advance our mission of bringing Kurdish literature to English-speaking audiences. You can support our work by <a href="#">donating</a>, buying our books, or volunteering your time. We also encourage you to request our titles at your local library or bookstore to help make our books more accessible to the general public.</p>
+<p>Kurdish writers are welcome to submit prose and poetry in any language through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in exploring more Kurdish literature, we invite you to explore our comprehensive <a href="database" target="_blank">database of Kurdish literature available in English</a>.</p>      
+        </div>
+        <div id="our-team">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                    <h3>Arian Sorani</h3>
+                    <p>Publisher & Editor-in-Cheif</p>
+                </div>
+                <div class="team-member">
+                    <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+                    <h3>Tracy Fuad</h3>
+                    <p>Board President</p>
+                </div>
+                <div class="team-member">
+                    <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+                    <h3>Holly Mason Badra</h3>
+                    <p>Board Vice President</p>
+                </div>
+                <div class="team-member">
+                    <img src="ChadPost-gray.jpeg" alt="Chad Post">
+                    <h3>Chad W. Post</h3>
+                    <p>Board Secretary</p>
+                </div>
+                    <div class="team-member">
+                    <img src="author-placeholder.png" alt="Gary Lovely">
+                    <h3>Gary Lovely</h3>
+                    <p>Board Treasurer</p>
+                </div>
+                  <div class="team-member">
+                    <img src="author-placeholder.png" alt="Shene Mohammed">
+                    <h3>Shene Mohammed</h3>
+                    <p>Board Officer</p>
+                </div>
+            </div>
+        </div>
+        <div id="authors">
+            <h2>Authors & Translators</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="author-placeholder.png" alt="Author">
+                    <h3>Forthcoming</h3>
+                    <p>Author</p>
+                </div>
+                <div class="team-member">
+                    <img src="author-placeholder.png" alt="Translator">
+                    <h3>Forthcoming</h3>
+                    <p>Translator</p>
+                </div>
+                <div class="team-member">
+                    <img src="author-placeholder.png" alt="Author">
+                    <h3>Forthcoming</h3>
+                    <p>Author</p>
+                </div>
+                <div class="team-member">
+                    <img src="author-placeholder.png" alt="Translator">
+                    <h3>Forthcoming</h3>
+                    <p>Translator</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
+                <div class="submission-guidelines">
+                    <ul>
+                        <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
+                        <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
+                        <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
+                        <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                        <li>We aim to respond to all submissions.</li>
+                    </ul>
+                </div>
+                <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachment">Attachment (optional)</label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+                    <div class="footer-slogan">
+<h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
+        </div>
+        <div class="newsletter-form">
+            <div class="newsletter-form main-newsletter">
+    <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+</div>
+        </div>
+        <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
     </main>
-    <footer>
-        <p>&copy; 2024 Henar Press. All rights reserved.</p>
-    </footer>
+  <footer>
+    <div class="footer-content">
+<h2 style="font-size: 3.3rem;">New & Upcoming</h2>
+        <div class="book-grid">
+            <div class="book">
+                <img src="bookplaceholder.jpg" alt="Book 1">
+            </div>
+            <div class="book">
+                <img src="bookplaceholder.jpg" alt="Book 2">
+            </div>
+            <div class="book">
+                <img src="bookplaceholder.jpg" alt="Book 3">
+            </div>
+            <div class="book">
+                <img src="bookplaceholder.jpg" alt="Book 4">
+            </div>
+        </div>
+        <div class="footer-slogan">
+            <h3>Against Forgetting, We Write</h3>
+        </div>
+        <div class="newsletter-form">
+            <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
+        </div>
+        <p class="copyright">© 2024 Henar Press. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.loading-screen').classList.add('hidden');
+                document.body.classList.add('loaded');
+            }, 2000);
+        });
+        
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-    <script>
-        const books = [
-        {
-            title: "Hyper",
-            author: "Agri Ismaïl",
-            year: "2024",
-            genre: "Novel",
-            isbn: "978-1784745257",
-            publisher: "Chatto & Windus",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "Kurdistan +100: Stories from a Future State",
-            author: "Orsola Casagrande, Mustafa Gündoğdu",
-            year: "2024",
-            genre: "Short Story Collection",
-            isbn: "978-1646052806",
-            publisher: "Deep Vellum Publishing (also available from Comma Press)",
-            translator: "Qadir Agid, Yildiz Cakar, Selahattin Demirtas, Omer Dilsoz, Muharrem Erbey, Nariman Evdike, Ava Homa, Hüseyin Karabey, Karzan Kardosi, Sema Kaygusuz, Meral Simsek, & Jahangir Mahmood Waysi",
-            country: "USA and UK"
-        },
-        {
-            title: "Love and War: Contemporary Kurdish Women Poets",
-            author: "Maram al-Masri & Alan Dent",
-            year: "2024",
-            genre: "Poetry",
-            isbn: "978-1739473426",
-            publisher: "Smokestack Books",
-            translator: "Maram al-Masri & Alan Dent",
-            country: "UK"
-        },
-        {
-            title: "My Country's Hair Turned White",
-            author: "Dilawar Karadaghi",
-            year: "2024",
-            genre: "Poetry",
-            isbn: "978-1911469742",
-            publisher: "Arc Publications",
-            translator: "Jiyar Homer & Mike Baynham",
-            country: "UK"
-        },
-        {
-            title: "PORTAL",
-            author: "Tracy Fuad",
-            year: "2024",
-            genre: "Poetry",
-            isbn: "978-0226831534",
-            publisher: "University of Chicago Press",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "Refugee Number 33,333",
-            author: "Farhad Pirbal",
-            year: "2024",
-            genre: "Poetry",
-            isbn: "978-1646052714",
-            publisher: "Deep Vellum Publishing",
-            translator: "Pshtiwan Babakr & Shook",
-            country: "USA"
-        },
-        {
-            title: "Rojava: A Novel of Kurdish Freedom",
-            author: "Sharam Qawami",
-            year: "2024",
-            genre: "Novel",
-            isbn: "978-1945335105",
-            publisher: "Common Notions",
-            translator: "Kiyoumars Zamani",
-            country: "USA"
-        },
-        {
-            title: "Something Missing From This World",
-            author: "Bryar Bajalan, Alana Marie Levinson-LaBrosse, David Shook, & Zêdan Xelef",
-            year: "2024",
-            genre: "Poetry",
-            isbn: "978-1646053476",
-            publisher: "Deep Vellum Publishing",
-            translator: "Various Translators",
-            country: "USA"
-        },
-        {
-            title: "The Potato Eaters",
-            author: "Farhad Pirbal",
-            year: "2024",
-            genre: "Short Story Collection",
-            isbn: "978-1646052707",
-            publisher: "Deep Vellum Publishing",
-            translator: "Alana Marie Levinson-LaBrosse & Jiyar Homer",
-            country: "USA"
-        },
-        {
-            title: "The Singularity",
-            author: "Balsam Karam",
-            year: "2024",
-            genre: "Novel",
-            isbn: "978-1558611931",
-            publisher: "The Feminist Press at CUNY (also available from Fitzcarraldo Editions)",
-            translator: "Saskia Vogel",
-            country: "USA and UK"
-        },
-        {
-            title: "The Smell of Wet Bricks",
-            author: "Chia Parvizpur",
-            year: "2024",
-            genre: "Novel",
-            isbn: "978-1801352734",
-            publisher: "Transnational Press London",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "When the World Goes Quiet",
-            author: "Gian Sardar",
-            year: "2024",
-            genre: "Novel",
-            isbn: "978-1662518669",
-            publisher: "Lake Union Publishing",
-            translator: "-",
-            country: "USA"
-        },
-             {
-            title: "Dancing Amid Fire, Rising Above Ruins",
-            author: "Essmat Sophie",
-            year: "2023",
-            genre: "Fiction",
-            isbn: "978-1801352222",
-            publisher: "Transnational Press London",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "Freedom, Only Freedom: The Prison Writings of Behrouz Boochani",
-            author: "Behrouz Boochani",
-            year: "2023",
-            genre: "Memoir",
-            isbn: "978-0755642656",
-            publisher: "Bloomsbury Publishing",
-            translator: "Moones Mansoubi & Omid Tofighian",
-            country: "USA"
-        },
-        {
-            title: "In the Belly of the Queen",
-            author: "Karosh Taha",
-            year: "2023",
-            genre: "Novel",
-            isbn: "978-3863913649",
-            publisher: "V&Q Books",
-            translator: "Grashina Gabelman",
-            country: "Germany"
-        },
-        {
-            title: "Lojman",
-            author: "Ebru Ojen",
-            year: "2023",
-            genre: "Novel",
-            isbn: "978-0872868984",
-            publisher: "City Lights Publishers",
-            translator: "Aron Aji & Selin Gökçesu",
-            country: "USA"
-        },
-        {
-            title: "The Road to My Kurdish Roots: Unravelling My Journey Back Home",
-            author: "Haytham Aziz",
-            year: "2023",
-            genre: "Memoir",
-            isbn: "979-8861624626",
-            publisher: "Independently published",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "The Summers",
-            author: "Ronya Othmann",
-            year: "2023",
-            genre: "Novel",
-            isbn: "978-0299341046",
-            publisher: "University of Wisconsin Press",
-            translator: "Gary Schmidt",
-            country: "USA"
-        },
-        {
-            title: "Waters Under Baghdad",
-            author: "Zaid Brifkani",
-            year: "2023",
-            genre: "Novel",
-            isbn: "979-8857782156",
-            publisher: "Independently published",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "Whispering Walls",
-            author: "Choman Hardi",
-            year: "2023",
-            genre: "Novel",
-            isbn: "978-1739982454",
-            publisher: "Afsana Press",
-            translator: "-",
-            country: "UK"
-        },
-            {
-                title: "The Purple Color of Kurdish Politics: Women Politicians Write from Prison",
-                author: "Gültan Kışanak",
-                year: "2022",
-                genre: "Memoir",
-                isbn: "978-0745347080",
-                publisher: "Pluto Press",
-                translator: "Ruken Isik, Emek Ergun, & Janet Biehl",
-                country: "USA"
-            },
-            {
-                title: "Speaking to the Ocean",
-                author: "Ash Şareff",
-                year: "2022",
-                genre: "Poetry",
-                isbn: "ASIN: B0B7JD6D2W",
-                publisher: "Amazon Kindle",
-                translator: "-",
-                country: "Erbil, Kurdistan"
-            },
-         {
-            title: "A Rose for the Heart of Life",
-            author: "Hussein Habasch",
-            year: "2021",
-            genre: "Poetry",
-            isbn: "978-1952081453",
-            publisher: "Inner Child Press",
-            translator: "Muna Zinati & Sinan Anton",
-            country: "USA"
-        },
-        {
-            title: "about:blank",
-            author: "Tracy Fuad",
-            year: "2021",
-            genre: "Poetry",
-            isbn: "978-0822946593",
-            publisher: "University of Pittsburgh Press",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "Chords in Tembûr (Diwan): Notation of ten Kurdish songs with their chords",
-            author: "Yade Shakeri",
-            year: "2021",
-            genre: "Song",
-            isbn: "978-1801350389",
-            publisher: "Transnational Press London",
-            translator: "Chia Parvizpur",
-            country: "UK"
-        },
-        {
-            title: "Come, Take a Gentle Stab: Selected Poems",
-            author: "Salim Barakat",
-            year: "2021",
-            genre: "Poetry",
-            isbn: "978-0857428882",
-            publisher: "Seagull Books",
-            translator: "Huda J. Fakhreddine & Jayson Iwen",
-            country: "USA"
-        },
-        {
-            title: "Kurdish Odyssey: Poems of Love and Alienation",
-            author: "Kamal Mirawdeli",
-            year: "2021",
-            genre: "Poetry",
-            isbn: "978-1398424876",
-            publisher: "Austin Macauley",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "Kurdish Women's Stories",
-            author: "Houzan Mahmoud",
-            year: "2021",
-            genre: "Non-fiction",
-            isbn: "978-0745341132",
-            publisher: "Pluto Press",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "Last Day of Autumn",
-            author: "Essmat Sophie",
-            year: "2021",
-            genre: "Short Story Collection",
-            isbn: "978-1801350938",
-            publisher: "Transnational Press London",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "Packaged Lives: Ten Stories and a Novella",
-            author: "Haifa Zangana",
-            year: "2021",
-            genre: "Short Story Collection",
-            isbn: "978-0815611370",
-            publisher: "Syracuse University Press",
-            translator: "Wen-chin Ouyang",
-            country: "USA"
-        },
-        {
-            title: "Stone and Shadow",
-            author: "Burhan Sönmez",
-            year: "2021",
-            genre: "Novel",
-            isbn: "978-1635422771",
-            publisher: "Other Press",
-            translator: "Alexander Dawe",
-            country: "USA"
-        },
-        {
-            title: "Take What You Can Carry",
-            author: "Gian Sardar",
-            year: "2021",
-            genre: "Novel",
-            isbn: "978-1542022422",
-            publisher: "Lake Union Publishing",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "The Dark Ship",
-            author: "Sherko Fatah",
-            year: "2021",
-            genre: "Novel",
-            isbn: "978-0857428394",
-            publisher: "Seagull Books",
-            translator: "Martin Chalmers",
-            country: "Germany"
-        },
-        {
-            title: "The Glass Wall",
-            author: "Goran Baba Ali",
-            year: "2021",
-            genre: "Novel",
-            isbn: "978-1739982409",
-            publisher: "Afsana Press",
-            translator: "-",
-            country: "UK"
-        },
-        {
-            title: "The Last Pomegranate",
-            author: "Bachtyar Ali",
-            year: "2021",
-            genre: "Novel",
-            isbn: "978-1953861405",
-            publisher: "Archipelago Books",
-            translator: "Kareem Abdulrahman",
-            country: "USA"
-        },
-        {
-            title: "The Mountains We Carry",
-            author: "Zaid Brifkani",
-            year: "2021",
-            genre: "Novel",
-            isbn: "979-8487001535",
-            publisher: "Independently published",
-            translator: "-",
-            country: "USA"
-        },
-        {
-            title: "Women's Voices from Kurdistan: A Selection of Kurdish Poetry",
-            author: "Farangis Ghaderi, Clemence Scalbert Yucel, & Yaser Hassan Ali",
-            year: "2021",
-            genre: "Poetry",
-            isbn: "978-1912997817",
-            publisher: "Transnational Press London",
-            translator: "Various Translators",
-            country: "UK"
-        },
-            {
-                title: "Daughters of Smoke and Fire",
-                author: "Ava Homa",
-                year: "2020",
-                genre: "Novel",
-                isbn: "978-1419743092",
-                publisher: "Abrams Books",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Remote",
-                author: "Sarwa Azeez",
-                year: "2020",
-                genre: "Poetry",
-                isbn: "ASIN: B085ZTGJ4M",
-                publisher: "4WORD",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Tune Of The Heart",
-                author: "Iman Hamid",
-                year: "2020",
-                genre: "Poetry",
-                isbn: "978-1716012006",
-                publisher: "90000",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "PITH",
-                author: "Tracy Fuad",
-                year: "2020",
-                genre: "Poetry",
-                isbn: "978-0822966685",
-                publisher: "Newfound",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Dictionary of Midnight",
-                author: "Abdulla Pashew",
-                year: "2019",
-                genre: "Poetry",
-                isbn: "978-1944700805",
-                publisher: "Deep Vellum Publishing",
-                translator: "Alana Marie Levinson-LaBrosse",
-                country: "USA"
-            },
-            {
-                title: "Dear Refugee",
-                author: "Amir Darwish",
-                year: "2019",
-                genre: "Poetry",
-                isbn: "978-1999674229",
-                publisher: "Smokestack Books",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Labyrinth: A Novel",
-                author: "Burhan Sönmez",
-                year: "2019",
-                genre: "Novel",
-                isbn: "978-1590510988",
-                publisher: "Other Press",
-                translator: "Umit Hussein",
-                country: "USA"
-            },
-            {
-                title: "What I Know of the Mountains",
-                author: "Hajjar Baban",
-                year: "2019",
-                genre: "Poetry",
-                isbn: "Unknown",
-                publisher: "Anhinga Press",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Afrin and the Creature That Used to Be Called Human Being",
-                author: "Hussein Habasch",
-                year: "2019",
-                genre: "Poetry",
-                isbn: "978-0893045326",
-                publisher: "Hogir Verlag",
-                translator: "Rainer Maria Gassen & Stanley H. Barkan",
-                country: "Germany"
-            },
-            {
-                title: "The Legend of Kawa",
-                author: "Shirzad Alkadhi",
-                year: "2019",
-                genre: "Folklore",
-                isbn: "979-8374538168",
-                publisher: "Independently published",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "The Daughter of Kurdland: A Life Dedicated to Humankind",
-                author: "Widad Akreyi",
-                year: "2019",
-                genre: "Memoir",
-                isbn: "978-8284050690",
-                publisher: "Novoreads",
-                translator: "Maria Bache Andersen",
-                country: "Norway"
-            },
-            {
-                title: "Butterfly Valley",
-                author: "Sherko Bekas",
-                year: "2018",
-                genre: "Poetry",
-                isbn: "978-1911469070",
-                publisher: "ARC Publications",
-                translator: "Choman Hardi",
-                country: "UK"
-            },
-            {
-                title: "Tears and Tea",
-                author: "Iman Hamid",
-                year: "2018",
-                genre: "Poetry",
-                isbn: "978-1787233188",
-                publisher: "Completelynovel",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "A Good Country",
-                author: "Laleh Khadivi",
-                year: "2018",
-                genre: "Novel",
-                isbn: "978-1632865854",
-                publisher: "Bloomsbury Publishing",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "No Friend But the Mountains: Writing from Manus Prison",
-                author: "Behrouz Boochani",
-                year: "2018",
-                genre: "Memoir",
-                isbn: "978-1487006839",
-                publisher: "Anansi International",
-                translator: "Omid Tofighian",
-                country: "Australia"
-            },
-            {
-                title: "What Comes with the Dust: A Novel",
-                author: "Gharbi M. Mustafa",
-                year: "2018",
-                genre: "Novel",
-                isbn: "978-1628729474",
-                publisher: "Arcade Publishing",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Being Kurdish in a Hostile World",
-                author: "Ayub Nuri",
-                year: "2017",
-                genre: "Memoir",
-                isbn: "978-0889774940",
-                publisher: "University of Regina Press",
-                translator: "-",
-                country: "Canada"
-            },
-            {
-                title: "Dawn",
-                author: "Selahattin Demirtaş",
-                year: "2017",
-                genre: "Short Story Collection",
-                isbn: "978-0525576938",
-                publisher: "SJP for Hogarth",
-                translator: "Amy Marie Spangler & Kate Ferguson",
-                country: "USA"
-            },
-            {
-                title: "You Were Here",
-                author: "Gian Sardar",
-                year: "2017",
-                genre: "Novel",
-                isbn: "978-0399575006",
-                publisher: "G.P. Putnam's Sons",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Trying Again to Stop Time",
-                author: "Jalal Barzanji",
-                year: "2017",
-                genre: "Poetry",
-                isbn: "978-1772120431",
-                publisher: "University of Calgary Press",
-                translator: "Sabah A. Salih",
-                country: "Canada"
-            },
-            {
-                title: "From Aleppo Without Love: A True Story of Anguish and Despair by a Boy From Aleppo",
-                author: "Amir Darwish",
-                year: "2017",
-                genre: "Memoir",
-                isbn: "978-1527209374",
-                publisher: "Salvation Press",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Kurdish Voices from Rojava",
-                author: "Katarzyna Sala & Abdulkadir Musa",
-                year: "2017",
-                genre: "Poetry",
-                isbn: "978-1970020182",
-                publisher: "Inner Child Press",
-                translator: "Various Translators",
-                country: "USA"
-            },
-            {
-                title: "The Last Girl: My Story of Captivity, and My Fight Against the Islamic State",
-                author: "Nadia Murad",
-                year: "2017",
-                genre: "Memoir",
-                isbn: "978-1524760434",
-                publisher: "Crown",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Sara: My Whole Life Was a Struggle",
-                author: "Sakine Cansiz",
-                year: "2017",
-                genre: "Memoir",
-                isbn: "978-0745338019",
-                publisher: "Pluto Press",
-                translator: "Janet Biehl",
-                country: "UK"
-            },
-            {
-                title: "My Poetry Depicts You",
-                author: "Rebwar Fatah",
-                year: "2017",
-                genre: "Poetry",
-                isbn: "978-1976719127",
-                publisher: "Independently published",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "I Stared at the Night of the City",
-                author: "Bakhtiyar Ali",
-                year: "2016",
-                genre: "Novel",
-                isbn: "978-1859641286",
-                publisher: "Periscope",
-                translator: "Kareem Abdulrahman",
-                country: "UK"
-            },
-            {
-                title: "Handful of Salt",
-                author: "Kajal Ahmad",
-                year: "2016",
-                genre: "Poetry",
-                isbn: "978-1944585037",
-                publisher: "Word Works",
-                translator: "Alana Marie Levinson-LaBrosse",
-                country: "USA"
-            },
-            {
-                title: "Considering the Women",
-                author: "Choman Hardi",
-                year: "2015",
-                genre: "Poetry",
-                isbn: "978-1780372785",
-                publisher: "Bloodaxe Books",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "A Flying Angel",
-                author: "Hussein Habasch",
-                year: "2015",
-                genre: "Poetry",
-                isbn: "978-1326141189",
-                publisher: "Pjeter Bogdani",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Son of Mountains: My Life as a Kurd and a Terror Suspect",
-                author: "Yassin Aref",
-                year: "2015",
-                genre: "Memoir",
-                isbn: "978-1621062851",
-                publisher: "The Troy Book Makers",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Don't Forget the Couscous",
-                author: "Amir Darwish",
-                year: "2015",
-                genre: "Poetry",
-                isbn: "978-0993149030",
-                publisher: "Smokestack Books",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Istanbul Istanbul",
-                author: "Burhan Sönmez",
-                year: "2015",
-                genre: "Novel",
-                isbn: "978-1682190388",
-                publisher: "OR Books",
-                translator: "Umit Hussein",
-                country: "USA"
-            },
-            {
-                title: "Letters from a Kurd",
-                author: "Kae Bahar",
-                year: "2014",
-                genre: "Memoir",
-                isbn: "978-1910130025",
-                publisher: "Yolk Publishing Limited",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Sins and Innocents",
-                author: "Burhan Sönmez",
-                year: "2014",
-                genre: "Novel",
-                isbn: "978-1859643846",
-                publisher: "Garnet Publishing",
-                translator: "Umit Hussein",
-                country: "USA"
-            },
-            {
-                title: "The Walking",
-                author: "Laleh Khadivi",
-                year: "2013",
-                genre: "Novel",
-                isbn: "978-1408814840",
-                publisher: "Bloomsbury Publishing",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "The Man in Blue Pyjamas: A Prison Memoir",
-                author: "Jalal Barzanji",
-                year: "2011",
-                genre: "Memoir",
-                isbn: "978-0888645364",
-                publisher: "University of Calgary Press",
-                translator: "Sabah A. Salih",
-                country: "Canada"
-            },
-            {
-                title: "The Age of Orphans",
-                author: "Laleh Khadivi",
-                year: "2010",
-                genre: "Novel",
-                isbn: "978-1408802533",
-                publisher: "Bloomsbury Publishing",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Echoes from the Other Land: Stories",
-                author: "Ava Homa",
-                year: "2010",
-                genre: "Short Story Collection",
-                isbn: "978-1894770644",
-                publisher: "TSAR Publications",
-                translator: "-",
-                country: "Canada"
-            },
-            {
-                title: "Dreaming of Baghdad",
-                author: "Haifa Zangana",
-                year: "2009",
-                genre: "Memoir",
-                isbn: "978-1558616059",
-                publisher: "The Feminist Press at CUNY",
-                translator: "Haifa Zangana & Paul Hammond",
-                country: "USA"
-            },
-            {
-                title: "My Father's Paradise",
-                author: "Ariel Sabar",
-                year: "2008",
-                genre: "Memoir",
-                isbn: "978-1565129337",
-                publisher: "Algonquin Books",
-                translator: "-",
-                country: "USA"
-            },
-            {
-                title: "Poems",
-                author: "Kajal Ahmed",
-                year: "2008",
-                genre: "Poetry",
-                isbn: "978-1904634720",
-                publisher: "Enitharmon Press",
-                translator: "Choman Hardi",
-                country: "UK"
-            },
-            {
-                title: "A Fire in My Heart: Kurdish Tales",
-                author: "Collected by Diane Edgecomb",
-                year: "2008",
-                genre: "Folklore",
-                isbn: "978-1591584377",
-                publisher: "Libraries Unlimited",
-                translator: "Various Translators",
-                country: "USA"
-            },
-            {
-                title: "Bells of Speech",
-                author: "Nazand Begikhani",
-                year: "2007",
-                genre: "Poetry",
-                isbn: "978-0900055119",
-                publisher: "Ambit Books",
-                translator: "-",
-                country: "UK"
-            },
-                        {
-                title: "Women on a Journey: Between Baghdad and London",
-                author: "Haifa Zangana",
-                year: "2007",
-                genre: "Novel",
-                isbn: "978-0292714847",
-                publisher: "University of Texas Press",
-                translator: "Judy Cumberbatch",
-                country: "USA"
-            },
-            {
-                title: "Modern Kurdish Poetry: An Anthology & Introduction",
-                author: "Refîq Sabîr, Kemal Mîrawdelî, & Stephen Watts",
-                year: "2006",
-                genre: "Poetry",
-                isbn: "978-9186624842",
-                publisher: "Center for Multiethnic Research, Uppsala University",
-                translator: "Various Translators",
-                country: "Sweden"
-            },
-            {
-                title: "My Father's Rifle: A Childhood in Kurdistan",
-                author: "Hiner Saleem",
-                year: "2005",
-                genre: "Memoir",
-                isbn: "978-0312424756",
-                publisher: "Picador",
-                translator: "Catherine Temerson",
-                country: "USA"
-            },
-            {
-                title: "Kurdish Poems of Love and Liberty: An English Verse Rendering with Brief Lives of the Poets 700 AD - 2000 AD",
-                author: "Baba Tahir, Malay Jaziri, Ali Tarmuki, Ahmadi Khani, Nali, Salim, Herik, Piramerd, Ibrahim Ahmad, Ahmet Arif, Sherko Bekas, Mehmet Emin Bozarslan, Kemel Burkay, Dildar, Gegherxuin, Enver Gökce, Goran, Ahmad Hardi, Hejar, Hemin, Khabat, Cahit Külebi, Latif, Ahmed Mukhtar, Abdullah Pashew, Rafik Sabir, & Ferhad Shakely",
-                year: "2005",
-                genre: "Poetry",
-                isbn: "978-0902400757",
-                publisher: "Agenda Editions",
-                translator: "Desmond O'Grady",
-                country: "UK"
-            },
-            {
-                title: "Life for Us",
-                author: "Choman Hardi",
-                year: "2004",
-                genre: "Poetry",
-                isbn: "978-1852246440",
-                publisher: "Bloodaxe Books",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Passage to Dawn",
-                author: "Kamal Mirawdeli",
-                year: "2002",
-                genre: "Poetry",
-                isbn: "978-0954320300",
-                publisher: "Kamal Mirawdeli",
-                translator: "-",
-                country: "UK"
-            },
-            {
-                title: "Writings from Prison",
-                author: "Leyla Zana",
-                year: "1999",
-                genre: "Memoir",
-                isbn: "978-1886434080",
-                publisher: "Blue Crane Books",
-                translator: "-",
-                country: "Australia"
-            },
-            {
-                title: "The Secret Diary of a Rose",
-                author: "Sherko Bekas",
-                year: "1998",
-                genre: "Poetry",
-                isbn: "Unknown",
-                publisher: "Ashti Bibani",
-                translator: "Reingold Mirza & Shirwan Mirza",
-                country: "Sulaimani, Kurdistan"
-            },
-            {
-                title: "Prison No. 5: Eleven Years in Turkish Jails",
-                author: "Mehdi Zana",
-                year: "1997",
-                genre: "Memoir",
-                isbn: "978-1886434059",
-                publisher: "Blue Crane Books",
-                translator: "Sarah Hughes",
-                country: "Australia"
-            },
-            {
-                title: "The Voice of the Forest",
-                author: "Munzur Çem",
-                year: "1996",
-                genre: "Short Story Collection",
-                isbn: "978-3927213166",
-                publisher: "KOMKAR Publications",
-                translator: "Chris Buchanan",
-                country: "UK"
-            },
-            {
-                title: "Anthology of Contemporary Kurdish Poetry",
-                author: "Unknown",
-                year: "1994",
-                genre: "Poetry",
-                isbn: "978-0952499107",
-                publisher: "Kurdistan Solidarity Committee and Yashar Ismail",
-                translator: "Unknown",
-                country: "UK"
-            },
-            {
-                title: "The Rainstone",
-                author: "Edward Korel, Kagan Guner, & Roger Hancock",
-                year: "1993",
-                genre: "Folklore",
-                isbn: "978-1873928103",
-                publisher: "Hackney PACT",
-                translator: "Various Translators",
-                country: "UK"
-            },
-            {
-                title: "To Crush the Serpent",
-                author: "Yaşar Kemal",
-                year: "1992",
-                genre: "Novel",
-                isbn: "978-0002711111",
-                publisher: "HarperCollins",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "The Wind from the Plain",
-                author: "Yaşar Kemal",
-                year: "1992",
-                genre: "Novel",
-                isbn: "978-0002710299",
-                publisher: "HarperCollins",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "Salman the Solitary",
-                author: "Yaşar Kemal",
-                year: "1991",
-                genre: "Novel",
-                isbn: "978-1860463891",
-                publisher: "Harvill Secker",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "The Birds Have Also Gone",
-                author: "Yaşar Kemal",
-                year: "1978",
-                genre: "Novel",
-                isbn: "978-0749390150",
-                publisher: "Random House",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "The Sea-Crossed Fisherman",
-                author: "Yaşar Kemal",
-                year: "1978",
-                genre: "Novel",
-                isbn: "978-1846559631",
-                publisher: "Harvill Secker",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "They Burn the Thistles",
-                author: "Yaşar Kemal",
-                year: "1969",
-                genre: "Novel",
-                isbn: "978-1590171851",
-                publisher: "NYRB Classics",
-                translator: "Margaret E. Platon",
-                country: "USA"
-            },
-            {
-                title: "The Undying Grass",
-                author: "Yaşar Kemal",
-                year: "1968",
-                genre: "Novel",
-                isbn: "978-1860461064",
-                publisher: "Harvill Secker",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "Iron Earth, Copper Sky",
-                author: "Yaşar Kemal",
-                year: "1963",
-                genre: "Novel",
-                isbn: "978-1860461057",
-                publisher: "Harvill Secker",
-                translator: "Thilda Kemal",
-                country: "USA"
-            },
-            {
-                title: "Memed, My Hawk",
-                author: "Yaşar Kemal",
-                year: "1955",
-                genre: "Novel",
-                isbn: "978-1590171394",
-                publisher: "NYRB Classics",
-                translator: "Edouard Roditi",
-                country: "USA"
-            },
-            {
-                title: "A Short Anthology of Guran Poetry",
-                author: "Abdul Mu'min",
-                year: "1921",
-                genre: "Poetry",
-                isbn: "Unknown",
-                publisher: "Royal Asiatic Society",
-                translator: "Major E. B. Soane",
-                country: "UK"
-            },
-            {
-                title: "Mem u Zîn: A Classical 17th-Century Epic",
-                author: "Ehmedê Xani",
-                year: "1692",
-                genre: "Epic Poem",
-                isbn: "978-3932574283",
-                publisher: "Institute of Kurdish Studies Berlin",
-                translator: "Feryad Fazil Omar & Mitch Cohen",
-                country: "Germany"
-            }
-        ];
-
-
-        const bookList = document.getElementById("bookList");
-        const searchInput = document.getElementById("searchInput");
-
-        function displayBooks(data) {
-            bookList.innerHTML = "";
-            data.forEach(book => {
-                const bookElement = document.createElement("div");
-                bookElement.className = "book-details";
-                
-                const img = new Image();
-                img.src = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
-                img.alt = `${book.title} cover`;
-                img.className = "book-cover";
-                img.onerror = function() {
-                    this.src = "/api/placeholder/100/150";
-                };
-                
-                const infoDiv = document.createElement("div");
-                infoDiv.className = "book-info";
-                infoDiv.innerHTML = `
-                    <h3>${book.title}</h3>
-                    <p><strong>Author:</strong> ${book.author}</p>
-                    <p><strong>Year:</strong> ${book.year}</p>
-                    <p><strong>Genre:</strong> ${book.genre}</p>
-                    <p><strong>ISBN:</strong> ${book.isbn}</p>
-                    <p><strong>Publisher:</strong> ${book.publisher}</p>
-                    <p><strong>Translator:</strong> ${book.translator}</p>
-                    <p><strong>Country:</strong> ${book.country}</p>
-                    <a href="https://www.worldcat.org/isbn/${encodeURIComponent(book.isbn)}" target="_blank">View on WorldCat</a>
-                `;
-                
-                bookElement.appendChild(img);
-                bookElement.appendChild(infoDiv);
-                bookList.appendChild(bookElement);
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-        }
-
-        function filterBooks(searchTerm) {
-            return books.filter(book => 
-                Object.values(book).some(value => 
-                    value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-                )
-            );
-        }
-
-        searchInput.addEventListener("input", function() {
-            const searchTerm = this.value;
-            const filteredBooks = filterBooks(searchTerm);
-            displayBooks(filteredBooks);
         });
 
-        displayBooks(books);
-    </script>
+    const form = document.getElementById('newsletter-form');
+    
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const email = e.target.querySelector('input[type="email"]').value;
+        
+        const hiddenForm = document.createElement('form');
+        hiddenForm.style.display = 'none';
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
+        
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.name = 'email';
+        emailInput.value = email;
+        
+        hiddenForm.appendChild(emailInput);
+        
+        document.body.appendChild(hiddenForm);
+        
+        hiddenForm.submit();
+        
+        e.target.reset();
+    }
+
+    if (form) {
+        form.addEventListener('submit', handleFormSubmit);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
+    const backToTop = document.querySelector('.back-to-top');
+
+    navToggle.addEventListener('click', function() {
+        nav.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function(event) {
+        const isClickInside = nav.contains(event.target) || navToggle.contains(event.target);
+        if (!isClickInside && nav.classList.contains('open')) {
+            nav.classList.remove('open');
+        }
+    });
+
+    function handleResponsiveLayout() {
+        if (window.innerWidth <= 768) {
+            if (footer) footer.style.display = 'none';
+            nav.style.height = '100%';
+            document.querySelector('.nav-links').style.marginTop = '1rem';
+            document.body.style.paddingBottom = '0';
+        } else {
+            if (footer) footer.style.display = 'block';
+            nav.style.height = '100vh';
+            document.querySelector('.nav-links').style.marginTop = '0';
+            document.body.style.paddingBottom = '';
+        }
+    }
+
+    handleResponsiveLayout();
+    window.addEventListener('resize', handleResponsiveLayout);
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+</script>
+<script async src="https://eocampaign1.com/form/3f5476f8-75cd-11ef-8c22-374cd7cdb1a8.js" data-form="3f5476f8-75cd-11ef-8c22-374cd7cdb1a8"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Henar Press",
+  "url": "https://www.henarpress.com",
+  "logo": "https://www.henarpress.com/henar-press-full-logo-2.png",
+  "description": "Henar Press is a nonprofit independent publisher dedicated to translating and publishing Kurdish literature.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Columbus",
+    "addressRegion": "OH",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://x.com/HenarPress",
+    "https://instagram.com/HenarPress",
+    "https://www.facebook.com/profile.php?id=61564222616734"
+  ] 
+}
+</script>
 </body>
 </html>
