@@ -354,7 +354,7 @@
         border: none;
         border-radius: 4px;
         font-size: 1rem;
-        background-color: var(--secondary-color);
+        background-color: fff;
         color: var(--primary-color);
         transition: background-color 0.3s ease;
     }
@@ -388,6 +388,89 @@
         background-color: var(--accent-color);
         color: var(--secondary-color);
     }
+    #news-events {
+  margin-bottom: 2rem;
+}
+#news-events {
+    margin-bottom: 2rem;
+}
+
+.news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.news-article {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.news-image {
+    flex: 0 0 200px;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.article-logo {
+    height: 20px;
+    width: auto;
+}
+
+.news-article h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-article p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.read-more {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
+}
+
+.read-more:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
     
     a {
         text-decoration: none;
@@ -433,6 +516,10 @@
             font-size: 16px;
         }
 
+          .news-image {
+    display: none;
+  }
+
         body {
             flex-direction: column;
             overflow-y: auto;
@@ -455,6 +542,11 @@
         nav.open {
             left: 0;
         }
+    
+        @media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
 
         .nav-toggle {
             display: block;
@@ -724,12 +816,13 @@
             <a href="#contribute">Contribute</a>
             <a href="#our-team">Our Team</a>
             <a href="#authors">Authors</a>
+            <a href="#news">News & Events</a>
             <a href="#contact">Contact</a>
             <a href="database" target="_blank" class="database-link">Kurdish Literature Database</a>
         </div>
         <div class="nav-bottom">
             <div class="social-links">
-                <a href="https://x.com/HenarPress" aria-label="Twitter">
+                <a href="https://bsky.app/profile/henarpress.bsky.social" aria-label="Twitter">
                     <img src="twitter-logo.png" alt="Twitter" class="social-icon">
                 </a>
                 <a href="https://instagram.com/HenarPress" aria-label="Instagram">
@@ -745,47 +838,52 @@
     <main>
         <div id="top">
             <h1>Henar Press</h1>
-            <p><strong>We are a nonprofit, independent press based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature. Our books span fiction, poetry, and creative nonfiction by both emerging and established writers from the homeland and diaspora.</strong></p>
+            <p><strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing Kurdish literature to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
-            <p>We believe in the power of literature in the face of ongoing censorship, genocide, and ethnic cleansing. We seek to remember, to resist, and to reclaim our stories. We honor the memories of the Halabja massacre, the Anfal campaign, and the countless Kurds persecuted and displaced.</p>
-            <p>But we are not bound by our trauma. Nor are we afraid to confront our paradoxes. We proudly publish writing that complicates the supposed Kurdish question. Pacifist and militant, nationalistic and secular, stateless and rooted.</p>
-            <p>Our mission is simple: to publish Kurdish writing that speaks its own truth, on its own terms, free from the constraints of the colonial gaze.</p>
+            <p>In the face of ongoing censorship, genocide, and ethnic cleansing, we believe in literature's power to resist erasure and reclaim our narrative. Our books honor the memories of the Halabja massacre, the Anfal campaign, and countless Kurds persecuted and displaced.</p>
+            <p></p>But we're not defined by our trauma. We proudly publish works that complicate the supposed Kurdish question — pacifist and militant, nationalistic and secular, stateless and rooted. Our mission is straightforward: to publish Kurdish writing that speaks its own truth on its own terms, free from the constraints of the colonial gaze.</p>
         </div>
-
         <div id="contribute">
             <h2>Contribute</h2>
-            <p>As a nonprofit organization, we rely on the generosity of our supporters. Every contribution, no matter how small, makes a big impact on our mission. Please consider visiting our <a href="#">donation page</a>.</p>
-            <p>There are also other ways to support us. You can buy our books or request them at your local library or bookstores. If you're interested in volunteering, please <a href="#contact">get in touch</a>.</p>
-            <p>If you're a Kurdish writer looking to submit your work, visit our <a href="#contact">contact form</a> to learn about our submission process. We welcome prose and poetry in any language. If you're interested in reading more Kurdish literature, we're building a comprehensive <a href="database" target="_blank">database of Kurdish literature available in English</a>.</p>
+<p>As a nonprofit organization, we depend on readers and translated literature lovers to advance our mission of bringing Kurdish literature to English-speaking audiences. You can support our work by <a href="#">donating</a>, buying our books, or volunteering your time. We also encourage you to request our titles at your local library or bookstore to help make our books more accessible to the general public.</p>
+<p>Kurdish writers are welcome to submit prose and poetry in any language through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in exploring more Kurdish literature, we invite you to explore our comprehensive <a href="database" target="_blank">database of Kurdish literature available in English</a>.</p>      
         </div>
-        
         <div id="our-team">
             <h2>Our Team</h2>
             <div class="team-grid">
                 <div class="team-member">
                     <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
                     <h3>Arian Sorani</h3>
-                    <p>Founder & Publisher</p>
+                    <p>Publisher & Editor-in-Cheif</p>
                 </div>
                 <div class="team-member">
                     <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
                     <h3>Tracy Fuad</h3>
-                    <p>President, Board of Directors</p>
+                    <p>Board President</p>
                 </div>
                 <div class="team-member">
                     <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
                     <h3>Holly Mason Badra</h3>
-                    <p>Board of Directors</p>
+                    <p>Board Vice President</p>
                 </div>
                 <div class="team-member">
                     <img src="ChadPost-gray.jpeg" alt="Chad Post">
                     <h3>Chad W. Post</h3>
-                    <p>Board of Directors</p>
+                    <p>Board Secretary</p>
+                </div>
+                    <div class="team-member">
+                    <img src="author-placeholder.png" alt="Gary Lovely">
+                    <h3>Gary Lovely</h3>
+                    <p>Board Treasurer</p>
+                </div>
+                  <div class="team-member">
+                    <img src="author-placeholder.png" alt="Shene Mohammed">
+                    <h3>Shene Mohammed</h3>
+                    <p>Board Officer</p>
                 </div>
             </div>
         </div>
-
         <div id="authors">
             <h2>Authors & Translators</h2>
             <div class="team-grid">
@@ -811,8 +909,27 @@
                 </div>
             </div>
         </div>
-
-        <div id="contact">
+        <div id="news">
+<section id="news-events">
+    <h2>News & Events</h2>
+    <div class="news-grid">
+        <article class="news-article">
+            <div class="news-image">
+                <img src="inforum-article.png" alt="InForum">
+            </div>
+            <div class="news-content">
+                <div class="news-meta">
+                    <span class="news-date">October 14, 2024</span>
+                    <img src="inforum-logo.png" alt="InForum Logo" class="article-logo">
+                </div>
+                <h3>Moorhead residents applaud newly opened publisher of Kurdish literature in Ohio</h3>
+                <p>“Kurdish people have been through so much,” Moorhead resident Delkhaz Ahmed said. “There's a lot of things I think should be heard.”</p>
+<a href="https://www.inforum.com/news/moorhead/moorhead-residents-applaud-newly-opened-publisher-of-kurdish-literature-in-ohio" class="read-more" target="_blank">Read</a>
+            </div>
+        </article>
+    </div>
+</section>
+            <div id="contact">
             <h2>Contact Us</h2>
             <div class="contact-content">
                 <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
@@ -891,7 +1008,6 @@
         });
         
     document.addEventListener('DOMContentLoaded', (event) => {
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1006,7 +1122,7 @@
     "addressCountry": "US"
   },
   "sameAs": [
-    "https://x.com/HenarPress",
+    "https://bsky.app/profile/henarpress.bsky.social",
     "https://instagram.com/HenarPress",
     "https://www.facebook.com/profile.php?id=61564222616734"
   ] 
