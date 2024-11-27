@@ -388,6 +388,49 @@
         background-color: var(--accent-color);
         color: var(--secondary-color);
     }
+    #news-events {
+  margin-bottom: 2rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.news-article {
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-article h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.news-article p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid var(--accent-color);
+  transition: var(--transition);
+}
+
+.read-more:hover {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
     
     a {
         text-decoration: none;
@@ -455,6 +498,11 @@
         nav.open {
             left: 0;
         }
+    
+        @media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
 
         .nav-toggle {
             display: block;
@@ -724,12 +772,13 @@
             <a href="#contribute">Contribute</a>
             <a href="#our-team">Our Team</a>
             <a href="#authors">Authors</a>
+            <a href="#news-&-events">News</a>
             <a href="#contact">Contact</a>
             <a href="database" target="_blank" class="database-link">Kurdish Literature Database</a>
         </div>
         <div class="nav-bottom">
             <div class="social-links">
-                <a href="https://x.com/HenarPress" aria-label="Twitter">
+                <a href="https://bsky.app/profile/henarpress.bsky.social" aria-label="Twitter">
                     <img src="twitter-logo.png" alt="Twitter" class="social-icon">
                 </a>
                 <a href="https://instagram.com/HenarPress" aria-label="Instagram">
@@ -816,6 +865,27 @@
                 </div>
             </div>
         </div>
+
+
+        <div id="news">
+  <h2>News & Events</h2>
+  <div class="news-grid">
+    <div class="news-article">
+      <h3>Article Title 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <a href="#" class="read-more">Read More</a>
+    </div>
+    <div class="news-article">
+      <h3>Article Title 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <a href="#" class="read-more">Read More</a>
+    </div>
+    <div class="news-article">
+      <h3>Article Title 3</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+      <a href="#" class="read-more">Read More</a>
+    </div>
+  </div>
 
         <div id="contact">
             <h2>Contact Us</h2>
@@ -1011,7 +1081,7 @@
     "addressCountry": "US"
   },
   "sameAs": [
-    "https://x.com/HenarPress",
+    "https://bsky.app/profile/henarpress.bsky.social",
     "https://instagram.com/HenarPress",
     "https://www.facebook.com/profile.php?id=61564222616734"
   ] 
