@@ -391,46 +391,88 @@
     #news-events {
   margin-bottom: 2rem;
 }
+#news-events {
+    margin-bottom: 2rem;
+}
 
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .news-article {
-  background-color: var(--secondary-color);
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.news-image {
+    flex: 0 0 200px;
+}
+
+.news-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.article-logo {
+    height: 20px;
+    width: auto;
 }
 
 .news-article h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .news-article p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
 .read-more {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  color: var(--accent-color);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  border: 2px solid var(--accent-color);
-  transition: var(--transition);
+    align-self: flex-start;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
 }
 
 .read-more:hover {
-  background-color: var(--accent-color);
-  color: var(--secondary-color);
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
 }
+
+@
     
     a {
         text-decoration: none;
@@ -866,26 +908,26 @@
             </div>
         </div>
         <div id="news">
-  <h2>News & Events</h2>
-  <div class="news-grid">
-    <div class="news-article">
-      <h3>Article Title 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-      <a href="#" class="read-more">Read More</a>
+<section id="news-events">
+    <h2>News & Events</h2>
+    <div class="news-grid">
+        <article class="news-article">
+            <div class="news-image">
+                <img src="inforum-article.png" alt="InForum">
+            </div>
+            <div class="news-content">
+                <div class="news-meta">
+                    <span class="news-date">October 14, 2024</span>
+                    <img src="inforum-logo.png" alt="InForum Logo" class="article-logo">
+                </div>
+                <h3>Moorhead residents applaud newly opened publisher of Kurdish literature in Ohio</h3>
+                <p>“Kurdish people have been through so much,” Moorhead resident Delkhaz Ahmed said. “There's a lot of things I think should be heard.”</p>
+                <a href="#" class="read-more">Read More</a>
+            </div>
+        </article>
     </div>
-    <div class="news-article">
-      <h3>Article Title 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-      <a href="#" class="read-more">Read More</a>
-    </div>
-    <div class="news-article">
-      <h3>Article Title 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-      <a href="#" class="read-more">Read More</a>
-    </div>
-  </div>
-
-        <div id="contact">
+</section>
+            <div id="contact">
             <h2>Contact Us</h2>
             <div class="contact-content">
                 <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
@@ -964,7 +1006,6 @@
         });
         
     document.addEventListener('DOMContentLoaded', (event) => {
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
