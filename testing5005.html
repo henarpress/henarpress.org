@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henar Press - Kurdish Literature & Culture</title>
-    <meta name="description" content="Henar Press is a nonprofit, independent publisher based in Columbus, Ohio, dedicated to translating and publishing Kurdish literature. We translate and publish novels, poetry, and memoirs that reflect the complexity and diversity of Kurdish culture.">
+    <title>Kurdish Literature | Henar Press - Promoting Kurdish Culture</title>
+    <meta name="description" content="Henar Press is a 501(c)(3) nonprofit publisher dedicated to translating and publishing Kurdish novels, poetry, and memoirs.">
+    <meta name="keywords" content="Kurdish Literature, Kurdish Culture, Henar Press, Nonprofit Publisher, Kurdish Novels, Kurdish Poetry, Kurdish Memoirs">
+    <meta property="og:title" content="Henar Press | Kurdish Literature">
+    <meta property="og:description" content="Henar Press is a 501(c)(3) nonprofit publisher dedicated to translating and publishing Kurdish novels, poetry, and memoirs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.henarpress.com">
+    <meta property="og:image" content="https://www.henarpress.com/image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kurdish Literature | Henar Press - Promoting Kurdish Culture">
+    <meta name="twitter:description" content="Henar Press is a 501(c)(3) nonprofit publisher dedicated to translating and publishing Kurdish novels, poetry, and memoirs.">
+    <meta name="twitter:image" content="https://www.henarpress.com/image.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -439,7 +449,7 @@
 }
 
 .article-logo {
-    height: 20px;
+    height: 40px;
     width: auto;
 }
 
@@ -458,7 +468,7 @@
     align-self: flex-start;
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
+    background-color: #ffff;
     color: var(--accent-color);
     text-decoration: none;
     font-weight: bold;
@@ -795,6 +805,96 @@
     }
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--secondary-color);
+    margin: auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.modal-header p {
+    color: var(--accent-color);
+    margin: 0.5rem 0 0 0;
+    font-size: 1.1rem;
+}
+
+.modal-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 20px;
+        padding: 1.5rem;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.75rem;
+    }
+}
     }
 </style>
 </head>
@@ -814,8 +914,8 @@
         <div class="nav-links">
             <a href="#top">About</a>
             <a href="#contribute">Contribute</a>
-            <a href="#our-team">Our Team</a>
-            <a href="#authors">Authors</a>
+            <a href="#our-team">People</a>
+            <a href="#authors">Authors & Translators</a>
             <a href="#news">News & Events</a>
             <a href="#contact">Contact</a>
             <a href="database" target="_blank" class="database-link">Kurdish Literature Database</a>
@@ -832,31 +932,32 @@
                     <img src="facebook-logo.png" alt="Facebook" class="social-icon">
                 </a>
             </div>
-            <a href="#" class="donate-button">Donate</a>
+            <a href="https://secure.givelively.org/donate/henar-press" target="_blank" class="donate-button">Donate</a>
         </div>
     </nav>
     <main>
         <div id="top">
             <h1>Henar Press</h1>
-            <p><strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing Kurdish literature to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
+            <p><strong>We're an independent, 501(c)(3) nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
-            <p>In the face of ongoing censorship, genocide, and ethnic cleansing, we believe in literature's power to resist erasure and reclaim our narrative. Our books honor the memories of the Halabja massacre, the Anfal campaign, and countless Kurds persecuted and displaced.</p>
-            <p></p>But we're not defined by our trauma. We proudly publish works that complicate the supposed Kurdish question — pacifist and militant, nationalistic and secular, stateless and rooted. Our mission is straightforward: to publish Kurdish writing that speaks its own truth on its own terms, free from the constraints of the colonial gaze.</p>
+            <p>In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist erasure and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked voices and innovative works that complicate the supposed Kurdish question.</p>
+            <p></p>Censorship, within Kurdistan and abroad, has stifled radical expression for generations. Our mission is to publish prose and poetry that is both stunning and grotesque—that speaks its own truth free from the colonial gaze. We aim to liberate Kurdish literature from its reductive shackles as a stateless, nationless people, and foster deeper awareness of the human stories, lives, art, and culture.</p>
         </div>
         <div id="contribute">
             <h2>Contribute</h2>
-<p>As a nonprofit organization, we depend on readers and translated literature lovers to advance our mission of bringing Kurdish literature to English-speaking audiences. You can support our work by <a href="#">donating</a>, buying our books, or volunteering your time. We also encourage you to request our titles at your local library or bookstore to help make our books more accessible to the general public.</p>
-<p>Kurdish writers are welcome to submit prose and poetry in any language through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in exploring more Kurdish literature, we invite you to explore our comprehensive <a href="database" target="_blank">database of Kurdish literature available in English</a>.</p>      
+<p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is 100% tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
+<p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
+<p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
         </div>
         <div id="our-team">
-            <h2>Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-                    <h3>Arian Sorani</h3>
-                    <p>Publisher & Editor-in-Cheif</p>
-                </div>
+            <h2>People</h2>
+        <div class="team-member" data-member="arian-sorani">
+    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+    <h3>Arian Sorani</h3>
+    <p>Publisher & Editor-in-Chief</p>
+</div>
+
                 <div class="team-member">
                     <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
                     <h3>Tracy Fuad</h3>
@@ -873,14 +974,14 @@
                     <p>Board Secretary</p>
                 </div>
                     <div class="team-member">
-                    <img src="author-placeholder.png" alt="Gary Lovely">
+                    <img src="gary-gray.jpg" alt="Gary Lovely">
                     <h3>Gary Lovely</h3>
                     <p>Board Treasurer</p>
                 </div>
                   <div class="team-member">
-                    <img src="author-placeholder.png" alt="Shene Mohammed">
+                    <img src="SheneMohammed-gray.jpg" alt="Shene Mohammed">
                     <h3>Shene Mohammed</h3>
-                    <p>Board Officer</p>
+                    <p>Board Outreach & Translation Officer</p>
                 </div>
             </div>
         </div>
@@ -932,14 +1033,14 @@
             <div id="contact">
             <h2>Contact Us</h2>
             <div class="contact-content">
-                <p>We'd love to hear from you! Whether you have questions about our publications, want to submit your work, or just want to say hello, please feel free to reach out.</p>
+                <p>We'd love to hear from you, whether you have questions about our books, database, or submission process, are interested in volunteering, or if you just want to say hello!</p>
                 <div class="submission-guidelines">
                     <ul>
-                        <li>We are interested in a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
-                        <li>We welcome submissions in any language. If you are submitting a translation into English, please also include the manuscript in its original language.</li>
+                        <li>We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
+                        <li>If you're submitting a work in translation, please include the manuscript in its original language.</li>
                         <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
                         <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
-                        <li>We aim to respond to all submissions.</li>
+                        <li>We read and respond to every submission.</li>
                     </ul>
                 </div>
                 <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
@@ -1107,26 +1208,92 @@
 
 </script>
 <script async src="https://eocampaign1.com/form/3f5476f8-75cd-11ef-8c22-374cd7cdb1a8.js" data-form="3f5476f8-75cd-11ef-8c22-374cd7cdb1a8"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Henar Press",
-  "url": "https://www.henarpress.com",
-  "logo": "https://www.henarpress.com/henar-press-full-logo-2.png",
-  "description": "Henar Press is a nonprofit independent publisher dedicated to translating and publishing Kurdish literature.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Columbus",
-    "addressRegion": "OH",
-    "addressCountry": "US"
-  },
-  "sameAs": [
-    "https://bsky.app/profile/henarpress.bsky.social",
-    "https://instagram.com/HenarPress",
-    "https://www.facebook.com/profile.php?id=61564222616734"
-  ] 
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Henar Press",
+        "url": "https://www.henarpress.com",
+        "logo": "https://www.henarpress.com/henar-press-full-logo-2.png",
+        "description": "Henar Press is a 501(c)(3) nonprofit independent publisher dedicated to translating and publishing Kurdish literature. We publish fiction, poetry, and creative nonfiction that honor Kurdish history while resisting erasure.",
+        "nonprofitStatus": "501(c)(3)",
+        "location": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Columbus",
+                "addressRegion": "Ohio",
+                "addressCountry": "US"
+            }
+        },
+        "sameAs": [
+            "https://bsky.app/profile/henarpress.bsky.social",
+            "https://instagram.com/HenarPress",
+            "https://www.facebook.com/profile.php?id=61564222616734"
+        ]
+    }
 }
+</script>
+<div id="bioModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" aria-label="Close modal">×</button>
+        <div class="modal-header">
+            <h3></h3>
+            <p></p>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+</div>
+<script>
+const memberBios = {
+    'arian-sorani': {
+        name: 'Arian Sorani',
+        title: 'Publisher & Editor-in-Chief',
+        bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.'
+    }
+    // Add more bios here as needed
+};
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('bioModal');
+    const modalName = modal.querySelector('.modal-header h3');
+    const modalTitle = modal.querySelector('.modal-header p');
+    const modalBio = modal.querySelector('.modal-body');
+    const closeButton = modal.querySelector('.close-modal');
+
+    document.querySelectorAll('.team-member').forEach(member => {
+        member.addEventListener('click', () => {
+            const memberId = member.dataset.member;
+            const memberData = memberBios[memberId];
+            
+            if (memberData) {
+                modalName.textContent = memberData.name;
+                modalTitle.textContent = memberData.title;
+                modalBio.textContent = memberData.bio;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', () => {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+});
 </script>
 </body>
 </html>
