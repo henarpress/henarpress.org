@@ -1258,7 +1258,6 @@
     }
 }
 </script>
-<script>
 <div class="bio-popup" id="bioPopup">
     <div class="bio-content">
         <button class="close-bio" aria-label="Close bio popup">&times;</button>
@@ -1302,22 +1301,25 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Board Vice President',
             bio: 'Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.'
     };
-  function showBio(person) {
-    const bio = bios[person];
-    document.getElementById('bioName').textContent = bio.name;
-    document.getElementById('bioTitle').textContent = bio.title;
-    document.getElementById('bioText').textContent = bio.bio;
-    document.getElementById('bioPopup').classList.add('active');
-}
+   window.showBio = function(person) {
+        const bio = bios[person];
+        if (bio) {
+            document.getElementById('bioName').textContent = bio.name;
+            document.getElementById('bioTitle').textContent = bio.title;
+            document.getElementById('bioText').textContent = bio.bio;
+            document.getElementById('bioPopup').classList.add('active');
+        }
+    };
 
-function closeBio() {
-    document.getElementById('bioPopup').classList.remove('active');
-}
+    window.closeBio = function() {
+        document.getElementById('bioPopup').classList.remove('active');
+    };
 
-document.getElementById('bioPopup').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeBio();
-    }
+    popup.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeBio();
+        }
+    });
 });
 </script>
 </body>
