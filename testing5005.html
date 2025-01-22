@@ -916,7 +916,6 @@
         height: 44px;
     }
 }
-
     }
 </style>
 </head>
@@ -1261,16 +1260,14 @@
 <div class="bio-popup" id="bioPopup">
     <div class="bio-content">
         <button class="close-bio" aria-label="Close bio popup">&times;</button>
-        <h3></h3>
-        <p class="bio-title"></p>
-        <p class="bio-text"></p>
+        <h3 id="popupName"></h3>
+        <p id="popupTitle"></p>
+        <p id="popupBio"></p>
     </div>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const popup = document.getElementById('bioPopup');
-    const closeBtn = document.querySelector('.close-bio');
-    const bios = {
+    const teamData = {
         'arian': {
             name: 'Arian Sorani',
             title: 'Publisher & Editor-in-Chief',
@@ -1280,43 +1277,66 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Gary Lovely',
             title: 'Board Treasurer',
             bio: 'Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses. He has written about books for the New York Times, Literary Hub, Buzzfeed Books, and more. Gary has been a judge for the National Book Awards for Translated Literature, The Cercador Prize for Literature in Translation, & The James Thurber Prize for American Humor. He is the current Vice President of the Great Lakes Booksellers Association.'
-            },
+        },
         'tracy': {
             name: 'Tracy Fuad',
             title: 'Board President',
-            bio: 'Tracy Fuad’s second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad’s poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish. She lives in Berlin, where she teaches poetry and directs the Berlin Writers’ Workshop.'
+            bio: 'Tracy Fuad's second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad's poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish. She lives in Berlin, where she teaches poetry and directs the Berlin Writers' Workshop.'
         },
         'shene': {
             name: 'Shene Mohammed',
             title: 'Board Outreach & Translation Officer',
-            bio: 'Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet, philologist, and translator Hazhar Mukriyani, along with Kurdish folktales and poems. Shene graduated with a Bachelor’s degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.'
+            bio: 'Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet, philologist, and translator Hazhar Mukriyani, along with Kurdish folktales and poems. Shene graduated with a Bachelor's degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.'
         },
         'chad': {
             name: 'Chad W. Post',
             title: 'Board Secretary',
             bio: 'Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. In addition, he is the managing editor of Three Percent, a blog and review site that promotes literature in translation and is home to the Translation Database (now housed at Publishers Weekly), the Best Translated Book Awards, and the Three Percent and Two Month Review podcasts. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading. His articles and book reviews have appeared in a range of publications including The Believer, Publishing Perspectives, the Wall Street Journal culture blog, Bookforum, Rolling Stone, and Quarterly Conversation, among others. He received the 2018 Words Without Borders Ottaway Award for the Promotion of International Literature.'
-   },
+        },
         'holly': {
             name: 'Holly Mason Badra',
             title: 'Board Vice President',
             bio: 'Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.'
-    };
- window.showBio = function(person) {
-        const bio = bios[person];
-        if (bio) {
-            const bioContent = popup.querySelector('.bio-content');
-            bioContent.querySelector('h3').textContent = bio.name;
-            bioContent.querySelector('.bio-title').textContent = bio.title;
-            bioContent.querySelector('.bio-text').textContent = bio.bio;
-            popup.classList.add('active');
         }
     };
+
+    const popup = document.getElementById('bioPopup');
+    const closeBtn = document.querySelector('.close-bio');
+    const teamMembers = document.querySelectorAll('.team-member');
+
+    teamMembers.forEach((member, index) => {
+        member.addEventListener('click', function() {
+            const name = member.querySelector('h3').textContent;
+            const memberKey = Object.keys(teamData).find(key => 
+                teamData[key].name === name
+            );
+            
+            if (memberKey && teamData[memberKey]) {
+                document.getElementById('popupName').textContent = teamData[memberKey].name;
+                document.getElementById('popupTitle').textContent = teamData[memberKey].title;
+                document.getElementById('popupBio').textContent = teamData[memberKey].bio;
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
     closeBtn.addEventListener('click', function() {
         popup.classList.remove('active');
+        document.body.style.overflow = '';
     });
-   popup.addEventListener('click', function(e) {
+
+    popup.addEventListener('click', function(e) {
         if (e.target === popup) {
             popup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('active')) {
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 });
