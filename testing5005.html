@@ -994,12 +994,11 @@
                     <img src="ChadPost-gray.jpeg" alt="Chad Post">
                     <h3>Chad W. Post</h3>
                     <p>Board Secretary</p>
-                </div>
-                    <div class="team-member">
-                    <img src="gary-gray.jpg" alt="Gary Lovely">
-                    <h3>Gary Lovely</h3>
-                    <p>Board Treasurer</p>
-                </div>
+              <div class="team-member" data-member="gary">
+    <img src="gary-gray.jpg" alt="Gary Lovely">
+    <h3>Gary Lovely</h3>
+    <p>Board Treasurer</p>
+</div>
                   <div class="team-member">
                     <img src="SheneMohammed-gray.jpg" alt="Shene Mohammed">
                     <h3>Shene Mohammed</h3>
@@ -1259,20 +1258,43 @@
 <div class="bio-popup" id="bioPopup">
     <div class="bio-content">
         <button class="close-bio" aria-label="Close bio popup">&times;</button>
-        <h3>Arian Sorani</h3>
-        <p>Publisher & Editor-in-Chief</p>
-        <p>Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.</p>
+        <h3></h3>
+        <p class="bio-title"></p>
+        <p class="bio-text"></p>
     </div>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const popup = document.getElementById('bioPopup');
     const closeBtn = document.querySelector('.close-bio');
-    const arianMember = document.querySelector('.team-member');
-
-    arianMember.addEventListener('click', function() {
-        popup.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    const bios = {
+        'arian-sorani': {
+            name: 'Arian Sorani',
+            title: 'Publisher & Editor-in-Chief',
+            bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he has worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.'
+        },
+        'gary': {
+            name: 'Gary Lovely',
+            title: 'Board Treasurer',
+            bio: 'Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses. He has written about books for the New York Times, Literary Hub, Buzzfeed Books, and more. Gary has been a judge for the National Book Awards for Translated Literature, The Cercador Prize for Literature in Translation, & The James Thurber Prize for American Humor. He is the current Vice President of the Great Lakes Booksellers Association.'
+        }
+    };
+    document.querySelectorAll('.team-member').forEach(member => {
+        member.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-member');
+            const bioData = bios[memberId];
+            
+            if (bioData) {
+                // Update popup content
+                popup.querySelector('h3').textContent = bioData.name;
+                popup.querySelector('.bio-title').textContent = bioData.title;
+                popup.querySelector('.bio-text').textContent = bioData.bio;
+                
+                // Show popup
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
     });
 
     closeBtn.addEventListener('click', function() {
