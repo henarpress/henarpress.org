@@ -85,6 +85,99 @@
         height: 100vh;
         overflow-y: auto;
     }
+.bio-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bio-popup.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.bio-content {
+    background: #F7F5ED;
+    padding: 40px;
+    max-width: 650px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.bio-popup.active .bio-content {
+    transform: scale(1);
+}
+
+.bio-content h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    padding-right: 40px;
+    color: var(--primary-color);
+}
+
+.bio-content p:first-of-type {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.bio-content p:last-of-type {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.close-bio {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    padding: 0;
+}
+
+.close-bio:hover {
+    transform: scale(1.1);
+}
+
+.team-member {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+
+.team-member {
+    cursor: pointer;
+}
+
 
     footer {
         width: 500px;
@@ -529,6 +622,25 @@
           .news-image {
     display: none;
   }
+  
+ 
+    .bio-content {
+        padding: 30px;
+        margin: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .bio-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .close-bio {
+        right: 20px;
+        top: 20px;
+        width: 35px;
+        height: 35px;
+    }
 
         body {
             flex-direction: column;
@@ -805,96 +917,6 @@
     }
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.show {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
-    position: relative;
-    background-color: var(--secondary-color);
-    margin: auto;
-    padding: 2rem;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 8px;
-    transform: scale(0.7);
-    transition: transform 0.3s ease;
-}
-
-.modal.show .modal-content {
-    transform: scale(1);
-}
-
-.modal-header {
-    margin-bottom: 1.5rem;
-}
-
-.modal-header h3 {
-    font-family: 'Staatliches', sans-serif;
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.modal-header p {
-    color: var(--accent-color);
-    margin: 0.5rem 0 0 0;
-    font-size: 1.1rem;
-}
-
-.modal-body {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-}
-
-.close-modal {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.close-modal:hover {
-    transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 20px;
-        padding: 1.5rem;
-    }
-    
-    .modal-header h3 {
-        font-size: 1.75rem;
-    }
-}
     }
 </style>
 </head>
@@ -952,12 +974,12 @@
         </div>
         <div id="our-team">
             <h2>People</h2>
-        <div class="team-member" data-member="arian-sorani">
-    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-    <h3>Arian Sorani</h3>
-    <p>Publisher & Editor-in-Chief</p>
-</div>
-
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+                    <h3>Arian Sorani</h3>
+                    <p>Publisher & Editor-in-Chief</p>
+                </div>
                 <div class="team-member">
                     <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
                     <h3>Tracy Fuad</h3>
@@ -1234,62 +1256,40 @@
     }
 }
 </script>
-<div id="bioModal" class="modal">
-    <div class="modal-content">
-        <button class="close-modal" aria-label="Close modal">×</button>
-        <div class="modal-header">
-            <h3></h3>
-            <p></p>
-        </div>
-        <div class="modal-body"></div>
+<div class="bio-popup" id="bioPopup">
+    <div class="bio-content">
+        <button class="close-bio" aria-label="Close bio popup">&times;</button>
+        <h3>Arian Sorani</h3>
+        <p>Publisher & Editor-in-Chief</p>
+        <p>Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.</p>
     </div>
 </div>
 <script>
-const memberBios = {
-    'arian-sorani': {
-        name: 'Arian Sorani',
-        title: 'Publisher & Editor-in-Chief',
-        bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.'
-    }
-    // Add more bios here as needed
-};
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('bioModal');
-    const modalName = modal.querySelector('.modal-header h3');
-    const modalTitle = modal.querySelector('.modal-header p');
-    const modalBio = modal.querySelector('.modal-body');
-    const closeButton = modal.querySelector('.close-modal');
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('bioPopup');
+    const closeBtn = document.querySelector('.close-bio');
+    const arianMember = document.querySelector('.team-member');
 
-    document.querySelectorAll('.team-member').forEach(member => {
-        member.addEventListener('click', () => {
-            const memberId = member.dataset.member;
-            const memberData = memberBios[memberId];
-            
-            if (memberData) {
-                modalName.textContent = memberData.name;
-                modalTitle.textContent = memberData.title;
-                modalBio.textContent = memberData.bio;
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden';
-            }
-        });
+    arianMember.addEventListener('click', function() {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
     });
 
-    closeButton.addEventListener('click', () => {
-        modal.classList.remove('show');
+    closeBtn.addEventListener('click', function() {
+        popup.classList.remove('active');
         document.body.style.overflow = '';
     });
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('show');
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            popup.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            modal.classList.remove('show');
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.classList.contains('active')) {
+            popup.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
