@@ -1220,9 +1220,6 @@
     }
 }
 </script>
-<div class="bio-popup" id="bioPopup">
-    <div class="bio-content"></div>
-</div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const bios = {
@@ -1258,18 +1255,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    const popup = document.getElementById('bioPopup');
+    const popup = document.querySelector('.bio-popup');
     const bioContent = popup.querySelector('.bio-content');
-
-    document.querySelectorAll('.team-member').forEach(member => {
+    
+    document.querySelectorAll('[data-bio]').forEach(member => {
         member.addEventListener('click', function() {
             const personId = this.getAttribute('data-bio');
-            const person = bios[personId];
+            if (!personId || !bios[personId]) return;
             
+            const person = bios[personId];
             bioContent.innerHTML = `
                 <button class="close-bio">&times;</button>
                 <h3>${person.name}</h3>
-                <p>${person.title}</p>
+                <p><em>${person.title}</em></p>
                 <p>${person.bio}</p>
             `;
             
@@ -1277,12 +1275,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'hidden';
         });
     });
+
     popup.addEventListener('click', function(e) {
-        if (e.target.classList.contains('close-bio') || e.target === popup) {
+        if (e.target === popup || e.target.classList.contains('close-bio')) {
             popup.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
             popup.classList.remove('active');
@@ -1291,5 +1291,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<div class="bio-popup" id="bioPopup">
+    <div class="bio-content"></div>
+</div>
 </body>
 </html>
