@@ -92,14 +92,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     z-index: 9999;
+    justify-content: center;
+    align-items: center;
 }
 
 .bio-popup.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .bio-content {
@@ -109,6 +109,21 @@
     width: 90%;
     position: relative;
     border-radius: 12px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.bio-content h3 {
+    margin-bottom: 10px;
+    padding-right: 30px;
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.bio-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 .close-bio {
@@ -119,15 +134,16 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
 }
 
-.bio-content h3 {
-    margin-bottom: 10px;
-    padding-right: 30px;
-}
-
-.bio-content p {
-    margin-bottom: 15px;
+.close-bio:hover {
+    opacity: 0.7;
 }
 
 .team-member {
@@ -138,13 +154,6 @@
 .team-member:hover {
     transform: translateY(-5px);
 }
-
-
-.team-member {
-    cursor: pointer;
-}
-
-
     footer {
         width: 500px;
         height: 100vh;
@@ -1220,13 +1229,16 @@
     }
 }
 </script>
+<div class="bio-popup">
+    <div class="bio-content"></div>
+</div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const bios = {
         arian: {
             name: 'Arian Sorani',
             title: 'Publisher & Editor-in-Chief',
-            bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children's Hospital's Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.'
+            bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging scholar with fellowships at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children\'s Hospital\'s Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He holds degrees from The Ohio State University and studied editing and publishing at UCLA Extension. He divides his time between Columbus and Abu Dhabi.'
         },
         gary: {
             name: 'Gary Lovely',
@@ -1236,12 +1248,12 @@ document.addEventListener('DOMContentLoaded', function() {
         tracy: {
             name: 'Tracy Fuad',
             title: 'Board President',
-            bio: 'Tracy Fuad's second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad's poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish. She lives in Berlin, where she teaches poetry and directs the Berlin Writers' Workshop.'
+            bio: 'Tracy Fuad\'s second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad\'s poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish. She lives in Berlin, where she teaches poetry and directs the Berlin Writers\' Workshop.'
         },
         shene: {
             name: 'Shene Mohammed',
             title: 'Board Outreach & Translation Officer',
-            bio: 'Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet, philologist, and translator Hazhar Mukriyani, along with Kurdish folktales and poems. Shene graduated with a Bachelor's degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.'
+            bio: 'Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet, philologist, and translator Hazhar Mukriyani, along with Kurdish folktales and poems. Shene graduated with a Bachelor\'s degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.'
         },
         chad: {
             name: 'Chad W. Post',
@@ -1256,8 +1268,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const popup = document.querySelector('.bio-popup');
-    const bioContent = popup.querySelector('.bio-content');
-    
+    const bioContent = document.querySelector('.bio-content');
+
+    // Add click handlers to team members
     document.querySelectorAll('[data-bio]').forEach(member => {
         member.addEventListener('click', function() {
             const personId = this.getAttribute('data-bio');
@@ -1276,13 +1289,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Close popup when clicking outside or on close button
     popup.addEventListener('click', function(e) {
-        if (e.target === popup || e.target.classList.contains('close-bio')) {
+        if (e.target === popup || e.target.closest('.close-bio')) {
             popup.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
 
+    // Close popup on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
             popup.classList.remove('active');
@@ -1291,8 +1306,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-<div class="bio-popup" id="bioPopup">
-    <div class="bio-content"></div>
-</div>
 </body>
 </html>
