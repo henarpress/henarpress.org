@@ -978,6 +978,11 @@
         <h3>Shene Mohammed</h3>
         <p>Board Outreach & Translation Officer</p>
     </div>
+       <div class="team-member" data-bio="hannah">
+        <img src="Hannah-gray.jpg" alt="Hannah Fox">
+        <h3>Hannah Fox</h3>
+        <p>Literary Database Archivist</p>
+    </div>
 </div>
         <div id="authors">
             <h2>Authors & Translators</h2>
@@ -1243,13 +1248,17 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Holly Mason Badra',
             title: 'Board Vice President',
             bio: 'Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.'
+        },
+   hannah: {
+            name: 'Hannah Fox',
+            title: 'Literary Database Archivist',
+            bio: 'Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as “minor literature”. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community. In her spare time she enjoys collaborating on various translation projects, and her co-translations have been published in Rusted Radishes and The Markaz Review.'
         }
     };
 
     const popup = document.querySelector('.bio-popup');
     const bioContent = document.querySelector('.bio-content');
 
-    // Add click handlers to team members
     document.querySelectorAll('[data-bio]').forEach(member => {
         member.addEventListener('click', function() {
             const personId = this.getAttribute('data-bio');
@@ -1268,7 +1277,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close popup when clicking outside or on close button
     popup.addEventListener('click', function(e) {
         if (e.target === popup || e.target.closest('.close-bio')) {
             popup.classList.remove('active');
@@ -1276,7 +1284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Close popup on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
             popup.classList.remove('active');
