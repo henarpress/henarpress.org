@@ -1553,7 +1553,7 @@ footer {
                 country: "USA"
             },
                      {
-                title: "If this is a Lament",
+                title: "If This is a Lament",
                 author: "Bejan Matur",
                 year: "2017",
                 genre: "Poetry",
@@ -2245,8 +2245,10 @@ function displayBooks(booksToShow) {
                 <p><strong>Genre:</strong> ${book.genre}</p>
                 <p><strong>Publisher:</strong> ${book.publisher}</p>
                 <p><strong>Translator:</strong> ${book.translator}</p>
+                <p><strong>Language of Origin:</strong> ${book.languageorigin}</p>
                 <p><strong>Country:</strong> ${book.country}</p>
-                <a href="https://www.worldcat.org/isbn/${book.isbn}" target="_blank">Find in a library</a>
+                <p><strong>ISBN:</strong> ${book.isbn}</p>
+                <a href="https://www.worldcat.org/isbn/${book.isbn}" target="_blank">Find in a Library</a>
             </div>
         `;
         bookList.appendChild(bookElement);
