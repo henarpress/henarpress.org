@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
 <style>
 :root {
     --primary-color: #232323;
@@ -287,6 +289,54 @@ footer {
     font-size: 0.9rem;
 }
 
+.statistics-container {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    grid-column: span 1;
+}
+
+.stat-card-small {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-card h3, .stat-card-small h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.big-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
 @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -364,6 +414,14 @@ footer {
     .stat-label {
         font-size: 0.8rem;
     }
+    
+    .stats-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        grid-column: span 1;
+    }
 }
 
 </style>
@@ -389,6 +447,28 @@ footer {
             <div id="bookStats" class="stats-grid">
             </div>
         </div>
+        
+        <div class="statistics-container">
+    
+    <div class="stats-dashboard">
+        <div class="stat-card">
+            <canvas id="yearChart"></canvas>
+        </div>
+        
+        <div class="stat-card-small">
+            <h3>Authors</h3>
+            <div class="big-number" id="totalAuthors">0</div>
+            <h3>Publishers</h3>
+            <div class="big-number" id="totalPublishers">0</div>
+            <h3>Translators</h3>
+            <div class="big-number" id="totalTranslators">0</div>
+            <h3>Languages</h3>
+            <div class="big-number" id="totalLanguages">0</div>
+        </div>
+    </div>
+</div>
+        
+        
         <h2>Search the Database</h2>
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or any keyword...">
@@ -1377,6 +1457,16 @@ footer {
                 languageorigin: "Turkish",
                 country: "Hong Kong"
             },
+                  {
+                title: "Mem u Zîn: A Classical 17th-Century Epic",
+                author: "Ehmedê Xani",
+                year: "2018",
+                genre: "Epic Poem",
+                isbn: "978-3932574283",
+                publisher: "Institute of Kurdish Studies Berlin",
+                translator: "Feryad Fazil Omar & Mitch Cohen",
+                country: "Germany"
+            },
             {
                 title: "No Friend But the Mountains: Writing from Manus Prison",
                 author: "Behrouz Boochani",
@@ -2101,16 +2191,6 @@ footer {
                 publisher: "Royal Asiatic Society",
                 translator: "Major E. B. Soane",
                 country: "UK"
-            },
-            {
-                title: "Mem u Zîn: A Classical 17th-Century Epic",
-                author: "Ehmedê Xani",
-                year: "1692",
-                genre: "Epic Poem",
-                isbn: "978-3932574283",
-                publisher: "Institute of Kurdish Studies Berlin",
-                translator: "Feryad Fazil Omar & Mitch Cohen",
-                country: "Germany"
             }
         ];
 const bookList = document.getElementById("bookList");
@@ -2217,7 +2297,7 @@ function updateBookStats() {
     let statsHTML = `
         <div class="stat-item">
             <span class="stat-value">${totalBooks}</span>
-            <span class="stat-label">Total Books</span>
+            <span class="stat-label">Books</span>
         </div>
     `;
     
@@ -2281,5 +2361,147 @@ updateBookStats();
         });
 
     </script>
+    <script>
+// Function to generate statistics
+function generateStatistics() {
+    // Calculate unique counts
+    const uniqueAuthors = new Set(books.map(book => book.author.split('&').map(a => a.trim())).flat());
+    const uniquePublishers = new Set(books.map(book => book.publisher));
+    const uniqueTranslators = new Set();
+    books.forEach(book => {
+        if (book.translator && book.translator !== '-') {
+            book.translator.split('&').map(t => t.trim()).forEach(translator => {
+                uniqueTranslators.add(translator);
+            });
+        }
+    });
+    const uniqueLanguages = new Set();
+    books.forEach(book => {
+        if (book.languageorigin) {
+            uniqueLanguages.add(book.languageorigin);
+        }
+    });
+
+    // Update the big number displays
+    document.getElementById('totalAuthors').textContent = uniqueAuthors.size;
+    document.getElementById('totalPublishers').textContent = uniquePublishers.size;
+    document.getElementById('totalTranslators').textContent = uniqueTranslators.size;
+    document.getElementById('totalLanguages').textContent = uniqueLanguages.size;
+
+    // Create publications by year chart
+    createYearChart();
+    
+    // Create publications by genre chart
+    createGenreChart();
+}
+
+// Function to create year chart - REPLACE the existing createYearChart() function with this
+function createYearChart() {
+    const yearCounts = {};
+    
+    // Count books per year
+    books.forEach(book => {
+        const year = book.year;
+        yearCounts[year] = (yearCounts[year] || 0) + 1;
+    });
+    
+    // Sort years and prepare data
+    const years = Object.keys(yearCounts).sort();
+    const counts = years.map(year => yearCounts[year]);
+    
+    // Create chart
+    const ctx = document.getElementById('yearChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line', // Changed from 'bar' to 'line'
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Number of Publications',
+                data: counts,
+                backgroundColor: 'rgba(192, 57, 43, 0.2)', // Light fill
+                borderColor: '#C0392B', // Solid line
+                borderWidth: 3,
+                tension: 0.2, // Slight curve to the line
+                fill: true, // Fill area under the line
+                pointBackgroundColor: '#C0392B',
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+// Function to create genre chart
+function createGenreChart() {
+    const genreCounts = {};
+    
+    // Count books per genre
+    books.forEach(book => {
+        const genre = book.genre;
+        genreCounts[genre] = (genreCounts[genre] || 0) + 1;
+    });
+    
+    // Prepare data
+    const genres = Object.keys(genreCounts);
+    const counts = genres.map(genre => genreCounts[genre]);
+    
+    // Generate colors
+    const baseColor = [192, 57, 43]; // RGB for #C0392B
+    const colors = genres.map((_, index) => {
+        const shade = Math.max(0.5, 1 - (index * 0.1));
+        return `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${shade})`;
+    });
+    
+    // Create chart
+    const ctx = document.getElementById('genreChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: genres,
+            datasets: [{
+                data: counts,
+                backgroundColor: colors,
+                borderColor: '#F7F5ED',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        boxWidth: 15,
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Call this function after displaying books
+displayBooks(books);
+updateBookStats();
+generateStatistics(); // Add this line to generate the new statistics
+</script>
 </body>
 </html>
