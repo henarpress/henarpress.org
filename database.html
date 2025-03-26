@@ -386,7 +386,7 @@ input:checked + .slider:before {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -6507,7 +6507,6 @@ let showBooks = true;
 
 document.getElementById('databaseToggle').addEventListener('change', function() {
     showBooks = !this.checked;
-    searchInput.value = '';
     handleSearch();
 });
 
@@ -6516,17 +6515,64 @@ function handleSearch() {
     const currentData = showBooks ? books : shortWorks;
     
     const filtered = currentData.filter(item => {
-        return Object.values(item).some(value =>
-            String(value).toLowerCase().includes(searchTerm)
-        );
+        return Object.values(item).some(value => {
+            if (typeof value === 'string') {
+                return value.toLowerCase().includes(searchTerm);
+            }
+            return String(value).toLowerCase().includes(searchTerm);
+        });
     });
     
     displayEntries(filtered, showBooks);
     updateStats(filtered);
 }
 
-displayEntries(books, true);
-updateStats(books);
+function displayEntries(entries, isBooks) {
+    bookList.innerHTML = "";
+    
+    entries.forEach(entry => {
+        const entryElement = document.createElement("div");
+        entryElement.className = isBooks ? "book-details" : "shortwork-entry";
+        
+        if(isBooks) {
+            entryElement.innerHTML = `
+                <img src="placeholder.jpg" data-src="${getBookCover(entry.isbn)}" alt="${entry.title} cover" class="book-cover lazy">
+                <div class="book-info">
+                    <h3>${entry.title}</h3>
+                    <p><strong>Author:</strong> ${entry.author}</p>
+                    <p><strong>Year:</strong> ${entry.year}</p>
+                    <p><strong>Genre:</strong> ${entry.genre}</p>
+                    <p><strong>Publisher:</strong> ${entry.publisher}</p>
+                    <p><strong>Translator:</strong> ${entry.translator}</p>
+                    <p><strong>Original Language:</strong> ${entry.languageorigin}</p>
+                    <p><strong>Country:</strong> ${entry.country}</p>
+                    <p><strong>ISBN:</strong> ${entry.isbn}</p>
+                    <a href="https://www.worldcat.org/isbn/${entry.isbn}" target="_blank">Find in a Library</a>
+                </div>
+            `;
+        } else {
+            entryElement.innerHTML = `
+                <div class="entry-info">
+                    <h3>${entry.title}</h3>
+                    <p><strong>Author:</strong> ${entry.author}</p>
+                    <p><strong>Original Language:</strong> ${entry.originalLanguage}</p>
+                    <p><strong>Translator:</strong> ${entry.translator}</p>
+                    <p><strong>Genre:</strong> ${entry.genre}</p>
+                    ${entry.date ? `<p><strong>Date:</strong> ${entry.date}</p>` : ''}
+                    <p><strong>Publication:</strong> ${entry.publication}</p>
+                    <div class="link-container">
+                        <a href="${entry.link}" target="_blank">Read Online</a>
+                        <a href="${entry.archive}" target="_blank">Archived Link</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        bookList.appendChild(entryElement);
+    });
+    
+    if(isBooks) setupLazyLoading();
+}
 
 function setupLazyLoading() {
     const lazyImages = document.querySelectorAll('img.lazy');
@@ -6543,21 +6589,6 @@ function setupLazyLoading() {
     });
 
     lazyImages.forEach(image => lazyImageObserver.observe(image));
-}
-
-displayBooks(books);
-
-function filterBooks(searchTerm) {
-    return books.filter(book => 
-        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.year.toString().includes(searchTerm) ||
-        book.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.isbn.includes(searchTerm) ||
-        book.publisher.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.translator.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.country.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 }
 
 function updateStats(entries) {
@@ -6586,50 +6617,36 @@ function updateStats(entries) {
     bookStats.innerHTML = statsHTML;
 }
 
-searchInput.addEventListener("input", function() {
-    const searchTerm = this.value;
-    const filteredBooks = filterBooks(searchTerm);
-    displayBooks(filteredBooks);
+searchInput.addEventListener("input", handleSearch);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollToTopButton = document.getElementById('scrollToTop');
+    let lastScrollTop = 0;
+
+    function toggleScrollToTopButton() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 300) {
+            scrollToTopButton.classList.add('visible');
+        } else {
+            scrollToTopButton.classList.remove('visible');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }
+
+    window.addEventListener('scroll', toggleScrollToTopButton);
+
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    toggleScrollToTopButton();
 });
 
-displayBooks(books);
-updateBookStats();
-
-   document.addEventListener('DOMContentLoaded', function() {
-            const scrollToTopButton = document.getElementById('scrollToTop');
-            let lastScrollTop = 0;
-
-            function toggleScrollToTopButton() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                console.log('Scroll position:', scrollTop); // Debug log
-
-                if (scrollTop > 300) {
-                    scrollToTopButton.classList.add('visible');
-                    console.log('Button should be visible'); // Debug log
-                } else {
-                    scrollToTopButton.classList.remove('visible');
-                    console.log('Button should be hidden'); // Debug log
-                }
-                
-                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-            }
-
-            window.addEventListener('scroll', toggleScrollToTopButton);
-
-            scrollToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            toggleScrollToTopButton();
-
-            console.log('Scroll to top button initialized:', scrollToTopButton); // Debug log
-        });
-
-    </script>
+// Initial load
+handleSearch();    </script>
     <script>
 // Function to generate statistics
 function generateStatistics() {
