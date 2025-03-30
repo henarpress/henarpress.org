@@ -85,74 +85,10 @@
         height: 100vh;
         overflow-y: auto;
     }
-.bio-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
-
-.bio-popup.active {
-    display: flex;
-}
-
-.bio-content {
-    background: #F7F5ED;
-    padding: 40px;
-    max-width: 650px;
-    width: 90%;
-    position: relative;
-    border-radius: 12px;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.bio-content h3 {
-    margin-bottom: 10px;
-    padding-right: 30px;
-    font-family: 'Staatliches', sans-serif;
-    font-size: 1.8rem;
-    color: var(--primary-color);
-}
-
-.bio-content p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.close-bio {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s ease;
-}
-
-.close-bio:hover {
-    opacity: 0.7;
-}
 
 .team-member {
     cursor: pointer;
     transition: transform 0.2s ease;
-}
-
-.team-member:hover {
-    transform: translateY(-5px);
 }
     footer {
         width: 500px;
@@ -299,35 +235,52 @@
         font-size: 1rem;
     }
 
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-    }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
 
-    .team-member {
-        text-align: left;
-    }
+.team-member {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .team-member img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        object-position: center;
-        margin-bottom: 1rem;
-        filter: grayscale(100%);
-        transition: var(--transition);
-    }
+.team-member img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
 
-    .team-member:hover img {
-        filter: grayscale(0%);
-    }
+.team-member h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
 
-    .team-member h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.3rem;
-    }
+.team-member .title {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #C0392B;
+}
+
+.team-member .bio-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
+}
 
     .team-member p {
         font-size: 0.9rem;
@@ -911,7 +864,6 @@
             <a href="#top">About</a>
             <a href="#contribute">Contribute</a>
             <a href="#our-team">People</a>
-            <a href="#authors">Authors & Translators</a>
             <a href="#contact">Contact</a>
             <a href="database" target="_blank" class="database-link">Kurdish Literature Database</a>
         </div>
@@ -945,70 +897,53 @@
 <p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
 <p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
         </div>
-        <div id="our-team">
-            <h2>People</h2>
-<div class="team-grid">
-    <div class="team-member" data-bio="arian">
-        <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
-        <h3>Arian Sorani</h3>
-        <p>Publisher & Editor-in-Chief</p>
-    </div>
-    <div class="team-member" data-bio="tracy">
-        <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
-        <h3>Tracy Fuad</h3>
-        <p>Board President</p>
-    </div>      
-    <div class="team-member" data-bio="holly">
-        <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
-        <h3>Holly Mason Badra</h3>
-        <p>Board Vice President</p>
-    </div>
-    <div class="team-member" data-bio="chad">
-        <img src="ChadPost-gray.jpeg" alt="Chad W. Post">
-        <h3>Chad W. Post</h3>
-        <p>Board Secretary</p>
-    </div>              
-    <div class="team-member" data-bio="gary">
-        <img src="gary-gray.jpg" alt="Gary Lovely">
-        <h3>Gary Lovely</h3>
-        <p>Board Treasurer</p>
-    </div>
-    <div class="team-member" data-bio="shene">
-        <img src="SheneMohammed-gray.jpg" alt="Shene Mohammed">
-        <h3>Shene Mohammed</h3>
-        <p>Board Outreach & Translation Officer</p>
-    </div>
-       <div class="team-member" data-bio="hannah">
-        <img src="Hannah-gray.jpg" alt="Hannah Fox">
-        <h3>Hannah Fox</h3>
-        <p>Literary Database Archivist</p>
+<div id="our-team">
+    <h2>People</h2>
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="ArianSorani-gray.jpeg" alt="Arian Sorani">
+            <h3>Arian Sorani</h3>
+            <p class="title">Publisher & Editor-in-Chief</p>
+            <p class="bio-text">Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging fellow at the Institute for Social Research, he divides his time between Columbus and Abu Dhabi.</p>
+        </div>
+        <div class="team-member">
+            <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+            <h3>Tracy Fuad</h3>
+            <p class="title">Board President</p>
+            <p class="bio-text">Tracy Fuad's second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad's poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish.</p>
+        </div>      
+        <div class="team-member">
+            <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+            <h3>Holly Mason Badra</h3>
+            <p class="title">Board Vice President</p>
+            <p class="bio-text">Holly Mason Badra is a Kurdish-American writer. Her poetry, essays, reviews, and interviews appear in Meridian, The Arkansas International, The Rumpus, CALYX, Circumference, Asymptote, and elsewhere. She is currently the associate director of Women and Gender Studies at George Mason University.</p>
+        </div>
+        <div class="team-member">
+            <img src="ChadPost-gray.jpeg" alt="Chad W. Post">
+            <h3>Chad W. Post</h3>
+            <p class="title">Board Secretary</p>
+            <p class="bio-text">Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading.</p>
+        </div>              
+        <div class="team-member">
+            <img src="gary-gray.jpg" alt="Gary Lovely">
+            <h3>Gary Lovely</h3>
+            <p class="title">Board Treasurer</p>
+            <p class="bio-text">Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses.</p>
+        </div>
+        <div class="team-member">
+            <img src="SheneMohammed-gray.jpg" alt="Shene Mohammed">
+            <h3>Shene Mohammed</h3>
+            <p class="title">Board Outreach & Translation Officer</p>
+            <p class="bio-text">Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet Hazhar Mukriyani, along with Kurdish folktales and poems. She graduated with a Literary Translation MFA from the University of Iowa.</p>
+        </div>
+        <div class="team-member">
+            <img src="Hannah-gray.jpg" alt="Hannah Fox">
+            <h3>Hannah Fox</h3>
+            <p class="title">Literary Database Archivist</p>
+            <p class="bio-text">Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature.</p>
+        </div>
     </div>
 </div>
-        <div id="authors">
-            <h2>Authors & Translators</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="author-placeholder.png" alt="Author">
-                    <h3>Forthcoming</h3>
-                    <p>Author</p>
-                </div>
-                <div class="team-member">
-                    <img src="author-placeholder.png" alt="Translator">
-                    <h3>Forthcoming</h3>
-                    <p>Translator</p>
-                </div>
-                <div class="team-member">
-                    <img src="author-placeholder.png" alt="Author">
-                    <h3>Forthcoming</h3>
-                    <p>Author</p>
-                </div>
-                <div class="team-member">
-                    <img src="author-placeholder.png" alt="Translator">
-                    <h3>Forthcoming</h3>
-                    <p>Translator</p>
-                </div>
-            </div>
-        </div>
             <div id="contact">
             <h2>Contact Us</h2>
             <div class="contact-content">
@@ -1247,7 +1182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         holly: {
             name: 'Holly Mason Badra',
             title: 'Board Vice President',
-            bio: 'Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.'
+            bio: 'Holly Mason Badra is a Kurdish-American writer. Her poetry, essays, reviews, and interviews appear in Meridian, The Arkansas International, The Rumpus, CALYX, Circumference, Asymptote, and elsewhere. She is currently the associate director of Women and Gender Studies at George Mason University. She reads for Poetry Daily.'
         },
    hannah: {
             name: 'Hannah Fox',
@@ -1255,27 +1190,6 @@ document.addEventListener('DOMContentLoaded', function() {
             bio: 'Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as “minor literature”. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community. In her spare time she enjoys collaborating on various translation projects, and her co-translations have been published in Rusted Radishes and The Markaz Review.'
         }
     };
-
-    const popup = document.querySelector('.bio-popup');
-    const bioContent = document.querySelector('.bio-content');
-
-    document.querySelectorAll('[data-bio]').forEach(member => {
-        member.addEventListener('click', function() {
-            const personId = this.getAttribute('data-bio');
-            if (!personId || !bios[personId]) return;
-            
-            const person = bios[personId];
-            bioContent.innerHTML = `
-                <button class="close-bio">&times;</button>
-                <h3>${person.name}</h3>
-                <p><em>${person.title}</em></p>
-                <p>${person.bio}</p>
-            `;
-            
-            popup.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
 
     popup.addEventListener('click', function(e) {
         if (e.target === popup || e.target.closest('.close-bio')) {
