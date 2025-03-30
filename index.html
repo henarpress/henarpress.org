@@ -233,7 +233,7 @@
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     gap: 2rem;
     margin-top: 1.5rem;
 }
@@ -445,6 +445,20 @@ width: 200px;
     }
     
     @media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .team-member img {
+        width: 150px;
+        height: 160px;
+    }
+    
+    .team-member h3 {
+        font-size: 1.2rem;
+    }
+
         html {
             font-size: 16px;
         }
@@ -492,9 +506,6 @@ width: 200px;
         }
     
         @media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
 
         .nav-toggle {
             display: block;
@@ -647,7 +658,23 @@ width: 200px;
         padding: 1.2rem 2.4rem;
     }
 }
-
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .team-member img {
+        width: 180px;
+        height: 190px;
+    }
+}
 @media (min-width: 2560px) {
     html {
         font-size: 20px;
@@ -767,7 +794,7 @@ width: 200px;
             <h2>Contribute</h2>
 <p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is 100% tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
 <p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
-<p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
+<p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in translation</a>.</p>      
         </div>
 <div id="our-team">
     <h2>People</h2>
