@@ -86,10 +86,6 @@
         overflow-y: auto;
     }
 
-.team-member {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
     footer {
         width: 500px;
         height: 100vh;
@@ -238,26 +234,24 @@
 .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    margin-top: 2rem;
+    gap: 2rem;
+    margin-top: 1.5rem;
 }
 
 .team-member {
     text-align: center;
     margin-bottom: 2.5rem;
-    transition: transform 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .team-member img {
-    width: 100%;
-    height: 300px;
+    width: 180px;
+    height: 280px;
     object-fit: cover;
-    margin-bottom: 1.5rem;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    object-position: top;
+    margin-bottom: 1rem;
 }
 
 .team-member h3 {
@@ -419,89 +413,7 @@
         background-color: var(--accent-color);
         color: var(--secondary-color);
     }
-    #news-events {
-  margin-bottom: 2rem;
-}
-#news-events {
-    margin-bottom: 2rem;
-}
 
-.news-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.news-article {
-    display: flex;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.news-image {
-    flex: 0 0 200px;
-}
-
-.news-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.news-content {
-    flex: 1;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.news-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.news-date {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.article-logo {
-    height: 40px;
-    width: auto;
-}
-
-.news-article h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-}
-
-.news-article p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-}
-
-.read-more {
-    align-self: flex-start;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #ffff;
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    border: 2px solid var(--accent-color);
-    transition: var(--transition);
-}
-
-.read-more:hover {
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-}
     
     a {
         text-decoration: none;
@@ -531,15 +443,6 @@
         footer {
             width: 350px;
         }
-
-        .team-grid {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        }
-
-        .team-member img {
-            width: 120px;
-            height: 120px;
-        }
     }
     
     @media (max-width: 768px) {
@@ -547,10 +450,6 @@
             font-size: 16px;
         }
 
-          .news-image {
-    display: none;
-  }
-  
  
     .bio-content {
         padding: 30px;
@@ -642,10 +541,6 @@
             display: none !important;
         }
             
-        .team-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
 
         .mobile-header {
             display: flex;
@@ -743,15 +638,6 @@
         font-size: 3.2rem;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .team-member img {
-        width: 200px;
-        height: 200px;
-    }
-
     .book-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -794,15 +680,6 @@
         font-size: 4rem;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .team-member img {
-        width: 250px;
-        height: 250px;
-    }
-
     .book-grid {
         gap: 3rem;
     }
@@ -815,6 +692,26 @@
         font-size: 1.6rem;
         padding: 1.4rem 2.8rem;
     }
+    
+    @media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-member img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .team-member img {
+        height: 320px;
+    }
+}
     
     @media (min-width: 1440px) {
     nav {
@@ -1152,52 +1049,6 @@
     <div class="bio-content"></div>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const bios = {
-        arian: {
-            name: 'Arian Sorani',
-            title: 'Publisher & Editor-in-Chief',
-            bio: 'Arian Sorani is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former neuroimaging fellow at the Institute for Social Research and the Center for Cognitive and Behavioral Brain Imaging, he worked at Nationwide Children\'s Hospital\'s Center for Injury Research and Policy advocating for the decriminalization of fentanyl testing strip. He divides his time between Columbus and Abu Dhabi.'
-        },
-        gary: {
-            name: 'Gary Lovely',
-            title: 'Board Treasurer',
-            bio: 'Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses. He has written about books for the New York Times, Literary Hub, Buzzfeed Books, and more. Gary has been a judge for the National Book Awards for Translated Literature, The Cercador Prize for Literature in Translation, & The James Thurber Prize for American Humor. He is the current Vice President of the Great Lakes Booksellers Association.'
-        },
-        tracy: {
-            name: 'Tracy Fuad',
-            title: 'Board President',
-            bio: 'Tracy Fuad\'s second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad\'s poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish. She lives in Berlin, where she teaches poetry and directs the Berlin Writers\' Workshop.'
-        },
-        shene: {
-            name: 'Shene Mohammed',
-            title: 'Board Outreach & Translation Officer',
-            bio: 'Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet, philologist, and translator Hazhar Mukriyani, along with Kurdish folktales and poems. Shene graduated with a Bachelor\'s degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.'
-        },
-        chad: {
-            name: 'Chad W. Post',
-            title: 'Board Secretary',
-            bio: 'Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. In addition, he is the managing editor of Three Percent, a blog and review site that promotes literature in translation and is home to the Translation Database (now housed at Publishers Weekly), the Best Translated Book Awards, and the Three Percent and Two Month Review podcasts. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading. His articles and book reviews have appeared in a range of publications including The Believer, Publishing Perspectives, the Wall Street Journal culture blog, Bookforum, Rolling Stone, and Quarterly Conversation, among others. He received the 2018 Words Without Borders Ottaway Award for the Promotion of International Literature.'
-        },
-        holly: {
-            name: 'Holly Mason Badra',
-            title: 'Board Vice President',
-            bio: 'Holly Mason Badra is a Kurdish-American writer. Her poetry, essays, reviews, and interviews appear in Meridian, The Arkansas International, The Rumpus, CALYX, Circumference, Asymptote, and elsewhere. She is currently the associate director of Women and Gender Studies at George Mason University. She reads for Poetry Daily.'
-        },
-   hannah: {
-            name: 'Hannah Fox',
-            title: 'Literary Database Archivist',
-            bio: 'Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as “minor literature”. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community. In her spare time she enjoys collaborating on various translation projects, and her co-translations have been published in Rusted Radishes and The Markaz Review.'
-        }
-    };
-
-    popup.addEventListener('click', function(e) {
-        if (e.target === popup || e.target.closest('.close-bio')) {
-            popup.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
             popup.classList.remove('active');
