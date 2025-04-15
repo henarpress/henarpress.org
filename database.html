@@ -14,7 +14,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+ <style>
+ .chart-message {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    color: var(--primary-color);
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.tab-button:hover {
+    opacity: 1;
+}
+
+.tab-button.active {
+    color: var(--accent-color);
+    opacity: 1;
+    border-bottom: 3px solid var(--accent-color);
+    margin-bottom: -2px;
+}
+
+.tab-content {
+    position: relative;
+    min-height: 200px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-wrap: wrap;
+    }
     
+    .tab-button {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+</style>   
 <style>
 :root {
     --primary-color: #232323;
@@ -572,9 +631,27 @@ footer {
     </header>
 
  <main>
-     <div class="at-a-glance">
-         <div id="bookStats" class="stats-grid">
-             </div>
+ <div class="at-a-glance">
+    <div class="tabs">
+        <button class="tab-button active" data-tab="stats">Stats</button>
+        <button class="tab-button" data-tab="year">Publications by Year</button>
+        <button class="tab-button" data-tab="language">Publications by Language</button>
+    </div>
+    
+    <div class="tab-content">
+        <div id="stats-tab" class="tab-pane active">
+            <div id="bookStats" class="stats-grid"></div>
+        </div>
+        
+        <div id="year-tab" class="tab-pane">
+            <canvas id="yearChart"></canvas>
+        </div>
+        
+        <div id="language-tab" class="tab-pane">
+            <canvas id="languageChart"></canvas>
+        </div>
+    </div>
+</div>
      </div> </div> </div> <h2>Search the Database</h2>
         <div class="toggle-container">
     <label class="switch">
@@ -6589,7 +6666,7 @@ footer {
         author: "Behrouz Boochani",
         originalLanguage: "Persian",
         translator: "Omid Tofighian; Moones Mansoubi",
-        genre: "Memoir (Excerpt)",
+        genre: "Prose",
         date: "1-Nov-24",
         publication: "The Markaz Review",
         link: "https://themarkaz.org/the-man-who-loves-ducks-from-freedom-only-freedom/",
@@ -6996,7 +7073,7 @@ footer {
         author: "Behnaz; Shanaz; Hussein Jawanshir",
         originalLanguage: "Sorani",
         translator: "Nawa Amin",
-        genre: "Folk Tale",
+        genre: "Short Story",
         date: "27-May-24",
         publication: "Kurdistan Center for Arts and Culture",
         link: "https://projects.kcac.org/en/translation/have-faith-in-god-when-stealing",
@@ -7007,7 +7084,7 @@ footer {
         author: "Behnaz; Shanaz; Hussein Jawanshir",
         originalLanguage: "Sorani",
         translator: "Nawa Amin",
-        genre: "Folk Tale",
+        genre: "Short Story",
         date: "27-May-24",
         publication: "Kurdistan Center for Arts and Culture",
         link: "https://projects.kcac.org/en/translation/friendship-in-the-forest",
@@ -7955,6 +8032,266 @@ function createGenreChart() {
 displayBooks(books);
 updateBookStats();
 generateStatistics(); // Add this line to generate the new statistics
+</script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons and panes
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            
+            // Add active class to clicked button and corresponding pane
+            this.classList.add('active');
+            const tabId = this.getAttribute('data-tab') + '-tab';
+            document.getElementById(tabId).classList.add('active');
+            
+            // No need to manually resize - we'll destroy and recreate charts when needed
+        });
+    });
+    
+    // Initialize everything
+    handleSearch();
+});
+
+// Store chart instances globally
+let yearChart = null;
+let languageChart = null;
+
+// Modified handleSearch function to update charts when searching
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const currentData = showBooks ? books : shortWorks;
+    
+    const filtered = currentData.filter(item => {
+        return Object.values(item).some(value => {
+            if (typeof value === 'string') {
+                return value.toLowerCase().includes(searchTerm);
+            }
+            return String(value).toLowerCase().includes(searchTerm);
+        });
+    });
+    
+    displayEntries(filtered, showBooks);
+    updateStats(filtered);
+    
+    // Update charts with filtered data
+    updateCharts(filtered);
+}
+
+// New function to update all charts
+function updateCharts(data) {
+    // Only update year and language charts if we're showing books
+    if (showBooks) {
+        createYearChart(data);
+        createLanguageChart(data);
+    } else {
+        // If showing short works, destroy the charts and show a message
+        if (yearChart) {
+            yearChart.destroy();
+            yearChart = null;
+            document.getElementById('yearChart').getContext('2d').clearRect(0, 0, 
+                document.getElementById('yearChart').width, 
+                document.getElementById('yearChart').height);
+        }
+        
+        if (languageChart) {
+            languageChart.destroy();
+            languageChart = null;
+            document.getElementById('languageChart').getContext('2d').clearRect(0, 0, 
+                document.getElementById('languageChart').width, 
+                document.getElementById('languageChart').height);
+        }
+        
+        // Add message divs if they don't exist
+        if (!document.getElementById('year-message')) {
+            const yearMessage = document.createElement('div');
+            yearMessage.id = 'year-message';
+            yearMessage.className = 'chart-message';
+            yearMessage.textContent = 'Year chart is only available for books.';
+            document.getElementById('year-tab').appendChild(yearMessage);
+        }
+        
+        if (!document.getElementById('language-message')) {
+            const languageMessage = document.createElement('div');
+            languageMessage.id = 'language-message';
+            languageMessage.className = 'chart-message';
+            languageMessage.textContent = 'Language chart is only available for books.';
+            document.getElementById('language-tab').appendChild(languageMessage);
+        }
+    }
+}
+
+// Updated function to create year chart with data parameter
+function createYearChart(data) {
+    // Remove any message
+    if (document.getElementById('year-message')) {
+        document.getElementById('year-message').remove();
+    }
+    
+    const yearCounts = {};
+    
+    // Count books per year
+    data.forEach(book => {
+        const year = book.year;
+        yearCounts[year] = (yearCounts[year] || 0) + 1;
+    });
+    
+    // Sort years and prepare data
+    const years = Object.keys(yearCounts).sort();
+    const counts = years.map(year => yearCounts[year]);
+    
+    // Destroy existing chart if it exists
+    if (yearChart) {
+        yearChart.destroy();
+    }
+    
+    // Create chart
+    const ctx = document.getElementById('yearChart').getContext('2d');
+    yearChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [{
+                label: 'Number of Publications',
+                data: counts,
+                backgroundColor: 'rgba(192, 57, 43, 0.2)',
+                borderColor: '#C0392B',
+                borderWidth: 3,
+                tension: 0.2,
+                fill: true,
+                pointBackgroundColor: '#C0392B',
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Publications by Year',
+                    font: {
+                        size: 16,
+                        family: 'Syne'
+                    },
+                    color: '#232323'
+                }
+            }
+        }
+    });
+}
+
+// Updated function to create language chart with data parameter
+function createLanguageChart(data) {
+    // Remove any message
+    if (document.getElementById('language-message')) {
+        document.getElementById('language-message').remove();
+    }
+    
+    const languageCounts = {};
+    
+    // Count books per language - fix multiple languages issue
+    data.forEach(book => {
+        const languageField = book.languageorigin || 'Unspecified';
+        
+        // Split languages by comma, and, or semicolon
+        const languages = languageField.split(/,|;|\sand\s/).map(lang => lang.trim());
+        
+        // Count each language separately
+        languages.forEach(language => {
+            if (language) { // Ensure it's not empty
+                languageCounts[language] = (languageCounts[language] || 0) + 1;
+            }
+        });
+    });
+    
+    // Prepare data
+    const languages = Object.keys(languageCounts).sort();
+    const counts = languages.map(language => languageCounts[language]);
+    
+    // Generate colors
+    const colors = languages.map((_, index) => {
+        // Create different shades of the accent color
+        const hue = 0; // Red hue
+        const saturation = 65;
+        const lightness = 45 + (index * 5) % 30;
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    });
+    
+    // Destroy existing chart if it exists
+    if (languageChart) {
+        languageChart.destroy();
+    }
+    
+    // Create chart
+    const ctx = document.getElementById('languageChart').getContext('2d');
+    languageChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: languages,
+            datasets: [{
+                label: 'Number of Publications',
+                data: counts,
+                backgroundColor: colors,
+                borderColor: colors.map(color => color),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Publications by Language',
+                    font: {
+                        size: 16,
+                        family: 'Syne'
+                    },
+                    color: '#232323'
+                }
+            }
+        }
+    });
+}
+
+
+document.getElementById('databaseToggle').addEventListener('change', function() {
+    showBooks = !this.checked;
+    handleSearch(); // This will now update charts too
+});
+
 </script>
 </body>
 </html>
