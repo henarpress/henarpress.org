@@ -1873,7 +1873,7 @@ footer {
             country: "UK"
         },
         {
-            title: "The Last Pomegranate",
+            title: "The Last Pomegranate Tree",
             author: "Bachtyar Ali",
             year: "2021",
             genre: "Novel",
@@ -9053,25 +9053,39 @@ function createYearChart(filteredData) {
     });
 }
 
-// Function to create language chart
+// Function to create language chart with proper language parsing
 function createLanguageChart(filteredData) {
     const languageCounts = {};
     const data = filteredData || books;
     
-    // Count books per language
+    // Count books per language with proper splitting
     data.forEach(book => {
-        const language = book.languageorigin || "Unknown";
-        languageCounts[language] = (languageCounts[language] || 0) + 1;
+        const languageField = book.languageorigin || 'Unspecified';
+        
+        // Split languages by comma, and, or semicolon
+        const languages = languageField.split(/,|;|\sand\s/).map(lang => lang.trim());
+        
+        // Count each language separately
+        languages.forEach(language => {
+            if (language) { // Ensure it's not empty
+                languageCounts[language] = (languageCounts[language] || 0) + 1;
+            }
+        });
     });
     
-    // Prepare data
-    const languages = Object.keys(languageCounts);
+    // Sort languages by count (descending)
+    const sortedLanguages = Object.keys(languageCounts).sort((a, b) => 
+        languageCounts[b] - languageCounts[a]
+    );
+    
+    // Prepare data in sorted order
+    const languages = sortedLanguages;
     const counts = languages.map(language => languageCounts[language]);
     
-    // Generate colors
+    // Generate colors - same shade pattern but ensure enough unique colors
     const baseColor = [192, 57, 43]; // RGB for #C0392B
     const colors = languages.map((_, index) => {
-        const shade = Math.max(0.5, 1 - (index * 0.15));
+        const shade = Math.max(0.4, 1 - (index * 0.1));
         return `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${shade})`;
     });
     
@@ -9103,6 +9117,13 @@ function createLanguageChart(filteredData) {
                     beginAtZero: true,
                     ticks: {
                         stepSize: 1
+                    }
+                },
+                x: {
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 45,
+                        minRotation: 45
                     }
                 }
             },
