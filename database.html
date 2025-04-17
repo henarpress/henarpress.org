@@ -1160,11 +1160,12 @@ footer {
             author: "Mirza Metin",
             year: "2025",
             genre: "Other",
-            isbn: "https://www.laertesbooks.org/egret-acting-editions",
+            isbn: "Unknown (https://www.laertesbooks.org/egret-acting-editions)",
             publisher: "Egret Acting Editions",
             translator: "Nicholas Glastonbury",
             languageorigin: "Kurdish Kurmanji",
             country: "USA"
+            coverUrl: "disconumber5.jpg"              
         },
                       {
             title: "The Universe, All at Once",
@@ -8232,8 +8233,7 @@ function displayEntries(entries, isBooks) {
         if(isBooks) {
 
             entryElement.innerHTML = `
-
-                <img src="placeholder.jpg" data-src="${getBookCover(entry.isbn)}" alt="${entry.title} cover" class="book-cover lazy">
+                <img src="placeholder.jpg" data-src="${entry.coverUrl || getBookCover(entry.isbn)}" alt="${entry.title} cover" class="book-cover lazy">
 
                 <div class="book-info">
 
@@ -8337,8 +8337,7 @@ function displayEntries(entries, isBooks) {
 
             entryElement.innerHTML = `
 
-                <img src="placeholder.jpg" data-src="${getBookCover(entry.isbn)}" alt="${entry.title} cover" class="book-cover lazy">
-
+        <img src="placeholder.jpg" data-src="${entry.coverUrl || getBookCover(entry.isbn)}" alt="${entry.title} cover" class="book-cover lazy">
                 <div class="book-info">
 
                     <h3>${entry.title}</h3>
