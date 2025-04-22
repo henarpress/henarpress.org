@@ -30,7 +30,41 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
-    
+    <style>
+    .filter-sort-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-box, .sort-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+@media (max-width: 576px) {
+    .filter-sort-container {
+        flex-direction: column;
+    }
+}
+</style>
 
 <style>
 
@@ -1087,6 +1121,7 @@ footer {
                 </div>
             </div>
         </div>
+        
 
         <!-- Search section - right side -->
         <div class="search-section">
@@ -1100,9 +1135,29 @@ footer {
             </div>
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author, or any keyword...">
+                <div class="filter-sort-container">
+    <div class="filter-box">
+        <label for="genreFilter">Filter by Genre:</label>
+        <select id="genreFilter" class="form-select">
+            <option value="">All Genres</option>
+            <!-- Genre options will be populated by JavaScript -->
+        </select>
+    </div>
+    <div class="sort-box">
+        <label for="sortOption">Sort by:</label>
+        <select id="sortOption" class="form-select">
+            <option value="year-desc">Date (Newest first)</option>
+            <option value="year-asc">Date (Oldest first)</option>
+            <option value="author">Author Name</option>
+            <option value="title">Title</option>
+        </select>
+    </div>
+</div>
+
             </div>
         </div>
     </div>
+    
     
     <!-- Results section - below -->
     <div id="bookList"></div>
@@ -9204,7 +9259,138 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+// Modified populateGenreFilter function to filter genres based on current toggle state
+function populateGenreFilter() {
+    const genreFilter = document.getElementById('genreFilter');
+    const showBooksContent = !document.getElementById('databaseToggle').checked;
+    
+    // Collect genres based on the current toggle state
+    const currentGenres = new Set();
+    
+    if (showBooksContent) {
+        // Only add book genres
+        books.forEach(book => {
+            if (book.genre) currentGenres.add(book.genre);
+        });
+    } else {
+        // Only add short works genres
+        shortWorks.forEach(work => {
+            if (work.genre) currentGenres.add(work.genre);
+        });
+    }
+    
+    // Sort genres alphabetically
+    const sortedGenres = Array.from(currentGenres).sort();
+    
+    // Clear existing options (except the first one)
+    while (genreFilter.options.length > 1) {
+        genreFilter.remove(1);
+    }
+    
+    // Add genre options
+    sortedGenres.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre;
+        option.textContent = genre;
+        genreFilter.appendChild(option);
+    });
+}
 
+// Modified handleSearch function to include filtering and sorting
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const genreFilter = document.getElementById('genreFilter').value;
+    const sortOption = document.getElementById('sortOption').value;
+    const showBooks = !document.getElementById('databaseToggle').checked;
+    const currentData = showBooks ? books : shortWorks;
+    
+    // Filter by search term and genre
+    let filtered = currentData.filter(item => {
+        // Search term filter
+        const matchesSearch = Object.values(item).some(value => {
+            if (typeof value === 'string') {
+                return value.toLowerCase().includes(searchTerm);
+            }
+            return String(value).toLowerCase().includes(searchTerm);
+        });
+        
+        // Genre filter
+        const matchesGenre = !genreFilter || item.genre === genreFilter;
+        
+        return matchesSearch && matchesGenre;
+    });
+    
+    // Sort the filtered data
+    filtered = sortData(filtered, sortOption);
+    
+    displayEntries(filtered, showBooks);
+    updateStats(filtered);
+    
+    // Update charts with filtered data
+    createYearChart(filtered);
+    createLanguageChart(filtered);
+}
+
+// Function to sort data based on selected option
+function sortData(data, sortOption) {
+    const sortedData = [...data]; // Create a copy to avoid modifying original
+    
+    switch(sortOption) {
+        case 'year-desc':
+            sortedData.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+            break;
+        case 'year-asc':
+            sortedData.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+            break;
+        case 'author':
+            sortedData.sort((a, b) => {
+                // Extract last name for comparison
+                const getLastName = name => {
+                    const parts = name.split(' ');
+                    return parts[parts.length - 1].toLowerCase();
+                };
+                
+                // Handle multiple authors by using first author
+                const authorA = a.author.split(',')[0].split('&')[0].trim();
+                const authorB = b.author.split(',')[0].split('&')[0].trim();
+                
+                return getLastName(authorA).localeCompare(getLastName(authorB));
+            });
+            break;
+        case 'title':
+            sortedData.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+    }
+    
+    return sortedData;
+}
+
+// Add these event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Get reference to the toggle
+    const databaseToggle = document.getElementById('databaseToggle');
+    
+    // Populate the genre filter on page load
+    populateGenreFilter();
+    
+    // Add event listeners for filter and sort
+    document.getElementById('genreFilter').addEventListener('change', handleSearch);
+    document.getElementById('sortOption').addEventListener('change', handleSearch);
+    
+    // Add event listener for toggle change to update genres
+    databaseToggle.addEventListener('change', function() {
+        // Repopulate genre filter when toggle changes
+        populateGenreFilter();
+        // Run search to update results
+        handleSearch();
+    });
+    
+    // Initial load
+    handleSearch();
+});
+
+</script>
 </body>
 
 </html> 
