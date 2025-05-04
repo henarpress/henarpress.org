@@ -23,6 +23,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+   <style>
+        .bio-text {
+            position: relative;
+            max-height: 100px; /* Initial height to show limited text */
+            overflow: hidden;
+        }
+
+        .bio-text.expanded {
+            max-height: 1000px; /* A large value to ensure all text shows */
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            margin-top: 8px;
+            color: #C0392B;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .read-more-btn:hover {
+            opacity: 0.8;
+        }
+
+        .bio-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(transparent, #F7F5ED);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .bio-text.expanded::after {
+            opacity: 0;
+        }
+    </style>
 <style>
     :root {
         --primary-color: #232323;
@@ -828,12 +868,6 @@ width: 200px;
             <p class="bio-text">Hourieh Maleki Qouzloo (Huri) is a multilingual writer, translator, and researcher with over two decades of teaching experience across language and literature. Drawing from her background in both Kurdish and English Literature, her literary and academic work centers on themes of identity, hybridity, and displacement. Huri is passionate about fostering cultural exchange through literature and education and is actively engaged in translating contemporary Kurdish literary works into English. Her published translations include Ata Nahai's Birds in a Gale and Seyed Qader Hedayati's Gabor (Common Notions/Henar Press). She holds a second Master’s degree in English and Literacy Studies from the University of Stavanger and is pursuing research on cultural hybridity in migration literature.</p>
         </div>
         <div class="team-member">
-            <img src="ArianSorani-gray.jpeg" alt="Aryan Omar Hassan">
-            <h3>Aryan Omar Hassan</h3>
-            <p class="title">Publisher &amp Editor-in-Chief</p>
-            <p class="bio-text">Aryan Hassan is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former researcher at the Center for Cognitive and Behavioral Brain Imaging, the Institute for Population Research, and the Center for Biobehavioral Health, he divides his time between Columbus and Abu Dhabi.</p>
-        </div>
-        <div class="team-member">
             <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
             <h3>Tracy Fuad</h3>
             <p class="title">Board President</p>
@@ -843,25 +877,31 @@ width: 200px;
             <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
             <h3>Holly Mason Badra</h3>
             <p class="title">Board Vice President</p>
-            <p class="bio-text">Holly Mason Badra is a Kurdish-American writer. Her poetry, essays, reviews, and interviews appear in Meridian, The Arkansas International, The Rumpus, CALYX, Circumference, Asymptote, and elsewhere. She is currently the associate director of Women and Gender Studies at George Mason University.</p>
+            <p class="bio-text">Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.</p>
         </div>
         <div class="team-member">
             <img src="ChadPost-gray.jpeg" alt="Chad W. Post">
             <h3>Chad W. Post</h3>
             <p class="title">Board Secretary</p>
-            <p class="bio-text">Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading.</p>
+            <p class="bio-text">Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. In addition, he is the managing editor of Three Percent, a blog and review site that promotes literature in translation and is home to the Translation Database, the Best Translated Book Awards, and the Three Percent and Two Month Review podcasts. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading. His articles and book reviews have appeared in a range of publications including The Believer, Publishing Perspectives, the Wall Street Journal culture blog, Bookforum, Rolling Stone, and Quarterly Conversation, among others. In 2018, he received the Ottaway Award for the Promotion of International Literature.</p>
         </div>              
         <div class="team-member">
             <img src="gary-gray.jpg" alt="Gary Lovely">
             <h3>Gary Lovely</h3>
             <p class="title">Board Treasurer</p>
-            <p class="bio-text">Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses.</p>
+            <p class="bio-text">Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses. He has written about books for the New York Times, Literary Hub, Buzzfeed Books, and more. Gary has been a judge for the National Book Awards for Translated Literature, The Cercador Prize for Literature in Translation, & The James Thurber Prize for American Humor. He is the current Vice President of the Great Lakes Booksellers Association.</p>
         </div>
         <div class="team-member">
             <img src="SheneMohammed-gray.jpg" alt="Shene Mohammed">
             <h3>Shene Mohammed</h3>
             <p class="title">Board Outreach & Translation Officer</p>
-            <p class="bio-text">Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. She is translating the autobiography of the renowned poet Hazhar Mukriyani, along with Kurdish folktales and poems. She graduated with a Literary Translation MFA from the University of Iowa.</p>
+            <p class="bio-text">Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. Shene graduated with a Bachelor’s degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.</p>
+        </div>
+                <div class="team-member">
+            <img src="ArianSorani-gray.jpeg" alt="Aryan Omar Hassan">
+            <h3>Aryan Omar Hassan</h3>
+            <p class="title">Publisher &amp Editor-in-Chief</p>
+            <p class="bio-text">Aryan Hassan is the founder and editor-in-chief of Henar Press, a nonprofit organization dedicated to publishing experimental Kurdish writing and maintaining the Kurdish literary database. A former researcher at the Center for Cognitive and Behavioral Brain Imaging, the Institute for Population Research, and the Center for Biobehavioral Health, he divides his time between Columbus and Abu Dhabi.</p>
         </div>
         <div class="team-member">
             <img src="Hannah-gray.jpg" alt="Hannah Fox">
@@ -1074,11 +1114,6 @@ width: 200px;
         ]
     }
 }
-</script>
-<div class="bio-popup">
-    <div class="bio-content"></div>
-</div>
-<script>
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
             popup.classList.remove('active');
@@ -1087,5 +1122,34 @@ width: 200px;
     });
 });
 </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all bio texts and add read more buttons
+            const bioTexts = document.querySelectorAll('.bio-text');
+            
+            bioTexts.forEach(bioText => {
+                // Create read more button
+                const readMoreBtn = document.createElement('span');
+                readMoreBtn.className = 'read-more-btn';
+                readMoreBtn.textContent = 'Read more';
+                
+                // Insert button after bio text
+                bioText.parentNode.insertBefore(readMoreBtn, bioText.nextSibling);
+                
+                // Toggle expanded class on click
+                readMoreBtn.addEventListener('click', function() {
+                    if (bioText.classList.contains('expanded')) {
+                        bioText.classList.remove('expanded');
+                        readMoreBtn.textContent = 'Read more';
+                        // Scroll back to the member card
+                        bioText.closest('.team-member').scrollIntoView({behavior: 'smooth'});
+                    } else {
+                        bioText.classList.add('expanded');
+                        readMoreBtn.textContent = 'Read less';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
