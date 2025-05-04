@@ -62,12 +62,23 @@
             padding: 1.5rem 1rem;
         }
 
-        .header-content {
+    .header-content {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             max-width: 1200px;
+
             margin: 0 auto;
+                text-align: justify;
+    text-justify: inter-word;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+    hyphens: auto;
+
         }
 
         .logo-container {
@@ -85,20 +96,36 @@
             flex-grow: 1;
         }
 
-        header h1 {
+   header h1 {
+
             font-family: 'Staatliches', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.3rem;
+
+            font-size: 3rem;
+
+            margin-bottom: 0.5rem;
+
             line-height: 1.2;
+
         }
 
-        .subtitle {
-            font-size: 0.85rem;
+
+
+    .subtitle {
+
+            font-size: 0.8rem;
+
             opacity: 0.8;
-            max-width: 600px;
-            margin-left: auto;
-        }
 
+            max-width: 650px;
+
+            margin-left: auto;
+            flex-direction: column;
+    text-justify: inter-word;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+    hyphens: auto;
+
+        }
         main {
             flex: 1;
             padding: 1.5rem 1rem;
@@ -303,6 +330,7 @@
             </div>
             <div class="header-text">
                 <h1>Kurdish Literary Database</h1>
+                                <p class="subtitle">We're compiling a collection of Kurdish literature in English. Entries must be literary works by Kurdish authors or those of Kurdish descent. This excludes literary criticism, historical articles, and academic essays, however important they may be. We accept both books and online publications (include links for online publications in the Notes section). Thank you for contributing to our database!</p>
             </div>
         </div>
     </header>
@@ -365,10 +393,10 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email">
+                    <label for="email" class="required">Your Email</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-                
+              
                 <div class="form-group">
                     <label for="submitter-name">Your Name</label>
                     <input type="text" id="submitter-name" name="submitter-name">
@@ -380,7 +408,7 @@
                 </div>
                 
                 <div class="form-group full-width">
-                    <label for="notes">Notes (include the link here if submitting an online publication)</label>
+                    <label for="notes">Notes (include links here if submitting an online publication)</label>
                     <textarea id="notes" name="notes" placeholder="Add any additional information that might be relevant..."></textarea>
                 </div>
             </div>
