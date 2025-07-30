@@ -499,13 +499,12 @@ width: 200px;
         resize: vertical;
     }
     
-.cf-turnstile {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    .cf-turnstile {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: left;
 }
 
-#contact-form button[type="submit"] {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
     #contact-form button[type="submit"] {
         display: inline-block;
         padding: 1rem 2rem;
@@ -912,7 +911,7 @@ width: 200px;
     <main>
         <div id="top">
             <h1>Henar Press</h1>
-            <p><strong>We're an independent, 501(c)(3) nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
+            <p><strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
             <p>Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as solely stateless and foster a deeper awareness of its stories, art, and culture.</p>
@@ -920,7 +919,7 @@ width: 200px;
         </div>
         <div id="contribute">
             <h2>Contribute</h2>
-<p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is 100% tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
+<p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
 <p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
 <p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
         </div>
@@ -1032,25 +1031,14 @@ width: 200px;
              data-sitekey="0x4AAAAAABnQk_4bp6OBRVKL"
              data-callback="onTurnstileSuccess">
         </div>
-        <button type="submit" id="submit-btn" style="opacity: 0; transform: translateY(10px);">Send Message</button>
+        <button type="submit" id="submit-btn" style="display: none;">Send Message</button>
     </div>
 </form>
 
 <script>
 function onTurnstileSuccess(token) {
-    const turnstile = document.querySelector('.cf-turnstile');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    // Fade out Turnstile
-    turnstile.style.opacity = '0';
-    turnstile.style.transform = 'translateY(-10px)';
-    
-    setTimeout(() => {
-        turnstile.style.display = 'none';
-        // Fade in submit button
-        submitBtn.style.opacity = '1';
-        submitBtn.style.transform = 'translateY(0)';
-    }, 300);
+    document.querySelector('.cf-turnstile').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'inline-block';
 }
 
 document.getElementById('attachment').addEventListener('change', function(e) {
@@ -1119,8 +1107,8 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.classList.add('hidden');
         setTimeout(function() {
             loadingScreen.style.display = 'none';
-        }, 160);
-    }, 580);
+        }, 100);
+    }, 780);
 });
         
     document.addEventListener('DOMContentLoaded', (event) => {
