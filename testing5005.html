@@ -147,6 +147,16 @@
         word-spacing: 0.05em;
         hyphens: auto;
     }
+    
+    .file-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--accent-color);
+}
 
     footer {
         width: 500px;
@@ -994,9 +1004,8 @@ width: 200px;
                 <div class="submission-guidelines">
                     <ul>
                         <li>We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
-                        <li>If you're submitting a work in translation, please include the manuscript in its original language.</li>
-                        <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
-                        <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                        <li>Include a brief author bio, translator bio (if applicable), and synopsis in your message.</li>
+                        <li>Only one attachment can be sent at a time. Manuscripts can be in either Word or PDF format. Please limit file sizes to 15 MB.</li>
                     </ul>
                 </div>
 <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
@@ -1015,6 +1024,7 @@ width: 200px;
     <div class="form-group">
         <label for="attachment">Attachment (optional)</label>
         <input type="file" id="attachment" name="attachment">
+        <div id="file-status" class="file-status"></div>
     </div>
     <div class="form-group">
         <div class="cf-turnstile" 
@@ -1024,6 +1034,25 @@ width: 200px;
         <button type="submit" id="submit-btn" style="display: none;">Send Message</button>
     </div>
 </form>
+
+<script>
+function onTurnstileSuccess(token) {
+    document.querySelector('.cf-turnstile').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'inline-block';
+}
+
+document.getElementById('attachment').addEventListener('change', function(e) {
+    const fileStatus = document.getElementById('file-status');
+    const file = e.target.files[0];
+    
+    if (file) {
+        fileStatus.textContent = `Selected: ${file.name}`;
+        fileStatus.style.display = 'block';
+    } else {
+        fileStatus.style.display = 'none';
+    }
+});
+</script>
         </div>
                     <div class="footer-slogan">
 <h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
