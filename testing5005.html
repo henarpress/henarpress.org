@@ -389,10 +389,9 @@ width: 200px;
 .book-release-date {
     font-style: italic;
     color: var(--accent-color);
-    font-size: 0.9rem;
+    font-size: 2.0rem;
     margin-top: 0.5rem;
-    justify-content: center;
-  align-items: center;
+    text-align: center;
 }
 
 .book img {
@@ -400,6 +399,15 @@ width: 200px;
     height: auto;
     object-fit: cover;
     transition: transform 0.2s ease;
+}
+
+.book-grid2 .book img {
+    width: 75%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+    display: block;
+    margin: 0 auto;
 }
 
 .book img:hover {
@@ -968,7 +976,7 @@ width: 200px;
     <div class="book-grid2">
         <div class="book">
             <img src="Gabor-Cover-Compressed.jpeg" alt="Gabor">
-            <div class="book-release-date">November, 2025</div>
+            <div class="book-release-date">Coming November, 2025</div>
         </div>
     </div>
 </div>
