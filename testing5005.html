@@ -376,6 +376,58 @@ width: 200px;
         gap: 1rem;
         margin-bottom: 2rem;
     }
+    
+.book-grid2 {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.book2 {
+    text-align: center;
+    max-width: 200px;
+}
+
+.book2 img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-info {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.book-title {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.book-author {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.2rem;
+}
+
+.book-translator {
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+}
+
+.book-date {
+    color: #666;
+    font-size: 0.8rem;
+}
 
     .book img {
         width: 100%;
@@ -568,6 +620,22 @@ width: 200px;
         nav.open {
             left: 0;
         }
+        
+        @media (max-width: 768px) {
+    .book-grid2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .book2 {
+        max-width: 160px;
+    }
+    
+    .book2 img {
+        max-width: 160px;
+    }
+}
     
         @media (max-width: 768px) {
 
@@ -712,6 +780,11 @@ width: 200px;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
+    
+    .book-grid2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
 
     .footer-slogan h3 {
         font-size: 2.5rem;
@@ -767,6 +840,10 @@ width: 200px;
     }
 
     .book-grid {
+        gap: 3rem;
+    }
+    
+    .book-grid2 {
         gap: 3rem;
     }
 
@@ -934,20 +1011,16 @@ width: 200px;
 </div>
 <div id="books">
     <h2>Books</h2>
-        <div class="book-grid">
-            <div class="book">
-                <img src="Gabor-Cover-Compressed.jpeg" alt="Book 1">
-            </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 2">
-            </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 3">
-            </div>
-            <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 4">
-            </div>
+<div class="book-grid2">
+    <div class="book2">
+        <img src="Gabor-Cover-Compressed.jpeg" alt="Gabor">
+        <div class="book-info">
+            <div class="book-title">Gabor</div>
+            <div class="book-author">SeyyedQader Hedayati</div>
+            <div class="book-translator">Translated by Chiya Parvizpur & Hourieh Maleki Qouzloo</div>
+            <div class="book-date">2025</div>
         </div>
+    </div>
 </div>
             <div id="contact">
             <h2>Contact Us</h2>
