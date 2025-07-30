@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    <style>
         .bio-text {
             position: relative;
@@ -487,6 +488,12 @@ width: 200px;
         min-height: 150px;
         resize: vertical;
     }
+    
+    .cf-turnstile {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
 
     #contact-form button[type="submit"] {
         display: inline-block;
@@ -897,7 +904,7 @@ width: 200px;
             <p><strong>We're an independent, 501(c)(3) nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
-            <p>Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as simply stateless and foster a deeper awareness of its stories, art, and culture.</p>
+            <p>Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as solely stateless and foster a deeper awareness of its stories, art, and culture.</p>
       <p>سانسۆر و سڕینەوە لە ناو کوردستان و لە دەرەوە، دەربڕینی ڕادیکاڵیان بۆ چەندین پشت خنکاندووە. لە بەرامبەر جینۆساید و پاکتاوی نەتەوەیی بەردەوام، ئێمە بڕوامان بە هێزی ئەدەبیات بۆ بەرخۆدان و وەرگرتنی گێڕانەوەکانمان هەیە.وەک چاپەمەنییەک بە خاوەنداری و بەڕێوەبردنی کوردی، ئێمە پشتگیری ئەو بەرهەمە پشتگوێخراو و داهێنەرانانە دەکەین کە وێنەی کلیشەی پرسی کورد تێک‌ئەشکێنن. ئامانجی ئێمە بڵاوکردنەوەی  ئەو پەخشان و شێعرانەن کە ڕاستی خۆیان دەرئەبڕن و گیروودەی ڕوانینی کۆڵۆنیاڵیستی نین. ئێمە هەوڵ دەدەین ئەدەبی کوردی لە وێناکردنێکی ساکار وەک تەنها "بێدەوڵەت" رزگار بکەین و  پەرە بە هۆشیارییەکی قووڵتر لەسەر  چیرۆکەکان، هونەر و کەلتوورەکەی بدەین.</p>
         </div>
         <div id="contribute">
@@ -911,9 +918,9 @@ width: 200px;
     <div class="team-grid">
           <div class="team-member">
             <img src="Seyed.PNG" alt="SeyyedQader Hedayati">
-            <h3>SeyyedQader Hedayati</h3>
+            <h3>Seyed Qader Hedayati</h3>
             <p class="title">Author</p>
-            <p class="bio-text">SeyyedQader Hedayati (b. 1976, Bukan) is an influential Kurdish novelist and a leading figure among contemporary experimental writers in Kurdish. His fiction, characterized by innovative forms and complex explorations of the Kurdish experience, marks him as a key voice of his literary generation. His novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Hedayati also contributes significantly to Kurdish literary discourse through critical works like Kurdish Prose and the Change of Form and the essay collection Stone on Stone, as well as his translation of Bahram Bayzaie's The Truth and The Wise Man into Kurdish.</p>
+            <p class="bio-text">Seyed Qader Hedayati (b. 1976, Bukan) is a prominent Kurdish writer whose works investigate the Kurdish question through innovative narrative forms. Hedayati's novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Beyond fiction, he has shaped Kurdish literary discourse through his critical study Kurdish Prose and the Change of Form, the essay collection Stone on Stone, and his Kurdish translation of Bahram Bayzaie's The Truth and The Wise Man.</p>
         </div>
             <div class="team-member">
             <img src="chiya.jpg" alt="Chiya Parvizpur">
@@ -970,7 +977,6 @@ width: 200px;
             <p class="bio-text">Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature.</p>
         </div>
     </div>
-</div>
 <div id="books">
     <h2>Books</h2>
     <p></p>
@@ -991,7 +997,6 @@ width: 200px;
                         <li>If you're submitting a work in translation, please include the manuscript in its original language.</li>
                         <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
                         <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
-                        <li>We read and respond to every submission.</li>
                     </ul>
                 </div>
                 <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
@@ -1014,6 +1019,11 @@ width: 200px;
                     <button type="submit">Send Message</button>
                 </form>
             </div>
+                <div class="form-group">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAABnQk_4bp6OBRVKL"></div>
+    </div>
+    <button type="submit">Send Message</button>
+</form>
         </div>
                     <div class="footer-slogan">
 <h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
@@ -1200,24 +1210,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Find all bio texts and add read more buttons
             const bioTexts = document.querySelectorAll('.bio-text');
             
             bioTexts.forEach(bioText => {
-                // Create read more button
                 const readMoreBtn = document.createElement('span');
                 readMoreBtn.className = 'read-more-btn';
                 readMoreBtn.textContent = 'Read more';
                 
-                // Insert button after bio text
                 bioText.parentNode.insertBefore(readMoreBtn, bioText.nextSibling);
                 
-                // Toggle expanded class on click
                 readMoreBtn.addEventListener('click', function() {
                     if (bioText.classList.contains('expanded')) {
                         bioText.classList.remove('expanded');
                         readMoreBtn.textContent = 'Read more';
-                        // Scroll back to the member card
                         bioText.closest('.team-member').scrollIntoView({behavior: 'smooth'});
                     } else {
                         bioText.classList.add('expanded');
