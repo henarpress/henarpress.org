@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    <style>
         .bio-text {
             position: relative;
@@ -999,27 +999,30 @@ width: 200px;
                         <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
                     </ul>
                 </div>
-                <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="attachment">Attachment (optional)</label>
-                        <input type="file" id="attachment" name="attachment">
-            </div>
-                <div class="form-group">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABnQk_4bp6OBRVKL"></div>
+<form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
     </div>
-    <button type="submit">Send Message</button>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="attachment">Attachment (optional)</label>
+        <input type="file" id="attachment" name="attachment">
+    </div>
+    <div class="form-group">
+        <div class="cf-turnstile" 
+             data-sitekey="0x4AAAAAABnQk_4bp6OBRVKL"
+             data-callback="onTurnstileSuccess">
+        </div>
+        <button type="submit" id="submit-btn" style="display: none;">Send Message</button>
+    </div>
 </form>
         </div>
                     <div class="footer-slogan">
@@ -1061,6 +1064,13 @@ width: 200px;
         <p class="copyright">© 2025 Henar Press. All rights reserved.</p>
     </div>
 </footer>
+<script>
+function onTurnstileSuccess(token) {
+    // Hide the Turnstile widget and show the submit button
+    document.querySelector('.cf-turnstile').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'inline-block';
+}
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
