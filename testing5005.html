@@ -108,7 +108,7 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.08s ease-out;
 }
 
         .loading-screen img {
@@ -386,6 +386,15 @@ width: 200px;
         margin-bottom: 2rem;
     }
 
+.book-release-date {
+    font-style: italic;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+  align-items: center;
+}
+
 .book img {
     width: 100%;
     height: auto;
@@ -394,7 +403,7 @@ width: 200px;
 }
 
 .book img:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
     .footer-slogan h3 {
         font-size: 2rem;
@@ -956,11 +965,12 @@ width: 200px;
 </div>
 <div id="books">
     <h2>Books</h2>
-        <div class="book-grid2">
-            <div class="book">
-                <img src="Gabor-Cover-Compressed.jpeg" alt="Gabor">
-            </div>
+    <div class="book-grid2">
+        <div class="book">
+            <img src="Gabor-Cover-Compressed.jpeg" alt="Gabor">
+            <div class="book-release-date">November, 2025</div>
         </div>
+    </div>
 </div>
             <div id="contact">
             <h2>Contact Us</h2>
@@ -1042,8 +1052,8 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.classList.add('hidden');
         setTimeout(function() {
             loadingScreen.style.display = 'none';
-        }, 300);
-    }, 2000);
+        }, 160);
+    }, 580);
 });
         
     document.addEventListener('DOMContentLoaded', (event) => {
