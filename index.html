@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    <style>
         .bio-text {
             position: relative;
@@ -146,6 +147,16 @@
         word-spacing: 0.05em;
         hyphens: auto;
     }
+    
+    .file-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--accent-color);
+}
 
     footer {
         width: 500px;
@@ -487,6 +498,16 @@ width: 200px;
         min-height: 150px;
         resize: vertical;
     }
+    
+    .cf-turnstile {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: left;
+}
+
+.cf-turnstile, #submit-btn {
+    transition: all 0.3s ease;
+}
 
     #contact-form button[type="submit"] {
         display: inline-block;
@@ -987,31 +1008,55 @@ width: 200px;
                 <div class="submission-guidelines">
                     <ul>
                         <li>We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
-                        <li>If you're submitting a work in translation, please include the manuscript in its original language.</li>
-                        <li>Include a brief author bio, translator bio (if applicable), and synopsis.</li>
-                        <li>Manuscripts can be in either Word or PDF format. Please limit file sizes to 5 MB.</li>
+                        <li>Include a brief author bio, translator bio (if applicable), and synopsis in your message.</li>
+                        <li>Only one attachment can be sent at a time. Manuscripts can be in either Word or PDF format. Please limit file sizes to 15 MB.</li>
                     </ul>
                 </div>
-                <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="attachment">Attachment (optional)</label>
-                        <input type="file" id="attachment" name="attachment">
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
+<form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="attachment">Attachment (optional)</label>
+        <input type="file" id="attachment" name="attachment">
+        <div id="file-status" class="file-status"></div>
+    </div>
+    <div class="form-group">
+        <div class="cf-turnstile" 
+             data-sitekey="0x4AAAAAABnQk_4bp6OBRVKL"
+             data-callback="onTurnstileSuccess">
+        </div>
+        <button type="submit" id="submit-btn" style="display: none;">Send Message</button>
+    </div>
+</form>
+
+<script>
+function onTurnstileSuccess(token) {
+    document.querySelector('.cf-turnstile').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'inline-block';
+}
+
+document.getElementById('attachment').addEventListener('change', function(e) {
+    const fileStatus = document.getElementById('file-status');
+    const file = e.target.files[0];
+    
+    if (file) {
+        fileStatus.textContent = `Selected: ${file.name}`;
+        fileStatus.style.display = 'block';
+    } else {
+        fileStatus.style.display = 'none';
+    }
+});
+</script>
         </div>
                     <div class="footer-slogan">
 <h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
@@ -1052,6 +1097,13 @@ width: 200px;
         <p class="copyright">© 2025 Henar Press. All rights reserved.</p>
     </div>
 </footer>
+<script>
+function onTurnstileSuccess(token) {
+    // Hide the Turnstile widget and show the submit button
+    document.querySelector('.cf-turnstile').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'inline-block';
+}
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
