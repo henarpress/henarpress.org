@@ -234,19 +234,21 @@
         transition: opacity 0.5s ease-out;
     }
 
-    nav {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background-color: var(--primary-color);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1000;
-    }
+nav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from space-between */
+    align-items: center; /* Center everything horizontally */
+    gap: 1.5rem; /* Add consistent spacing between sections */
+    z-index: 1000;
+}
     
     .mobile-header {
         display: none;
@@ -269,11 +271,12 @@
         color: #F7F5ED;
     }
 
-    .nav-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.nav-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Consistent spacing */
+}
 
     .logo-container img {
         width: 100%;
@@ -310,13 +313,9 @@
         width: 100%;
     }
 
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
+.social-links {
+    margin-bottom: 0; /* Remove the large bottom margin */
+}
     .social-icon {
         width: 38px;
         height: 38px;
@@ -460,7 +459,8 @@ width: 200px;
 }
 
 .book-grid2 .book img {
-    width: 85%;
+    width: 100%;
+    max-width: 300px;
     height: auto;
     object-fit: cover;
     transition: transform 0.2s ease;
@@ -679,17 +679,18 @@ width: 200px;
             cursor: pointer;
         }
 
-        .logo-container {
-            margin-bottom: 2rem;
-        }
+ .logo-container {
+    margin-bottom: 0; /* Remove the large bottom margin */
+}
 
-        .nav-links {
-            flex-direction: column;
-            margin-top: 1rem;
-        }
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the links */
+}
 
         .nav-bottom {
-            margin-top: auto;
+            margin-top: 0;
             padding-bottom: 2rem;
         }
 
@@ -722,11 +723,11 @@ width: 200px;
             flex-direction: column;
         }
 
-        nav {
-            top: 40px;
-            height: calc(100vh - 40px);
-        }
-
+nav {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding-top: 4rem;
+    }
         .nav-toggle {
             position: static;
             background: none;
@@ -816,10 +817,9 @@ width: 200px;
         font-size: 2.5rem;
     }
 
-    .donate-button {
-        font-size: 1.4rem;
-        padding: 1.2rem 2.4rem;
-    }
+.donate-button {
+    margin-bottom: 0; /* Remove the large bottom margin */
+}
 }
 @media (max-width: 1024px) {
     .team-grid {
@@ -1000,9 +1000,9 @@ width: 200px;
         </div>
           <div class="team-member">
             <img src="Seyed.PNG" alt="SeyyedQader Hedayati">
-            <h3>Seyed Qader Hedayati</h3>
+            <h3>SeyedQader Hedayati</h3>
             <p class="title">Author</p>
-            <p class="bio-text">Seyed Qader Hedayati (b. 1976, Bukan) is a prominent Kurdish writer whose works investigate the Kurdish question through innovative narrative forms. Hedayati's novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Beyond fiction, he has shaped Kurdish literary discourse through his critical study Kurdish Prose and the Change of Form, the essay collection Stone on Stone, and his Kurdish translation of Bahram Bayzaie's The Truth and The Wise Man.</p>
+            <p class="bio-text">SeyedQader Hedayati (b. 1976, Bukan) is a prominent Kurdish writer whose works investigate the Kurdish question through innovative narrative forms. Hedayati's novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Beyond fiction, he has shaped Kurdish literary discourse through his critical study Kurdish Prose and the Change of Form, the essay collection Stone on Stone, and his Kurdish translation of Bahram Bayzaie's The Truth and The Wise Man.</p>
         </div>
           <div class="team-member">
             <img src="Jeannette-Okur.webp" alt="Jeannette Okur">
