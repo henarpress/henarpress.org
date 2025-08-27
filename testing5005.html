@@ -234,7 +234,7 @@
         transition: opacity 0.5s ease-out;
     }
 
-nav {
+   nav {
     width: 250px;
     height: 100vh;
     position: fixed;
@@ -244,8 +244,6 @@ nav {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Changed from space-between */
-    align-items: center; /* Center everything horizontally */
     gap: 1.5rem; /* Add consistent spacing between sections */
     z-index: 1000;
 }
@@ -270,13 +268,6 @@ nav {
         margin: 0;
         color: #F7F5ED;
     }
-
-.nav-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem; /* Consistent spacing */
-}
 
     .logo-container img {
         width: 100%;
@@ -314,8 +305,12 @@ nav {
     }
 
 .social-links {
-    margin-bottom: 0; /* Remove the large bottom margin */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0; /* Remove margins */
 }
+
     .social-icon {
         width: 38px;
         height: 38px;
@@ -403,20 +398,21 @@ width: 200px;
         font-style: italic;
     }
 
-    .donate-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: var(--primary-color);
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        border: 2px solid var(--accent-color);
-        transition: var(--transition);
-        margin-bottom: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
+.donate-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
+    text-align: center;
+    width: 100%;
+    margin: 0; /* Remove existing margins */
+}
+
 
     .donate-button:hover {
         background-color: var(--accent-color);
@@ -460,7 +456,6 @@ width: 200px;
 
 .book-grid2 .book img {
     width: 100%;
-    max-width: 300px;
     height: auto;
     object-fit: cover;
     transition: transform 0.2s ease;
@@ -665,35 +660,6 @@ width: 200px;
     
         @media (max-width: 768px) {
 
-        .nav-toggle {
-            display: block;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1001;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border: none;
-            padding: 0.5rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
- .logo-container {
-    margin-bottom: 0; /* Remove the large bottom margin */
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the links */
-}
-
-        .nav-bottom {
-            margin-top: 0;
-            padding-bottom: 2rem;
-        }
-
         main {
             margin-left: 0;
             padding: 1rem;
@@ -721,19 +687,6 @@ width: 200px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-
-nav {
-        justify-content: flex-start;
-        gap: 1.5rem;
-        padding-top: 4rem;
-    }
-        .nav-toggle {
-            position: static;
-            background: none;
-            color: #F7F5ED;
-            font-size: 1.5rem;
-            padding: 0;
         }
 
         main {
@@ -817,9 +770,10 @@ nav {
         font-size: 2.5rem;
     }
 
-.donate-button {
-    margin-bottom: 0; /* Remove the large bottom margin */
-}
+    .donate-button {
+        font-size: 1.4rem;
+        padding: 1.2rem 2.4rem;
+    }
 }
 @media (max-width: 1024px) {
     .team-grid {
@@ -883,9 +837,6 @@ nav {
     }
     
     @media (min-width: 1440px) {
-    nav {
-        width: 300px;
-    }
 
     main {
         margin-left: 300px;
@@ -900,11 +851,6 @@ nav {
         max-width: 250px;
     }
 
-    .nav-links a {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
     .social-icon {
         width: 44px;
         height: 44px;
@@ -917,16 +863,7 @@ nav {
         max-width: 280px;
     }
 }
-            @media (max-width: 768px) {
-    .language-links {
-        margin-bottom: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-    
-    .language-links a {
-        margin-bottom: 0.2rem;
-    }
-}
+
 </style>
 </head>
 <body>
@@ -957,7 +894,6 @@ nav {
 </div>
       <a href="https://secure.givelively.org/donate/henar-press" target="_blank" class="donate-button">Donate</a>
         </div>
-        <div class="nav-bottom">
             <div class="social-links">
                 <a href="https://bsky.app/profile/henarpress.bsky.social" aria-label="Twitter">
                     <img src="twitter-logo.png" alt="Twitter" class="social-icon">
