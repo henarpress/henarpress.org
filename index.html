@@ -25,6 +25,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    <style>
+.language-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+.language-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: var(--transition);
+    position: relative;
+    opacity: 0.7;
+}
+
+.language-links a.active {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.language-links a:hover {
+    opacity: 1;
+}
+
+.language-links a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+}
+
+.language-links a:hover::before,
+.language-links a.active::before {
+    width: 100%;
+}
+.lang-hidden {
+    display: none !important;
+}
         .bio-text {
             position: relative;
             max-height: 100px;
@@ -35,7 +82,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 0.5rem 0 1rem; 
+    margin: 0.5rem 0 0rem; 
 }
 
 .clmp-logo {
@@ -109,7 +156,6 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.08s ease-out;
 }
 
         .loading-screen img {
@@ -184,22 +230,21 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        transition: opacity 0.5s ease-out;
     }
 
-    nav {
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background-color: var(--primary-color);
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        z-index: 1000;
-    }
+   nav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1000;
+}
     
     .mobile-header {
         display: none;
@@ -222,12 +267,6 @@
         color: #F7F5ED;
     }
 
-    .nav-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .logo-container img {
         width: 100%;
         max-width: 200px;
@@ -242,7 +281,7 @@
     .nav-links a {
         color: var(--secondary-color);
         text-decoration: none;
-        font-size: 1.1rem;
+        font-size: 16px;
         margin-bottom: 0.8rem;
         transition: var(--transition);
         position: relative;
@@ -263,12 +302,12 @@
         width: 100%;
     }
 
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0; /* Remove margins */
+}
 
     .social-icon {
         width: 38px;
@@ -357,20 +396,21 @@ width: 200px;
         font-style: italic;
     }
 
-    .donate-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background-color: var(--primary-color);
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        border: 2px solid var(--accent-color);
-        transition: var(--transition);
-        margin-bottom: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
+.donate-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
+    text-align: center;
+    width: 100%;
+    margin: 0; /* Remove existing margins */
+}
+
 
     .donate-button:hover {
         background-color: var(--accent-color);
@@ -413,7 +453,7 @@ width: 200px;
 }
 
 .book-grid2 .book img {
-    width: 85%;
+    width: 100%;
     height: auto;
     object-fit: cover;
     transition: transform 0.2s ease;
@@ -556,6 +596,7 @@ width: 200px;
     }
     
     @media (max-width: 768px) {
+        
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -611,40 +652,8 @@ width: 200px;
             justify-content: flex-start;
             padding-top: 4rem;
         }
-
-        nav.open {
-            left: 0;
-        }
     
         @media (max-width: 768px) {
-
-        .nav-toggle {
-            display: block;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1001;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border: none;
-            padding: 0.5rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .logo-container {
-            margin-bottom: 2rem;
-        }
-
-        .nav-links {
-            flex-direction: column;
-            margin-top: 1rem;
-        }
-
-        .nav-bottom {
-            margin-top: auto;
-            padding-bottom: 2rem;
-        }
 
         main {
             margin-left: 0;
@@ -673,19 +682,6 @@ width: 200px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-
-        nav {
-            top: 40px;
-            height: calc(100vh - 40px);
-        }
-
-        .nav-toggle {
-            position: static;
-            background: none;
-            color: #F7F5ED;
-            font-size: 1.5rem;
-            padding: 0;
         }
 
         main {
@@ -727,6 +723,7 @@ width: 200px;
             opacity: 0.7;
             transition: var(--transition);
         }
+        
         @media (min-width: 1920px) {
     html {
         font-size: 18px;
@@ -782,7 +779,7 @@ width: 200px;
 }
 @media (max-width: 480px) {
     .team-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
     
@@ -836,9 +833,6 @@ width: 200px;
     }
     
     @media (min-width: 1440px) {
-    nav {
-        width: 300px;
-    }
 
     main {
         margin-left: 300px;
@@ -853,11 +847,6 @@ width: 200px;
         max-width: 250px;
     }
 
-    .nav-links a {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
     .social-icon {
         width: 44px;
         height: 44px;
@@ -866,10 +855,38 @@ width: 200px;
     }
             
 @media (max-width: 768px) {
+
+  .nav-toggle {
+            display: block;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+           .nav-toggle {
+            position: static;
+            background: none;
+            color: #F7F5ED;
+            font-size: 1.5rem;
+            padding: 0;
+        }
+        
+            nav.open {
+        left: 0;
+    }
+        
     .clmp-logo {
         max-width: 280px;
     }
 }
+
 </style>
 </head>
 <body>
@@ -885,15 +902,21 @@ width: 200px;
                 <img src="henar-press-full-logo-2.png" alt="Henar Press Logo">
             </a>
         </div>
-        <div class="nav-links">
-            <a href="#top">About</a>
-            <a href="#contribute">Contribute</a>
-            <a href="#our-team">People</a>
-            <a href="#books">Books</a>
-            <a href="#contact">Contact</a>
-            <a href="database" target="_blank" class="database-link">Kurdish Literary Database</a>
+<div class="nav-links">
+    <div class="language-links">
+        <a href="#" class="language-link active" data-lang="en">English</a>
+        <a href="#" class="language-link" data-lang="ku">Kurdî</a>
+        <a href="#" class="language-link" data-lang="so">سۆرانی</a>
+    </div>
+    <a href="#top">About</a>
+    <a href="#contribute">Contribute</a>
+    <a href="#our-team">People</a>
+    <a href="#books">Books</a>
+    <a href="#contact">Contact</a>
+    <a href="database" target="_blank" class="database-link">Kurdish Literary Database</a>
+</div>
+      <a href="https://secure.givelively.org/donate/henar-press" target="_blank" class="donate-button">Donate</a>
         </div>
-        <div class="nav-bottom">
             <div class="social-links">
                 <a href="https://bsky.app/profile/henarpress.bsky.social" aria-label="Twitter">
                     <img src="twitter-logo.png" alt="Twitter" class="social-icon">
@@ -905,18 +928,19 @@ width: 200px;
                     <img src="facebook-logo.png" alt="Facebook" class="social-icon">
                 </a>
             </div>
-            <a href="https://secure.givelively.org/donate/henar-press" target="_blank" class="donate-button">Donate</a>
-        </div>
     </nav>
     <main>
         <div id="top">
             <h1>Henar Press</h1>
-            <p><strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
+            <p data-en="We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora." 
+   data-so="ئێمە چاپخانەیەکی سەربەخۆ و غەیرەقازانجمان کە لە کۆلۆمبەس، ئۆهایۆ دامەزراوە و خۆمان تەرخان کردووە بۆ گەیاندنی نووسینە تاقیکاریەکانی کوردی بۆ جیهان."
+   data-ku="Em weşanxaneyeke serbixwe û bêqezencin ku li Columbus, Ohio hatiye damezrandin û xwe ji bo gihîştina nivîsên tecrûbî yên Kurdî bi cîhanê re terxan kiriye.">
+   <strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
-            <p>Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as solely stateless and foster a deeper awareness of its stories, art, and culture.</p>
-      <p>سانسۆر و سڕینەوە لە ناو کوردستان و لە دەرەوە، دەربڕینی ڕادیکاڵیان بۆ چەندین پشت خنکاندووە. لە بەرامبەر جینۆساید و پاکتاوی نەتەوەیی بەردەوام، ئێمە بڕوامان بە هێزی ئەدەبیات بۆ بەرخۆدان و وەرگرتنی گێڕانەوەکانمان هەیە.وەک چاپەمەنییەک بە خاوەنداری و بەڕێوەبردنی کوردی، ئێمە پشتگیری ئەو بەرهەمە پشتگوێخراو و داهێنەرانانە دەکەین کە وێنەی کلیشەی پرسی کورد تێک‌ئەشکێنن. ئامانجی ئێمە بڵاوکردنەوەی  ئەو پەخشان و شێعرانەن کە ڕاستی خۆیان دەرئەبڕن و گیروودەی ڕوانینی کۆڵۆنیاڵیستی نین. ئێمە هەوڵ دەدەین ئەدەبی کوردی لە وێناکردنێکی ساکار وەک تەنها "بێدەوڵەت" رزگار بکەین و  پەرە بە هۆشیارییەکی قووڵتر لەسەر  چیرۆکەکان، هونەر و کەلتوورەکەی بدەین.</p>
-    <p>Sansûr û bêdengkirina li nava Kurdistanê û li derve, îfadeya radîkal nifş li pey nifşan  xeniqandîye. Beramber jenosîd û tunekirina çanda gelê Kurd ya berdewam, em bi hêza wêjeyê bawer dikin ku hember zordarîyê li ber xwe bide û zarê doza Kurdan bi rastî vegerîne.  Weke weşanxaneyeke Kurdî, em berhemên nûjen û yên dîrokî û kêmnaskirî, ku girîngî nehatine dayîn û hatine paşguh kirin, diweşînin ku nêrîneke nû tînin pirsa Kurdî. Mîsyona me ew e ku em pexşan û helbestan biweşînin ku bi azadî, bê nêrîn û bandora kolonyalîst hatine nivîsîn. Em armanc dikin ku wêjeya Kurdî ji nêrîna kêmker rizgar bikin ku tenê bi bêdewletbûnê ve girêdide û li şûna wê dewlemendkirina zanîstî ya çîrok, huner û çanda Kurdî derxinin pêş.</p>       
+            <p data-en="Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as solely stateless and foster a deeper awareness of its stories, art, and culture."
+      data-so="سانسۆر و سڕینەوە لە ناو کوردستان و لە دەرەوە، دەربڕینی ڕادیکاڵیان بۆ چەندین پشت خنکاندووە. لە بەرامبەر جینۆساید و پاکتاوی نەتەوەیی بەردەوام، ئێمە بڕوامان بە هێزی ئەدەبیات بۆ بەرخۆدان و وەرگرتنی گێڕانەوەکانمان هەیە.وەک چاپەمەنییەک بە خاوەنداری و بەڕێوەبردنی کوردی، ئێمە پشتگیری ئەو بەرهەمە پشتگوێخراو و داهێنەرانانە دەکەین کە وێنەی کلیشەی پرسی کورد تێک‌ئەشکێنن. ئامانجی ئێمە بڵاوکردنەوەی  ئەو پەخشان و شێعرانەن کە ڕاستی خۆیان دەرئەبڕن و گیروودەی ڕوانینی کۆڵۆنیاڵیستی نین. ئێمە هەوڵ دەدەین ئەدەبی کوردی لە وێناکردنێکی ساکار وەک تەنها "بێدەوڵەت" رزگار بکەین و  پەرە بە هۆشیارییەکی قووڵتر لەسەر  چیرۆکەکان، هونەر و کەلتوورەکەی بدەین."
+    data-ku="Sansûr û bêdengkirina li nava Kurdistanê û li derve, îfadeya radîkal nifş li pey nifşan  xeniqandîye. Beramber jenosîd û tunekirina çanda gelê Kurd ya berdewam, em bi hêza wêjeyê bawer dikin ku hember zordarîyê li ber xwe bide û zarê doza Kurdan bi rastî vegerîne.  Weke weşanxaneyeke Kurdî, em berhemên nûjen û yên dîrokî û kêmnaskirî, ku girîngî nehatine dayîn û hatine paşguh kirin, diweşînin ku nêrîneke nû tînin pirsa Kurdî. Mîsyona me ew e ku em pexşan û helbestan biweşînin ku bi azadî, bê nêrîn û bandora kolonyalîst hatine nivîsîn. Em armanc dikin ku wêjeya Kurdî ji nêrîna kêmker rizgar bikin ku tenê bi bêdewletbûnê ve girêdide û li şûna wê dewlemendkirina zanîstî ya çîrok, huner û çanda Kurdî derxinin pêş."</p>
  </div>
         <div id="contribute">
             <h2>Contribute</h2>
@@ -928,16 +952,16 @@ width: 200px;
     <h2>People</h2>
     <div class="team-grid">
            <div class="team-member">
-            <img src="Firat-Ceweri.jpg" alt="Firat Cewerî">
+            <img src="Firat-Ceweri.webp" alt="Firat Cewerî">
             <h3>Firat Cewerî</h3>
             <p class="title">Author</p>
             <p class="bio-text">Firat Cewerî (b. 1959, Dêrik, Mêrdîn) is a renowned writer, editor, and pioneer in modern Kurdish literature. Best known for his role as the editor and publisher of the influential literary journals Nûdem (“New Times,” published from 1992 to 2001) and Nûdem Werger (“New Times Translation”), he has played a crucial role in the evolution of Kurdish literature. His work has fostered the growth of new voices and facilitated the translation of global literary works into Kurdish. Cewerî’s novels and short stories have been translated into Swedish, German, Italian, Arabic, Turkish, Persian, and Sorani, and have been featured in anthologies in German, Swedish, Arabic, and Turkish. His writings have also been aired on Swedish public radio. A member of the Swedish Writers’ Association since 1987, he has received numerous prestigious awards, including the Swedish Academy Prize for Translation of Swedish Literature in 2018, the Iraqi Kurdistan Golden Pen Award in 2020, the Swedish Academy Prize for the Introduction of Swedish Culture Abroad in 2023, and Italy’s Premiere Ostana International Prize in 2024. Firat Cewerî resides in Stockholm and continues his literary work there.</p>
         </div>
           <div class="team-member">
-            <img src="Seyed.PNG" alt="SeyyedQader Hedayati">
-            <h3>Seyed Qader Hedayati</h3>
+            <img src="Seyed.webp" alt="SeyyedQader Hedayati">
+            <h3>SeyedQader Hedayati</h3>
             <p class="title">Author</p>
-            <p class="bio-text">Seyed Qader Hedayati (b. 1976, Bukan) is a prominent Kurdish writer whose works investigate the Kurdish question through innovative narrative forms. Hedayati's novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Beyond fiction, he has shaped Kurdish literary discourse through his critical study Kurdish Prose and the Change of Form, the essay collection Stone on Stone, and his Kurdish translation of Bahram Bayzaie's The Truth and The Wise Man.</p>
+            <p class="bio-text">SeyedQader Hedayati (b. 1976, Bukan) is a prominent Kurdish writer whose works investigate the Kurdish question through innovative narrative forms. Hedayati's novels include The Echo of a Full Stop (2000), The Yoke of Azazel (2012), Gabor (2017), The Grave City (2019), and Bardinah (2022). Beyond fiction, he has shaped Kurdish literary discourse through his critical study Kurdish Prose and the Change of Form, the essay collection Stone on Stone, and his Kurdish translation of Bahram Bayzaie's The Truth and The Wise Man.</p>
         </div>
           <div class="team-member">
             <img src="Jeannette-Okur.webp" alt="Jeannette Okur">
@@ -952,37 +976,37 @@ width: 200px;
             <p class="bio-text">Chiya Parvizpur (b. 1989, Sanandaj) is a Kurdish writer and translator working in both Kurdish and English. His work has been published by Transnational London Press, Whisper House Press, Henar Press, and Common Notions. His debut novel, The Smell of Wet Bricks, was published in the UK, while his second, Twenty-Four Seconds of Shehin's Life, received the prestigious Kal Literary Prize in Kurdistan. Parvizpur's fiction employs a unique blend of Kurdish surrealism rooted in political realities he terms 'SoorAl' (Reddish in Kurdish). He has translated significant Kurdish novels into English including Ata Nahai's Birds in a Gale, Dealing Helaleh's Destiny, Seyed Qader Hedayati's Gabor, and Jiyar Jahanfard's The Shadeless Border. A dedicated Tembur player, Parvizpur embeds Kurdish tradition within his creative practice as a vital form of resistance. He is currently writing his third novel.</p>
         </div>
                     <div class="team-member">
-            <img src="huri.jpeg" alt="Huri Maleki Qouzloo">
+            <img src="huri.webp" alt="Huri Maleki Qouzloo">
             <h3>Hourieh Maleki Qouzloo</h3>
             <p class="title">Translator</p>
             <p class="bio-text">Hourieh Maleki Qouzloo (Huri) is a multilingual writer, translator, and researcher with over two decades of teaching experience across language and literature. Drawing from her background in both Kurdish and English Literature, her literary and academic work centers on themes of identity, hybridity, and displacement. Huri is passionate about fostering cultural exchange through literature and education and is actively engaged in translating contemporary Kurdish literary works into English. Her published translations include Ata Nahai's Birds in a Gale and Seyed Qader Hedayati's Gabor (Henar Press). She holds a second Master’s degree in English and Literacy Studies from the University of Stavanger and is pursuing research on cultural hybridity in migration literature.</p>
         </div>
               <div class="team-member">
-            <img src="ArianSorani-gray.jpeg" alt="Aryan Omar Hassan">
+            <img src="ArianSorani-gray.webp" alt="Aryan Omar Hassan">
             <h3>Aryan Omar Hassan</h3>
             <p class="title">Publisher &amp Editor-in-Chief</p>
 <p class="bio-text">Aryan Omar Hassan is the founder of Henar Press, a nonprofit that publishes experimental Kurdish writing and maintains the Kurdish literary database. He has lived in Oslo, Sulaymaniyah, Abu Dhabi, London, and Columbus, and holds degrees from The Ohio State University.</p>
                 </div>
               <div class="team-member">
-            <img src="nawa-amin.jpeg" alt="Nawa Amin">
+            <img src="nawa-amin.webp" alt="Nawa Amin">
             <h3>Nawa Amin</h3>
             <p class="title">Outreach Ambassador</p>
             <p class="bio-text">Nawa is a poet, translator, and writer. Her poetry collection “Stagnant Ray” was published by Balinde in 2025. Her writings have appeared in Balinde, DidiMn, Jineftin, and the AUIS Literary Journal. She earned her BA in English for Basic Education from the University of Sulaimany in 2025.</p>
         </div>
                <div class="team-member">
-            <img src="Hannah-gray.jpg" alt="Hannah Fox">
+            <img src="Hannah-gray.webp" alt="Hannah Fox">
             <h3>Hannah Fox</h3>
             <p class="title">Literary Database Archivist</p>
             <p class="bio-text">Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as "minor literature". Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community.</p>
         </div>
         <div class="team-member">
-            <img src="TracyFuad-gray.jpeg" alt="Tracy Fuad">
+            <img src="TracyFuad-gray.webp" alt="Tracy Fuad">
             <h3>Tracy Fuad</h3>
             <p class="title">Board President</p>
             <p class="bio-text">Tracy Fuad's second book of poetry, PORTAL (University of Chicago, 2024) won the 2023 Phoenix Emerging Poets Prize. A 2023 National Endowment for the Arts Fellow, Fuad's poems have appeared in The Paris Review, The Yale Review and The New Republic and have been translated into Kurdish, Turkish, German, and Spanish.</p>
         </div>      
         <div class="team-member">
-            <img src="HollyMasonBadra-gray.jpg" alt="Holly Mason Badra">
+            <img src="HollyMasonBadra-gray.webp" alt="Holly Mason Badra">
             <h3>Holly Mason Badra</h3>
             <p class="title">Board Vice President</p>
             <p class="bio-text">Holly Mason Badra received her MFA in Poetry from George Mason University in 2017, where she served as the blog editor for So to Speak: An Intersectional Feminist Journal of Language and Art. Her poems, interviews, and reviews have appeared in various journals, such as: The Northern Virginia Review, The Adroit Journal, The Rumpus, SWWIM Everyday, Circumference Magazine, Rabbit Catastrophe Review, Foothill Poetry Journal, The University of Arizona Poetry Center Blog, Bourgeon Online, Broad Strokes: The National Museum of Women in the Arts Blog, Outlook Springs, Entropy, and CALYX. She received a Bethesda Urban Partnership Poetry Prize selected by E. Ethelbert Miller. As a Kurdish-American poet, she has been a featured reader at annual Al-Mutanabbi Street Starts Here events and participated in RAWIFest 2021, as well as other events related to Kurdish diaspora writing/writers. She has been a reader at OutWrite (A Celebration of Queer Literature) in D.C. She has extensive experience as an educator, teaching elementary, middle, high school, and college English, Creative Writing, Humanities, and Literature courses. Holly currently lives in Northern Virginia, working as the Associate Director of Women and Gender Studies at George Mason University. She also reads for Poetry Daily.</p>
@@ -994,7 +1018,7 @@ width: 200px;
             <p class="bio-text">Shene Mohammed is a translator at the Kurdistan Center for Arts and Culture. Shene graduated with a Bachelor’s degree from the American University of Iraq, Sulaimani, and is a Literary Translation MFA graduate from the University of Iowa. She has served as a Managing Editor for Exchanges Journal of Literary Translation. Her writing has appeared in Translation Review, Michigan Quarterly Review, Poetry, World Literature Today, M—Dash, Modern Poetry in Translation, Balinde, and Chirok.</p>
         </div>
         <div class="team-member">
-            <img src="ChadPost-gray.jpeg" alt="Chad W. Post">
+            <img src="ChadPost-gray.webp" alt="Chad W. Post">
             <h3>Chad W. Post</h3>
             <p class="title">Board Secretary</p>
             <p class="bio-text">Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. In addition, he is the managing editor of Three Percent, a blog and review site that promotes literature in translation and is home to the Translation Database, the Best Translated Book Awards, and the Three Percent and Two Month Review podcasts. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading. His articles and book reviews have appeared in a range of publications including The Believer, Publishing Perspectives, the Wall Street Journal culture blog, Bookforum, Rolling Stone, and Quarterly Conversation, among others. In 2018, he received the Ottaway Award for the Promotion of International Literature.</p>
@@ -1011,7 +1035,7 @@ width: 200px;
     <p></p>
     <div class="book-grid2">
         <div class="book">
-            <img src="Gabor-Cover-Compressed.png" alt="Gabor">
+            <img src="Gabor-Cover-Compressed.webp" alt="Gabor">
             <div class="book-release-date">Coming 2026</div>
         </div>
     </div>
@@ -1092,16 +1116,16 @@ document.getElementById('attachment').addEventListener('change', function(e) {
 <h2 style="font-size: 3.3rem;">New & Upcoming</h2>
         <div class="book-grid">
             <div class="book">
-                <img src="Gabor-Cover-Compressed.png" alt="Book 1">
+                <img src="Gabor-Cover-Compressed.webp" alt="Book 1">
             </div>
             <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 2">
+                <img src="bookplaceholder.webp" alt="Book 2">
             </div>
             <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 3">
+                <img src="bookplaceholder.webp" alt="Book 3">
             </div>
             <div class="book">
-                <img src="bookplaceholder.jpg" alt="Book 4">
+                <img src="bookplaceholder.webp" alt="Book 4">
             </div>
         </div>
         <div class="footer-slogan">
@@ -1300,5 +1324,44 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/ahoy.js@0.3.9/dist/ahoy.min.js" async defer onload="configureAhoy()"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const languageLinks = document.querySelectorAll('.language-link');
+    const translatableElements = document.querySelectorAll('[data-en]');
+    
+    function switchLanguage(lang) {
+        translatableElements.forEach(element => {
+            const translation = element.getAttribute(`data-${lang}`);
+            if (translation) {
+                element.innerHTML = translation;
+            }
+        });
+        
+        // Update active link
+        languageLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-lang') === lang) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Store language preference
+        localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Load saved language preference
+    const savedLang = localStorage.getItem('preferred-language') || 'en';
+    switchLanguage(savedLang);
+    
+    // Add event listeners
+    languageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            switchLanguage(lang);
+        });
+    });
+});
+</script>
 </body>
-</html>
+</html>v
