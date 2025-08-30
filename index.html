@@ -1345,6 +1345,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageLinks = document.querySelectorAll('.language-link');
     const translatableElements = document.querySelectorAll('[data-en]');
     
+    // Use in-memory storage instead of localStorage
+    let currentLanguage = 'en';
+    
     function switchLanguage(lang) {
         translatableElements.forEach(element => {
             const translation = element.getAttribute(`data-${lang}`);
@@ -1361,13 +1364,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Store language preference
-        localStorage.setItem('preferred-language', lang);
+        // Store language preference in memory
+        currentLanguage = lang;
     }
     
-    // Load saved language preference
-    const savedLang = localStorage.getItem('preferred-language') || 'en';
-    switchLanguage(savedLang);
+    // Set default language
+    switchLanguage(currentLanguage);
     
     // Add event listeners
     languageLinks.forEach(link => {
