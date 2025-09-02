@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aethel Press</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1a1a1a;
+        }
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        .sidebar {
+            /* For the vertical text */
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1a1a1a;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="border-b border-gray-200">
+        <div class="container mx-auto px-6 md:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="#" class="text-2xl md:text-3xl font-serif font-medium tracking-wider uppercase text-black">
+                    Aethel Press
+                </a>
+                <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Issues</a>
+                    <a href="#" class="nav-link">Blog</a>
+                    <a href="#" class="nav-link">Submissions</a>
+                    <a href="#" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </a>
+                </nav>
+                 <!-- Mobile Menu Button -->
+                <button class="md:hidden" id="mobile-menu-btn" aria-label="Open Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+        <nav class="flex flex-col items-center space-y-4 py-4 text-sm uppercase tracking-widest">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Issues</a>
+            <a href="#" class="nav-link">Blog</a>
+            <a href="#" class="nav-link">Submissions</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 md:px-8 py-16">
+        <div class="flex">
+            <!-- Sidebar -->
+            <aside class="w-24 flex-shrink-0 hidden md:block">
+                <div class="sticky top-24">
+                    <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
+                        <a href="#" class="hover:text-black transition-colors">Archive</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Grid Content -->
+            <main class="w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+                    
+                    <!-- Item 1 -->
+                    <article>
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
+                             <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        </a>
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">The City That Dreams in Our Bones</a>
+                        </h2>
+                        <p class="text-sm text-gray-600">by Gloria Ogo</p>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article>
+                         <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
+                            <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        </a>
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">Point of Focus</a>
+                        </h2>
+                        <p class="text-sm text-gray-600">by Aliseen Anne</p>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article>
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
+                            <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        </a>
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Nonfiction</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">The Fourteenth Amendment</a>
+                        </h2>
+                        <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
+                    </article>
+                    
+                    <!-- Item 4 (Text-based) -->
+                    <article class="border border-gray-200 p-6 flex flex-col justify-center">
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">On Craft and Creation</a>
+                        </h2>
+                        <p class="text-sm text-gray-600 mb-4">with Author Jane Doe</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to the silence between them..."</p>
+                    </article>
+
+                     <!-- Item 5 -->
+                    <article>
+                         <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
+                            <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        </a>
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">Betrayal of Spirit</a>
+                        </h2>
+                        <p class="text-sm text-gray-600">by John Smith</p>
+                    </article>
+
+                     <!-- Item 6 -->
+                    <article>
+                         <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
+                            <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        </a>
+                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
+                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                            <a href="#" class="hover:underline">Real Fruit</a>
+                        </h2>
+                        <p class="text-sm text-gray-600">by Emily White</p>
+                    </article>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 bg-white">
+        <div class="container mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500">
+            <p>&copy; 2025 Aethel Press. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
+
