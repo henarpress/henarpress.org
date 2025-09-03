@@ -55,48 +55,65 @@
             top: 45%;
             left: -10%;
             width: 120%;
-            z-index: -1; /* Place it behind the main content */
-            transform: rotate(-15deg); /* Increased rotation for more style */
-            pointer-events: none; /* Make it unclickable */
+            z-index: -1;
+            transform: rotate(-15deg);
+            pointer-events: none;
             opacity: 0.85;
         }
-
         .marquee {
             display: flex;
             width: fit-content;
             animation: marquee-scroll 40s linear infinite;
         }
-
         .marquee-content {
             font-family: 'Lora', serif;
-            font-size: 5rem; /* ~80px */
+            font-size: 5rem;
             font-style: italic;
             color: #383838;
             white-space: nowrap;
             padding: 0 2rem;
             text-transform: capitalize;
         }
-        
-        /* New styles for individual letter animation */
         .js-wavy-text span {
             position: relative;
             display: inline-block;
             animation: wave-anim 2s ease-in-out infinite;
-            animation-delay: calc(0.08s * var(--i)); /* Stagger the animation */
+            animation-delay: calc(0.08s * var(--i));
         }
-
         @keyframes marquee-scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
-
         @keyframes wave-anim {
             0%, 100% {
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-35px); /* Controls the height of the wave */
+                transform: translateY(-35px);
             }
+        }
+        
+        /* --- Styles for the Overlay Menu --- */
+        #menu-overlay {
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 40;
+        }
+        #menu-overlay.open {
+            transform: translateY(0);
+        }
+        /* Custom transition for menu button lines */
+        .menu-line {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-open .line-1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-open .line-2 {
+            opacity: 0;
+        }
+        .menu-open .line-3 {
+            transform: translateY(-8px) rotate(-45deg);
         }
     </style>
 </head>
@@ -106,46 +123,45 @@
             <div class="marquee-content js-wavy-text">
                 DOLMA DOLMA DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp;DOLMA DOLMA &nbsp; DOLMA DOLMA &nbsp; &nbsp; DOLMA DOLMA &nbsp;
             </div>
-            </div>
         </div>
     </div>
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-[#FAF9F6]">        <div class="container mx-auto px-6 md:px-8">
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-[#FAF9F6]">
+        <div class="container mx-auto px-6 md:px-8">
             <div class="flex justify-between items-center h-24">
                 <a href="#" class="text-4xl md:text-6xl font-qahiri font-medium tracking-wider uppercase text-black">
                     Dawashe!
                 </a>
-                <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest">
-                    <a href="#" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Issues</a>
-                    <a href="#" class="nav-link">People</a>
-                    <a href="#" class="nav-link">Submissions</a>
-                    <a href="#" aria-label="Search">
+                
+                <div class="flex items-center space-x-6">
+                    <a href="#" aria-label="Search" class="text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </a>
-                </nav>
-                 <button class="md:hidden" id="mobile-menu-btn" aria-label="Open Menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
+                    <button id="menu-btn" class="z-50 space-y-2" aria-label="Open Menu">
+                        <span class="block w-8 h-0.5 bg-black menu-line line-1"></span>
+                        <span class="block w-8 h-0.5 bg-black menu-line line-2"></span>
+                        <span class="block w-8 h-0.5 bg-black menu-line line-3"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
-<div id="mobile-menu" class="fixed top-24 left-0 right-0 z-40 hidden md:hidden bg-[#FAF9F6] border-b border-gray-200">
-        <nav class="flex flex-col items-center space-y-4 py-4 text-sm uppercase tracking-widest">
-            <a href="#" class="nav-link">Home</a>
-            <a href="#" class="nav-link">About</a>
-            <a href="#" class="nav-link">People</a>
-            <a href="#" class="nav-link">Issues</a>
-            <a href="#" class="nav-link">Submissions</a>
+
+    <div id="menu-overlay" class="fixed inset-0 bg-[#111111] text-white flex items-center justify-center">
+        <nav class="text-center">
+            <ul class="space-y-6">
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Home</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">About</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Issues</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">People</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Submissions</a></li>
+            </ul>
         </nav>
     </div>
 
-<div class="container mx-auto px-6 md:px-8 py-36 pt-40">
+    <div class="container mx-auto px-6 md:px-8 py-36 pt-40">
         <div class="flex">
             <aside class="w-24 flex-shrink-0 hidden md:block">
                 <div class="sticky top-24">
@@ -157,10 +173,9 @@
 
             <main class="w-full">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
-                    
                     <article>
-<a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
-    <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+                            <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -168,10 +183,9 @@
                         </h2>
                         <p class="text-sm text-gray-600">by Gloria Ogo</p>
                     </article>
-
                     <article>
-<a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
-                            <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+                            <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -179,10 +193,9 @@
                         </h2>
                         <p class="text-sm text-gray-600">by Aliseen Anne</p>
                     </article>
-
                     <article>
-<a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
-                            <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+                            <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Nonfiction</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -190,7 +203,6 @@
                         </h2>
                         <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
                     </article>
-                    
                     <article class="border border-gray-200 p-6 flex flex-col justify-center">
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -199,10 +211,9 @@
                         <p class="text-sm text-gray-600 mb-4">with Author Jane Doe</p>
                         <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to the silence between them..."</p>
                     </article>
-
-                     <article>
-<a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
-                            <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    <article>
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+                            <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -210,10 +221,9 @@
                         </h2>
                         <p class="text-sm text-gray-600">by John Smith</p>
                     </article>
-
-                     <article>
-<a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
-                            <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    <article>
+                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+                            <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -221,7 +231,6 @@
                         </h2>
                         <p class="text-sm text-gray-600">by Emily White</p>
                     </article>
-
                 </div>
             </main>
         </div>
@@ -234,20 +243,20 @@
     </footer>
 
     <script>
-        // JavaScript for mobile menu toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // --- Script for overlay menu toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const menuOverlay = document.getElementById('menu-overlay');
 
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            menuOverlay.classList.toggle('open');
+            menuBtn.classList.toggle('menu-open');
         });
 
-        // --- New script for wavy text effect ---
+        // --- Script for wavy text effect ---
         document.addEventListener('DOMContentLoaded', () => {
             const wavyElements = document.querySelectorAll('.js-wavy-text');
             wavyElements.forEach(element => {
                 const text = element.textContent;
-                // Split text into characters, wrap each in a span with a custom property for the animation delay
                 element.innerHTML = text.split('').map((char, i) => 
                     `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
                 ).join('');
