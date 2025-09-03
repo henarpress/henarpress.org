@@ -7,19 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Qahiri:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Qahiri:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
+            background-color: #FAF9F6; /* Set a warm off-white background */
             color: #1a1a1a;
+            overflow-x: hidden; /* Prevent horizontal scrollbar from animation */
         }
         .font-serif {
             font-family: 'Lora', serif;
         }
         .font-qahiri {
-    font-family: 'Qahiri', sans-serif;
-}
+            font-family: 'Qahiri', sans-serif;
+        }
         .sidebar {
             /* For the vertical text */
             writing-mode: vertical-rl;
@@ -47,16 +48,76 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+
+        /* --- Wavy Text Animation --- */
+        .wavy-text-container {
+            position: fixed;
+            top: 45%;
+            left: -10%;
+            width: 120%;
+            z-index: -1; /* Place it behind the main content */
+            transform: rotate(-15deg); /* Increased rotation for more style */
+            pointer-events: none; /* Make it unclickable */
+            opacity: 0.85;
+        }
+
+        .marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee-scroll 40s linear infinite;
+        }
+
+        .marquee-content {
+            font-family: 'Lora', serif;
+            font-size: 5rem; /* ~80px */
+            font-style: italic;
+            color: #383838;
+            white-space: nowrap;
+            padding: 0 2rem;
+            text-transform: capitalize;
+        }
+        
+        /* New styles for individual letter animation */
+        .js-wavy-text span {
+            position: relative;
+            display: inline-block;
+            animation: wave-anim 2s ease-in-out infinite;
+            animation-delay: calc(0.08s * var(--i)); /* Stagger the animation */
+        }
+
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes wave-anim {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-35px); /* Controls the height of the wave */
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
-    <header class="border-b border-gray-200">
+    <div class="wavy-text-container">
+        <div class="marquee">
+            <div class="marquee-content js-wavy-text">
+                DOLMA &nbsp; DOLMA &nbsp; DOLMA &nbsp; DOLMA &nbsp;
+            </div>
+            <div class="marquee-content js-wavy-text">
+                DOLMA &nbsp; DOLMA &nbsp; DOLMA &nbsp; DOLMA &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <header class="border-b border-gray-200 bg-[#FAF9F6]">
         <div class="container mx-auto px-6 md:px-8">
             <div class="flex justify-between items-center h-24">
-<a href="#" class="text-4xl md:text-6xl font-qahiri font-medium tracking-wider uppercase text-black">
-Dawashe!
+                <a href="#" class="text-4xl md:text-6xl font-qahiri font-medium tracking-wider uppercase text-black">
+                    Dawashe!
                 </a>
                 <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest">
                     <a href="#" class="nav-link">Home</a>
@@ -66,12 +127,11 @@ Dawashe!
                     <a href="#" class="nav-link">Submissions</a>
                     <a href="#" aria-label="Search">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </a>
                 </nav>
-                 <!-- Mobile Menu Button -->
-                <button class="md:hidden" id="mobile-menu-btn" aria-label="Open Menu">
+                 <button class="md:hidden" id="mobile-menu-btn" aria-label="Open Menu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
@@ -79,8 +139,7 @@ Dawashe!
             </div>
         </div>
     </header>
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+    <div id="mobile-menu" class="hidden md:hidden bg-[#FAF9F6] border-b border-gray-200">
         <nav class="flex flex-col items-center space-y-4 py-4 text-sm uppercase tracking-widest">
             <a href="#" class="nav-link">Home</a>
             <a href="#" class="nav-link">About</a>
@@ -90,10 +149,8 @@ Dawashe!
         </nav>
     </div>
 
-    <!-- Main Content -->
     <div class="container mx-auto px-6 md:px-8 py-16">
         <div class="flex">
-            <!-- Sidebar -->
             <aside class="w-24 flex-shrink-0 hidden md:block">
                 <div class="sticky top-24">
                     <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
@@ -102,11 +159,9 @@ Dawashe!
                 </div>
             </aside>
 
-            <!-- Grid Content -->
             <main class="w-full">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
                     
-                    <!-- Item 1 -->
                     <article>
                         <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
                              <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -118,7 +173,6 @@ Dawashe!
                         <p class="text-sm text-gray-600">by Gloria Ogo</p>
                     </article>
 
-                    <!-- Item 2 -->
                     <article>
                          <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
                             <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -130,7 +184,6 @@ Dawashe!
                         <p class="text-sm text-gray-600">by Aliseen Anne</p>
                     </article>
 
-                    <!-- Item 3 -->
                     <article>
                         <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
                             <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -142,7 +195,6 @@ Dawashe!
                         <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
                     </article>
                     
-                    <!-- Item 4 (Text-based) -->
                     <article class="border border-gray-200 p-6 flex flex-col justify-center">
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
                         <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
@@ -152,8 +204,7 @@ Dawashe!
                         <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to the silence between them..."</p>
                     </article>
 
-                     <!-- Item 5 -->
-                    <article>
+                     <article>
                          <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
                             <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
@@ -164,8 +215,7 @@ Dawashe!
                         <p class="text-sm text-gray-600">by John Smith</p>
                     </article>
 
-                     <!-- Item 6 -->
-                    <article>
+                     <article>
                          <a href="#" class="block overflow-hidden mb-4 border border-gray-200">
                             <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
@@ -181,10 +231,9 @@ Dawashe!
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-gray-200 bg-white">
+    <footer class="border-t border-gray-200 bg-[#FAF9F6]">
         <div class="container mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500">
-            <p>&copy; 2025 Aethel Press. All Rights Reserved.</p>
+            <p>&copy; 2025 Dawashe!. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -195,6 +244,18 @@ Dawashe!
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- New script for wavy text effect ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const wavyElements = document.querySelectorAll('.js-wavy-text');
+            wavyElements.forEach(element => {
+                const text = element.textContent;
+                // Split text into characters, wrap each in a span with a custom property for the animation delay
+                element.innerHTML = text.split('').map((char, i) => 
+                    `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
+                ).join('');
+            });
         });
     </script>
 
