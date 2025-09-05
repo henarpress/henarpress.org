@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henar Press</title>
     <meta name="description" content="Henar Press is a 501(c)(3) nonprofit publisher dedicated to translating and publishing Kurdish novels, poetry, and memoirs.">
-    <meta name="keywords" content="Kurdish Literature, Kurdish Culture, Henar Press, Nonprofit Publisher, Kurdish Novels, Kurdish Poetry, Kurdish Memoirs">
+    <meta name="keywords" content="Kurdish Lite@media (max-width: 768px) {
+    .book-grid2 {
+        gap: 0.5rem;
+    }
+    
+    .book-release-date {
+        margin-top: 0.25rem;
+    }
+}rature, Kurdish Culture, Henar Press, Nonprofit Publisher, Kurdish Novels, Kurdish Poetry, Kurdish Memoirs">
     <meta property="og:title" content="Henar Press">
     <meta property="og:description" content="Henar Press is a 501(c)(3) nonprofit publisher dedicated to translating and publishing Kurdish novels, poetry, and memoirs.">
     <meta property="og:type" content="website">
@@ -232,7 +240,7 @@
         z-index: 9999;
     }
 
-   nav {
+nav {
     width: 250px;
     height: 100vh;
     position: fixed;
@@ -244,6 +252,7 @@
     flex-direction: column;
     gap: 1.5rem;
     z-index: 1000;
+    overflow-y: auto;
 }
     
     .mobile-header {
@@ -408,7 +417,7 @@ width: 200px;
     transition: var(--transition);
     text-align: center;
     width: 100%;
-    margin: 0; /* Remove existing margins */
+    margin: 0;
 }
 
 
@@ -423,19 +432,27 @@ width: 200px;
         color: var(--secondary-color);
     }
 
-    .book-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    
-     .book-grid2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.book img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.book-grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    justify-items: center;
+}
 
 .book-release-date {
     font-style: italic;
@@ -445,25 +462,19 @@ width: 200px;
     text-align: center;
 }
 
-.book img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: transform 0.2s ease;
-}
-
+        
 .book-grid2 .book img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 400px;
+    max-height: none;
+    object-fit: contain;
     transition: transform 0.2s ease;
-    display: block;
-    margin: 0 auto;
 }
 
 .book img:hover {
     transform: scale(1.01);
 }
+
     .footer-slogan h3 {
         font-size: 2rem;
         color: var(--secondary-color);
@@ -477,13 +488,18 @@ width: 200px;
         display: flex;
         justify-content: center;
     }
-
-    .copyright {
-        font-size: 0.9rem;
-        opacity: 0.7;
-        text-align: center;
-    }
-
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-align: justify;
+    text-justify: inter-word;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+    hyphens: auto;
+    line-height: 1.6;
+    max-width: 80%;
+    margin: 0 auto;
+}
     .contact-content {
         margin: 0 auto;
     }
@@ -752,16 +768,6 @@ width: 200px;
         font-size: 3.2rem;
     }
 
-    .book-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-    
-    .book-grid2 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
     .footer-slogan h3 {
         font-size: 2.5rem;
     }
@@ -814,15 +820,7 @@ width: 200px;
     h2 {
         font-size: 4rem;
     }
-
-    .book-grid {
-        gap: 3rem;
-    }
     
-    .book-grid2 {
-        gap: 3rem;
-    }
-
     .footer-slogan h3 {
         font-size: 3rem;
     }
@@ -886,7 +884,20 @@ width: 200px;
         max-width: 280px;
     }
 }
-
+@media (max-width: 768px) {
+    .book-grid2 {
+        gap: 1rem;
+    }
+    
+    .book-grid2 .book img {
+        height: auto;
+        max-height: 250px;
+    }
+    
+    .book-release-date {
+        margin-top: 0.5rem;
+    }
+}
 </style>
 </head>
 <body>
@@ -909,9 +920,9 @@ width: 200px;
         <a href="#" class="language-link" data-lang="so">سۆرانی</a>
     </div>
     <a href="#top">About</a>
-    <a href="#contribute">Contribute</a>
     <a href="#our-team">People</a>
     <a href="#books">Books</a>
+    <a href="#contribute">Contribute</a>
     <a href="#contact">Contact</a>
     <a href="database" target="_blank" class="database-link">Kurdish Literary Database</a>
 </div>
@@ -933,21 +944,15 @@ width: 200px;
         <div id="top">
             <h1>Henar Press</h1>
             <p data-en="We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora." 
-   data-so="ئێمە چاپخانەیەکی سەربەخۆ و غەیرەقازانجمان کە لە کۆلۆمبەس، ئۆهایۆ دامەزراوە و خۆمان تەرخان کردووە بۆ گەیاندنی نووسینە تاقیکاریەکانی کوردی بۆ جیهان."
-   data-ku="Em weşanxaneyeke serbixwe û bêqezencin ku li Columbus, Ohio hatiye damezrandin û xwe ji bo gihîştina nivîsên tecrûbî yên Kurdî bi cîhanê re terxan kiriye.">
+   data-so="ئێمە وەشانخانەیەکی سەربەخۆ و قازانجنەویستین لە ئۆهایۆ، کۆڵەمبەس، کە خۆمان بۆ ناساندنی ئەدەبی ئەزموونگەرای کوردی بە جیهان تەرخانکردووە. کتێبەکانمان ڕۆمان و شیعر و پەخشان لەخۆدەگرن و بەرهەمی نووسەرانی نوێ و جێکەوتووی نیشتیمان و دیاسپۆران"
+   data-ku="Em weşanxaneyek serbixwe û ne-qazancgerî ne ku li Columbus, Ohio hatiye damezrandin û armanca me ew e ku nivîskariya Kurdî ya tecrûbî ji cîhanê re bigihîne. Pirtûkên me di nav xebata edebî, helbestê û bîrnivîskariya hunerî de ne ku hem ji nivîskarên nû û hem jî ji yên navdar ên ji welatê dayîk û diyasporayê tên.">
    <strong>We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from both emerging and established writers from the homeland and diaspora.</strong></p>
         </div>
         <div id="about">
             <p data-en="Censorship and erasure within Kurdistan and abroad has stifled radical expression for generations. In the face of ongoing genocide and ethnic cleansing, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned and operated press, we champion historically overlooked and innovative works that complicate the supposed Kurdish question. Our mission is to publish prose and poetry that speaks its own truth free from the colonial gaze. We aim to disentangle Kurdish literature from its reductive portrayal as solely stateless and foster a deeper awareness of its stories, art, and culture."
-      data-so="سانسۆر و سڕینەوە لە ناو کوردستان و لە دەرەوە، دەربڕینی ڕادیکاڵیان بۆ چەندین پشت خنکاندووە. لە بەرامبەر جینۆساید و پاکتاوی نەتەوەیی بەردەوام، ئێمە بڕوامان بە هێزی ئەدەبیات بۆ بەرخۆدان و وەرگرتنی گێڕانەوەکانمان هەیە.وەک چاپەمەنییەک بە خاوەنداری و بەڕێوەبردنی کوردی، ئێمە پشتگیری ئەو بەرهەمە پشتگوێخراو و داهێنەرانانە دەکەین کە وێنەی کلیشەی پرسی کورد تێک‌ئەشکێنن. ئامانجی ئێمە بڵاوکردنەوەی  ئەو پەخشان و شێعرانەن کە ڕاستی خۆیان دەرئەبڕن و گیروودەی ڕوانینی کۆڵۆنیاڵیستی نین. ئێمە هەوڵ دەدەین ئەدەبی کوردی لە وێناکردنێکی ساکار وەک تەنها "بێدەوڵەت" رزگار بکەین و  پەرە بە هۆشیارییەکی قووڵتر لەسەر  چیرۆکەکان، هونەر و کەلتوورەکەی بدەین."
+      data-so="سانسۆر و سڕینەوە لە ناو کوردستان و لە دەرەوە، دەربڕینی ڕادیکاڵیان بۆ چەندین پشت خنکاندووە. لە بەرامبەر جینۆساید و پاکتاوی نەتەوەیی بەردەوام، ئێمە بڕوامان بە هێزی ئەدەبیات بۆ بەرخۆدان و وەرگرتنی گێڕانەوەکانمان هەیە.وەک چاپەمەنییەک بە خاوەنداری و بەڕێوەبردنی کوردی، ئێمە پشتگیری ئەو بەرهەمە پشتگوێخراو و داهێنەرانانە دەکەین کە وێنەی کلیشەی پرسی کورد تێک‌ئەشکێنن. ئامانجی ئێمە بڵاوکردنەوەی  ئەو پەخشان و شێعرانەن کە ڕاستی خۆیان دەرئەبڕن و گیروودەی ڕوانینی کۆڵۆنیاڵیستی نین. ئێمە هەوڵ دەدەین ئەدەبی کوردی لە وێناکردنێکی ساکار وەک تەنها بێدەوڵەت رزگار بکەین و  پەرە بە هۆشیارییەکی قووڵتر لەسەر  چیرۆکەکان، هونەر و کەلتوورەکەی بدەین."
     data-ku="Sansûr û bêdengkirina li nava Kurdistanê û li derve, îfadeya radîkal nifş li pey nifşan  xeniqandîye. Beramber jenosîd û tunekirina çanda gelê Kurd ya berdewam, em bi hêza wêjeyê bawer dikin ku hember zordarîyê li ber xwe bide û zarê doza Kurdan bi rastî vegerîne.  Weke weşanxaneyeke Kurdî, em berhemên nûjen û yên dîrokî û kêmnaskirî, ku girîngî nehatine dayîn û hatine paşguh kirin, diweşînin ku nêrîneke nû tînin pirsa Kurdî. Mîsyona me ew e ku em pexşan û helbestan biweşînin ku bi azadî, bê nêrîn û bandora kolonyalîst hatine nivîsîn. Em armanc dikin ku wêjeya Kurdî ji nêrîna kêmker rizgar bikin ku tenê bi bêdewletbûnê ve girêdide û li şûna wê dewlemendkirina zanîstî ya çîrok, huner û çanda Kurdî derxinin pêş."</p>
  </div>
-        <div id="contribute">
-            <h2>Contribute</h2>
-<p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
-<p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
-<p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We welcome prose and poetry in any language. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
-        </div>
 <div id="our-team">
     <h2>People</h2>
     <div class="team-grid">
@@ -970,7 +975,7 @@ width: 200px;
             <p class="bio-text">Jeannette Okur is a multilingual educator, translator, and researcher. Since 2010, she has coordinated the Turkish Studies program in the Department of Middle Eastern Studies at the University of Texas at Austin, where she teaches courses on language, literature, film, and cultural studies. Her research focuses on the dynamics between perpetrators and victims of political violence, exploring themes such as identity, trauma, and displacement in the novels of Turkish- and Iraqi-Kurdish writers in exile. Committed to advancing intercultural communicative competence among language learners, Dr. Okur is the author of the open, media-rich Turkish textbook Her Şey Bir Merhaba ile Başlar! (Center for Open Education Resources and Language Learning, 2021) and is currently developing a second open educational resource (OER) titled Sinema Tutkusu: Turkish Language and Culture through Film. Having lived in Germany, the U.S., Austria, and Turkey, she earned her Ph.D. in German Language and Literature from Ankara University in 2007. She is currently studying Kurmanji at Zahra Institute in Chicago and is excited to introduce English-speaking readers to the works of Firat Cewerî through her translation, I Am Going to Kill Somebody (Henar Press).</p>
         </div>
             <div class="team-member">
-            <img src="chiya.webp" alt="Chiya Parvizpur">
+            <img src="chiya.jpg" alt="Chiya Parvizpur">
             <h3>Chiya Parvizpur</h3>
             <p class="title">Translator</p>
             <p class="bio-text">Chiya Parvizpur (b. 1989, Sanandaj) is a Kurdish writer and translator working in both Kurdish and English. His work has been published by Transnational London Press, Whisper House Press, Henar Press, and Common Notions. His debut novel, The Smell of Wet Bricks, was published in the UK, while his second, Twenty-Four Seconds of Shehin's Life, received the prestigious Kal Literary Prize in Kurdistan. Parvizpur's fiction employs a unique blend of Kurdish surrealism rooted in political realities he terms 'SoorAl' (Reddish in Kurdish). He has translated significant Kurdish novels into English including Ata Nahai's Birds in a Gale, Dealing Helaleh's Destiny, Seyed Qader Hedayati's Gabor, and Jiyar Jahanfard's The Shadeless Border. A dedicated Tembur player, Parvizpur embeds Kurdish tradition within his creative practice as a vital form of resistance. He is currently writing his third novel.</p>
@@ -1024,34 +1029,55 @@ width: 200px;
             <p class="bio-text">Chad W. Post is the director of Open Letter Books, a press at the University of Rochester dedicated to publishing contemporary literature from around the world. In addition, he is the managing editor of Three Percent, a blog and review site that promotes literature in translation and is home to the Translation Database, the Best Translated Book Awards, and the Three Percent and Two Month Review podcasts. He is also the author of The Three Percent Problem: Rants and Responses on Publishing, Translation, and the Future of Reading. His articles and book reviews have appeared in a range of publications including The Believer, Publishing Perspectives, the Wall Street Journal culture blog, Bookforum, Rolling Stone, and Quarterly Conversation, among others. In 2018, he received the Ottaway Award for the Promotion of International Literature.</p>
         </div>              
         <div class="team-member">
-            <img src="gary-gray.webp" alt="Gary Lovely">
+            <img src="gary-gray.jpg" alt="Gary Lovely">
             <h3>Gary Lovely</h3>
             <p class="title">Board Treasurer</p>
             <p class="bio-text">Gary Lovely is co-owner of the bookstore Two Dollar Radio HQ and the founder of Harpoon Books, an indie publishing company based in Columbus, Ohio. Gary has been working in books for nearly 16 years across 5 bookstores and 2 publishing houses. He has written about books for the New York Times, Literary Hub, Buzzfeed Books, and more. Gary has been a judge for the National Book Awards for Translated Literature, The Cercador Prize for Literature in Translation, & The James Thurber Prize for American Humor. He is the current Vice President of the Great Lakes Booksellers Association.</p>
         </div>
     </div>
-<div id="books">
+     <div id="books">
     <h2>Books</h2>
     <p></p>
-    <div class="book-grid2">
-        <div class="book">
-            <img src="Gabor-Cover-Compressed.webp" alt="Gabor">
-            <div class="book-release-date">Coming 2026</div>
-        </div>
+ <div class="book-grid2">
+    <div class="book">
+        <img src="Gabor-Cover-Compressed.webp" alt="Gabor">
+        <div class="book-release-date">Coming 2026</div>
+    </div>
+    <div class="book">
+        <img src="Firat-Cover.webp" alt="I Am Going to Kill Somebody">
+        <div class="book-release-date">Coming 2026</div>
     </div>
 </div>
+</div>
+       <div id="contribute">
+            <h2>Contribute</h2>
+<p>Every donation, big or small, makes a difference in our mission to share Kurdish literature with readers everywhere. Since we're a 501(c)(3) nonprofit, every dollar you contribute is tax-deductible. Please consider <a href="https://secure.givelively.org/donate/henar-press" target="_blank">donating</a> to keep us going.</p> 
+<p>If you're looking for other ways to support our authors, translators, and organization, consider purchasing our books, requesting them at your library, or lending a hand as a volunteer.</p>
+<p>Writers are welcome to submit their manuscripts through our <a href="#contact">contact form</a>. We accept a variety of genres, including prose, poetry, and everything in between. If you're interested in reading more Kurdish writing, check out our continuously evolving <a href="database" target="_blank">database of Kurdish literature in English</a>.</p>      
+       </div>
             <div id="contact">
             <h2>Contact</h2>
             <div class="contact-content">
-                <p>We'd love to hear from you, whether you have questions about our books, database, or submission process, are interested in volunteering, or if you just want to say hello!</p>
-                <div class="submission-guidelines">
-                    <ul>
-                        <li>We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
-                        <li>Currently, we can only accept book-length manuscripts written in or translated into English.</li>
-                        <li>Please include a brief author bio, translator bio (if applicable), and synopsis in your message.</li>
-                        <li>Only one attachment can be sent at a time. Manuscripts can be in either Word or PDF format. Please limit file sizes to 15 MB.</li>
-                    </ul>
-                </div>
+    <p data-en="We'd love to hear from you! Whether you have questions about our books, database, or submission process, are interested in volunteering, or just want to say hello, please don't hesitate to reach out."
+       data-ku="Em dixwazin ji we bibihîzin! Ger pirsgirêkên we li ser pirtûk, danegeh, an jî pêvajoya şandina xebatan hene, ger hûn dixwazin bibe dilxwaz, an jî tenê dixwazin silav bidin, ji kerema xwe nedudûdin ku bi me re têkilî daynin."
+       data-so="پێمان خۆشە بۆچوونی ئێوە ببیستین! جا گەر پرسیارت هەبێت دەربارەی کتێبەکانمان، داتابەیسەکەمان، یان پڕۆسەی پێشکەشکردن، یان ڕەنگە بتەوێت وەک خۆبەخش کارمان لەگەڵ بکەیت، یان تەنیا دەتەوێت سڵاوێک بکەیت، تکایە دوودل مەبە لە پەیوەندیگرتن."></p>
+    
+    <div class="submission-guidelines">
+        <ul>
+            <li data-en="We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms."
+                data-ku="Em cure cure tîpan weşînin, di nav wan de roman, çîrok, berhevoka çîrokan, helbest, bîrnameya jiyanê, şano, pirtûkên biçûk, û awayên tevlihev."
+                data-so="ئێمە ژانرای هەمەچەشن بڵاودەکەینەوە، لەوانە: ڕۆمان، کورتە ڕۆمان، کورتە چیرۆک، شیعر، ژیاننامە، شانۆنامە، نامیلکە، وە دەقی واڵا و فۆڕمی نوێ."></li>
+            <li data-en="Currently, we can only accept book-length manuscripts written in or translated into English."
+            data-so="لە ئێستادا، تەنیا دەتوانین ڕەشنووسی کتێب قبوول بکەین بۆ نووسینی ئینگلیزی یان وەرگێڕانی ئینگلیزی."
+                data-ku="Niha em tenê dikarin destnivîsên bi dirêjahiya pirtûkê qebûl bikin ku bi îngilîzî hatine nivîsandin an jî wergerandin."></li>
+            <li data-en="Please include a brief author bio, translator bio (if applicable), and synopsis in your message."
+            data-so="تکایە ژیاننامەیەکی کورتی نووسەر و وەرگێڕ، وە کورتەی نووسراوەکەت بنێرە لەگەڵ پەیامەکەتدا."
+                data-ku="Ji kerema xwe di peyama xwe de biyografiyeka kurt a nivîskar, biyografiya wergêr (eger heye), û kurteya navê berhemê jî bike."></li>
+            <li data-en="Only one attachment can be sent at a time. Manuscripts can be in either Word or PDF format. Please limit file sizes to 15 MB."
+            data-so="تەنیا دەکرێت یەک دۆکیومێنت هاوپێچ بکرێت. ڕەشنووسەکان دەکرێت بە فایلی وۆرد یان پی دی ئێف بنێردرێن. تکایە قەبارەی فایلەکەت با لە ١٥مێگابایت زیاتر نەبێ."
+                data-ku="Tenê yek pêvek dikare di demekê de bê şandin. Destnivîs dikarin di forma Word an jî PDF de bin. Ji kerema xwe mezinahiya pelan bi 15 MB sînordar bikin."></li>
+        </ul>
+    </div>
 <form id="contact-form" action="https://usebasin.com/f/817d60bd36c5" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Name</label>
@@ -1099,47 +1125,41 @@ document.getElementById('attachment').addEventListener('change', function(e) {
 </script>
         </div>
                     <div class="footer-slogan">
-<h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting, We Write</h3>
-                <div class="logo-container-footer">
+<h3 style="color: #232323; font-size: 2.8rem;">Against Forgetting</h3>
+        </div>
+        <p class="copyright">We would like to acknowledge that Columbus is the ancestral and contemporary territory of the Shawnee (Shawandasse Tula), Wyandot, Delaware, Ottawa, Chippewa, Potawatomi (Bodwéwadmi), Miami (Myaamia), Kickapoo (Kiikaapoi), Seneca, among many other Indigenous peoples forcibly displaced through the Indian Removal Act of 1830 and the 1795 Treaty of Greenville.</p>
+                             <div class="logo-container-footer">
                     <img src="Color-Print-Logo-with-full-text.png" alt="CLMP Logo" class="clmp-logo">
                 </div>
-                              </div>
-        <div class="newsletter-form">
-            <div class="newsletter-form main-newsletter">
-    <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
-</div>
-        </div>
-        <p class="copyright">© 2025 Henar Press. All rights reserved.</p>
     </main>
   <footer>
     <div class="footer-content">
 <h2 style="font-size: 3.3rem;">New & Upcoming</h2>
         <div class="book-grid">
             <div class="book">
-                <img src="Gabor-Cover-Compressed.webp" alt="Book 1">
+                <img src="Gabor-Cover-Compressed.webp" alt="Gabor">
             </div>
             <div class="book">
-                <img src="bookplaceholder.webp" alt="Book 2">
+                <img src="Firat-Cover.webp" alt="I'm Going to Kill Somebody">
             </div>
             <div class="book">
-                <img src="bookplaceholder.webp" alt="Book 3">
+                <img src="bookplaceholder.jpg" alt="Book 3">
             </div>
             <div class="book">
-                <img src="bookplaceholder.webp" alt="Book 4">
+                <img src="bookplaceholder.jpg" alt="Book 4">
             </div>
         </div>
         <div class="footer-slogan">
-            <h3>Against Forgetting, We Write</h3>
+            <h3>Against Forgetting</h3>
         </div>
         <div class="newsletter-form">
             <script async src="https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89.js" data-form="07614bcc-602e-11ef-9042-f7237224cd89"></script>
         </div>
-        <p class="copyright">© 2025 Henar Press. All rights reserved.</p>
+        <p class="copyright"><p>©2025 Henar Press. All rights reserved.</p>
     </div>
 </footer>
 <script>
 function onTurnstileSuccess(token) {
-    // Hide the Turnstile widget and show the submit button
     document.querySelector('.cf-turnstile').style.display = 'none';
     document.getElementById('submit-btn').style.display = 'inline-block';
 }
@@ -1329,6 +1349,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageLinks = document.querySelectorAll('.language-link');
     const translatableElements = document.querySelectorAll('[data-en]');
     
+    // Use in-memory storage instead of localStorage
+    let currentLanguage = 'en';
+    
     function switchLanguage(lang) {
         translatableElements.forEach(element => {
             const translation = element.getAttribute(`data-${lang}`);
@@ -1345,13 +1368,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Store language preference
-        localStorage.setItem('preferred-language', lang);
+        // Store language preference in memory
+        currentLanguage = lang;
     }
     
-    // Load saved language preference
-    const savedLang = localStorage.getItem('preferred-language') || 'en';
-    switchLanguage(savedLang);
+    // Set default language
+    switchLanguage(currentLanguage);
     
     // Add event listeners
     languageLinks.forEach(link => {
@@ -1364,4 +1386,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 </body>
-</html>v
+</html>
