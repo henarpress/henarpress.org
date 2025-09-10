@@ -72,20 +72,13 @@
     opacity: 1;
 }
 
-.language-links a::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent-color);
+.language-links a {
     transition: var(--transition);
 }
 
-.language-links a:hover::before,
-.language-links a.active::before {
-    width: 100%;
+.language-links a:hover,
+.language-links a.active {
+    color: var(--accent-color);
 }
 .lang-hidden {
     display: none !important;
@@ -428,7 +421,7 @@ width: 200px;
     width: 100%;
     aspect-ratio: 2/3;
     object-fit: cover;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.3s ease;
     cursor: pointer;
 }
 
