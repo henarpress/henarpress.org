@@ -25,6 +25,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    <style>
+           :root {
+        --primary-color: #232323;
+        --secondary-color: #F7F5ED;
+        --accent-color: #C0392B;
+        --text-color: #232323;
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+    }
 .language-links {
     display: flex;
     flex-direction: row;
@@ -126,24 +144,10 @@
         }
     </style>
 <style>
-    :root {
-        --primary-color: #232323;
-        --secondary-color: #F7F5ED;
-        --accent-color: #C0392B;
-        --text-color: #232323;
-        --transition: all 0.3s ease;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html {
-        scroll-behavior: smooth;
-        font-size: 16px;
-    }
+    
+    .book img:hover {
+    opacity: 0.7;
+}
     
 .loading-screen {
     position: fixed;
@@ -288,20 +292,9 @@ nav {
         position: relative;
     }
 
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background-color: var(--accent-color);
-        transition: var(--transition);
-    }
-
-    .nav-links a:hover::after {
-        width: 100%;
-    }
+.nav-links a:hover {
+    opacity: 0.7;
+}
 
 .social-links {
     display: flex;
@@ -436,6 +429,7 @@ width: 200px;
     aspect-ratio: 2/3;
     object-fit: cover;
     transition: transform 0.2s ease;
+    cursor: pointer;
 }
 
 .book-grid2 {
@@ -461,6 +455,7 @@ width: 200px;
     max-height: none;
     object-fit: contain;
     transition: transform 0.2s ease;
+    cursor: pointer;
 }
 
     .footer-slogan h3 {
@@ -975,7 +970,7 @@ width: 200px;
 <p class="bio-text" 
     data-so="ژانێت ئۆکور مامۆستایەکی زمان‌زانە، وەرگێڕ و توێژەرە کە لە ساڵی ٢٠١٠ەوە بەڕێوەبردنی پڕۆگرامی خوێندنی تورکی لە زانکۆی تێکساس لە ئاستن دەکات، کە لەوێدا وانەی زمان، ئەدەبیات، سینەما و لێکۆڵینەوەی کلتوری فێردەکات. توێژینەوەکانی دینامیاتی تاوانبار-قوربانی لە توندوتیژی سیاسیدا دەپشکنێت، کە تیشک دەخاتە سەر ناسنامە، تراوما و کۆچبەرایەتی لە ئەدەبیاتی کۆچبەری کورد و عێراقی-کوردیدا. ئەو کتێبی فێرکاری تورکی کراوەی Her Şey Bir Merhaba ile Başlar! (هەموو شتێک بە سڵاوێک دەست پێدەکات!) ی لە ساڵی ٢٠٢١دا نووسیوە و ئێستا لەسەر پەرەپێدانی کتێبی Sinema Tutkusu: Turkish Language and Culture through Film (عەشقی سینەما: زمان و کلتوری تورکی لە ڕێگەی فیلمەوە) کاردەکات. دکتۆر ئۆکور پلەی دکتۆرای لە زمان و ئەدەبیاتی ئەڵمانی لە زانکۆی ئەنقەرە لە ساڵی ٢٠٠٧دا وەرگرتووە و ئێستا لە پەیمانگای زەهرا لە شیکاگۆ کورمانجی فێردەبێت."
 
-      data-ku="Jeannette Okur is a multilingual educator, translator, and researcher who has coordinated the Turkish Studies program at the University of Texas at Austin since 2010, where she teaches courses on language, literature, film, and cultural studies. Her research examines perpetrator-victim dynamics in political violence, focusing on identity, trauma, and displacement in Turkish- and Iraqi-Kurdish exile literature. She authored the open Turkish textbook Her Şey Bir Merhaba ile Başlar! (2021) and is developing Sinema Tutkusu: Turkish Language and Culture through Film. Dr. Okur earned her Ph.D. in German Language and Literature from Ankara University in 2007 and is currently studying Kurmanji at Zahra Institute in Chicago."</p>
+      data-ku="Jeannette Okur is a multilingual educator, translator, and researcher who has coordinated the Turkish Studies program at the University of Texas at Austin since 2010, where she teaches courses on language, literature, film, and cultural studies. Her research examines perpetrator-victim dynamics in political violence, focusing on identity, trauma, and displacement in Turkish- and Iraqi-Kurdish exile literature. She authored the open Turkish textbook Her Şey Bir Merhaba ile Başlar! (2021) and is developing Sinema Tutkusu: Turkish Language and Culture through Film. Dr. Okur earned her Ph.D. in German Language and Literature from Ankara University in 2007 and is currently studying Kurmanji at Zahra Institute in Chicago."
 
     data-en="Jeannette Okur is a multilingual educator, translator, and researcher who has coordinated the Turkish Studies program at the University of Texas at Austin since 2010, where she teaches courses on language, literature, film, and cultural studies. Her research examines perpetrator-victim dynamics in political violence, focusing on identity, trauma, and displacement in Turkish- and Iraqi-Kurdish exile literature. She authored the open Turkish textbook Her Şey Bir Merhaba ile Başlar! (2021) and is developing Sinema Tutkusu: Turkish Language and Culture through Film. Dr. Okur earned her Ph.D. in German Language and Literature from Ankara University in 2007 and is currently studying Kurmanji at Zahra Institute in Chicago."</p>
            </div>
@@ -1023,7 +1018,7 @@ width: 200px;
             <p class="title" data-en="Literary Database Archivist" data-so="ستاژ" data-ku="Literary Database Archivist">Literary Database Archivist</p>
 <p class="bio-text" 
     data-so="حەنا فۆکس خوێندکارێکی دکتۆرایە لە زانکۆی لیدزی بەریتانیا، کە لەلایەن ئەنجومەنی توێژینەوەی هونەر و مرۆڤایەتییەکانەوە پشتگیری دارایی دەکرێت. توێژینەوەکەی سەرنج لەسەر نوێنایەتییە ئەدەبییەکانی کۆچی کتێب و سانسۆر لە ئەدەبیاتی جیهانی سەدەی بیست و یەکەمدا دەخاتەوە. ئەو بڕوانامەی ماستەری لە زانکۆی کوین مەری لەندەن هەیە، کە تێیدا توێژینەوەی لەسەر ئەدەبیاتی کوردی وەک ئەدەبیاتێکی کەمینە کردووە. بەر لەوەی بگەڕێتەوە بۆ ئەکادیمیا، لە ڕۆڵە جیاوازەکاندا لە کەرتی پەروەردە و خێرخوازیدا کاری کردووە و هێشتا وەک بەرگریکارێک بۆ پەنابەران لە کۆمەڵگەکەیدا خۆبەخشانە کار دەکات."
-    data-en="Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as minor literature. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community."
+    data-ku="Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as minor literature. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community."
     data-en="Hannah Fox is a PhD candidate at the University of Leeds, UK, funded by the Arts and Humanities Research Council. Her research focuses on literary representations of bibliomigrancy and censorship in twenty-first century world literature. She has a Masters degree from Queen Mary University in London, where she researched Kurdish literature as minor literature. Before returning to academia, she worked in various roles in the education and charity sectors and she continues to volunteer as an advocate for refugees in her community."</p>
 </div>
         <div class="team-member">
