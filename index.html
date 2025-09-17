@@ -1822,64 +1822,44 @@ document.getElementById('attachment').addEventListener('change', function(e) {
         <div class="footer-slogan">
             <h3 data-en="Against Forgetting" data-so="دژ بە لەبیرکردن" data-ku="Dijî Bîranînê">Against Forgetting</h3>
         </div>
- <div class="newsletter-form">
- 
- <div id="mlb2-30997172" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-30997172">     <div id="mlb2-30997172" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-30997172">
-      <div class="ml-form-align-center ">
-        <div class="ml-form-embedWrapper embedForm">
-          <div class="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
-            <div class="ml-form-embedContent" style="margin-bottom: 0px; ">
-            </div>
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe" data-code="" method="post" target="_blank">
-              <div class="ml-form-formContent horozintalForm">
-                <div class="ml-form-horizontalRow">
-                  <div class="ml-input-horizontal">
-           
-                      <div style="width: 100%;" class="horizontal-fields">
-                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                      
-                          <!-- input -->
-                      <input type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
-                      <!-- /input -->
+<div class="newsletter-form">
+    <div id="mlb2-30997172" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-30997172">
+        <div class="ml-form-align-center">
+            <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe" data-code="" method="post" target="_blank">
+                        <div class="ml-form-formContent horozintalForm">
+                            <div class="ml-form-horizontalRow">
+                                <div class="ml-input-horizontal">
+                                    <div style="width: 100%;" class="horizontal-fields">
+                                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                            <input type="email" class="form-control" name="fields[email]" placeholder="Email" autocomplete="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-button-horizontal primary">
+                                    <button type="submit" class="primary">Subscribe</button>
+                                    <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                        <div class="ml-form-embedSubmitLoad"></div>
+                                        <span class="sr-only">Loading...</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                  </div>
-                  <div class="ml-button-horizontal primary ">
-                    
-                      <button type="submit" class="primary">Subscribe</button>
-                    
-                    <button disabled="disabled" style="display: none;" type="button" class="loading">
-                      <div class="ml-form-embedSubmitLoad"></div>
-                      <span class="sr-only">Loading...</span>
-                    </button>
-                  </div>
-                </div>           
-              <input type="hidden" name="ml-submit" value="1">
-              <div class="ml-mobileButton-horizontal">
-                <button type="submit" class="primary">Subscribe</button>
-                <button disabled="disabled" style="display: none;" type="button" class="loading">
-                  <div class="ml-form-embedSubmitLoad"></div>
-                  <span class="sr-only">Loading...</span>
-                </button>
-              </div>
-              <input type="hidden" name="anticsrf" value="true">
-            </form>
-          </div>
-
-          <div class="ml-form-successBody row-success" style="display: none">
-
-            <div class="ml-form-successContent">
-              
-                <h4>Thank you!</h4>
-                <p>You have successfully joined our subscriber list.</p>
-              
+                        <input type="hidden" name="ml-submit" value="1">
+                        <input type="hidden" name="anticsrf" value="true">
+                    </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                    <div class="ml-form-successContent">
+                        <h4>Thank you!</h4>
+                        <p>You have successfully joined our subscriber list.</p>
+                    </div>
+                </div>
             </div>
-
-          </div>
         </div>
-      </div>
     </div>
-    </div>
+</div>
         <p class="copyright"><p>©2025 Henar Press. All rights reserved.</p>
     </div>
 </footer>
@@ -1910,36 +1890,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-
-    const form = document.getElementById('newsletter-form');
-    
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        
-        const email = e.target.querySelector('input[type="email"]').value;
-        
-        const hiddenForm = document.createElement('form');
-        hiddenForm.style.display = 'none';
-        hiddenForm.method = 'POST';
-        hiddenForm.action = 'https://eocampaign1.com/form/07614bcc-602e-11ef-9042-f7237224cd89';
-        
-        const emailInput = document.createElement('input');
-        emailInput.type = 'email';
-        emailInput.name = 'email';
-        emailInput.value = email;
-        
-        hiddenForm.appendChild(emailInput);
-        
-        document.body.appendChild(hiddenForm);
-        
-        hiddenForm.submit();
-        
-        e.target.reset();
-    }
-
-    if (form) {
-        form.addEventListener('submit', handleFormSubmit);
-    }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -2113,6 +2063,10 @@ document.addEventListener('DOMContentLoaded', function() {
  <style>
 #mlb2-30997172.ml-form-embedContainer .ml-form-embedWrapper {
     background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
 }
 </style>
 </body>
