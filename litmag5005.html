@@ -49,60 +49,61 @@
             transform-origin: bottom left;
         }
 
-        /* --- Wavy Text Animation --- */
-        .wavy-text-container {
-            position: fixed;
-            top: 45%;
-            left: -10%;
-            width: 120%;
-            z-index: -1;
-            transform: rotate(-15deg);
-            pointer-events: none;
-            opacity: 0.85;
-        }
-        .marquee {
-            display: flex;
-            width: fit-content;
-            animation: marquee-scroll 40s linear infinite;
-        }
-        .marquee-content {
-            font-family: 'Lora', serif;
-            font-size: 5rem;
-            font-style: italic;
-            color: #383838;
-            white-space: nowrap;
-            padding: 0 2rem;
-            text-transform: capitalize;
-        }
-        .js-wavy-text span {
-            position: relative;
-            display: inline-block;
-            animation: wave-anim 2s ease-in-out infinite;
-            animation-delay: calc(0.08s * var(--i));
-        }
-        @keyframes marquee-scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-        @keyframes wave-anim {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-35px);
-            }
-        }
+       /* --- Wavy Text Animation --- */
+.wavy-text-container {
+    position: fixed;
+    top: 45%;
+    left: -10%;
+    width: 120%;
+    z-index: -1;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    opacity: 0.85;
+}
+.marquee {
+    display: flex;
+    width: fit-content;
+    animation: marquee-scroll 40s linear infinite;
+}
+.marquee-group {
+    display: flex;
+    flex-shrink: 0; /* Prevents the content from shrinking */
+    white-space: nowrap;
+}
+.marquee span {
+    font-family: 'Lora', serif;
+    font-size: 5rem;
+    font-style: italic;
+    color: #383838;
+    padding: 0 2rem; /* Space between words */
+    text-transform: capitalize;
+    /* Wave animation is now applied per-word */
+    display: inline-block;
+    animation: wave-anim 2s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+@keyframes wave-anim {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-35px);
+    }
+}
         
-        /* --- Styles for the Overlay Menu --- */
         #menu-overlay {
             transform: translateY(-100%);
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             z-index: 40;
+            overflow-y: auto;
         }
         #menu-overlay.open {
             transform: translateY(0);
         }
-        /* Custom transition for menu button lines */
         .menu-line {
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
@@ -118,14 +119,10 @@
     </style>
 </head>
 <body class="antialiased">
-    <div class="wavy-text-container">
-        <div class="marquee">
-            <div class="marquee-content js-wavy-text">
-                shifta shifta shifta shifta &nbsp; shifta shifta &nbsp; shifta shifta &nbsp; shifta shifta &nbsp; shifta shifta &nbsp; shifta shifta &nbsp;shifta shifta &nbsp; shifta shifta &nbsp; &nbsp; shifta shifta &nbsp;
-            </div>
+<div class="wavy-text-container">
+    <div class="marquee">
         </div>
-    </div>
-
+</div>
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-[#FAF9F6]">
         <div class="container mx-auto px-6 md:px-8">
             <div class="flex justify-between items-center h-24">
@@ -152,7 +149,7 @@
     <div id="menu-overlay" class="fixed inset-0 bg-[#111111] text-white flex items-center justify-center">
         <nav class="text-center">
             <ul class="space-y-6">
-                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Home</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Masthead</a></li>
                 <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">About</a></li>
                 <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Issues</a></li>
                 <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">People</a></li>
@@ -242,27 +239,46 @@
         </div>
     </footer>
 
-    <script>
-        // --- Script for overlay menu toggle ---
-        const menuBtn = document.getElementById('menu-btn');
-        const menuOverlay = document.getElementById('menu-overlay');
+<script>
+    // --- Script for overlay menu toggle ---
+    const menuBtn = document.getElementById('menu-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
 
-        menuBtn.addEventListener('click', () => {
-            menuOverlay.classList.toggle('open');
-            menuBtn.classList.toggle('menu-open');
-        });
+    menuBtn.addEventListener('click', () => {
+        menuOverlay.classList.toggle('open');
+        menuBtn.classList.toggle('menu-open');
+    });
 
-        // --- Script for wavy text effect ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const wavyElements = document.querySelectorAll('.js-wavy-text');
-            wavyElements.forEach(element => {
-                const text = element.textContent;
-                element.innerHTML = text.split('').map((char, i) => 
-                    `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
-                ).join('');
-            });
-        });
-    </script>
+    // --- Simplified script for repeating wavy text ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const marquee = document.querySelector('.marquee');
+        if (marquee) {
+            const word = "shifta"; // Change the word here!
+            const repetitions = 15; // How many times to repeat the word
+
+            // This function creates a group of repeating words
+            const createGroup = () => {
+                const group = document.createElement('div');
+                group.className = 'marquee-group';
+                for (let i = 0; i < repetitions; i++) {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.textContent = word;
+                    wordSpan.style.setProperty('--i', i);
+                    group.appendChild(wordSpan);
+                }
+                return group;
+            };
+
+            // Create two groups for the seamless loop
+            const group1 = createGroup();
+            const group2 = createGroup();
+            group2.setAttribute('aria-hidden', 'true');
+
+            marquee.appendChild(group1);
+            marquee.appendChild(group2);
+        }
+    });
+</script>
 
 </body>
 </html>
