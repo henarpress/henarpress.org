@@ -14,6 +14,7 @@
             background-color: #FAF9F6; /* Set a warm off-white background */
             color: #1a1a1a;
             overflow-x: hidden; /* Prevent horizontal scrollbar from animation */
+            overflow-y: hidden; /* STOPS all vertical scroll on the page */
         }
         
         /* --- 1. CSS FOR LOADER --- */
@@ -125,6 +126,23 @@
         .menu-open .line-3 {
             transform: translateY(-8px) rotate(-45deg);
         }
+        
+        /* Custom scrollbar for horizontal scroll (optional but professional) */
+        .horizontal-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .horizontal-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .horizontal-scroll-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+        .horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -176,8 +194,8 @@
         </nav>
     </div>
 
-    <div class="container mx-auto px-6 md:px-8 py-36 pt-40">
-        <div class="flex">
+    <div class="container mx-auto px-6 md:px-8 h-screen pt-40 pb-24 flex flex-col">
+        <div class="flex flex-1 overflow-hidden">
             <aside class="w-24 flex-shrink-0 hidden md:block">
                 <div class="sticky top-24">
                     <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
@@ -186,62 +204,68 @@
                 </div>
             </aside>
 
-            <main class="w-full">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
-                    <article>
-                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+            <main class="w-full h-full">
+                <div class="flex flex-nowrap overflow-x-auto gap-12 md:gap-16 p-4 snap-x snap-mandatory horizontal-scroll-container h-full">
+                    
+                    <article class="flex-shrink-0 w-80 snap-start">
+                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
                             <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">The City That Dreams in Our Bones</a>
                         </h2>
                         <p class="text-sm text-gray-600">by Gloria Ogo</p>
                     </article>
-                    <article>
-                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+
+                    <article class="flex-shrink-0 w-80 snap-start">
+                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
                             <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">Point of Focus</a>
                         </h2>
                         <p class="text-sm text-gray-600">by Aliseen Anne</p>
                     </article>
-                    <article>
-                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+
+                    <article class="flex-shrink-0 w-80 snap-start">
+                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
                             <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Nonfiction</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">The Fourteenth Amendment</a>
                         </h2>
                         <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
                     </article>
-                    <article class="border border-gray-200 p-6 flex flex-col justify-center">
+
+                    <article class="border border-gray-200 p-5 flex flex-col justify-center flex-shrink-0 w-80 snap-start h-80">
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">On Craft and Creation</a>
                         </h2>
-                        <p class="text-sm text-gray-600 mb-4">with Author Jane Doe</p>
+                        <p class="text-sm text-gray-600 mb-3">with Author Jane Doe</p>
                         <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to..."</p>
                     </article>
-                    <article>
-                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+
+                    <article class="flex-shrink-0 w-80 snap-start">
+                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
                             <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">Betrayal of Spirit</a>
                         </h2>
                         <p class="text-sm text-gray-600">by John Smith</p>
                     </article>
-                    <article>
-                        <a href="#" class="block overflow-hidden mb-4 border border-gray-200 h-96">
+
+                    <article class="flex-shrink-0 w-80 snap-start">
+                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
                             <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
                         </a>
                         <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
-                        <h2 class="font-serif text-2xl mt-1 mb-1 leading-tight">
+                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                             <a href="#" class="hover:underline">Real Fruit</a>
                         </h2>
                         <p class="text-sm text-gray-600">by Emily White</p>
@@ -251,7 +275,7 @@
         </div>
     </div>
 
-    <footer class="border-t border-gray-200 bg-[#FAF9F6]">
+    <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-[#FAF9F6]">
         <div class="container mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500">
             <p>&copy; 2025 Daweshe! All Rights Reserved.</p>
         </div>
