@@ -11,26 +11,35 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FAF9F6; /* Set a warm off-white background */
+            background-color: #000;
             color: #1a1a1a;
-            overflow-x: hidden; /* Prevent horizontal scrollbar from animation */
-            overflow-y: hidden; /* STOPS all vertical scroll on the page */
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
         
-        /* --- 1. CSS FOR LOADER --- */
         #loader {
             position: fixed;
-            inset: 0; /* Covers the entire screen */
-            z-index: 9999; /* Stays on top of all other content */
-            background-color: #FAF9F6; /* Same color as your page background */
-            transition: opacity 0.75s ease-out; /* Smooth fade-out effect */
+            inset: 0;
+            z-index: 9999;
+            background-color: #f5f5f5;
+            transition: opacity 0.75s ease-out;
         }
 
         #loader.hidden {
             opacity: 0;
-            pointer-events: none; /* Allows clicks to go through after it's invisible */
+            pointer-events: none;
         }
-        /* --- End of Loader CSS --- */
+
+        .main-container {
+            border: 8px solid #000;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
 
         .font-serif {
             font-family: 'Lora', serif;
@@ -38,38 +47,19 @@
         .font-qahiri {
             font-family: 'Qahiri', sans-serif;
         }
+
         .sidebar {
             writing-mode: vertical-rl;
             text-orientation: mixed;
             transform: rotate(180deg);
         }
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-            color: #1a1a1a;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #1a1a1a;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
+
         .wavy-text-container {
-            position: fixed;
+            position: absolute;
             top: 45%;
             left: -10%;
             width: 120%;
-            z-index: -1;
+            z-index: 0;
             transform: rotate(-28deg);
             pointer-events: none;
             opacity: 0.85;
@@ -106,6 +96,7 @@
                 transform: translateY(-35px);
             }
         }
+
         #menu-overlay {
             transform: translateY(-100%);
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
@@ -126,41 +117,39 @@
         .menu-open .line-3 {
             transform: translateY(-8px) rotate(-45deg);
         }
-        
-        /* Custom scrollbar for horizontal scroll (optional but professional) */
-        .horizontal-scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .horizontal-scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .horizontal-scroll-container::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-        .horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #a1a1a1;
+
+        .horizontal-scroll-container {
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .horizontal-scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="antialiased">
 
 <div id="loader"></div>
 
-<div class="wavy-text-container">
-    <div class="marquee">
-        <div class="marquee-content js-wavy-text">
-            shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta
-        </div>
-        <div class="marquee-content js-wavy-text">
-            shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta
+<div class="main-container">
+    <div class="wavy-text-container">
+        <div class="marquee">
+            <div class="marquee-content js-wavy-text">
+                shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta
+            </div>
+            <div class="marquee-content js-wavy-text">
+                shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta shifta
+            </div>
         </div>
     </div>
-</div>
-    <header class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-[#FAF9F6]">
-        <div class="container mx-auto px-6 md:px-8">
+
+    <header class="z-50 border-b border-gray-300 bg-[#f5f5f5] relative">
+        <div class="px-6 md:px-8">
             <div class="flex justify-between items-center h-24">
                 <a href="#" class="text-4xl md:text-6xl font-qahiri font-medium tracking-wider uppercase text-black">
                     Daweshe!
@@ -194,125 +183,111 @@
         </nav>
     </div>
 
-    <div class="container mx-auto px-6 md:px-8 h-screen pt-40 pb-24 flex flex-col">
-        <div class="flex flex-1 overflow-hidden">
-            <aside class="w-24 flex-shrink-0 hidden md:block">
-                <div class="sticky top-24">
-                    <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
-                        <a href="#" class="hover:text-black transition-colors">Henar Press</a>
-                    </div>
+    <div class="flex flex-1 overflow-hidden px-6 md:px-8 py-12 relative">
+        <aside class="w-24 flex-shrink-0 hidden md:block relative z-10">
+            <div class="sticky top-24">
+                <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
+                    <a href="#" class="hover:text-black transition-colors">Henar Press</a>
                 </div>
-            </aside>
+            </div>
+        </aside>
 
-            <main class="w-full h-full">
-                <div class="flex flex-nowrap overflow-x-auto gap-12 md:gap-16 p-4 snap-x snap-mandatory horizontal-scroll-container h-full">
-                    
-                    <article class="flex-shrink-0 w-80 snap-start">
-                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
-                            <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
-                        </a>
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">The City That Dreams in Our Bones</a>
-                        </h2>
-                        <p class="text-sm text-gray-600">by Gloria Ogo</p>
-                    </article>
+        <main class="w-full h-full">
+            <div class="flex flex-nowrap overflow-x-auto gap-12 md:gap-16 p-4 snap-x snap-mandatory horizontal-scroll-container h-full">
+                
+                <article class="flex-shrink-0 w-80 snap-start">
+                    <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
+                        <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </a>
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">The City That Dreams in Our Bones</a>
+                    </h2>
+                    <p class="text-sm text-gray-600">by Gloria Ogo</p>
+                </article>
 
-                    <article class="flex-shrink-0 w-80 snap-start">
-                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
-                            <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
-                        </a>
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">Point of Focus</a>
-                        </h2>
-                        <p class="text-sm text-gray-600">by Aliseen Anne</p>
-                    </article>
+                <article class="flex-shrink-0 w-80 snap-start">
+                    <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
+                        <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </a>
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">Point of Focus</a>
+                    </h2>
+                    <p class="text-sm text-gray-600">by Aliseen Anne</p>
+                </article>
 
-                    <article class="flex-shrink-0 w-80 snap-start">
-                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
-                            <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
-                        </a>
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Nonfiction</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">The Fourteenth Amendment</a>
-                        </h2>
-                        <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
-                    </article>
+                <article class="flex-shrink-0 w-80 snap-start">
+                    <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
+                        <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </a>
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Nonfiction</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">The Fourteenth Amendment</a>
+                    </h2>
+                    <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
+                </article>
 
-                    <article class="border border-gray-200 p-5 flex flex-col justify-center flex-shrink-0 w-80 snap-start h-80">
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">On Craft and Creation</a>
-                        </h2>
-                        <p class="text-sm text-gray-600 mb-3">with Author Jane Doe</p>
-                        <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to..."</p>
-                    </article>
+                <article class="border border-gray-200 p-5 flex flex-col justify-center flex-shrink-0 w-80 snap-start h-80">
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">On Craft and Creation</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 mb-3">with Author Jane Doe</p>
+                    <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to..."</p>
+                </article>
 
-                    <article class="flex-shrink-0 w-80 snap-start">
-                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
-                            <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
-                        </a>
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">Betrayal of Spirit</a>
-                        </h2>
-                        <p class="text-sm text-gray-600">by John Smith</p>
-                    </article>
+                <article class="flex-shrink-0 w-80 snap-start">
+                    <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
+                        <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </a>
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Poetry</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">Betrayal of Spirit</a>
+                    </h2>
+                    <p class="text-sm text-gray-600">by John Smith</p>
+                </article>
 
-                    <article class="flex-shrink-0 w-80 snap-start">
-                        <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
-                            <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
-                        </a>
-                        <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
-                        <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
-                            <a href="#" class="hover:underline">Real Fruit</a>
-                        </h2>
-                        <p class="text-sm text-gray-600">by Emily White</p>
-                    </article>
-                </div>
-            </main>
-        </div>
+                <article class="flex-shrink-0 w-80 snap-start">
+                    <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-64">
+                        <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 ease-in-out">
+                    </a>
+                    <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Fiction</h3>
+                    <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
+                        <a href="#" class="hover:underline">Real Fruit</a>
+                    </h2>
+                    <p class="text-sm text-gray-600">by Emily White</p>
+                </article>
+            </div>
+        </main>
     </div>
+</div>
 
-    <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-[#FAF9F6]">
-        <div class="container mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500">
-            <p>&copy; 2025 Daweshe! All Rights Reserved.</p>
-        </div>
-    </footer>
+<script>
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 2000);
+    });
 
-    <script>
-        // --- 3. JAVASCRIPT FOR LOADER ---
-        // Waits for the page to finish loading, then fades out the loader
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            // Wait for 2 seconds (2000 milliseconds) before hiding
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 2000); // <-- You can change this duration
+    const menuBtn = document.getElementById('menu-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    menuBtn.addEventListener('click', () => {
+        menuOverlay.classList.toggle('open');
+        menuBtn.classList.toggle('menu-open');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const wavyElements = document.querySelectorAll('.js-wavy-text');
+        wavyElements.forEach(element => {
+            const text = element.textContent;
+            element.innerHTML = text.split('').map((char, i) => 
+                `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
+            ).join('');
         });
-        // --- End of Loader JavaScript ---
-
-
-        // --- Script for overlay menu toggle ---
-        const menuBtn = document.getElementById('menu-btn');
-        const menuOverlay = document.getElementById('menu-overlay');
-
-        menuBtn.addEventListener('click', () => {
-            menuOverlay.classList.toggle('open');
-            menuBtn.classList.toggle('menu-open');
-        });
-
-        // --- Script for wavy text effect ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const wavyElements = document.querySelectorAll('.js-wavy-text');
-            wavyElements.forEach(element => {
-                const text = element.textContent;
-                element.innerHTML = text.split('').map((char, i) => 
-                    `<span style="--i:${i}">${char === ' ' ? '&nbsp;' : char}</span>`
-                ).join('');
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
