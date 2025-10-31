@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <title>DAWESHÊ</title>
+    <title>Daweshê</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +136,27 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        #search-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #search-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .search-result-item {
+            transition: background-color 0.2s ease;
+        }
+        .search-result-item:hover {
+            background-color: #f9fafb;
+        }
+
+        #search-input:focus {
+            outline: none;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -168,11 +189,11 @@
                 </div>
                 
                 <div class="flex items-center space-x-6">
-                    <a href="#" aria-label="Search" class="text-black">
+                    <button id="search-btn" aria-label="Search" class="text-black hover:opacity-70 transition-opacity">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
-                    </a>
+                    </button>
                     <button id="menu-btn" class="z-50 space-y-2" aria-label="Open Menu">
                         <span class="block w-8 h-0.5 bg-black menu-line line-1"></span>
                         <span class="block w-8 h-0.5 bg-black menu-line line-2"></span>
@@ -182,6 +203,39 @@
             </div>
         </div>
     </header>
+
+    <div id="search-overlay" class="fixed inset-0 bg-white z-50">
+        <div class="h-full flex flex-col">
+            <div class="border-b border-gray-300 px-6 md:px-8 py-6">
+                <div class="flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Search"
+                        class="flex-1 text-2xl font-serif bg-transparent border-none"
+                        autocomplete="off"
+                    >
+                    <button id="close-search" class="text-gray-600 hover:text-black transition-colors" aria-label="Close Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto px-6 md:px-8 py-8">
+                <div id="search-results"></div>
+                <div id="no-results" class="hidden text-center py-16">
+                    <p class="text-gray-500 text-lg font-serif">No results found</p>
+                </div>
+                <div id="initial-state" class="text-center py-16">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="menu-overlay" class="fixed inset-0 bg-[#111111] text-white flex items-center justify-center">
         <nav class="text-center">
@@ -199,7 +253,7 @@
         <aside class="w-24 flex-shrink-0 hidden md:block relative z-10">
             <div class="sticky top-24">
                 <div class="sidebar text-sm uppercase tracking-widest text-gray-400">
-                    <a href="#" class="hover:text-black transition-colors">Henar Press</a>
+                    <a href="https://henarpress.org" class="hover:text-black transition-colors">Henar Press</a>
                 </div>
             </div>
         </aside>
@@ -207,7 +261,7 @@
         <main class="w-full h-full">
             <div class="flex flex-nowrap overflow-x-auto gap-12 md:gap-16 p-4 snap-x snap-mandatory horizontal-scroll-container h-full">
                 
-                <article class="flex-shrink-0 w-80 snap-start">
+                <article class="flex-shrink-0 w-80 snap-start" data-category="fiction" data-title="The City That Dreams in Our Bones" data-author="Gloria Ogo">
                     <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-80">
                         <img src="https://placehold.co/600x800/e2e8f0/334155?text=Cover+Art" alt="Cover art for The City That Dreams in Our Bones" class="w-full h-full object-cover ">
                     </a>
@@ -218,7 +272,7 @@
                     <p class="text-sm text-gray-600">by Gloria Ogo</p>
                 </article>
 
-                <article class="flex-shrink-0 w-80 snap-start">
+                <article class="flex-shrink-0 w-80 snap-start" data-category="poetry" data-title="Point of Focus" data-author="Aliseen Anne">
                     <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-80">
                         <img src="https://placehold.co/600x800/d1d5db/1f2937?text=Cover+Art" alt="Cover art for Point of Focus" class="w-full h-full object-cover ">
                     </a>
@@ -229,7 +283,7 @@
                     <p class="text-sm text-gray-600">by Aliseen Anne</p>
                 </article>
 
-                <article class="flex-shrink-0 w-80 snap-start">
+                <article class="flex-shrink-0 w-80 snap-start" data-category="nonfiction" data-title="The Fourteenth Amendment" data-author="Mervyn Seivwright">
                     <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-80">
                         <img src="https://placehold.co/600x800/9ca3af/111827?text=Cover+Art" alt="Cover art for Fourteenth Amendment" class="w-full h-full object-cover ">
                     </a>
@@ -240,7 +294,7 @@
                     <p class="text-sm text-gray-600">by Mervyn Seivwright</p>
                 </article>
 
-                <article class="border border-gray-200 p-5 flex flex-col justify-center flex-shrink-0 w-80 snap-start h-80">
+                <article class="border border-gray-200 p-5 flex flex-col justify-center flex-shrink-0 w-80 snap-start h-80" data-category="interview" data-title="On Craft and Creation" data-author="Jane Doe">
                     <h3 class="font-serif text-xs text-gray-500 uppercase tracking-widest">Interview</h3>
                     <h2 class="font-serif text-xl mt-1 mb-1 leading-tight">
                         <a href="#" class="hover:underline">On Craft and Creation</a>
@@ -249,7 +303,7 @@
                     <p class="text-sm text-gray-700 leading-relaxed">"The process is less about finding the right words and more about listening to..."</p>
                 </article>
 
-                <article class="flex-shrink-0 w-80 snap-start">
+                <article class="flex-shrink-0 w-80 snap-start" data-category="poetry" data-title="Betrayal of Spirit" data-author="John Smith">
                     <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-80">
                         <img src="https://placehold.co/600x800/f3f4f6/4b5563?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover ">
                     </a>
@@ -260,7 +314,7 @@
                     <p class="text-sm text-gray-600">by John Smith</p>
                 </article>
 
-                <article class="flex-shrink-0 w-80 snap-start">
+                <article class="flex-shrink-0 w-80 snap-start" data-category="fiction" data-title="Real Fruit" data-author="Emily White">
                     <a href="#" class="block overflow-hidden mb-3 border border-gray-200 h-80">
                         <img src="https://placehold.co/600x800/e5e7eb/374151?text=Cover+Art" alt="Cover art for New Release" class="w-full h-full object-cover ">
                     </a>
@@ -276,6 +330,15 @@
 </div>
 
 <script>
+    const articles = [
+        { category: 'Fiction', title: 'The City That Dreams in Our Bones', author: 'Gloria Ogo' },
+        { category: 'Poetry', title: 'Point of Focus', author: 'Aliseen Anne' },
+        { category: 'Nonfiction', title: 'The Fourteenth Amendment', author: 'Mervyn Seivwright' },
+        { category: 'Interview', title: 'On Craft and Creation', author: 'Jane Doe' },
+        { category: 'Poetry', title: 'Betrayal of Spirit', author: 'John Smith' },
+        { category: 'Fiction', title: 'Real Fruit', author: 'Emily White' }
+    ];
+
     window.addEventListener('load', () => {
         const loader = document.getElementById('loader');
         setTimeout(() => {
@@ -285,10 +348,80 @@
 
     const menuBtn = document.getElementById('menu-btn');
     const menuOverlay = document.getElementById('menu-overlay');
+    const searchBtn = document.getElementById('search-btn');
+    const searchOverlay = document.getElementById('search-overlay');
+    const closeSearchBtn = document.getElementById('close-search');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const noResults = document.getElementById('no-results');
+    const initialState = document.getElementById('initial-state');
 
     menuBtn.addEventListener('click', () => {
         menuOverlay.classList.toggle('open');
         menuBtn.classList.toggle('menu-open');
+    });
+
+    searchBtn.addEventListener('click', () => {
+        searchOverlay.classList.add('open');
+        setTimeout(() => searchInput.focus(), 100);
+    });
+
+    closeSearchBtn.addEventListener('click', () => {
+        searchOverlay.classList.remove('open');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        noResults.classList.add('hidden');
+        initialState.classList.remove('hidden');
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query === '') {
+            searchResults.innerHTML = '';
+            noResults.classList.add('hidden');
+            initialState.classList.remove('hidden');
+            return;
+        }
+
+        initialState.classList.add('hidden');
+
+        const filtered = articles.filter(article => {
+            return article.title.toLowerCase().includes(query) ||
+                   article.author.toLowerCase().includes(query) ||
+                   article.category.toLowerCase().includes(query);
+        });
+
+        if (filtered.length === 0) {
+            searchResults.innerHTML = '';
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+            searchResults.innerHTML = filtered.map(article => `
+                <div class="search-result-item border-b border-gray-200 py-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <p class="font-serif text-xs text-gray-500 uppercase tracking-widest mb-2">${article.category}</p>
+                            <h3 class="font-serif text-2xl mb-2 hover:underline cursor-pointer">${article.title}</h3>
+                            <p class="text-sm text-gray-600">by ${article.author}</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+            `).join('');
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.classList.contains('open')) {
+            closeSearchBtn.click();
+        }
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+            e.preventDefault();
+            searchBtn.click();
+        }
     });
 
     document.addEventListener('DOMContentLoaded', () => {
