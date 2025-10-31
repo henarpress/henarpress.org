@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>People - Daweshê</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Qahiri:wght@400&family=Oswald:wght@500;600;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-container {
+            border: 8px solid #000;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        .font-oswald {
+            font-family: 'Oswald', sans-serif;
+        }
+        .font-amiri {
+            font-family: 'Amiri', serif;
+        }
+
+        #menu-overlay {
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 40;
+        }
+        #menu-overlay.open {
+            transform: translateY(0);
+        }
+        .menu-line {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-open .line-1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-open .line-2 {
+            opacity: 0;
+        }
+        .menu-open .line-3 {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d1d5db 20%, #d1d5db 80%, transparent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="main-container">
+    <header class="z-50 border-b border-gray-300 bg-[#f5f5f5]">
+        <div class="px-6 md:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-3xl md:text-5xl font-oswald font-semibold tracking-wide uppercase text-black">
+                        DAWESHÊ
+                    </span>
+                    <img src="sun.png" alt="Kurdish Sun" class="h-8 md:h-10 w-auto">
+                    <span class="text-3xl md:text-5xl font-amiri font-bold text-black" style="letter-spacing: 0.02em;" dir="rtl">
+                        داوەشێی
+                    </span>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-sm uppercase tracking-widest text-gray-600 hover:text-black transition-colors">
+                        Home
+                    </a>
+                    <button id="menu-btn" class="z-50 space-y-2" aria-label="Open Menu">
+                        <span class="block w-8 h-0.5 bg-black menu-line line-1"></span>
+                        <span class="block w-8 h-0.5 bg-black menu-line line-2"></span>
+                        <span class="block w-8 h-0.5 bg-black menu-line line-3"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="menu-overlay" class="fixed inset-0 bg-[#111111] text-white flex items-center justify-center">
+        <nav class="text-center">
+            <ul class="space-y-6">
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Masthead</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">About</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Issues</a></li>
+                <li><a href="people.html" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">People</a></li>
+                <li><a href="#" class="text-4xl md:text-6xl font-bold uppercase tracking-wider hover:opacity-70 transition-opacity duration-300">Submissions</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="flex-1 px-6 md:px-16 py-16">
+        <div class="max-w-5xl mx-auto">
+            <section class="mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-gray-500 mb-8 font-medium">Editorial Team</h2>
+                
+                <div class="space-y-12">
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Amara Khalil</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Editor-in-Chief</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Amara Khalil is a Kurdish-Canadian writer and editor whose work explores diaspora, memory, and linguistic identity. Her essays have appeared in Granta, The Paris Review, and World Literature Today. She holds an MFA from the University of Iowa Writers' Workshop and has received fellowships from the MacDowell Colony and Yaddo.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Diyar Rahman</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Poetry Editor</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Diyar Rahman is a poet and translator based in Sulaymaniyah. His poetry collections include "Mountains Speak in Whispers" and "The Architecture of Exile." He has translated works by Sherko Bekas, Abdulla Goran, and contemporary Kurdish poets into English. Rahman teaches comparative literature at the University of Sulaimani.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Sara Öztürk</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Fiction Editor</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Sara Öztürk is a novelist and short story writer whose debut novel "Borderland Elegies" was longlisted for the National Book Award. Her fiction examines the intersection of Kurdish identity, gender, and political resistance. She is an assistant professor of creative writing at Columbia University and a founding member of the Kurdish Literary Initiative.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Rebar Aziz</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Nonfiction Editor</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Rebar Aziz is a journalist and essayist whose work focuses on Kurdish history, politics, and cultural preservation. He has reported from Iraq, Syria, and Turkey for The Guardian, Al Jazeera, and The New York Times. His essay collection "Stateless Narratives" won the PEN/Diamonstein-Spielvogel Award for the Art of the Essay.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-sm uppercase tracking-widest text-gray-500 mb-8 font-medium">Contributing Editors</h2>
+                
+                <div class="space-y-12">
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Leyla Hassan</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Translation Editor</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Leyla Hassan is a literary translator working between Kurdish, Arabic, Turkish, and English. She has translated over thirty books of contemporary Kurdish poetry and fiction. Her translation of Bachtyar Ali's "The Last Pomegranate Tree" received the National Translation Award. She teaches translation studies at SOAS, University of London.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Kawa Mahmoud</h3>
+                        <p class="text-sm uppercase tracking-wider text-gray-500 mb-4">Reviews Editor</p>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Kawa Mahmoud is a literary critic and scholar specializing in Middle Eastern literature. His book "Kurdish Modernism: Literature and Revolution" was published by Yale University Press. His criticism appears regularly in The Times Literary Supplement, Los Angeles Review of Books, and Asymptote. He is based in Erbil and Paris.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-sm uppercase tracking-widest text-gray-500 mb-8 font-medium">Advisory Board</h2>
+                
+                <div class="space-y-12">
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Choman Hardi</h3>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Choman Hardi is a Kurdish poet, academic, and human rights advocate. She is the author of four poetry collections including "Considering the Women" and "Handful of Salt." She holds a PhD in philosophy and has taught at universities across Europe and Kurdistan. Her work addresses themes of war, displacement, and women's experiences in Kurdish society.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Mehmed Uzun</h3>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Mehmed Uzun is widely regarded as one of the most important Kurdish novelists of the twentieth century. His novels, including "Siya Evînê" and "Bîranînen li ser Kevirî," helped establish modern Kurdish prose fiction. His work has been translated into over twenty languages. He received the Swedish PEN Tucholsky Prize for his contributions to Kurdish literature.
+                        </p>
+                    </div>
+
+                    <div class="divider-line"></div>
+
+                    <div class="person-card">
+                        <h3 class="font-serif text-3xl mb-3 text-black">Nazand Begikhani</h3>
+                        <p class="font-serif text-base text-gray-700 leading-relaxed">
+                            Nazand Begikhani is a poet, novelist, and women's rights activist. Her poetry collections have been published in Kurdish, English, and Arabic. She is a leading voice on gender violence and honor killings in Kurdish communities. She holds a PhD from the University of Bristol and serves as a consultant to international human rights organizations.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-300 px-6 md:px-8 py-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-600">© 2024 Daweshê. Published by Henar Press.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-sm text-gray-600 hover:text-black transition-colors">Contact</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-black transition-colors">Subscribe</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-black transition-colors">Archive</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    menuBtn.addEventListener('click', () => {
+        menuOverlay.classList.toggle('open');
+        menuBtn.classList.toggle('menu-open');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
+            menuOverlay.classList.remove('open');
+            menuBtn.classList.remove('menu-open');
+        }
+    });
+</script>
+</body>
+</html>
