@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Staatliches&display=swap" rel="stylesheet">
-
+<html lang="en">
     <style>
    
         :root {
@@ -62,8 +62,6 @@
         h2 {
             font-size: clamp(1.8rem, 3.5vw, 3rem);
             line-height: 1;
-            padding-bottom: 0.5rem;
-            border-bottom: var(--border);
             margin-bottom: 2rem;
         }
 
@@ -202,7 +200,7 @@
            SECTIONS
         ════════════════════════════════════════════════════════ */
         section {
-            padding: 4rem 3.5rem;
+            padding: 2rem 1.5rem;
             border-bottom: var(--border);
         }
 
@@ -259,69 +257,119 @@
       /* ═══════════════════════════════════════════════════════
        MASTHEAD (UPDATED FOR PHOTOS)
     ════════════════════════════════════════════════════════ */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 3rem;
+    max-width: 840px;
+}
+
+.member-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 280px;
+    overflow: hidden;
+    border: var(--border);
+    background: var(--ink);
+    margin-bottom: 1.25rem;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(110%);
+    transition: var(--ease);
+}
+
+.team-member:hover .member-photo img {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.member-info {
+    border-top: 4px solid var(--red);
+    padding-top: 1rem;
+}
+
+
+.member-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.1rem;
+}
+
+.member-info .role {
+    font-style: italic;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+}
+.member-bio {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.member-bio.is-clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.bio-toggle {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: var(--red);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 0.4rem;
+    display: block;
+}
+.bio-toggle:hover { opacity: 0.65; }
+
+.member-info p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+}
+
+@media (max-width: 600px) {
     .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 3rem;
-    }
-    .team-member { 
-        display: grid;
-        grid-template-columns: 160px 1fr;
-        gap: 1.5rem;
-        border-left: 4px solid var(--red); 
-        padding-left: 1.5rem; 
-        align-items: start;
-    }
-    @media (max-width: 600px) {
-        .team-member {
-            grid-template-columns: 1fr;
-        }
-    }
-    .member-figure {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 1.25rem;
     }
     .member-photo {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        overflow: hidden;
-        border: var(--border);
-        background: var(--ink);
+        max-height: 180px;
     }
-    .member-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(100%) contrast(110%);
-        transition: var(--ease);
+    .member-info {
+        padding-top: 0.6rem;
     }
-    .team-member:hover .member-photo img {
-        filter: grayscale(0%) contrast(100%);
+    .member-info .role {
+        margin-bottom: 0.4rem;
+        font-size: 0.75rem;
     }
-    .member-figure figcaption {
-        font-family: 'Staatliches', sans-serif;
-        font-size: 0.65rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: var(--ink);
-    }
-    .member-info h3 { 
-        font-size: 1.5rem; 
-        margin-top: -0.25rem; 
-    }
-    .member-info .role { 
-        font-style: italic; 
-        color: var(--red); 
-        display: block; 
-        margin-bottom: 0.65rem; 
-    }
-    .member-info p { 
-        font-size: 0.9rem; 
-        text-align: justify; 
-        margin-bottom: 0; 
-    }
+}
 
+@media (max-width: 380px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
         /* ═══════════════════════════════════════════════════════
            SUBMISSIONS
         ════════════════════════════════════════════════════════ */
@@ -466,14 +514,18 @@
             <div class="lang-toggle">
                 <a href="#" class="active">EN</a>&nbsp;/&nbsp;<a href="#">KU</a>
             </div>
-
-            <div class="nav-links">
-                <a href="#about"       class="nav-link">Manifesto</a>
-                <a href="#catalog"     class="nav-link">Catalog</a>
-                <a href="#masthead"    class="nav-link">Masthead</a>
-                <a href="#submissions" class="nav-link">Submissions</a>
-            </div>
-        </div>
+<div class="nav-links">
+    <a href="#about"       class="nav-link">ABOUT</a>
+    <a href="#catalog"     class="nav-link">BOOKS</a>
+    <a href="https://asterismbooks.com/publisher/henar-press"
+       target="_blank" rel="noopener"
+       class="nav-link">SHOP</a>
+    <a href="#masthead"    class="nav-link">PEOPLE</a>
+    <a href="#submissions" class="nav-link">SUBMISSIONS</a>
+    <a href="database"
+       target="_blank" rel="noopener"
+       class="nav-link">KURDISH LITERARY DATABASE</a>
+</div>        </div>
 
         <div class="sidebar-foot">
             <p>Based in Columbus, Ohio.</p>
@@ -531,37 +583,45 @@
             </section>
 
             <!-- MASTHEAD ────────────────────────────────── -->
-  <section id="masthead">
-                <h2 class="reveal">PEOPLE</h2>
-                <div class="team-grid">
-                    <div class="team-member reveal">
-                        <figure class="member-figure">
-                            <div class="member-photo">
-                                <img src="ArianSorani-gray.webp" alt="Aryan Omar Hassan">
-                            </div>
-                            <figcaption>Photo: Julie Reed</figcaption>
-                        </figure>
-                        <div class="member-info">
-                            <h3>Aryan Omar Hassan</h3>
-                            <span class="role">Publisher &amp; Founder</span>
-                            <p>Aryan is a fiction writer and literary designer based in Columbus. He has previously lived in Oslo, Stockholm, Sulaymaniyah, Abu Dhabi, and London, and holds degrees from The Ohio State University. He maintains the Kurdish literary database.</p>
-                        </div>
-                    </div>
-                    <div class="team-member reveal">
-                        <figure class="member-figure">
-                            <div class="member-photo">
-                                <img src="Hannah-gray.webp" alt="Hannah">
-                            </div>
-                            <figcaption>Photo: Contributed</figcaption>
-                        </figure>
-                        <div class="member-info">
-                            <h3>Hannah</h3>
-                            <span class="role">Database Co-Developer</span>
-                            <p>Hannah co-developed the foundational architecture for the Kurdish literary database, ensuring the preservation and accessibility of historical and contemporary texts across the diaspora.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<section id="masthead">
+    <h2 class="reveal">PEOPLE</h2>
+    <div class="team-grid">
+
+        <div class="team-member reveal">
+            <div class="member-photo">
+                <img src="ArianSorani-gray.webp" alt="Aryan Omar Hassan">
+            </div>
+            <div class="member-info">
+                <h3>Aryan Omar Hassan</h3>
+                <span class="role">Publisher &amp; Founder</span>
+                <p>Aryan is a fiction writer and literary designer based in Columbus. He has previously lived in Oslo, Stockholm, Sulaymaniyah, Abu Dhabi, and London, and holds degrees from The Ohio State University. He maintains the Kurdish literary database.</p>
+            </div>
+        </div>
+        
+        <div class="team-member reveal">
+   <div class="member-photo">
+                <img src="ArianSorani-gray.webp" alt="Aryan Omar Hassan">
+            </div>
+            <div class="member-info">
+                <h3>Murat Bayram</h3>
+                <span class="role">Author</span>
+<p class="member-bio">Murat Bayram founded Botan International in 2020, the first Kurdish media training office in Turkey, and Botan Times, now the most-read Kurdish news site. Throughout his 15 years in Kurdish media, he's worked as a reporter, editor, and chief editor, while freelancing for The New York Times, BBC, The Guardian, Middle East Eye, Deutsche Welle, and Al Jazeera. His first book, Belkî Îşev Binive (Maybe She'll Sleep Tonight), was published by Avesta in Istanbul in 2018. He's also co-authored a Kurdish-Turkish journalism glossary focused on gender issues, translated 11 books, edited 57, and wrote the screenplay for Mûzîka Li Pişt Sînoran (Music Beyond Borders). He's won several awards from the Journalists' Association of S.E. Turkey for his Kurdish news programs and interviews, and now sits on the jury for Kurdish journalism categories. He's completed fellowships at Oxford University and with The Guardian Foundation, and has taught literary journalism, rights-based journalism, and mobile journalism in both Kurdish and Turkish. Through Botan International, he's coordinated 18 projects backed by organizations like the UK Embassy and Reporters Without Borders. In 2023, RSF named Botan International one of its 12 permanent partners worldwide.</p>
+            </div>
+        </div>
+
+        <div class="team-member reveal">
+            <div class="member-photo">
+                <img src="Hannah-gray.webp" alt="Hannah">
+            </div>
+            <div class="member-info">
+                <h3>Hannah</h3>
+                <span class="role">Database Co-Developer</span>
+                <p>Hannah co-developed the foundational architecture for the Kurdish literary database, ensuring the preservation and accessibility of historical and contemporary texts across the diaspora.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
 
             <!-- SUBMISSIONS ─────────────────────────────── -->
             <section id="submissions">
@@ -604,8 +664,8 @@
         <!-- FOOTER ──────────────────────────────────────── -->
         <footer>
             <div>
-                <h2>Join the Press</h2>
-                <p style="font-size:.9rem;">Subscribe for updates on our September releases, the 2026 bilingual journal, and submission windows.</p>
+                <h2>Keep up with Henar</h2>
+                <p style="font-size:.9rem;">Subscribe for updates on releases, events, and submission windows.</p>
                 <div class="subscribe-row">
                     <input type="email" placeholder="Email address">
                     <button class="btn btn-ghost">Subscribe</button>
@@ -627,6 +687,22 @@
     </div><!-- /.page -->
 
     <script>
+document.querySelectorAll('.member-bio').forEach(bio => {
+    // Only add toggle if content is tall enough to need clamping
+    bio.classList.add('is-clamped');
+    if (bio.scrollHeight <= bio.clientHeight) {
+        bio.classList.remove('is-clamped');
+        return;
+    }
+    const btn = document.createElement('button');
+    btn.className = 'bio-toggle';
+    btn.textContent = 'READ MORE';
+    btn.addEventListener('click', () => {
+        const expanded = bio.classList.toggle('is-clamped');
+        btn.textContent = expanded ? 'READ MORE' : 'READ LESS';
+    });
+    bio.insertAdjacentElement('afterend', btn);
+});
     (() => {
         'use strict';
 
