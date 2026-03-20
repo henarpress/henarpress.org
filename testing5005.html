@@ -70,21 +70,21 @@
         /* ═══════════════════════════════════════════════════════
            LAYOUT  — sidebar always fixed on the left
         ════════════════════════════════════════════════════════ */
-        .sidebar {
-            position: fixed;
-            inset: 0 auto 0 0;
-            width: var(--sidebar-w);
-            height: 100vh;
-            background: var(--bg);
-            border-right: var(--border);
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 1.5rem;
-            overflow-y: auto;
-            z-index: 400;
-            transform: translateX(0);
-            transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--ink); 
+    border-right: 1px solid rgba(247,245,237,.1); 
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    z-index: 400;
+    transform: translateX(0);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
         /* Mobile: hidden off-canvas by default */
         @media (max-width: 860px) {
@@ -107,38 +107,109 @@
         /* ═══════════════════════════════════════════════════════
            SIDEBAR CONTENTS
         ════════════════════════════════════════════════════════ */
-        .brand {
-            font-size: 3rem;
-            color: var(--red);
-            line-height: 1;
-            margin-bottom: 2.5rem;
+        
+        .brand-logo-link {
             display: block;
-        }
-
-        .lang-toggle {
-            font-size: 1rem;
             margin-bottom: 2rem;
-        }
-        .lang-toggle a        { color: var(--ink); }
-        .lang-toggle a.active { color: var(--red); }
-
-        .nav-links { display: flex; flex-direction: column; gap: 0.9rem; }
-
-        .nav-link {
-            font-size: 1.35rem;
-            color: var(--ink);
             transition: var(--ease);
         }
-        .nav-link:hover,
-        .nav-link.active { color: var(--red); opacity: 1; }
-
-        .sidebar-foot {
-            margin-top: auto;
-            padding-top: 2rem;
-            font-size: 0.78rem;
-            opacity: 0.55;
-            line-height: 1.6;
+        .brand-logo-link:hover {
+            opacity: 0.7;
         }
+        .brand-logo {
+            max-width: 160px;
+            height: auto;
+        }
+
+  .lang-toggle {
+    display: inline-flex;
+border: 1px solid var(--bg);
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.lang-toggle a {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.85rem;
+color: var(--bg);
+    border-right: 1px solid var(--ink);
+    transition: var(--ease);
+    letter-spacing: 0.02em;
+}
+
+.lang-toggle a:last-child {
+    border-right: none;
+}
+
+.lang-toggle a.active {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+.lang-toggle a:hover:not(.active) {
+    background: var(--red);
+    color: var(--bg);
+    opacity: 1;
+}
+
+        .nav-links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0rem; 
+        }
+
+.nav-link {
+    font-size: 1.5rem;
+    color: var(--bg);
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    transition: var(--ease);
+}
+.nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover,
+        .nav-link.active { 
+            color: var(--red); 
+            opacity: 1; 
+        }
+
+.sidebar-foot {
+    margin-top: 1rem;
+    padding-top: 0; 
+}
+
+.donate-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    background: transparent;
+    color: var(--bg);
+    border: 2px solid var(--bg);
+    font-family: 'Staatliches', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--ease);
+}
+
+.donate-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--bg);
+    opacity: 1 !important;
+}
 
         /* ═══════════════════════════════════════════════════════
            BURGER BUTTON
@@ -182,6 +253,49 @@
 
         @media (max-width: 860px) { .burger { display: flex; } }
 
+/* ═══════════════════════════════════════════════════════
+   MOBILE HEADER BAR
+════════════════════════════════════════════════════════ */
+.mobile-header {
+    display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 860px) {
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: var(--ink);
+        z-index: 450; /* Sits behind the burger (500) but above content */
+        border-bottom: var(--border);
+    }
+
+    .mobile-brand {
+        font-family: 'Staatliches', sans-serif;
+        color: var(--bg);
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    /* Adjust the burger to sit vertically centered in the new bar */
+    .burger {
+        top: 9px; /* (60px header height - 42px burger height) / 2 */
+        left: 10px;
+        border-color: var(--bg); /* Optional: white border looks sharper on black */
+    }
+
+    /* Push first section down further so the header doesn't overlap text */
+    section:first-of-type {
+        padding-top: 6rem; 
+    }
+}
+
         /* ═══════════════════════════════════════════════════════
            OVERLAY
         ════════════════════════════════════════════════════════ */
@@ -213,6 +327,7 @@
             max-width: 780px;
             font-size: clamp(1rem, 1.5vw, 1.25rem);
             font-style: italic;
+   	 text-align: justify;
         }
 
         /* ═══════════════════════════════════════════════════════
@@ -411,6 +526,12 @@
             background: rgba(247,245,237,.05);
         }
 
+#submissions p, #submissions li {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
         /* ═══════════════════════════════════════════════════════
            BUTTON
         ════════════════════════════════════════════════════════ */
@@ -426,8 +547,14 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: var(--ease);
+
         }
-        .btn:hover { background: transparent; color: var(--red); opacity: 1; }
+        .btn:hover { 
+ background: var(--red);
+    border-color: var(--red);
+    color: var(--bg);
+    opacity: 1 !important;
+}
 
         .btn-ghost {
             background: transparent;
@@ -439,59 +566,98 @@
         /* ═══════════════════════════════════════════════════════
            FOOTER
         ════════════════════════════════════════════════════════ */
+       /* ═══════════════════════════════════════════════════════
+           FOOTER — Refined UI
+        ════════════════════════════════════════════════════════ */
         footer {
             background: var(--ink);
             color: var(--bg);
-            padding: 4rem 3.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            padding: 2.5rem 1.5rem; /* Reduced padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border-top: 1px solid rgba(247,245,237,.1);
         }
-        footer h2 { color: var(--bg); border-bottom-color: rgba(247,245,237,.2); }
 
-        .subscribe-row { display: flex; margin-top: 1.5rem; }
+        .footer-left {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+
+        footer h2 { 
+            color: var(--bg); 
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-row { display: flex; margin-top: 1rem; }
         .subscribe-row input[type="email"] {
             flex: 1;
-            min-width: 0;
-            padding: 0.72rem 1rem;
-            border: 2px solid rgba(247,245,237,.55);
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(247,245,237,.3);
             border-right: none;
             background: transparent;
             color: var(--bg);
             font-family: 'Lora', serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        .subscribe-row input[type="email"]::placeholder { color: rgba(247,245,237,.3); }
-        .subscribe-row input[type="email"]:focus { outline: none; border-color: var(--bg); }
+        .subscribe-row .btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+        }
 
         .footer-right {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: flex-end; /* Keeps everything right-aligned */
             text-align: right;
         }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         .social-links a {
             color: var(--bg);
             font-family: 'Staatliches', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            margin-left: 1.2rem;
         }
-        .social-links a:first-child { margin-left: 0; }
 
-        .footer-legal { margin-top: 2rem; opacity: 0.45; font-size: 0.8rem; line-height: 1.6; }
-        .footer-legal p { margin-bottom: 0; }
+        .clmp-logo {
+            max-width: 140px;
+            height: auto;
+            opacity: 0.8;
+            transition: var(--ease);
+        }
+
+        .footer-legal { 
+            margin-top: 1.5rem; 
+            opacity: 0.45; 
+            font-size: 0.75rem; 
+            line-height: 1.4; 
+        }
 
         @media (max-width: 700px) {
-            footer { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-            .footer-right { text-align: left; }
+            footer { flex-direction: column; align-items: flex-start; }
+            .footer-right { align-items: flex-start; text-align: left; width: 100%; }
+            .social-links { gap: 1rem; }
         }
 
  
     </style>
 </head>
 <body>
+
+<header class="mobile-header">
+    <span class="mobile-brand">Henar Press</span>
+</header>
 
     <!-- Backdrop overlay (mobile) -->
     <div class="overlay" id="overlay" aria-hidden="true"></div>
@@ -507,29 +673,34 @@
     </button>
 
     <!-- Sidebar navigation — ALWAYS on the left -->
-    <nav class="sidebar" id="sidebar" aria-label="Site navigation">
+<nav class="sidebar" id="sidebar" aria-label="Site navigation">
         <div>
-            <a href="/" class="brand">HENAR.</a>
+            <a href="/" class="brand-logo-link">
+                <img src="henar-press-full-logo-2.png" alt="Henar Press Logo" class="brand-logo">
+            </a>
 
-            <div class="lang-toggle">
-                <a href="#" class="active">EN</a>&nbsp;/&nbsp;<a href="#">KU</a>
-            </div>
-<div class="nav-links">
-    <a href="#about"       class="nav-link">ABOUT</a>
-    <a href="#catalog"     class="nav-link">BOOKS</a>
-    <a href="https://asterismbooks.com/publisher/henar-press"
-       target="_blank" rel="noopener"
-       class="nav-link">SHOP</a>
-    <a href="#masthead"    class="nav-link">PEOPLE</a>
-    <a href="#submissions" class="nav-link">SUBMISSIONS</a>
-    <a href="database"
-       target="_blank" rel="noopener"
-       class="nav-link">KURDISH LITERARY DATABASE</a>
-</div>        </div>
+           <div class="lang-toggle">
+    <a href="#" class="active">ENG</a>
+    <a href="#">SOR</a>
+    <a href="#">KUR</a>
+</div>
+
+            <div class="nav-links">
+                <a href="#about"       class="nav-link">ABOUT</a>
+                <a href="#catalog"     class="nav-link">BOOKS</a>
+                <a href="https://asterismbooks.com/publisher/henar-press" 
+                   target="_blank" rel="noopener" 
+                   class="nav-link">SHOP</a>
+                <a href="#masthead"    class="nav-link">PEOPLE</a>
+                <a href="#submissions" class="nav-link">SUBMISSIONS</a>
+                <a href="database" 
+                   target="_blank" rel="noopener" 
+                   class="nav-link">KURDISH LITERARY DATABASE</a>
+            </div>        
+        </div>
 
         <div class="sidebar-foot">
-            <p>Based in Columbus, Ohio.</p>
-            <p>A 501(c)(3) Nonprofit.</p>
+            <a href="#donate" class="donate-btn">Donate</a>
         </div>
     </nav>
 
@@ -542,8 +713,8 @@
                 <div class="reveal">
                     <h1>HENAR PRESS</h1>
                     <p class="hero-text">
-                        Henar Press is an independent, Kurdish-owned nonprofit publisher based in Columbus, Ohio. We translate and publish experimental novels, poetry, and memoirs from emerging and established writers in the homeland and diaspora—challenging the reductive portrayal of Kurdistan as stateless.
-                    </p>
+We're an independent, nonprofit press based in Columbus, Ohio, dedicated to bringing experimental Kurdish writing to the world. Our books span fiction, poetry, and creative nonfiction from emerging and established writers from the homeland and diaspora. In the face of ongoing genocide, ethnic cleansing, and generations of censorship, we believe in the power of literature to resist and reclaim our narrative. As a Kurdish-owned press, we champion innovative works that disentangles Kurdish literature from its reductive portrayal as stateless and fosters a deeper awareness of its art and culture.
+               </p>
                 </div>
             </section>
 
@@ -553,30 +724,37 @@
 
                     <article class="book-card reveal">
                         <div class="book-cover"></div>
-                        <h3>Gabor</h3>
-                        <div class="meta">Novel &bull; Forthcoming Sept 26</div>
-                        <p>A surreal, speculative breakdown of narrative.</p>
+                        <h3>GABOR</h3>
+                        <div class="meta">Novel &bull; Forthcoming August 25, 2026</div>
+                        <p>Seyed Qader Hedayati, tr. Chiya Parvizpur & Hourieh Maleki Qouzloo</p>
                     </article>
 
                     <article class="book-card reveal">
                         <div class="book-cover"></div>
                         <h3>I Am Going to Kill Somebody</h3>
-                        <div class="meta">Novel &bull; Forthcoming Sept 26</div>
-                        <p>A dark comedy pushing the structural limits of the novel.</p>
+                        <div class="meta">Novel &bull; Forthcoming November 3, 2026</div>
+                        <p>Firat Ceweri, tr. Jeannette Okur</p>
                     </article>
+
+ 		<article class="book-card reveal">
+                        <div class="book-cover"></div>
+                        <h3>Maybe She'll Sleep Tonight</h3>
+                        <div class="meta">Photography/Short Story Collection &bull; Forthcoming 2027</div>
+                        <p>Murat Bayram, tr. Veene Sulaivany</p>
+                    </article>
+
+  			<article class="book-card reveal">
+                        <div class="book-cover"></div>
+                        <h3>Dreaming on the Banks of the Tigris</h3>
+                        <div class="meta">Novel &bull; Forthcoming 2027</div>
+                        <p>Fawaz Hussain, tr. Joan Rundo</p>
+			</article>
 
                     <article class="book-card reveal">
                         <div class="book-cover"></div>
-                        <h3>Anthology of Contemporary Plays</h3>
-                        <div class="meta">Drama &bull; Forthcoming Sept 26</div>
-                        <p>A defining collection of modern theatrical works.</p>
-                    </article>
-
-                    <article class="book-card reveal">
-                        <div class="book-cover"></div>
-                        <h3>Nûdem: Translated</h3>
-                        <div class="meta">Literary Journal &bull; Archive</div>
-                        <p>Issues of the seminal Kurdish literary magazine Nûdem, in English for the first time.</p>
+                        <h3>Who's Afraid of Kurdistan? An Anthology of Contemporary Plays</h3>
+                        <div class="meta">Drama &bull; Forthcoming 2027</div>
+                        <p>Edited by Aryan Omar Hassan</p>
                     </article>
 
                 </div>
@@ -629,13 +807,16 @@
                 <div class="submissions-grid">
 
                     <div class="reveal">
-                        <p><strong>Reading Period:</strong> We are preparing to announce a bilingual literary journal—the first of its kind in North America—in early 2026. General submissions for the journal and full-length manuscripts will open soon.</p>
+
+                        <p><strong>We'd love to hear from you! Whether you have questions about our books, database, submission process, volunteering, or just want to say hello, don't hesitate to reach out.</strong></p>
                         <ul class="guidelines-list">
-                            <li>We prioritize weird, speculative, and structurally experimental fiction.</li>
+                            <li>We publish a wide range of genres, including novels, novellas, short story collections, poetry, memoirs, plays, chapbooks, and hybrid forms.</li>
+<li>Currently, we can only accept book-length manuscripts written in or translated into English.</li>
                             <li>Translations of Kurmanji and Sorani texts are highly encouraged.</li>
-                            <li>Please format submissions clearly; we prefer standard baseline grids.</li>
+                            <li>Please include a brief author bio, translator bio (if applicable), and synopsis in your message.</li>
+                            <li>Only one attachment can be sent at a time. Manuscripts can be in either Word or PDF format. Please limit file sizes to 15 MB.</li>
                         </ul>
-                        <p>For press inquiries, rights, or general questions, please use the contact form.</p>
+                        <p><strong>For press inquiries, rights, or general questions, please use the contact form.</strong></p>
                     </div>
 
                     <div class="form-box reveal">
@@ -652,7 +833,7 @@
                                 <label for="c-message">Message</label>
                                 <textarea id="c-message" rows="5" placeholder="Your message…" required></textarea>
                             </div>
-                            <button type="submit" class="btn">Send Transmission</button>
+                            <button type="submit" class="btn">Send Message</button>
                         </form>
                     </div>
 
@@ -662,24 +843,31 @@
         </main>
 
         <!-- FOOTER ──────────────────────────────────────── -->
-        <footer>
-            <div>
-                <h2>Keep up with Henar</h2>
-                <p style="font-size:.9rem;">Subscribe for updates on releases, events, and submission windows.</p>
+      <footer>
+            <div class="footer-left">
+                <h2>FOLLOW HENAR PRESS</h2>
+                <p style="font-size:.85rem; opacity: 0.8;">Stay updated on our latest releases, events, and opportunities.</p>
                 <div class="subscribe-row">
                     <input type="email" placeholder="Email address">
                     <button class="btn btn-ghost">Subscribe</button>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2026 Henar Press. All rights reserved.</p>
                 </div>
             </div>
 
             <div class="footer-right">
                 <div class="social-links">
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
+                    <a href="#" target="_blank" rel="noopener">Instagram</a>
+                    <a href="#" target="_blank" rel="noopener">Bluesky</a>
+                    <a href="#" target="_blank" rel="noopener">Facebook</a>
                 </div>
+                
+                <a href="https://www.clmp.org" target="_blank" rel="noopener" aria-label="Member of CLMP">
+                    <img src="Color-Print-Logo-with-full-text.png" alt="CLMP Member Logo" class="clmp-logo">
+                </a>
+                
                 <div class="footer-legal">
-                    <p>&copy; 2026 Henar Press. All rights reserved.</p>
-                    <p>Proud member of the Community of Literary Magazines and Presses (CLMP).</p>
                 </div>
             </div>
         </footer>
