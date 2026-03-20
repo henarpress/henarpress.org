@@ -1268,7 +1268,7 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
            placeholder="Email address"
            autocomplete="email"
            required>
-    <button type="submit" class="btn btn-ghost" id="ml-submit-btn">Subscribe</button>
+    <button type="submit" class="btn btn-ghost">Subscribe</button>
 </form>
 
 <p id="footer-ml-success"
@@ -1277,49 +1277,28 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
 </p>
 
 <script>
-document.getElementById('footer-ml-form').addEventListener('submit', function(e) {
+document.getElementById('footer-ml-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const email = this.querySelector('input[type="email"]').value;
-    const btn   = document.getElementById('ml-submit-btn');
 
-    btn.textContent  = 'Sending…';
-    btn.disabled     = true;
-
-    const callbackName = 'ml_cb_' + Date.now();
-    const script       = document.createElement('script');
-
-    const params = new URLSearchParams({
+    const body = new URLSearchParams({
         'fields[email]': email,
-        'ml-submit':     '1',
-        'anticsrf':      'true',
-        'callback':      callbackName
+        'ml-submit': '1',
+        'anticsrf': 'true'
     });
 
-    window[callbackName] = function(response) {
-        delete window[callbackName];
-        document.body.removeChild(script);
-
-        if (response && response.success) {
-            document.getElementById('footer-ml-form').style.display    = 'none';
-            document.getElementById('footer-ml-success').style.display = 'block';
-        } else {
-            btn.textContent = 'Subscribe';
-            btn.disabled    = false;
-            alert('Something went wrong — please try again.');
-        }
-    };
-
-    script.onerror = function() {
-        delete window[callbackName];
-        document.body.removeChild(script);
-        btn.textContent = 'Subscribe';
-        btn.disabled    = false;
-        alert('Something went wrong — please try again.');
-    };
-
-    script.src = 'https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe?' + params.toString();
-    document.body.appendChild(script);
+    try {
+        await fetch('https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString()
+        });
+    } catch (_) {
+    } finally {
+        document.getElementById('footer-ml-form').style.display = 'none';
+        document.getElementById('footer-ml-success').style.display = 'block';
+    }
 });
 </script>
                 <div class="footer-legal">
@@ -1337,7 +1316,7 @@ document.getElementById('footer-ml-form').addEventListener('submit', function(e)
             </div>
         </footer>
 
-    </div><!-- /.page -->
+    </div>
 
     <script>
 document.querySelectorAll('.member-bio').forEach(bio => {
