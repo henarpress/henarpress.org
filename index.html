@@ -1150,10 +1150,42 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
             <div class="footer-left">
                 <h2>FOLLOW HENAR PRESS</h2>
                 <p style="font-size:.85rem; opacity: 0.8;">Stay updated on our latest releases, events, and opportunities.</p>
-                <div class="subscribe-row">
-                    <input type="email" placeholder="Email address">
-                    <button class="btn btn-ghost">Subscribe</button>
-                </div>
+               <!-- FOOTER subscribe row — replace your existing .subscribe-row div -->
+<form class="subscribe-row"
+      action="https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe"
+      method="post"
+      target="_blank"
+      id="footer-ml-form">
+
+    <input type="email"
+           name="fields[email]"
+           placeholder="Email address"
+           autocomplete="email"
+           required>
+
+    <input type="hidden" name="ml-submit" value="1">
+    <input type="hidden" name="anticsrf" value="true">
+
+    <button type="submit" class="btn btn-ghost">Subscribe</button>
+</form>
+
+<p id="footer-ml-success"
+   style="display:none; font-size:.85rem; margin-top:.75rem; opacity:.8;">
+    ✓ You're on the list — thank you!
+</p>
+
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" defer></script>
+<script>
+  fetch("https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/takel");
+
+  document.getElementById('footer-ml-form')
+    .addEventListener('submit', function () {
+      setTimeout(function () {
+        document.getElementById('footer-ml-form').style.display = 'none';
+        document.getElementById('footer-ml-success').style.display = 'block';
+      }, 800);
+    });
+</script>
                 <div class="footer-legal">
                     <p>&copy; 2026 Henar Press. All rights reserved.</p>
                 </div>
