@@ -37,10 +37,11 @@
         }
 
         img { display: block; max-width: 100%; }
-        a   { color: var(--red); text-decoration: none; transition: var(--ease); }
-        a:hover { opacity: 0.65; }
-a.book-link:hover { opacity: 1; }
-        p   { margin-bottom: 1rem; }
+      a   { color: var(--red); text-decoration: none; transition: var(--ease); }
+a:hover { opacity: 0.65; }
+.book-link { color: #232323 !important; }
+.book-link:hover { opacity: 1 !important; }
+p   { margin-bottom: 1rem; }
 
         /* ═══════════════════════════════════════════════════════
            TYPOGRAPHY SCALE
@@ -389,18 +390,8 @@ input[type="file"] {
         }
         .book-card p { font-size: 0.83rem; line-height: 1.5; margin-bottom: 0; }
 
-a.book-link {
-    text-decoration: none !important;
-    color: inherit !important;
-    display: block;
-}
-
-a.book-link h3,
-a.book-link p,
-a.book-link .meta {
-    text-decoration: none !important;
-    color: inherit !important;
-}
+.book-link { color: #232323 !important; }
+.book-link:hover { opacity: 1 !important; }
 
       /* ═══════════════════════════════════════════════════════
        MASTHEAD (UPDATED FOR PHOTOS)
@@ -748,7 +739,8 @@ a.book-link .meta {
         </div>
 
         <div class="sidebar-foot">
-            <a href="#donate" class="donate-btn">Donate</a>
+            <a href="https://secure.givelively.org/donate/henar-press/help-kickstart-henar-press" 
+                   target="_blank" rel="noopener"  class="donate-btn">Donate</a>
         </div>
     </nav>
 
@@ -769,17 +761,16 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
             <!-- CATALOG -->
             <section id="catalog">
                 <div class="catalog-grid">
-
 <a href="https://asterismbooks.com/product/gabor" target="_blank" rel="noopener" class="book-link">
-<article class="book-card reveal">
-                        <div class="book-cover">
-    <img src="Gabor-Cover-Compressed.webp" alt="Gabor"></div>
-                        <h3>GABOR</h3>
-                        <div class="meta">Novel &bull; Forthcoming August 25, 2026</div>
-                        <p>Seyed Qader Hedayati, tr. Chiya Parvizpur & Hourieh Maleki Qouzloo</p>
-                    </article>
+    <article class="book-card reveal">
+        <div class="book-cover">
+            <img src="Gabor-Cover-Compressed.webp" alt="Gabor">
+        </div>
+        <h3>GABOR</h3>
+        <div class="meta">Novel &bull; Forthcoming August 25, 2026</div>
+        <p>Seyed Qader Hedayati, tr. Chiya Parvizpur & Hourieh Qouzloo</p>
+    </article>
 </a>
-
 <a href="https://asterismbooks.com/product/i-am-going-to-kill-somebody" target="_blank" rel="noopener" class="book-link">
                     <article class="book-card reveal">
                         <div class="book-cover">
@@ -891,7 +882,7 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
         <img src="huri.webp" alt="Huri Qouzloo">
     </div>
     <div class="member-info">
-        <h3>Hourieh Maleki Qouzloo</h3>
+        <h3>Hourieh Qouzloo</h3>
         <span class="role">Translator</span>
         <p class="member-bio">Hourieh Maleki Qouzloo (Huri) is a multilingual writer, translator, and researcher with over two decades of teaching experience across language and literature. Her literary and academic work centers on themes of identity, hybridity, and displacement. Huri is passionate about fostering cultural exchange through literature and education and is actively engaged in translating contemporary Kurdish literary works into English. Her published translations include Ata Nahai's Birds in a Gale and Seyed Qader Hedayati's Gabor. She holds a second Master's degree in English and Literacy Studies from the University of Stavanger and is pursuing research on cultural hybridity in migration literature.</p>
     </div>
@@ -1233,14 +1224,19 @@ document.getElementById('attachment')
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+
+        // Hook into your existing lang-toggle links
         document.querySelectorAll('.lang-toggle a[data-lang]').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
                 switchLanguage(this.getAttribute('data-lang'));
             });
         });
+
+        // Initialise with default language
         switchLanguage(currentLang);
     });
+
 })();
 </script>
 
