@@ -712,7 +712,119 @@ input[type="file"] {
         margin-right: auto;
     }
 }
- 
+ /* ═══════════════════════════════════════════════════════
+   LARGE SCREEN IMPROVEMENTS
+════════════════════════════════════════════════════════ */
+
+/* ── 1. Wide desktop (1400px – 1799px) ─────────────────── */
+@media (min-width: 1400px) {
+
+    :root { --sidebar-w: 300px; }
+
+    .sidebar {
+        padding: 2.5rem 2rem;
+        justify-content: space-between;
+    }
+
+    .brand-logo { max-width: 190px; }
+
+    .nav-links { gap: 0.3rem; }
+
+    .nav-link { font-size: 1.75rem; }
+
+    .donate-btn { font-size: 1.35rem; padding: 1rem; }
+
+    section { padding: 3.5rem 3.5rem; }
+
+    section > *,
+    section > .catalog-grid,
+    section > .team-grid,
+    section > .submissions-grid,
+    section > h2,
+    section > .hero-text,
+    section > h1 {
+        max-width: 1380px;
+    }
+
+    h1 { font-size: clamp(3.5rem, 5vw, 7rem); }
+    .hero-text { font-size: 1.2rem; max-width: 820px; }
+
+    .catalog-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2.5rem;
+        max-width: 1380px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem 3rem;
+        max-width: 1380px;
+    }
+
+    .member-photo {
+        max-height: none;          
+        aspect-ratio: 3 / 4;
+    }
+
+    .member-photo img {
+        object-position: center 15%;
+    }
+
+    .submissions-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        max-width: 1380px;
+    }
+
+    #masthead h2 { margin-bottom: 2.5rem; }
+}
+
+/* ── 2. Ultra-wide (1800px+) ────────────────────────────── */
+@media (min-width: 1800px) {
+
+    :root { --sidebar-w: 340px; }
+
+    .sidebar { padding: 3rem 2.5rem; }
+
+    .brand-logo { max-width: 220px; }
+
+    .nav-link { font-size: 2rem; }
+
+    .nav-links { gap: 0.4rem; }
+
+    section { padding: 4.5rem; }
+
+    section > *,
+    section > .catalog-grid,
+    section > .team-grid,
+    section > .submissions-grid,
+    section > h2,
+    section > .hero-text,
+    section > h1 {
+        max-width: 1500px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 3rem;
+        max-width: 1500px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem 3.5rem;
+        max-width: 1500px;
+    }
+
+    .member-info h3 { font-size: 1.8rem; }
+
+    .submissions-grid {
+        gap: 7rem;
+        max-width: 1400px;
+    }
+
+    .form-box { padding: 3.5rem; }
+}
     </style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
