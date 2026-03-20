@@ -1262,45 +1262,65 @@ We're an independent, nonprofit press based in Columbus, Ohio, dedicated to brin
             <div class="footer-left">
                 <h2>FOLLOW HENAR PRESS</h2>
                 <p style="font-size:.85rem; opacity: 0.8;">Stay updated on our latest releases, events, opportunities, and more.</p>
-     <form class="subscribe-row" id="footer-ml-form">
+<form class="subscribe-row" id="footer-ml-form">
     <input type="email"
            name="fields[email]"
            placeholder="Email address"
            autocomplete="email"
            required>
-    <button type="submit" class="btn btn-ghost">Subscribe</button>
+    <button type="submit" class="btn btn-ghost" id="ml-submit-btn">Subscribe</button>
 </form>
 
 <p id="footer-ml-success"
    style="display:none; font-size:.85rem; margin-top:.75rem; opacity:.8;">
-    ✓ Please check your email for the confirmation link!
+    Please check your email for the confirmation link!
 </p>
 
 <script>
-document.getElementById('footer-ml-form').addEventListener('submit', async function(e) {
+document.getElementById('footer-ml-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const email = this.querySelector('input[type="email"]').value;
+    const btn   = document.getElementById('ml-submit-btn');
 
-    const body = new URLSearchParams({
+    btn.textContent  = 'Sending…';
+    btn.disabled     = true;
+
+    const callbackName = 'ml_cb_' + Date.now();
+    const script       = document.createElement('script');
+
+    const params = new URLSearchParams({
         'fields[email]': email,
-        'ml-submit': '1',
-        'anticsrf': 'true'
+        'ml-submit':     '1',
+        'anticsrf':      'true',
+        'callback':      callbackName
     });
 
-    try {
-        await fetch('https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body.toString()
-        });
-    } catch (_) {
-    } finally {
-        document.getElementById('footer-ml-form').style.display = 'none';
-        document.getElementById('footer-ml-success').style.display = 'block';
-    }
+    window[callbackName] = function(response) {
+        delete window[callbackName];
+        document.body.removeChild(script);
+
+        if (response && response.success) {
+            document.getElementById('footer-ml-form').style.display    = 'none';
+            document.getElementById('footer-ml-success').style.display = 'block';
+        } else {
+            btn.textContent = 'Subscribe';
+            btn.disabled    = false;
+            alert('Something went wrong — please try again.');
+        }
+    };
+
+    script.onerror = function() {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        btn.textContent = 'Subscribe';
+        btn.disabled    = false;
+        alert('Something went wrong — please try again.');
+    };
+
+    script.src = 'https://assets.mailerlite.com/jsonp/1802499/forms/165802974111598078/subscribe?' + params.toString();
+    document.body.appendChild(script);
 });
-</script>
 </script>
                 <div class="footer-legal">
                     <p>&copy; 2026 Henar Press. All rights reserved.</p>
