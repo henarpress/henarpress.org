@@ -796,9 +796,14 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
         max-width: 1500px;
     }
 
+    .hero-text {
+        font-size: 1.6rem;
+        line-height: 1.9;
+    }
+
     .catalog-grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 3rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3.5rem;
         max-width: 1500px;
     }
 
@@ -809,6 +814,32 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
     }
 
     .member-info h3 { font-size: 1.8rem; }
+
+    /* SUBMISSIONS — much larger text */
+    #submissions p,
+    #submissions li {
+        font-size: 1.2rem;
+        line-height: 1.85;
+    }
+
+    #submissions .guidelines-list li {
+        margin-bottom: 0.6rem;
+    }
+
+    #submissions h2 {
+        font-size: clamp(2.5rem, 3vw, 4.5rem);
+        margin-bottom: 2.5rem;
+    }
+
+    .form-group label {
+        font-size: 1.3rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 1.1rem;
+        padding: 1rem 1.25rem;
+    }
 
     .submissions-grid {
         gap: 7rem;
