@@ -52,9 +52,6 @@ a:hover { opacity: 0.65; }
 .book-link:hover { opacity: 1 !important; }
 p   { margin-bottom: 1rem; }
 
-        /* ═══════════════════════════════════════════════════════
-           TYPOGRAPHY SCALE
-        ════════════════════════════════════════════════════════ */
         h1, h2, h3, h4,
         .brand, .nav-link, .btn, .lang-toggle {
             font-family: 'Staatliches', sans-serif;
@@ -78,9 +75,6 @@ p   { margin-bottom: 1rem; }
 
         h3 { font-size: clamp(1.1rem, 1.8vw, 1.6rem); line-height: 1.1; margin-bottom: 0.15rem; }
 
-        /* ═══════════════════════════════════════════════════════
-           LAYOUT  — sidebar always fixed on the left
-        ════════════════════════════════════════════════════════ */
     .sidebar {
     position: fixed;
     inset: 0 auto 0 0;
@@ -114,10 +108,6 @@ p   { margin-bottom: 1rem; }
             min-height: 100vh;
         }
         @media (max-width: 860px) { .page { margin-left: 0; } }
-
-        /* ═══════════════════════════════════════════════════════
-           SIDEBAR CONTENTS
-        ════════════════════════════════════════════════════════ */
         
         .brand-logo-link {
             display: block;
@@ -221,10 +211,6 @@ color: var(--bg);
     color: var(--bg);
     opacity: 1 !important;
 }
-
-        /* ═══════════════════════════════════════════════════════
-           BURGER BUTTON
-        ════════════════════════════════════════════════════════ */
         
 .file-status {
     display: none;
@@ -282,9 +268,6 @@ input[type="file"] {
 
         @media (max-width: 860px) { .burger { display: flex; } }
 
-/* ═══════════════════════════════════════════════════════
-   MOBILE HEADER BAR
-════════════════════════════════════════════════════════ */
 .mobile-header {
     display: none; /* Hidden on desktop */
 }
@@ -312,22 +295,17 @@ input[type="file"] {
         text-transform: uppercase;
     }
 
-    /* Adjust the burger to sit vertically centered in the new bar */
     .burger {
-        top: 9px; /* (60px header height - 42px burger height) / 2 */
+        top: 9px;
         left: 10px;
-        border-color: var(--bg); /* Optional: white border looks sharper on black */
+        border-color: var(--bg);
     }
 
-    /* Push first section down further so the header doesn't overlap text */
     section:first-of-type {
         padding-top: 6rem; 
     }
 }
 
-        /* ═══════════════════════════════════════════════════════
-           OVERLAY
-        ════════════════════════════════════════════════════════ */
         .overlay {
             display: none;
             position: fixed;
@@ -339,9 +317,6 @@ input[type="file"] {
         }
         .overlay.is-open { display: block; opacity: 1; }
 
-        /* ═══════════════════════════════════════════════════════
-           SECTIONS
-        ════════════════════════════════════════════════════════ */
         section {
             padding: 2rem 1.5rem;
             border-bottom: var(--border);
@@ -398,9 +373,6 @@ input[type="file"] {
 .book-link { color: #232323 !important; }
 .book-link:hover { opacity: 1 !important; }
 
-      /* ═══════════════════════════════════════════════════════
-       MASTHEAD (UPDATED FOR PHOTOS)
-    ════════════════════════════════════════════════════════ */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -509,9 +481,6 @@ input[type="file"] {
         grid-template-columns: 1fr;
     }
 }
-        /* ═══════════════════════════════════════════════════════
-           SUBMISSIONS
-        ════════════════════════════════════════════════════════ */
         .submissions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -556,9 +525,6 @@ input[type="file"] {
     -webkit-hyphens: auto;
 }
 
-        /* ═══════════════════════════════════════════════════════
-           BUTTON
-        ════════════════════════════════════════════════════════ */
         .btn {
             display: inline-block;
             padding: 0.72rem 2rem;
@@ -611,11 +577,6 @@ input[type="file"] {
     width: 36px;
     height: 36px;
 }
-
-
-        /* ═══════════════════════════════════════════════════════
-           FOOTER
-        ════════════════════════════════════════════════════════ */
    
         footer {
             background: var(--ink);
@@ -704,11 +665,7 @@ input[type="file"] {
         margin-right: auto;
     }
 }
- /* ═══════════════════════════════════════════════════════
-   LARGE SCREEN IMPROVEMENTS
-════════════════════════════════════════════════════════ */
 
-/* ── 1. Wide desktop (1400px – 1799px) ─────────────────── */
 @media (min-width: 1400px) {
 
     :root { --sidebar-w: 300px; }
@@ -742,7 +699,7 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
 	.hero-text { font-size: 1.2rem; }
 	
     .catalog-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 2.5rem;
         max-width: 1380px;
     }
@@ -771,7 +728,6 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
     #masthead h2 { margin-bottom: 2.5rem; }
 }
 
-/* ── 2. Ultra-wide (1800px+) ────────────────────────────── */
 @media (min-width: 1800px) {
 
     :root { --sidebar-w: 340px; }
