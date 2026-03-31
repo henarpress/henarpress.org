@@ -91,16 +91,15 @@ p   { margin-bottom: 1rem; }
     transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-        /* Mobile: hidden off-canvas by default */
         @media (max-width: 860px) {
-            .sidebar { transform: translateX(-100%); }
+            .sidebar { transform: translateX(-100%); 
+					 padding-top: 5rem;}
             .sidebar.is-open {
                 transform: translateX(0);
                 box-shadow: 6px 0 32px rgba(35,35,35,.15);
             }
         }
 
-        /* Page content pushed right of sidebar on desktop */
         .page {
             margin-left: var(--sidebar-w);
             display: flex;
@@ -237,23 +236,23 @@ input[type="file"] {
             z-index: 500;
             width: 42px;
             height: 42px;
-            background: var(--bg);
-            border: var(--border);
-            cursor: pointer;
+ 			background: var(--ink);
+   			border: 2px solid var(--bg);
+			cursor: pointer;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 5px;
             transition: background 0.2s;
         }
-        .burger:hover { background: var(--ink); }
-        .burger:hover .b-bar { background: var(--bg); }
+       .burger:hover { background: var(--bg); }
+		.burger:hover .b-bar { background: var(--ink); }
 
         .b-bar {
             display: block;
             width: 20px;
             height: 2px;
-            background: var(--ink);
+            background: var(--bg);
             border-radius: 1px;
             transition: var(--ease);
             transform-origin: center;
@@ -269,7 +268,7 @@ input[type="file"] {
         @media (max-width: 860px) { .burger { display: flex; } }
 
 .mobile-header {
-    display: none; /* Hidden on desktop */
+    display: none;
 }
 
 @media (max-width: 860px) {
@@ -283,7 +282,7 @@ input[type="file"] {
         width: 100%;
         height: 60px;
         background: var(--ink);
-        z-index: 450; /* Sits behind the burger (500) but above content */
+        z-index: 450;
         border-bottom: var(--border);
     }
 
@@ -823,10 +822,8 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
     <span class="mobile-brand">Henar Press</span>
 </header>
 
-    <!-- Backdrop overlay (mobile) -->
     <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-    <!-- Burger button (mobile only) -->
     <button class="burger" id="burger"
             aria-label="Open navigation"
             aria-expanded="false"
@@ -836,7 +833,6 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
         <span class="b-bar"></span>
     </button>
 
-    <!-- Sidebar navigation — ALWAYS on the left -->
 <nav class="sidebar" id="sidebar" aria-label="Site navigation">
         <div>
             <a href="/" class="brand-logo-link">
