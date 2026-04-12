@@ -1319,9 +1319,7 @@ document.querySelectorAll('.member-bio').forEach(bio => {
         const burger  = document.getElementById('burger');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
-        const BREAK   = 860; // keep in sync with CSS breakpoint
-
-        /* ── open / close helpers ─────────────────────── */
+        const BREAK   = 860;
         function openNav() {
             sidebar.classList.add('is-open');
             overlay.classList.add('is-open');
@@ -1353,7 +1351,6 @@ document.querySelectorAll('.member-bio').forEach(bio => {
             if (window.innerWidth >= BREAK) closeNav();
         });
 
-        /* ── active link highlighting on scroll ──────── */
         const sections = document.querySelectorAll('section[id]');
         const navLinks  = sidebar.querySelectorAll('.nav-link');
 
@@ -1368,13 +1365,11 @@ document.querySelectorAll('.member-bio').forEach(bio => {
 
         sections.forEach(s => secObs.observe(s));
 
-/* ── Turnstile: reveal submit button after challenge ── */
 window.onTurnstileSuccess = function(token) {
     document.querySelector('.cf-turnstile').style.display = 'none';
     document.getElementById('submit-btn').style.display   = 'inline-block';
 };
 
-/* ── File attachment feedback ─────────────────────── */
 document.getElementById('attachment')
     .addEventListener('change', function(e) {
         const status = document.getElementById('file-status');
@@ -1404,44 +1399,41 @@ document.getElementById('attachment')
             el.innerHTML = el.getAttribute('data-' + lang);
         });
 
-        // 2. Update placeholder text on inputs/textareas
         document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
             el.setAttribute('placeholder', el.getAttribute('data-placeholder-' + lang));
         });
 
-        // 3. Handle RTL direction for Sorani (Arabic script)
         const isRTL = RTL_LANGS.includes(lang);
         document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
         document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : lang === 'sor' ? 'ckb' : 'ku');
 
-        // 4. Update active toggle button
         document.querySelectorAll('.lang-toggle a[data-lang]').forEach(link => {
             link.classList.toggle('active', link.getAttribute('data-lang') === lang);
         });
 
-        // 5. Sidebar RTL fix — keeps sidebar on correct side
         const sidebar = document.getElementById('sidebar');
         const page    = document.querySelector('.page');
-        if (isRTL) {
-            sidebar.style.right = '0';
-            sidebar.style.left  = 'auto';
-            sidebar.style.borderRight = 'none';
-            sidebar.style.borderLeft  = '1px solid rgba(247,245,237,.1)';
-            page.style.marginLeft  = '0';
-            page.style.marginRight = 'var(--sidebar-w)';
-        } else {
-            sidebar.style.right = '';
-            sidebar.style.left  = '';
-            sidebar.style.borderRight = '';
-            sidebar.style.borderLeft  = '';
-            page.style.marginLeft  = '';
-            page.style.marginRight = '';
-        }
+       if (isRTL) {
+    sidebar.style.right = '0';
+    sidebar.style.left  = 'auto';
+    sidebar.style.borderRight = 'none';
+    sidebar.style.borderLeft  = '1px solid rgba(247,245,237,.1)';
+    page.style.marginLeft  = '0';
+    page.style.marginRight = 'var(--sidebar-w)';
+    sidebar.style.transform = sidebar.classList.contains('is-open') ? 'translateX(0)' : 'translateX(100%)';
+} else {
+    sidebar.style.right = '';
+    sidebar.style.left  = '';
+    sidebar.style.borderRight = '';
+    sidebar.style.borderLeft  = '';
+    page.style.marginLeft  = '';
+    page.style.marginRight = '';
+    sidebar.style.transform = '';
+}
     }
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        // Hook into your existing lang-toggle links
         document.querySelectorAll('.lang-toggle a[data-lang]').forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1449,7 +1441,6 @@ document.getElementById('attachment')
             });
         });
 
-        // Initialise with default language
         switchLanguage(currentLang);
     });
 
