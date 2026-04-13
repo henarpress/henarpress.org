@@ -803,6 +803,16 @@ h1 { font-size: clamp(5rem, 7vw, 10rem); }
     .form-box { padding: 3.5rem; }
 }
     </style>
+	<style>
+	@media (max-width: 860px) {
+    .sidebar.is-rtl:not(.is-open) {
+        transform: translateX(100%);
+    }
+		.page {
+        margin-right: 0 !important;
+    }
+}
+</style>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <script src="https://usebasin.com/ahoy.js"></script>
@@ -1413,14 +1423,14 @@ document.getElementById('attachment')
 
         const sidebar = document.getElementById('sidebar');
         const page    = document.querySelector('.page');
-       if (isRTL) {
+    if (isRTL) {
     sidebar.style.right = '0';
     sidebar.style.left  = 'auto';
     sidebar.style.borderRight = 'none';
     sidebar.style.borderLeft  = '1px solid rgba(247,245,237,.1)';
     page.style.marginLeft  = '0';
     page.style.marginRight = 'var(--sidebar-w)';
-    sidebar.style.transform = sidebar.classList.contains('is-open') ? 'translateX(0)' : 'translateX(100%)';
+		    sidebar.classList.add('is-rtl');
 } else {
     sidebar.style.right = '';
     sidebar.style.left  = '';
@@ -1428,8 +1438,7 @@ document.getElementById('attachment')
     sidebar.style.borderLeft  = '';
     page.style.marginLeft  = '';
     page.style.marginRight = '';
-    sidebar.style.transform = '';
-}
+    sidebar.classList.remove('is-rtl');}
     }
 
     document.addEventListener('DOMContentLoaded', function () {
